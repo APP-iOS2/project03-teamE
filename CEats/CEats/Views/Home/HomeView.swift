@@ -7,6 +7,7 @@
 
 import SwiftUI
 //frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
+//.
 struct HomeView: View {
     @State var onLocationSheet: Bool = false
     
@@ -14,17 +15,15 @@ struct HomeView: View {
     
     private let foodType: [String: String] = [
         "korean": "한식",
-        "salad": "샐러드",
         "western": "양식",
         "chicken": "치킨",
-        "분식": "분식",
-        "jokbal": "족발/보쌈",
-        "찜탕": "찜/탕",
+        "koreanSnack": "분식",
+        "jokbalbossam": "족발/보쌈",
+        "steamed": "찜/탕",
         "pizza": "피자",
-        "짜장면": "중식",
-        "해물": "해물",
-        "sushi": "일식",
-        "coffeeAndTee": "커피/차",
+        "chinese": "중식",
+        "japanese": "일식",
+        "coffeeAndTea": "커피/차",
         "dessert": "디저트",
         "fastFood": "패스트푸드"
     ]

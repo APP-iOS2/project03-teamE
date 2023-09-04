@@ -31,6 +31,6 @@ struct Food {
     var isRecommend: Bool //추천여부 추천이면 가게 클릭시 상단에 뜸
     var foodCategory: String
     var description: String // 메뉴설명
-    var image:  String
+    var image: String?
     // var option: 추가옵션
 }
