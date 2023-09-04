@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FoodStoreListDetailView: View {
-    //삼항연산자
     
     //MARK: - View
     var body: some View {
