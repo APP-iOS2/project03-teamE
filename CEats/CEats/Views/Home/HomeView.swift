@@ -7,6 +7,7 @@
 
 import SwiftUI
 //frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
+//.
 struct HomeView: View {
     @State var onLocationSheet: Bool = false
     
