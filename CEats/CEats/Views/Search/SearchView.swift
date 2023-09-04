@@ -7,9 +7,16 @@
 
 import SwiftUI
 
+@State private var searchTerm = ""
+
 struct SearchView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            SearchBarView(text: $searchTerm)
+                .padding(.horizontal)
+            //List foodType
+            
+        }
     }
 }
 

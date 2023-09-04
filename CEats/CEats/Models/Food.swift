@@ -1,0 +1,33 @@
+//
+//  Food.swift
+//  CEats
+//
+//  Created by 박범수 on 2023/09/04.
+//
+
+import Foundation
+
+enum FoodType {
+    case korean
+    case chicken
+    case koreanSnack //분식
+    case jokbalbossam // 족발/보쌈
+    case steamed // 찜/탕  
+    case pizza
+    case chinese
+    case japanese //회
+    case western
+    case coffeeAndTea
+    case dessert
+    case fastFood
+}
+
+struct Food {
+    var name: String //메뉴이름
+    var price: Int //메뉴 가격
+    var isRecommend: Bool //추천여부 추천이면 가게 클릭시 상단에 뜸
+    var foodCategory: String
+    var description: String // 메뉴설명
+    var image:  String
+    // var option: 추가옵션
+}
