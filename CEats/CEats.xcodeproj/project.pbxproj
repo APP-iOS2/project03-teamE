@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12A03DFC2AA5B5D100E22070 /* HomeSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A03DFB2AA5B5D100E22070 /* HomeSearchView.swift */; };
+		12A03DFE2AA5B9BC00E22070 /* ExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A03DFD2AA5B9BC00E22070 /* ExtensionImage.swift */; };
+		12A03E002AA5C2B900E22070 /* AdvertisementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A03DFF2AA5C2B900E22070 /* AdvertisementView.swift */; };
+		12A03E022AA5C2F200E22070 /* RecommendRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A03E012AA5C2F200E22070 /* RecommendRestaurantView.swift */; };
 		D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B212AA5A14C009231E4 /* CEatsApp.swift */; };
 		D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B232AA5A14C009231E4 /* ContentView.swift */; };
 		D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D18E9B252AA5A14E009231E4 /* Assets.xcassets */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12A03DFB2AA5B5D100E22070 /* HomeSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchView.swift; sourceTree = "<group>"; };
+		12A03DFD2AA5B9BC00E22070 /* ExtensionImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionImage.swift; path = CEats/Views/Home/ExtensionImage.swift; sourceTree = SOURCE_ROOT; };
+		12A03DFF2AA5C2B900E22070 /* AdvertisementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementView.swift; sourceTree = "<group>"; };
+		12A03E012AA5C2F200E22070 /* RecommendRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendRestaurantView.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
 		D18E9B232AA5A14C009231E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +121,7 @@
 		D18E9B332AA5A37E009231E4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				12A03DFD2AA5B9BC00E22070 /* ExtensionImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -128,6 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				D18E9B362AA5A43E009231E4 /* HomeView.swift */,
+				12A03DFB2AA5B5D100E22070 /* HomeSearchView.swift */,
+				12A03DFF2AA5C2B900E22070 /* AdvertisementView.swift */,
+				12A03E012AA5C2F200E22070 /* RecommendRestaurantView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -235,12 +247,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D18E9B3F2AA5A48D009231E4 /* MyView.swift in Sources */,
+				12A03DFC2AA5B5D100E22070 /* HomeSearchView.swift in Sources */,
+				12A03E002AA5C2B900E22070 /* AdvertisementView.swift in Sources */,
 				D18E9B3D2AA5A481009231E4 /* OrderedListView.swift in Sources */,
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
 				D18E9B372AA5A43E009231E4 /* HomeView.swift in Sources */,
 				D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */,
 				D18E9B3B2AA5A466009231E4 /* FavoriteView.swift in Sources */,
 				D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */,
+				12A03DFE2AA5B9BC00E22070 /* ExtensionImage.swift in Sources */,
+				12A03E022AA5C2F200E22070 /* RecommendRestaurantView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = VYLKSBD4PF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -403,7 +419,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = VYLKSBD4PF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
