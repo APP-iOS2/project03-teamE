@@ -23,7 +23,7 @@ struct ContentView: View {
             
             SearchView()
                 .tabItem {
-                    Image(systemName: "tshirt.fill")
+                    Image(systemName: "magnifyingglass")
                     Text("검색")
                 }
                 .tag(2)
