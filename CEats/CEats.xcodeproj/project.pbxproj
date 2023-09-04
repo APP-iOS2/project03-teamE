@@ -33,6 +33,7 @@
 		D18E9B4E2AA5B380009231E4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B4D2AA5B380009231E4 /* User.swift */; };
 		D18E9B502AA5B3D3009231E4 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B4F2AA5B3D3009231E4 /* Order.swift */; };
 		D18E9B522AA5CFCA009231E4 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B512AA5CFCA009231E4 /* RestaurantCardView.swift */; };
+		D18E9B542AA5D0AE009231E4 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B532AA5D0AE009231E4 /* SearchData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		D18E9B4D2AA5B380009231E4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D18E9B4F2AA5B3D3009231E4 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D18E9B512AA5CFCA009231E4 /* RestaurantCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantCardView.swift; path = ../../../../../../../../Downloads/RestaurantCardView.swift; sourceTree = "<group>"; };
+		D18E9B532AA5D0AE009231E4 /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				D18E9B382AA5A44A009231E4 /* SearchView.swift */,
+				D18E9B532AA5D0AE009231E4 /* SearchData.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				BED286962AA5B31B00D59056 /* ReviewMinimalView.swift in Sources */,
 				12A03DFC2AA5B5D100E22070 /* HomeSearchView.swift in Sources */,
 				12A03E002AA5C2B900E22070 /* AdvertisementView.swift in Sources */,
+				D18E9B542AA5D0AE009231E4 /* SearchData.swift in Sources */,
 				D18E9B3D2AA5A481009231E4 /* OrderedListView.swift in Sources */,
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
 				BED286942AA5B1DA00D59056 /* RestaurantView.swift in Sources */,
