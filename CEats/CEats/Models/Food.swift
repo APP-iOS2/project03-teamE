@@ -8,6 +8,7 @@
 import Foundation
 
 enum FoodType: String, CaseIterable, Identifiable {
+
    case korean = "한식"
    case chicken = "치킨"
    case koreanSnack = "간식"

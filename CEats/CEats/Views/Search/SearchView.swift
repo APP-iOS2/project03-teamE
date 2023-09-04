@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SearchView: View {
+
     
     @State private var searchTerm = ""
     var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 3)
     let imageSize: CGFloat = 88
-
+  
     var body: some View {
         VStack {
             HStack {
