@@ -8,8 +8,9 @@
 import Foundation
 
 
-struct Order {
-//    var id: //?
+
+struct Order: Identifiable {
+    var id: String
     var orderer: User
     var restaurantName : Restaurant //
     var orderedMenu: [Food]
