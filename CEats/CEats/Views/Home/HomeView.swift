@@ -14,7 +14,6 @@ struct HomeView: View {
     
     private let foodType: [String: String] = [
         "korean": "한식",
-        "salad": "샐러드",
         "western": "양식",
         "chicken": "치킨",
         "koreanSnack": "분식",
