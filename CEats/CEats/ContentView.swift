@@ -8,14 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var tabIndex: Int = 0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView(selection: $tabIndex) {
+            
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("홈")
+                }
+                .tag(1)
+            
+            SearchView()
+                .tabItem {
+                    Image(systemName: "tshirt.fill")
+                    Text("검색")
+                }
+                .tag(2)
+            
+            FavoriteView()
+                .tabItem {
+                    Image(systemName: "heart.fill")
+                    Text("즐겨찾기")
+                }
+                .tag(3)
+            
+            OrderedListView()
+                .tabItem {
+                    Image(systemName: "doc.plaintext")
+                    Text("주문내역")
+                }
+                .tag(4)
+            
+            MyView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("마이페이지")
+                }
+                .tag(5)
         }
-        .padding()
     }
 }
 
