@@ -7,9 +7,8 @@
 
 import Foundation
 
-
-struct User {
-    var userID: String
+struct User: Identifiable {
+    var id: String
     var username: String
     var email: String
     var phoneNumber: String

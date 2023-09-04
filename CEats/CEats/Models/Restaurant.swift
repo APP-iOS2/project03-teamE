@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Restaurant {
-    var restaurantID: String
+struct Restaurant: Identifiable {
+    var id: String
     var password: String
     var name: String //음식점 이름
-    var grade: Double //음식점 평점
+    var grade: Double?
     var reviews: [Review]
     var deliveryFee : Int
     var minimumPrice: Int
