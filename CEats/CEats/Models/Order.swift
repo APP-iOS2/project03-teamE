@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Order: Identifiable {
-    var id: Int
+    var id: String
     var orderer: User
     var restaurantName : Restaurant //
     var orderedMenu: [Food]
