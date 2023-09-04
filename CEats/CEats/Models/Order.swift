@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Order {
-    var id: //?
+//    var id: //?
     var orderer: User
     var restaurantName : Restaurant //
     var orderedMenu: [Food]

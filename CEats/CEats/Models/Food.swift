@@ -7,19 +7,21 @@
 
 import Foundation
 
-enum FoodType {
-    case korean
-    case chicken
-    case koreanSnack //분식
-    case jokbalbossam // 족발/보쌈
-    case steamed // 찜/탕  
-    case pizza
-    case chinese
-    case japanese //회
-    case western
-    case coffeeAndTea
-    case dessert
-    case fastFood
+enum FoodType: String, CaseIterable, Identifiable {
+    case korean = "한식"
+    case chicken = "치킨"
+    case koreanSnack = "간식"
+    case jokbalbossam = "족발/보쌈"
+    case steamed = "찜탕"
+    case pizza = "피자"
+    case chinese = "짜장면"
+    case japanese = "스시"
+    case western = "양식"
+    case coffeeAndTea = "커피"
+    case dessert = "디저트"
+    case fastFood = "패스트푸드"
+    
+    var id: String { self.rawValue }
 }
 
 struct Food {

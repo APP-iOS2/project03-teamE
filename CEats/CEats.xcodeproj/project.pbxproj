@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93C823B2AA5B73F00EF0EDF /* FoodStoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93C823A2AA5B73F00EF0EDF /* FoodStoreListView.swift */; };
+		C93C823F2AA5D05000EF0EDF /* FoodStoreListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93C823E2AA5D05000EF0EDF /* FoodStoreListDetailView.swift */; };
 		D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B212AA5A14C009231E4 /* CEatsApp.swift */; };
 		D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B232AA5A14C009231E4 /* ContentView.swift */; };
 		D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D18E9B252AA5A14E009231E4 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C93C823A2AA5B73F00EF0EDF /* FoodStoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStoreListView.swift; sourceTree = "<group>"; };
+		C93C823E2AA5D05000EF0EDF /* FoodStoreListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStoreListDetailView.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
 		D18E9B232AA5A14C009231E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				D18E9B362AA5A43E009231E4 /* HomeView.swift */,
+				C93C823A2AA5B73F00EF0EDF /* FoodStoreListView.swift */,
+				C93C823E2AA5D05000EF0EDF /* FoodStoreListDetailView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -258,11 +264,13 @@
 				D18E9B372AA5A43E009231E4 /* HomeView.swift in Sources */,
 				D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */,
 				D18E9B462AA5AF64009231E4 /* SearchBar.swift in Sources */,
+				C93C823B2AA5B73F00EF0EDF /* FoodStoreListView.swift in Sources */,
 				D18E9B4C2AA5B340009231E4 /* Review.swift in Sources */,
 				D18E9B3B2AA5A466009231E4 /* FavoriteView.swift in Sources */,
 				D18E9B4E2AA5B380009231E4 /* User.swift in Sources */,
 				D18E9B4A2AA5B226009231E4 /* Food.swift in Sources */,
 				D18E9B502AA5B3D3009231E4 /* Order.swift in Sources */,
+				C93C823F2AA5D05000EF0EDF /* FoodStoreListDetailView.swift in Sources */,
 				D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */,
 				D18E9B482AA5B219009231E4 /* Restaurant.swift in Sources */,
 			);
@@ -386,10 +394,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CEats/CEats.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = VYLKSBD4PF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -410,6 +419,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.time5607.CEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -424,10 +434,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CEats/CEats.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = VYLKSBD4PF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -448,6 +459,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.time5607.CEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;

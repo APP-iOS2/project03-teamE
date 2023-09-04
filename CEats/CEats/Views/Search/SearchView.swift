@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-@State private var searchTerm = ""
-
 struct SearchView: View {
+    @State private var searchTerm = ""
+    
     var body: some View {
         VStack {
             SearchBarView(text: $searchTerm)
