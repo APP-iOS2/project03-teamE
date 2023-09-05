@@ -29,7 +29,7 @@ struct RestaurantTitleImageView: View {
                 .foregroundColor(.white)
                 .background(Color.secondary)
                 .cornerRadius(.greatestFiniteMagnitude)
-                .offset(x: -.screenWidth / 3, y: .screenHeight / 17)
+                .offset(x: -.screenWidth / 3, y: .screenHeight / 35) // 사진이 하나라 굳이 없어도 되는 부분 같아요 (1/1이거 표현하는게)
             
         }
         .tabViewStyle(PageTabViewStyle())

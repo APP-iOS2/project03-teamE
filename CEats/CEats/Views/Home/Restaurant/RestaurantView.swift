@@ -15,10 +15,10 @@ struct RestaurantView: View {
         ScrollView {
             VStack {
                 RestaurantTitleImageView(imageNamss: $restaurant.mainImage)
-                    .frame(width: .screenWidth, height: .screenHeight / 3)
+                    .frame(width: .screenWidth, height: .screenHeight / 4)
                     .background(.blue)
                 RestaurantTitleInfoView(restaurant: $restaurant)
-                    .frame(width: .screenWidth * 0.85, height: .screenHeight / 6)
+                    .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
                     .background(.white)
                     .clipped()
                     .shadow(radius: 5)
@@ -33,6 +33,7 @@ struct RestaurantView: View {
                                 ReviewMinimalView(review: $review)
                                     .padding()
                                     .border(.quaternary, width: 1)
+                                    .cornerRadius(5)
                                     .frame(height: .screenHeight / 10)
                                     .padding(.trailing, 10)
                             }
@@ -43,7 +44,7 @@ struct RestaurantView: View {
                     RestaurantFoodCategoryView(categories: $restaurant.foodCategory)
                     RestaurantFoodListView(restaurant: $restaurant)
                 }
-                .padding(.horizontal)
+
             }
         }
         .ignoresSafeArea()
