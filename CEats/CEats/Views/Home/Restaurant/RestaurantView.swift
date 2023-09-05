@@ -24,7 +24,7 @@ struct RestaurantView: View {
                     .shadow(radius: 5)
                     .padding(.top, -offsetY)
                 VStack {
-                    RestaurantSubInfoView()
+                    RestaurantSubInfoView(restaurant: $restaurant)
                         .padding(.top, 30)
                         .padding(.horizontal)
                     ScrollView(.horizontal) {
