@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FoodStoreListDetailView: View {
+    // MARK: - properties
+    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @State var data: FoodType
     
     //MARK: - View
     var body: some View {
@@ -15,7 +18,8 @@ struct FoodStoreListDetailView: View {
             LazyHStack(spacing: 20) {
                 ForEach(FoodType.allCases, id: \.self) { food in
                     Button {
-                        
+                        data = food
+                        print("\(data)")
                     } label: {
                         VStack {
                             Image("\(food)")
@@ -29,6 +33,7 @@ struct FoodStoreListDetailView: View {
                     }
                 }
             }
+            .frame(height: 90)
             .padding()
         }
     }
@@ -36,6 +41,6 @@ struct FoodStoreListDetailView: View {
 
 struct FoodStoreListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListDetailView()
+        FoodStoreListDetailView(restaurantsStore: RestaurantViewModel(), data: .korean)
     }
 }

@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct RestaurantCardView: View {
+    
+    // MARK: - properties
     @State var isFavorited: Bool = false
+    @ObservedObject var restaurantsStore: RestaurantViewModel
     
     var heartImage: String {
         isFavorited ? "heart.fill" : "heart"
     }
     
+    // MARK: - Views
     var body: some View {
         NavigationStack {
-            NavigationLink {
-                
-            } label: {
+            ForEach(restaurantsStore.restaurants){ store in
                 VStack {
                     ZStack {
                         AsyncImage(url: URL(string: "https://www.jungle.co.kr/image/90e4ffc149968a50c80cac37"))
@@ -40,10 +42,10 @@ struct RestaurantCardView: View {
                             }
                     }
                     HStack {
-                        Text("가게 이름")
+                        Text("\(store.name)")
                             .font(.title2)
                         Spacer()
-                        Text("소요 시간")
+                        Text("최소 금액: \(store.minimumPrice)")
                     }
                     HStack {
                         Text("⭐️별점(총별점수) • 거리 • 배달비")
@@ -51,14 +53,16 @@ struct RestaurantCardView: View {
                     }
                 }
             }
+            
             .padding()
             .foregroundColor(.black)
         }
+        
     }
 }
 
 struct RestaurantCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantCardView()
+        RestaurantCardView(restaurantsStore: RestaurantViewModel())
     }
 }
