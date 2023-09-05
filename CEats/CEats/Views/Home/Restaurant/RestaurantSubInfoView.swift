@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RestaurantSubInfoView: View {
+    @Binding var restaurant: Restaurant
+    
     var body: some View {
         VStack {
 //            HStack {
@@ -25,7 +27,7 @@ struct RestaurantSubInfoView: View {
                     .font(.system(size: 15, weight: .bold))
                 Spacer()
                 NavigationLink {
-                    //가게 정보
+                    RestaurantDetailInfoView(restaurant: $restaurant)
                 } label: {
                     Text("매장•원산지정보")
                     Image(systemName: "chevron.forward")
@@ -65,6 +67,6 @@ struct RestaurantSubInfoView: View {
 
 struct RestaurantSubInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantSubInfoView()
+        RestaurantSubInfoView(restaurant: .constant(.sampleData))
     }
 }
