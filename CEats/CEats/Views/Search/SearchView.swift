@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SearchView: View {
-
+    
     
     @State private var searchTerm = ""
     var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 3)
     let imageSize: CGFloat = 88
-  
+    
     var body: some View {
         VStack {
             HStack {
@@ -26,23 +26,23 @@ struct SearchView: View {
             Spacer()
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 30) {
-                    ForEach(food_Data){food in
-                        VStack(alignment: .leading, spacing: 15) {
-//                            NavigationLink(destination: DetailView(food: food)) { 이미지를 누르면 뷰로 이동 부분
-                            AsyncImage(url: URL(string: food.image)) { image in image
+                    ForEach(FoodType.allCases, id: \.self) { food in
+                        Button {
+                            //                                    NavigationLink(destination: DetailView(food: food)) { 이미지를 누르면 뷰로 이동 부분
+                        } label: {
+                            VStack(alignment: .leading, spacing: 15) {
+                                Image("\(food)")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(Circle())
-                            }placeholder: {
-                                Circle()
-                                    .foregroundColor(.secondary)
+                                    .frame(width: imageSize, height: imageSize)
+                                Text("\(food.rawValue)")
+                                    .foregroundColor(.black)
                             }
-                            .frame(width: imageSize, height: imageSize)
-                            Text(food.title)
                         }
                     }
+                    .padding(.top)
                 }
-                .padding(.top)
             }
         }
     }
