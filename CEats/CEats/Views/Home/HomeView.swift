@@ -29,21 +29,26 @@ struct HomeView: View {
                         Image(systemName: "bell")
                     }
                     .padding(20)
-                    HomeSearchView() //검색뷰
+                    HomeSearchView(restaurantViewModel: restaurantViewModel) //검색뷰
                         .padding(.bottom,20)
                     LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..
                         ForEach(FoodType.allCases, id: \.self) { content in
-                            VStack{
-                                Spacer()
-                                Image("\(content)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 30)
-                                    .padding(.bottom,10)
-                                    .offset(y:3)
-                                Spacer()
-                                Text(content.rawValue)
-                                    .font(.footnote)
+                            NavigationLink {
+                                //content ==> 푸드 타입이 들어감 
+                            } label: {
+                                VStack{
+                                    Spacer()
+                                    Image("\(content)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 50, height: 30)
+                                        .padding(.bottom,10)
+                                        .offset(y:3)
+                                    Spacer()
+                                    Text(content.rawValue)
+                                        .font(.footnote)
+                                        .foregroundColor(.black)
+                                }
                             }
                         }
                     }

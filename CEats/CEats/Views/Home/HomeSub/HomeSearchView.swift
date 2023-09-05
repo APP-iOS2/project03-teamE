@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeSearchView: View {
     @State var searchText: String = ""
+    @State var isShowingSheet: Bool = false
+    @StateObject var restaurantViewModel: RestaurantViewModel
     var body: some View {
         ZStack{
             Rectangle()
@@ -21,13 +23,19 @@ struct HomeSearchView: View {
                     Image(systemName: "magnifyingglass")
                     TextField("ooo님, 서브웨이 어때요?", text: $searchText)
                 }.padding(.leading,40)
+                    .onTapGesture {
+                        isShowingSheet.toggle()
+                    }
             }
+        }
+        .sheet(isPresented: $isShowingSheet) {
+            HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
         }
     }
 }
 
 struct HomeSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeSearchView()
+        HomeSearchView(restaurantViewModel: RestaurantViewModel())
     }
 }
