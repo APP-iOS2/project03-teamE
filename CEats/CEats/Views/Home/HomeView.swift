@@ -19,7 +19,7 @@ struct HomeView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     HStack{
-                        Label("위치를 정해주세요", systemImage: "location.circle")
+                        Label("위치를 정해주세요", systemImage: "location.circle") //여기에 위치 값이 들어가야함.
                         NavigationLink {
                             MapHomeView()
                         } label: {
@@ -48,9 +48,12 @@ struct HomeView: View {
                         }
                     }
                     .padding([.trailing,.leading],20)
-                    
-                    AdvertisementView()
-                        .padding(20)
+                    NavigationLink {
+                        AdvertisementContentsView()
+                    } label: {
+                        AdvertisementView()
+                    }
+                    .padding(20)
                     
                     Text("이츠 추천 맛집")
                         .padding(.leading,20)
