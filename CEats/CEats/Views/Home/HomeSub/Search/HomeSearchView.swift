@@ -23,16 +23,10 @@ struct HomeSearchView: View {
                     HStack{
                         Image(systemName: "magnifyingglass")
                         TextField("ooo님, 서브웨이 어때요?", text: $searchText)
-                        
-                    }.padding(.leading,40)
-//                        .onTapGesture {
-//                            isShowingSheet.toggle()
-//                        }
+                    }
+
                 }
             }
-//            .fullScreenCover(isPresented: $isShowingSheet) {
-//                HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
-//            }
         }
     }
 }
