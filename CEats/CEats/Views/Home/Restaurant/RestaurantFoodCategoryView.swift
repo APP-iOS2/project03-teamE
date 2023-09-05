@@ -14,14 +14,32 @@ struct RestaurantFoodCategoryView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(categories, id: \.self) { category in
-                    Button(category) {
-                        selected = category
+                    VStack{
+                        Button(category) {
+                            selected = category
+                        }
+                        .padding()
+                        .font(.system(size: 20, weight: category == selected ? .bold : .thin))
+                        .foregroundColor(.primary)
+                        
+                        if selected == category {
+                            Capsule()
+                                .foregroundColor(.black)
+                                .frame(height: 3)
+                            
+                        }
+                        else {
+                            Capsule()
+                                .foregroundColor(.clear)
+                                .frame(height:3)
+                        }
                     }
-                    .padding()
-                    .font(.system(size: 26, weight: category == selected ? .bold : .thin))
-                    .foregroundColor(.primary)
+
                 }
+            
             }
+            .overlay(Divider().offset(x:0,y:30))
+
         }
         .scrollIndicators(.hidden)
         .onAppear {

@@ -18,6 +18,7 @@ struct ReviewMinimalView: View {
                 .padding(.trailing, 10)
             VStack(alignment: .leading) {
                 Text("\(review.contents)")
+                    .font(.system(size:15))
                 Spacer()
                 starRating(rating: review.score)
             }
