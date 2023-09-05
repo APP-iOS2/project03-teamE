@@ -11,6 +11,7 @@ import MapKit
 struct RestaurantDetailInfoView: View {
     @Binding var restaurant: Restaurant
     
+    @State private var place: String = ""
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5718, longitude: 126.9769), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     
     var body: some View {
@@ -26,7 +27,7 @@ struct RestaurantDetailInfoView: View {
                     VStack(alignment: .leading) {
                         Text(restaurant.name)
                             .font(.system(size: 26, weight: .bold))
-                        Text("서울특별시 어쩌구 몰로 99-9, 프로퍼티 필요함")
+                        Text(place)
                             .font(.system(size: 20))
                     }
                     Spacer()
@@ -73,6 +74,22 @@ struct RestaurantDetailInfoView: View {
             .padding(30)
         }
         .navigationTitle("매장정보")
+        .onAppear {
+                            convertLocationToAddress(location: CLLocation(latitude: region.center.latitude, longitude: region.center.longitude))
+        }
+    }
+    
+    func convertLocationToAddress(location: CLLocation) {
+        
+        let geocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            
+            guard let placemark = placemarks?.first else { return }
+            
+            place = "\(placemark.locality ?? "") \(placemark.name ?? "")"
+        }
+        
     }
 }
 
