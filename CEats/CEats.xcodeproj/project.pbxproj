@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121FCCC92AA6C1F800A59B7D /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */; };
+		121FCCCB2AA6C22000A59B7D /* MapHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */; };
+		121FCCCD2AA6C7FC00A59B7D /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */; };
+		121FCCCF2AA6C84000A59B7D /* NowMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCE2AA6C84000A59B7D /* NowMapView.swift */; };
+		121FCCD12AA6DBA700A59B7D /* MapGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCD02AA6DBA700A59B7D /* MapGuide.swift */; };
+		121FCCD32AA6E4C800A59B7D /* AdvertisementContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCD22AA6E4C800A59B7D /* AdvertisementContentsView.swift */; };
+		12ACE0932AA5F2FF005C75EF /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ACE0922AA5F2FF005C75EF /* RestaurantViewModel.swift */; };
 		3C918EDE2AA6B6710043111A /* AddCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EDD2AA6B6710043111A /* AddCartView.swift */; };
 		3C918EE02AA6BD230043111A /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EDF2AA6BD230043111A /* Color+.swift */; };
 		BE5D6C5B2AA6E80100347A22 /* RestaurantFoodCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D6C542AA6E80000347A22 /* RestaurantFoodCellView.swift */; };
@@ -40,12 +47,18 @@
 		D1DB3B632AA6B19200212573 /* ReviewInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3B5C2AA6B19200212573 /* ReviewInfoView.swift */; };
 		D1DB3B662AA6B1AD00212573 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3B652AA6B1AD00212573 /* RestaurantCardView.swift */; };
 		D1DB3B692AA6B1BE00212573 /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3B672AA6B1BE00212573 /* Extension+CGFloat.swift */; };
-		D1DB3B6A2AA6B1BE00212573 /* ExtensionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3B682AA6B1BE00212573 /* ExtensionImage.swift */; };
 		D1DB3B6B2AA6B1F100212573 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B3A2AA5A466009231E4 /* FavoriteView.swift */; };
 		D1DB3B6F2AA6B26800212573 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB3B6E2AA6B26800212573 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchView.swift; sourceTree = "<group>"; };
+		121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomeView.swift; sourceTree = "<group>"; };
+		121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
+		121FCCCE2AA6C84000A59B7D /* NowMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowMapView.swift; sourceTree = "<group>"; };
+		121FCCD02AA6DBA700A59B7D /* MapGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGuide.swift; sourceTree = "<group>"; };
+		121FCCD22AA6E4C800A59B7D /* AdvertisementContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementContentsView.swift; sourceTree = "<group>"; };
+		12ACE0922AA5F2FF005C75EF /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		3C918EDD2AA6B6710043111A /* AddCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartView.swift; sourceTree = "<group>"; };
 		3C918EDF2AA6BD230043111A /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		BE5D6C542AA6E80000347A22 /* RestaurantFoodCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantFoodCellView.swift; path = "../../../../../../../../Desktop/변경된 파일/RestaurantFoodCellView.swift"; sourceTree = "<group>"; };
@@ -82,7 +95,6 @@
 		D1DB3B5C2AA6B19200212573 /* ReviewInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewInfoView.swift; sourceTree = "<group>"; };
 		D1DB3B652AA6B1AD00212573 /* RestaurantCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		D1DB3B672AA6B1BE00212573 /* Extension+CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
-		D1DB3B682AA6B1BE00212573 /* ExtensionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionImage.swift; sourceTree = "<group>"; };
 		D1DB3B6E2AA6B26800212573 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +112,10 @@
 		121FCCC72AA6B3BE00A59B7D /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */,
+				121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */,
+				121FCCCE2AA6C84000A59B7D /* NowMapView.swift */,
+				121FCCD02AA6DBA700A59B7D /* MapGuide.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -182,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				D1DB3B672AA6B1BE00212573 /* Extension+CGFloat.swift */,
-				D1DB3B682AA6B1BE00212573 /* ExtensionImage.swift */,
+				121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */,
 				3C918EDF2AA6BD230043111A /* Color+.swift */,
 			);
 			path = Extension;
@@ -234,6 +250,7 @@
 				D1DB3B512AA6B17300212573 /* AdvertisementView.swift */,
 				D1DB3B532AA6B17300212573 /* HomeSearchView.swift */,
 				D1DB3B522AA6B17300212573 /* RecommendRestaurantView.swift */,
+				121FCCD22AA6E4C800A59B7D /* AdvertisementContentsView.swift */,
 			);
 			path = HomeSub;
 			sourceTree = "<group>";
@@ -351,9 +368,11 @@
 				D18E9B3F2AA5A48D009231E4 /* MyView.swift in Sources */,
 				BE5D6C602AA6E80100347A22 /* RestaurantView.swift in Sources */,
 				D1DB3B6F2AA6B26800212573 /* HomeView.swift in Sources */,
+				121FCCC92AA6C1F800A59B7D /* MapSearchView.swift in Sources */,
 				D18E9B542AA5D0AE009231E4 /* SearchData.swift in Sources */,
 				D1DB3B562AA6B17300212573 /* HomeSearchView.swift in Sources */,
 				D1DB3B692AA6B1BE00212573 /* Extension+CGFloat.swift in Sources */,
+				121FCCD12AA6DBA700A59B7D /* MapGuide.swift in Sources */,
 				D1DB3B662AA6B1AD00212573 /* RestaurantCardView.swift in Sources */,
 				D1DB3B632AA6B19200212573 /* ReviewInfoView.swift in Sources */,
 				BE5D6C5C2AA6E80100347A22 /* RestaurantSubInfoView.swift in Sources */,
@@ -371,6 +390,10 @@
 				D1DB3B6A2AA6B1BE00212573 /* ExtensionImage.swift in Sources */,
 				BE5D6C5B2AA6E80100347A22 /* RestaurantFoodCellView.swift in Sources */,
 				BE5D6C5D2AA6E80100347A22 /* ReviewMinimalView.swift in Sources */,
+				D18E9B4A2AA5B226009231E4 /* Food.swift in Sources */,
+				121FCCCF2AA6C84000A59B7D /* NowMapView.swift in Sources */,
+				121FCCD32AA6E4C800A59B7D /* AdvertisementContentsView.swift in Sources */,
+				121FCCCB2AA6C22000A59B7D /* MapHomeView.swift in Sources */,
 				D18E9B502AA5B3D3009231E4 /* Order.swift in Sources */,
 				D1DB3B5E2AA6B19200212573 /* RestaurantTitleImageView.swift in Sources */,
 				BE5D6C652AA6E81500347A22 /* Review.swift in Sources */,
@@ -381,6 +404,8 @@
 				D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */,
 				BE5D6C612AA6E80100347A22 /* RestaurantFoodListView.swift in Sources */,
 				BE5D6C692AA6E82500347A22 /* RestaurantViewModel.swift in Sources */,
+				121FCCCD2AA6C7FC00A59B7D /* Extension+Color.swift in Sources */,
+				D18E9B482AA5B219009231E4 /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

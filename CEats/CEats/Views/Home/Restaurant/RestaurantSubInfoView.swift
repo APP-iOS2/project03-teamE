@@ -20,6 +20,13 @@ struct RestaurantSubInfoView: View {
 //            }
             HStack {
                 Image(systemName: "clock")
+                Button("배달") {
+                    
+                }
+                Button("포장") {
+                }
+            }
+            HStack {
                 Text("도착까지 약 19~29분")
                     .font(.system(size: 18, weight: .bold))
                 Spacer()
