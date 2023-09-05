@@ -14,6 +14,6 @@ struct User: Identifiable {
     var phoneNumber: String
 //    var homeAddress: location이랑 똑같은 타입일거같음
     var favoriteRestaurant: [Restaurant]
-    var orderHistory : [String] //
+    var orderHistory : [Order] //
     var foodCart: [Food] //장바구니
 }

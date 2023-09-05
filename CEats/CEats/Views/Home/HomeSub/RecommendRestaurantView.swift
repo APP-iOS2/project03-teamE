@@ -19,6 +19,7 @@ struct RecommendRestaurantView: View {
             Text("삼순이 식당")
                 .padding(.top,10)
                 .padding(.bottom,2)
+                .foregroundColor(.black)
             HStack{
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)

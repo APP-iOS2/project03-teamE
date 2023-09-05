@@ -7,57 +7,46 @@
 
 import SwiftUI
 
-struct SampleReview {
-    let id = UUID()
-    let imageName: String
-    let message: String
-    let grade: Double
-}
-
-extension SampleReview {
-    static let sampleData: SampleReview = .init(imageName: "photo", message: "리뷰냠냠ㅋ", grade: 4.5)
-    static let sampleDatas: [SampleReview] = [
-        .init(imageName: "photo", message: "리뷰냠냠ㅋ", grade: 4.5),
-        .init(imageName: "photo", message: "리뷰냠냠ㅋ", grade: 4.5),
-        .init(imageName: "photo", message: "리뷰냠냠ㅋ", grade: 4.5),
-    ]
-}
-
 struct RestaurantView: View {
-    @State private var sampleImageNames: [String] = [
-        "photo",
-        "photo",
-        "photo",
-    ]
-    @State private var sampleReview = SampleReview.sampleDatas
+    @Binding var restaurant: Restaurant
+    
+    private let offsetY: CGFloat = .screenHeight / 12
     
     var body: some View {
         ScrollView {
-            ZStack {
-                VStack {
-                    RestaurantTitleImageView(imageNamss: $sampleImageNames)
-                    .frame(width: .screenWidth, height: .screenHeight / 3)
-                    .background(.blue)
-                    VStack {
-                        RestaurantSubInfoView()
-                        ScrollView(.horizontal) {
-                            HStack {
-                                ForEach($sampleReview, id: \.id) { $review in
-                                    ReviewMinimalView(review: $review)
-                                        .frame(width: .screenWidth * 0.7, height: .screenHeight / 20)
-                                }
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
-                    .offset(y: .screenHeight / 9)
-                }
-                RestaurantTitleInfoView()
-                    .frame(width: .screenWidth * 0.85, height: .screenHeight / 6)
+            VStack {
+                RestaurantTitleImageView(imageNamss: $restaurant.mainImage)
+                    .frame(width: .screenWidth, height: .screenHeight / 4)
+                    .background(.clear)
+                RestaurantTitleInfoView(restaurant: $restaurant)
+                    .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
                     .background(.white)
                     .clipped()
                     .shadow(radius: 5)
-                    .offset(y: .screenHeight / 9)
+                    .padding(.top, -offsetY)
+                VStack {
+                    RestaurantSubInfoView(restaurant: $restaurant)
+                        .padding(.top, 30)
+                        .padding(.horizontal)
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach($restaurant.reviews, id: \.id) { $review in
+                                ReviewMinimalView(review: $review)
+                                    .padding()
+                                    .border(.quaternary, width: 1)
+                                    .cornerRadius(5)
+                                    .frame(height: .screenHeight / 10)
+                                    .padding(.trailing, 10)
+                            }
+                            .padding()
+                        }
+                    }
+                    .scrollIndicators(.hidden)
+                    RestaurantFoodCategoryView(categories: $restaurant.foodCategory)
+                        .frame(width: .screenWidth)
+                    RestaurantFoodListView(restaurant: $restaurant)
+                }
+
             }
         }
         .ignoresSafeArea()
@@ -67,7 +56,7 @@ struct RestaurantView: View {
 struct RestaurantView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RestaurantView()
+            RestaurantView(restaurant: .constant(Restaurant(id: "ceoId", password: "1234", restaurantInfo: RestaurantInfo(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3000, minimumPrice: 14000, menus: [Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: " "),Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22)))
         }
     }
 }

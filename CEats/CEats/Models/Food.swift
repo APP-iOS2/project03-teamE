@@ -33,4 +33,16 @@ struct Food {
     var description: String // 메뉴설명
     var image: String?
     // var option: 추가옵션
+    var priceToString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        guard let result = formatter.string(from: price as NSNumber) else { return "" }
+        return result
+    }
 }
+
+#if DEBUG
+extension Food {
+    static let sampleData = Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza")
+}
+#endif
