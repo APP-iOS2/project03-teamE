@@ -25,14 +25,14 @@ struct HomeSearchView: View {
                         TextField("ooo님, 서브웨이 어때요?", text: $searchText)
                         
                     }.padding(.leading,40)
-                        .onTapGesture {
-                            isShowingSheet.toggle()
-                        }
+//                        .onTapGesture {
+//                            isShowingSheet.toggle()
+//                        }
                 }
             }
-            .fullScreenCover(isPresented: $isShowingSheet) {
-                HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
-            }
+//            .fullScreenCover(isPresented: $isShowingSheet) {
+//                HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+//            }
         }
     }
 }
