@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct ReviewMinimalView: View {
-    @Binding var review: SampleReview
+//    @Binding var review: SampleReview
+    @Binding var review: Review
     var body: some View {
         HStack {
-            Image(systemName: "\(review.imageName)")
+            Image(systemName: "\(review.image ?? "photo")")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             VStack {
-                Text("\(review.message)")
-                starRating(rating: review.grade)
+                Text("\(review.contents)")
+                starRating(rating: review.score)
             }
         }
     }
@@ -41,6 +42,6 @@ struct ReviewMinimalView: View {
 
 struct ReviewMinimalView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewMinimalView(review: .constant(.sampleData))
+        ReviewMinimalView(review: .constant(Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함")))
     }
 }

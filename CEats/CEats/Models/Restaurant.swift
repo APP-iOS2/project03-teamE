@@ -16,7 +16,7 @@ struct Restaurant: Identifiable {
     var deliveryFee : Int
     var minimumPrice: Int
     var menus: [Food]
-    var mainImage: String //가게 메인 이미지
+    var mainImage: [String] //가게 메인 이미지
     var foodType: [FoodType]
     var foodCategory: [String]
     var latitude: Double//위도
