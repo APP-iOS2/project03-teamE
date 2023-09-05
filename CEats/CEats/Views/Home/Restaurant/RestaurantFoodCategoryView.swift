@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct RestaurantFoodCategoryView: View {
-    @Binding var categories: [String]
-    @State private var selected: String = ""
+    let categories: [String]
+    
+    @Binding var selected: String
+    
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(categories, id: \.self) { category in
                     VStack{
@@ -39,19 +41,17 @@ struct RestaurantFoodCategoryView: View {
             
             }
             .overlay(Divider().offset(x:0,y:30))
-
         }
-        .scrollIndicators(.hidden)
-        .onAppear {
-            if !categories.isEmpty {
-                selected = categories[0]
-            }
-        }
+//        .onAppear {
+//            if !categories.isEmpty {
+//                selected = categories[0]
+//            }
+//        }
     }
 }
 
 struct RestaurantFoodCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantFoodCategoryView(categories: .constant(["테스트1", "테스트2", "테스트3", "테스트4"]))
+        RestaurantFoodCategoryView(categories: ["테스트1", "테스트2", "테스트3", "테스트4"], selected: .constant(""))
     }
 }
