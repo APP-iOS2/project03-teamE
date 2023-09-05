@@ -31,9 +31,6 @@ struct FoodStoreListDetailView: View {
                                 .cornerRadius(10)
                             Text("\(food.rawValue)")
                                 .foregroundColor(.black)
-//                            Rectangle()
-//                                .frame(width: 60, height: 10)
-//                                .foregroundColor(isClickedCategory ? .black : .gray)
                             
                         }
                     }

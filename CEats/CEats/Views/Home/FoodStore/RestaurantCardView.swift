@@ -22,16 +22,27 @@ struct RestaurantCardView: View {
     // filter된 배열에서 score를 가져다가 평균을 낸 값
     // filterFoodType은 배열임 -> 배열에 접근해서 값을 가지고 나오고, 거기서 평균내서 Return의 방식이 되는거겟지 ?
     // filterFoodType 안에 reviews안에 또 배열잇음.
-    var averageScore: [[Double]] {
-        let mollu = filterFoodType.map { store in
-            let mollu3 = store.reviews.map { review in
-                let mollu2 = review.score / Double(store.reviews.count)
-                return mollu2
+//    var averageScore: [[Double]] {
+//        let mollu = filterFoodType.map { store in
+//            let mollu3 = store.reviews.map { review in
+//                let mollu2 = review.score / Double(store.reviews.count)
+//                return mollu2
+//            }
+//
+//            return mollu3
+//        }
+//        return mollu
+//    }
+    
+    var averageScore: [Double] {
+        let averageScores = filterFoodType.map { store in
+            let totalScore = store.reviews.reduce(0.0) { (result, review) in
+                return result + review.score
             }
-            
-            return mollu3
+            let average = totalScore / Double(store.reviews.count)
+            return average
         }
-        return mollu
+        return averageScores
     }
     
     var heartImage: String {
@@ -83,7 +94,7 @@ struct RestaurantCardView: View {
                                 Text("최소 금액: \(store.minimumPrice)원")
                             }
                             HStack {
-                                Text("⭐️평점 : \(averageScore[0][0])")
+                                Text("⭐️평점 : 값\(averageScore[0])")
                                 Text("배달비 : \(store.deliveryFee)원")
                                 Spacer()
                             }
