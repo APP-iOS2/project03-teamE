@@ -10,23 +10,10 @@ import SwiftUI
 //.
 struct HomeView: View {
     @State var onLocationSheet: Bool = false
+    @StateObject var restaurantViewModel = RestaurantViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     private let layout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
-    
-    private let foodType: [String: String] = [
-        "korean": "한식",
-        "western": "양식",
-        "chicken": "치킨",
-        "koreanSnack": "분식",
-        "jokbalbossam": "족발/보쌈",
-        "steamed": "찜/탕",
-        "pizza": "피자",
-        "chinese": "중식",
-        "japanese": "일식",
-        "coffeeAndTea": "커피/차",
-        "dessert": "디저트",
-        "fastFood": "패스트푸드"
-    ]
     
     var body: some View {
         NavigationStack{
@@ -45,21 +32,19 @@ struct HomeView: View {
                     .padding(20)
                     HomeSearchView() //검색뷰
                         .padding(.bottom,20)
-                    LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..; 그리고 순서가 계속 바뀜 ㅎㅎ배열로 해놔서
-                        ForEach(Array(foodType.keys), id: \.self) { key in
-                            let value = foodType[key]!
+                    LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..
+                        ForEach(FoodType.allCases, id: \.self) { content in
                             VStack{
                                 Spacer()
-                                Image(key)
+                                Image("\(content)")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 50, height: 30)
                                     .padding(.bottom,10)
                                     .offset(y:3)
                                 Spacer()
-                                Text(value)
+                                Text(content.rawValue)
                                     .font(.footnote)
-                                //.offset(y:-2)
                             }
                         }
                     }
@@ -75,7 +60,11 @@ struct HomeView: View {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 20) {
                             ForEach(0..<5, id: \.self) { content in
-                                RecommendRestaurantView()
+                                NavigationLink {
+                                    RestaurantView()
+                                } label: {
+                                    RecommendRestaurantView()
+                                }
                             }
                         }
                     }
