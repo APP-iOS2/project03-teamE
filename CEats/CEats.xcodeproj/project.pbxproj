@@ -10,6 +10,7 @@
 		121D94752AA71114005177E0 /* HomeSearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94742AA71114005177E0 /* HomeSearchDetailView.swift */; };
 		121D94782AA71AB1005177E0 /* RecentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94772AA71AB1005177E0 /* RecentSearchView.swift */; };
 		121D947A2AA71AD2005177E0 /* PopularSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94792AA71AD2005177E0 /* PopularSearchesView.swift */; };
+		121D947E2AA74008005177E0 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D947D2AA74008005177E0 /* Extension+View.swift */; };
 		121FCCC92AA6C1F800A59B7D /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */; };
 		121FCCCB2AA6C22000A59B7D /* MapHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */; };
 		121FCCCD2AA6C7FC00A59B7D /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */; };
@@ -60,6 +61,7 @@
 		121D94742AA71114005177E0 /* HomeSearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchDetailView.swift; sourceTree = "<group>"; };
 		121D94772AA71AB1005177E0 /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
 		121D94792AA71AD2005177E0 /* PopularSearchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSearchesView.swift; sourceTree = "<group>"; };
+		121D947D2AA74008005177E0 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchView.swift; sourceTree = "<group>"; };
 		121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomeView.swift; sourceTree = "<group>"; };
 		121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				D1DB3B672AA6B1BE00212573 /* Extension+CGFloat.swift */,
 				121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */,
 				3C918EDF2AA6BD230043111A /* Color+.swift */,
+				121D947D2AA74008005177E0 /* Extension+View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -262,9 +265,9 @@
 				D1DB3B532AA6B17300212573 /* HomeSearchView.swift */,
 				D1DB3B522AA6B17300212573 /* RecommendRestaurantView.swift */,
 				121FCCD22AA6E4C800A59B7D /* AdvertisementContentsView.swift */,
-				121D94742AA71114005177E0 /* HomeSearchDetailView.swift */,
 				121D94772AA71AB1005177E0 /* RecentSearchView.swift */,
 				121D94792AA71AD2005177E0 /* PopularSearchesView.swift */,
+				121D94742AA71114005177E0 /* HomeSearchDetailView.swift */,
 			);
 			path = HomeSub;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				D1DB3B542AA6B17300212573 /* AdvertisementView.swift in Sources */,
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
 				D1DB3B402AA6B07E00212573 /* FoodStoreListDetailView.swift in Sources */,
+				121D947E2AA74008005177E0 /* Extension+View.swift in Sources */,
 				BED6DADD2AA6FD8E00EB8F0B /* RestaurantDetailInfoMenuView.swift in Sources */,
 				D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */,
 				121D94752AA71114005177E0 /* HomeSearchDetailView.swift in Sources */,

@@ -44,7 +44,7 @@ struct NowMapView: View {
                 }
                 if showMessage {
                     MapGuide()
-                        .offset(y:-(.screenHeight/3))
+                        .offset(y:-(.screenHeight/3.5))
                 }
             }
             //MapViewCoordinator(locationManager: locationManager)

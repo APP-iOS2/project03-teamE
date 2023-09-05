@@ -12,24 +12,27 @@ struct HomeSearchView: View {
     @State var isShowingSheet: Bool = false
     @StateObject var restaurantViewModel: RestaurantViewModel
     var body: some View {
-        ZStack{
-            Rectangle()
-                .frame(width: 350,height: 45) //뷰 바운드로 수정
-                .foregroundColor(.white)
-                .cornerRadius(30)
-                .shadow(radius: 5)
+        NavigationStack{
             ZStack{
-                HStack{
-                    Image(systemName: "magnifyingglass")
-                    TextField("ooo님, 서브웨이 어때요?", text: $searchText)
-                }.padding(.leading,40)
-                    .onTapGesture {
-                        isShowingSheet.toggle()
-                    }
+                Rectangle()
+                    .frame(width: 350,height: 45) //뷰 바운드로 수정
+                    .foregroundColor(.white)
+                    .cornerRadius(30)
+                    .shadow(radius: 5)
+                ZStack{
+                    HStack{
+                        Image(systemName: "magnifyingglass")
+                        TextField("ooo님, 서브웨이 어때요?", text: $searchText)
+                        
+                    }.padding(.leading,40)
+                        .onTapGesture {
+                            isShowingSheet.toggle()
+                        }
+                }
             }
-        }
-        .sheet(isPresented: $isShowingSheet) {
-            HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+            .fullScreenCover(isPresented: $isShowingSheet) {
+                HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+            }
         }
     }
 }

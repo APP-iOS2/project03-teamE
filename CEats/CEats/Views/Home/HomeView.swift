@@ -29,6 +29,12 @@ struct HomeView: View {
                         Image(systemName: "bell")
                     }
                     .padding(20)
+//                    NavigationLink {
+//                        <#code#>
+//                    } label: {
+//                        <#code#>
+//                    }
+
                     HomeSearchView(restaurantViewModel: restaurantViewModel) //검색뷰
                         .padding(.bottom,20)
                     LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..
