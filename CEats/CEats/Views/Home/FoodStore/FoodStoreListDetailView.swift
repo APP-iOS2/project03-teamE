@@ -10,7 +10,7 @@ import SwiftUI
 struct FoodStoreListDetailView: View {
     // MARK: - properties
     @ObservedObject var restaurantsStore: RestaurantViewModel
-    @State var data: FoodType
+    @Binding var data: FoodType
     
     //MARK: - View
     var body: some View {
@@ -41,6 +41,6 @@ struct FoodStoreListDetailView: View {
 
 struct FoodStoreListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListDetailView(restaurantsStore: RestaurantViewModel(), data: .korean)
+        FoodStoreListDetailView(restaurantsStore: RestaurantViewModel(), data: .constant(.korean))
     }
 }

@@ -12,50 +12,29 @@ struct RestaurantCardView: View {
     // MARK: - properties
     @State var isFavorited: Bool = false
     @ObservedObject var restaurantsStore: RestaurantViewModel
+    @Binding var data: FoodType
     
-    var heartImage: String {
-        isFavorited ? "heart.fill" : "heart"
+    var filterFoodType: [Restaurant] {
+        restaurantsStore.restaurants.filter { store in
+            return store.foodType.contains(self.data)
+        }
     }
     
     // MARK: - Views
     var body: some View {
         NavigationStack {
-            ForEach(restaurantsStore.restaurants){ store in
-                VStack {
-                    ZStack {
-                        AsyncImage(url: URL(string: "https://www.jungle.co.kr/image/90e4ffc149968a50c80cac37"))
-                            .frame(width: 360, height: 200)
-                            .cornerRadius(10)
-                        
-                        Image(systemName: heartImage)
-                            .background(
-                                Circle()
-                                    .foregroundColor(.white)
-                                    .frame(width: 40, height: 40)
-                            )
-                            .opacity(0.7)
-                            .foregroundColor(.red)
-                            .font(.title)
-                            .offset(x: 140, y: -60)
-                            .onTapGesture {
-                                isFavorited.toggle()
-                            }
-                    }
-                    HStack {
-                        Text("\(store.name)")
-                            .font(.title2)
-                        Spacer()
-                        Text("최소 금액: \(store.minimumPrice)")
-                    }
-                    HStack {
-                        Text("⭐️별점(총별점수) • 거리 • 배달비")
-                        Spacer()
-                    }
+            // FoodType으로 먼저 분류 -> 분류된 목록에서 ForEach로 반복
+            NavigationLink {
+                
+            } label: {
+                
+                ForEach(filterFoodType){ store in
+                    TestView(restaurantsStore: restaurantsStore, data: $data)
                 }
+                
+                .padding()
+                .foregroundColor(.black)
             }
-            
-            .padding()
-            .foregroundColor(.black)
         }
         
     }
@@ -63,6 +42,6 @@ struct RestaurantCardView: View {
 
 struct RestaurantCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantCardView(restaurantsStore: RestaurantViewModel())
+        RestaurantCardView(restaurantsStore: RestaurantViewModel(), data: .constant(.korean))
     }
 }

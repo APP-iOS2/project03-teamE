@@ -10,15 +10,15 @@ import SwiftUI
 struct FoodStoreListView: View {
     // MARK: - properties
     @ObservedObject var restaurantsStore: RestaurantViewModel = RestaurantViewModel()
-    @Binding var data: FoodType
+    @State var data: FoodType
     
     //MARK: - View
     var body: some View {
         NavigationStack {
-            FoodStoreListDetailView(restaurantsStore: restaurantsStore, data: data)
-
+            FoodStoreListDetailView(restaurantsStore: restaurantsStore, data: $data)
+            
             ScrollView(.vertical, showsIndicators: false) {
-                RestaurantCardView(restaurantsStore: restaurantsStore)
+                RestaurantCardView(restaurantsStore: restaurantsStore, data: $data)
             }
             
             
@@ -39,6 +39,6 @@ struct FoodStoreListView: View {
 
 struct FoodStoreListView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListView(data: .constant(.korean))
+        FoodStoreListView(data: .korean)
     }
 }
