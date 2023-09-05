@@ -18,17 +18,11 @@ struct RestaurantSubInfoView: View {
 //                    
 //                }
 //            }
+           
             HStack {
                 Image(systemName: "clock")
-                Button("배달") {
-                    
-                }
-                Button("포장") {
-                }
-            }
-            HStack {
-                Text("도착까지 약 19~29분")
-                    .font(.system(size: 18, weight: .bold))
+                Text("19~29분")
+                    .font(.system(size: 15, weight: .bold))
                 Spacer()
                 NavigationLink {
                     //가게 정보
@@ -36,8 +30,10 @@ struct RestaurantSubInfoView: View {
                     Text("매장•원산지정보")
                     Image(systemName: "chevron.forward")
                 }
+                .font(.footnote)
                 .foregroundColor(.primary)
             }
+            .padding(.bottom,20)
             HStack {
                 VStack(alignment: .leading) {
                     Text("배달비")
@@ -48,6 +44,7 @@ struct RestaurantSubInfoView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Text("0~1,900원")
+                            .font(.footnote)
                         Button("자세히") {
                             
                         }
@@ -61,6 +58,7 @@ struct RestaurantSubInfoView: View {
                 }
                 Spacer()
             }
+            .font(.footnote)
         }
     }
 }
