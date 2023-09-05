@@ -132,6 +132,15 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		12B59C1B2AA7EE49008085C3 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D1DB3B532AA6B17300212573 /* HomeSearchView.swift */,
+				121D94742AA71114005177E0 /* HomeSearchDetailView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		D18E9B152AA5A14C009231E4 = {
 			isa = PBXGroup;
 			children = (
@@ -261,13 +270,12 @@
 		D1DB3B362AA6B07E00212573 /* HomeSub */ = {
 			isa = PBXGroup;
 			children = (
+				12B59C1B2AA7EE49008085C3 /* Search */,
 				D1DB3B512AA6B17300212573 /* AdvertisementView.swift */,
-				D1DB3B532AA6B17300212573 /* HomeSearchView.swift */,
 				D1DB3B522AA6B17300212573 /* RecommendRestaurantView.swift */,
 				121FCCD22AA6E4C800A59B7D /* AdvertisementContentsView.swift */,
 				121D94772AA71AB1005177E0 /* RecentSearchView.swift */,
 				121D94792AA71AD2005177E0 /* PopularSearchesView.swift */,
-				121D94742AA71114005177E0 /* HomeSearchDetailView.swift */,
 			);
 			path = HomeSub;
 			sourceTree = "<group>";
