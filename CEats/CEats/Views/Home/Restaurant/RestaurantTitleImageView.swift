@@ -17,9 +17,9 @@ struct RestaurantTitleImageView: View {
         ZStack {
             TabView(selection: $selectedIndex) {
                 ForEach(Array(zip(imageNamss, imageNamss.indices)), id: \.1) { imgName, index in
-                    Image(systemName: imgName)
+                    Image(imgName)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: .fill)
                 }
             }
             Text("\(selectedIndex + 1) / \(totalCount)")

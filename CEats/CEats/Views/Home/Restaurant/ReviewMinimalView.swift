@@ -9,10 +9,9 @@ import SwiftUI
 
 struct ReviewMinimalView: View {
     @Binding var review: Review
-    
     var body: some View {
         HStack {
-            Image(systemName: "\(review.image ?? "photo")")
+            Image(review.image ?? "korean")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.trailing, 10)
