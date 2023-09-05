@@ -41,6 +41,7 @@ struct RestaurantView: View {
                     }
                     .scrollIndicators(.hidden)
                     RestaurantFoodCategoryView(categories: $restaurant.foodCategory)
+                    RestaurantFoodListView(restaurant: $restaurant)
                 }
                 .padding(.horizontal)
             }

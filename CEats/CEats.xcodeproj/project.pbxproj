@@ -16,6 +16,7 @@
 		3F6D2EE42AA5D164003558F7 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D2EE32AA5D164003558F7 /* RestaurantCardView.swift */; };
 		BE033A5C2AA6C3A6009176F5 /* RestaurantFoodCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE033A5B2AA6C3A6009176F5 /* RestaurantFoodCellView.swift */; };
 		BE033A5E2AA6C787009176F5 /* RestaurantFoodCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE033A5D2AA6C787009176F5 /* RestaurantFoodCategoryView.swift */; };
+		BE033A602AA6CAAC009176F5 /* RestaurantFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE033A5F2AA6CAAC009176F5 /* RestaurantFoodListView.swift */; };
 		BED286942AA5B1DA00D59056 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED286932AA5B1DA00D59056 /* RestaurantView.swift */; };
 		BED286962AA5B31B00D59056 /* ReviewMinimalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED286952AA5B31B00D59056 /* ReviewMinimalView.swift */; };
 		BED286982AA5B50F00D59056 /* RestaurantTitleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED286972AA5B50F00D59056 /* RestaurantTitleInfoView.swift */; };
@@ -52,6 +53,7 @@
 		3F6D2EE32AA5D164003558F7 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		BE033A5B2AA6C3A6009176F5 /* RestaurantFoodCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantFoodCellView.swift; sourceTree = "<group>"; };
 		BE033A5D2AA6C787009176F5 /* RestaurantFoodCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantFoodCategoryView.swift; sourceTree = "<group>"; };
+		BE033A5F2AA6CAAC009176F5 /* RestaurantFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantFoodListView.swift; sourceTree = "<group>"; };
 		BED286932AA5B1DA00D59056 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		BED286952AA5B31B00D59056 /* ReviewMinimalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewMinimalView.swift; sourceTree = "<group>"; };
 		BED286972AA5B50F00D59056 /* RestaurantTitleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTitleInfoView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				C93C823A2AA5B73F00EF0EDF /* FoodStoreListView.swift */,
 				C93C823E2AA5D05000EF0EDF /* FoodStoreListDetailView.swift */,
 				BED286932AA5B1DA00D59056 /* RestaurantView.swift */,
+				BE033A5F2AA6CAAC009176F5 /* RestaurantFoodListView.swift */,
 				BE033A5D2AA6C787009176F5 /* RestaurantFoodCategoryView.swift */,
 				BED286992AA5BBD100D59056 /* RestaurantTitleImageView.swift */,
 				BED286972AA5B50F00D59056 /* RestaurantTitleInfoView.swift */,
@@ -318,6 +321,7 @@
 				D18E9B3D2AA5A481009231E4 /* OrderedListView.swift in Sources */,
 				BE033A5E2AA6C787009176F5 /* RestaurantFoodCategoryView.swift in Sources */,
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
+				BE033A602AA6CAAC009176F5 /* RestaurantFoodListView.swift in Sources */,
 				BED286942AA5B1DA00D59056 /* RestaurantView.swift in Sources */,
 				D18E9B372AA5A43E009231E4 /* HomeView.swift in Sources */,
 				BED2869C2AA5BD9400D59056 /* Extension+CGFloat.swift in Sources */,
