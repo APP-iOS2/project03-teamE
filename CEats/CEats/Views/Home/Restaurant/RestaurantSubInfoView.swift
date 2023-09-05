@@ -15,7 +15,6 @@ struct RestaurantSubInfoView: View {
                     
                 }
                 Button("포장") {
-                    
                 }
             }
             HStack {

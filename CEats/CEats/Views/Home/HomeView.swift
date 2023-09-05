@@ -9,7 +9,6 @@ import SwiftUI
 //frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
 //.
 struct HomeView: View {
-    @State var onLocationSheet: Bool = false
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -21,8 +20,8 @@ struct HomeView: View {
                 VStack(alignment: .leading) {
                     HStack{
                         Label("위치를 정해주세요", systemImage: "location.circle")
-                        Button {
-                            onLocationSheet.toggle()
+                        NavigationLink {
+                            MapHomeView()
                         } label: {
                             Image(systemName:"chevron.down")
                         }
@@ -69,10 +68,6 @@ struct HomeView: View {
                         }
                     }
                     .padding(.leading,20)
-                }
-                .sheet(isPresented: $onLocationSheet) {
-                    Text("위치 정하는 곳")
-                    //sheet의 위치가 정확히 어디에 있어야 하는지?
                 }
             }
         }
