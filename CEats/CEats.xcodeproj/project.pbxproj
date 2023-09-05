@@ -11,6 +11,7 @@
 		121FCCCB2AA6C22000A59B7D /* MapHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */; };
 		121FCCCD2AA6C7FC00A59B7D /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */; };
 		121FCCCF2AA6C84000A59B7D /* NowMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCE2AA6C84000A59B7D /* NowMapView.swift */; };
+		121FCCD12AA6DBA700A59B7D /* MapGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCD02AA6DBA700A59B7D /* MapGuide.swift */; };
 		12ACE0932AA5F2FF005C75EF /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ACE0922AA5F2FF005C75EF /* RestaurantViewModel.swift */; };
 		D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B212AA5A14C009231E4 /* CEatsApp.swift */; };
 		D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B232AA5A14C009231E4 /* ContentView.swift */; };
@@ -48,6 +49,7 @@
 		121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomeView.swift; sourceTree = "<group>"; };
 		121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		121FCCCE2AA6C84000A59B7D /* NowMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowMapView.swift; sourceTree = "<group>"; };
+		121FCCD02AA6DBA700A59B7D /* MapGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGuide.swift; sourceTree = "<group>"; };
 		12ACE0922AA5F2FF005C75EF /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */,
 				121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */,
 				121FCCCE2AA6C84000A59B7D /* NowMapView.swift */,
+				121FCCD02AA6DBA700A59B7D /* MapGuide.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				D18E9B542AA5D0AE009231E4 /* SearchData.swift in Sources */,
 				D1DB3B562AA6B17300212573 /* HomeSearchView.swift in Sources */,
 				D1DB3B692AA6B1BE00212573 /* Extension+CGFloat.swift in Sources */,
+				121FCCD12AA6DBA700A59B7D /* MapGuide.swift in Sources */,
 				D1DB3B662AA6B1AD00212573 /* RestaurantCardView.swift in Sources */,
 				12ACE0932AA5F2FF005C75EF /* RestaurantViewModel.swift in Sources */,
 				D1DB3B632AA6B19200212573 /* ReviewInfoView.swift in Sources */,
