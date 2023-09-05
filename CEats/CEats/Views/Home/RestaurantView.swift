@@ -17,7 +17,7 @@ struct RestaurantView: View {
                 RestaurantTitleImageView(imageNamss: $restaurant.mainImage)
                     .frame(width: .screenWidth, height: .screenHeight / 3)
                     .background(.blue)
-                RestaurantTitleInfoView()
+                RestaurantTitleInfoView(restaurant: $restaurant)
                     .frame(width: .screenWidth * 0.85, height: .screenHeight / 6)
                     .background(.white)
                     .clipped()
