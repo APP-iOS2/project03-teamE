@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct RestaurantDetailInfoMenuView: View {
+    @Binding var phoneNumber: Int
+    
+    private var numberToString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        return formatter.string(from: phoneNumber as NSNumber) ?? ""
+    }
+    
     var body: some View {
-        Menu("01010091004 프로퍼티 필요함") {
-            Section("01010091004") {
+        Menu(numberToString) {
+            Section(numberToString) {
                 Button {
                 } label: {
                     Label("iPhone으로 전화걸기", systemImage: "phone")
@@ -42,6 +50,6 @@ struct RestaurantDetailInfoMenuView: View {
 
 struct RestaurantDetailInfoMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantDetailInfoMenuView()
+        RestaurantDetailInfoMenuView(phoneNumber: .constant(00000000000))
     }
 }

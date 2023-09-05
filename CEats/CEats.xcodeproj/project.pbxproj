@@ -263,16 +263,16 @@
 		D1DB3B372AA6B07E00212573 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				BED6DADA2AA6F58A00EB8F0B /* RestaurantDetailInfoView.swift */,
-				BED6DADC2AA6FD8E00EB8F0B /* RestaurantDetailInfoMenuView.swift */,
 				BE5D6C592AA6E80100347A22 /* RestaurantView.swift */,
 				D1DB3B572AA6B19200212573 /* RestaurantTitleImageView.swift */,
 				BE5D6C582AA6E80000347A22 /* RestaurantTitleInfoView.swift */,
-				128321192AA6F34000EAB4BD /* RestaurantFoodCategoryView.swift */,
-				128321172AA6F34000EAB4BD /* RestaurantFoodCellView.swift */,
-				128321182AA6F34000EAB4BD /* RestaurantFoodListView.swift */,
 				BE5D6C552AA6E80000347A22 /* RestaurantSubInfoView.swift */,
 				BE5D6C562AA6E80000347A22 /* ReviewMinimalView.swift */,
+				128321192AA6F34000EAB4BD /* RestaurantFoodCategoryView.swift */,
+				128321182AA6F34000EAB4BD /* RestaurantFoodListView.swift */,
+				128321172AA6F34000EAB4BD /* RestaurantFoodCellView.swift */,
+				BED6DADA2AA6F58A00EB8F0B /* RestaurantDetailInfoView.swift */,
+				BED6DADC2AA6FD8E00EB8F0B /* RestaurantDetailInfoMenuView.swift */,
 				D1DB3B5C2AA6B19200212573 /* ReviewInfoView.swift */,
 				3C918EDD2AA6B6710043111A /* AddCartView.swift */,
 			);
@@ -538,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = 7CRXB5JN86;
+				DEVELOPMENT_TEAM = ASU4PNB5MG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -578,7 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = 7CRXB5JN86;
+				DEVELOPMENT_TEAM = ASU4PNB5MG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

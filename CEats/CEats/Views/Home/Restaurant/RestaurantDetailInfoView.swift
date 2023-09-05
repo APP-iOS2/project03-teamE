@@ -37,45 +37,27 @@ struct RestaurantDetailInfoView: View {
                     .font(.system(size: 20, weight: .bold))
                 }
                 .padding(.bottom)
-                Group {
-                    HStack {
-                        Text("전화번호:")
-                        RestaurantDetailInfoMenuView()
-                    }
-                    Text("대표자명: 프로퍼티 필요함")
-                    Text("사업자등록번호: 프로퍼티 필요함")
-                    Text("상호명: 프로퍼티 필요함")
-                        .padding(.bottom)
+                HStack {
+                    Text("전화번호:")
+                    RestaurantDetailInfoMenuView(phoneNumber: $restaurant.restaurantInfo.phoneNumber)
                 }
-                Group {
-                    Text("영업시간")
-                        .font(.system(size: 26, weight: .bold))
-                    Text("월요일 ~ 일요일: 0:00 ~ 24:00 프로퍼티 필요함")
-                        .padding(.bottom)
-                }
-                Group {
-                    Text("매장소개")
-                        .font(.system(size: 26, weight: .bold))
-                    Text("안녕하세요 멋쟁이 김치찌개입니다. 프로퍼티 필요함")
-                        .padding(.bottom)
-                }
-                Group {
-                    Text("공지사항")
-                        .font(.system(size: 26, weight: .bold))
-                    Text("리뷰이벤트없음 프로퍼티 필요함")
-                        .padding(.bottom)
-                }
-                Group {
-                    Text("원산지정보")
-                        .font(.system(size: 26, weight: .bold))
-                    Text("전재료 국내산 프로퍼티 필요함")
-                }
+                Text("상호명: \(restaurant.restaurantInfo.name)")
+                    .padding(.bottom)
+                Text("영업시간")
+                    .font(.system(size: 26, weight: .bold))
+                Text(restaurant.restaurantInfo.timeTable)
+                    .padding(.bottom)
+                Text("매장소개")
+                    .font(.system(size: 26, weight: .bold))
+                Text(restaurant.restaurantInfo.introduce)
+                    .padding(.bottom)
+                
             }
             .padding(30)
         }
         .navigationTitle("매장정보")
         .onAppear {
-                            convertLocationToAddress(location: CLLocation(latitude: region.center.latitude, longitude: region.center.longitude))
+            convertLocationToAddress(location: CLLocation(latitude: region.center.latitude, longitude: region.center.longitude))
         }
     }
     

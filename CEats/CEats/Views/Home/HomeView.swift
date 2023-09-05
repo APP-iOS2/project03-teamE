@@ -70,6 +70,7 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .scrollIndicators(.hidden)
                     .padding(.leading,20)
                 }
             }

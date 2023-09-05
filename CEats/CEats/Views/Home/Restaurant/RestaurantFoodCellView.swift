@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestaurantFoodCellView: View {
     @Binding var food: Food
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {

@@ -12,15 +12,6 @@ struct RestaurantSubInfoView: View {
     
     var body: some View {
         VStack {
-//            HStack {
-//                Button("배달") {
-//                    
-//                }
-//                Button("포장") {
-//                    
-//                }
-//            }
-           
             HStack {
                 Image(systemName: "clock")
                 Text("19~29분")
