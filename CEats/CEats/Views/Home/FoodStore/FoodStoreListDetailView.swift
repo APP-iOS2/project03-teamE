@@ -10,8 +10,9 @@ import SwiftUI
 struct FoodStoreListDetailView: View {
     // MARK: - properties
     @ObservedObject var restaurantsStore: RestaurantViewModel
-    @Binding var data: FoodType
+    @Binding var data: FoodType?
     @State private var isClickedCategory: Bool = false
+    
     //MARK: - View
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
