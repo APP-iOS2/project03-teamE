@@ -12,18 +12,24 @@ struct HomeView: View {
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State private var isOpenMapSheet: Bool = false
+    
     private let layout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
     
     var body: some View {
         NavigationStack{
             ScrollView {
                 VStack(alignment: .leading) {
-                    HStack{
-                        Label("위치를 정해주세요", systemImage: "location.circle") //여기에 위치 값이 들어가야함.
-                        NavigationLink {
-                            MapHomeView()
+                    HStack {
+                        Button {
+                            isOpenMapSheet = true
                         } label: {
-                            Image(systemName:"chevron.down")
+                            HStack {
+                                Label("위치를 정해주세요", systemImage: "location.circle") //여기에 위치 값이 들어가야함.
+                                    .foregroundColor(.black)
+                                
+                                Image(systemName:"chevron.down")
+                            }
                         }
                         Spacer()
                         Image(systemName: "bell")
@@ -75,6 +81,9 @@ struct HomeView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $isOpenMapSheet, content: {
+            MapHomeView(isOpenMapSheet: $isOpenMapSheet)
+        })
     }
 }
 struct HomeView_Previews: PreviewProvider {

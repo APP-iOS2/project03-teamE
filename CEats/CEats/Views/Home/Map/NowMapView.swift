@@ -15,7 +15,11 @@ struct Annotation: Identifiable {
 
 struct NowMapView: View {
     
+    @Environment(\.dismiss) private var dismiss
+    
     //    @ObservedObject var locationManager: LocationManager = LocationManager()
+    
+    @Binding var isOpenMapSheet: Bool
     
     @Binding var isSelectedPlace: String
     @Binding var selectedPlaceLat: Double
@@ -44,25 +48,43 @@ struct NowMapView: View {
                 }
                 if showMessage {
                     MapGuide()
-                        .offset(y:-(.screenHeight/3))
+                        .offset(y:-(.screenHeight/3.5))
                 }
             }
             //MapViewCoordinator(locationManager: locationManager)
             Text("\(place)")
                 .padding()
             
-            Button {
-                // 위도 경도 값 저장
-                isSelectedPlace = place
-                selectedPlaceLat = lat
-                selectedPlaceLong = long
+            NavigationLink {
+                MapDetailView(isOpenMapSheet: $isOpenMapSheet, selectedPlace: $place, selectedPlaceLat: $region.center.latitude, selectedPlaceLong: $region.center.longitude)
             } label: {
                 Text("설정하기")
+                    .foregroundColor(.white)
                     .padding(.horizontal, 100)
                     .padding(.vertical, 10)
+                    .frame(width: .screenWidth * 0.8, height: 50)
+                    .background(Color.blue)
             }
-            .buttonStyle(.borderedProminent)
+            .padding(.bottom)
+
+            
+//            Button {
+//                // 위도 경도 값 저장
+//                isSelectedPlace = place
+//                selectedPlaceLat = lat
+//                selectedPlaceLong = long
+//            } label: {
+//                Text("설정하기")
+//                    .padding(.horizontal, 100)
+//                    .padding(.vertical, 10)
+//            }
+//            .buttonStyle(.borderedProminent)
         }
+        .navigationTitle("주소 설정")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
+        
         .onChange(of: region) { newValue in
             if !isChangingPlace {
                 isChangingPlace = true
@@ -103,6 +125,16 @@ struct NowMapView: View {
         
     }
     
+    var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(Color.black)
+        }
+    }
+    
 }
 
 extension MKCoordinateRegion: Equatable {
@@ -132,6 +164,8 @@ extension MKCoordinateRegion: Equatable {
 
 struct NowMapView_previews: PreviewProvider {
     static var previews: some View {
-        NowMapView(isSelectedPlace: .constant(""), selectedPlaceLat: .constant(0), selectedPlaceLong: .constant(0))
+        NavigationStack {
+            NowMapView(isOpenMapSheet: .constant(true), isSelectedPlace: .constant(""), selectedPlaceLat: .constant(0), selectedPlaceLong: .constant(0))
+        }
     }
 }
