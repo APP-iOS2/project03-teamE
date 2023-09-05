@@ -46,16 +46,6 @@ struct MapHomeView: View {
                 }
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button {
-                } label: {
-                    HStack {
-                        Image(systemName: "multiply") //유민영 강사님이 쓰지 말라고 할듯~
-                    }
-                }
-            }
-        }
 }
         
     
