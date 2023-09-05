@@ -19,7 +19,7 @@ struct RestaurantFoodCategoryView: View {
                             selected = category
                         }
                         .padding()
-                        .font(.system(size: 20, weight: category == selected ? .bold : .thin))
+                        .font(.system(size: 17, weight: category == selected ? .bold : .thin))
                         .foregroundColor(.primary)
                         
                         if selected == category {
