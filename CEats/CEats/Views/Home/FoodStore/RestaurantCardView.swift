@@ -8,42 +8,20 @@
 import SwiftUI
 
 struct RestaurantCardView: View {
-    
     // MARK: - properties
     @State var isFavorited: Bool = false
     @ObservedObject var restaurantsStore: RestaurantViewModel
-    @Binding var data: FoodType
+    @Binding var data: FoodType?
     
-    var filterFoodType: [Restaurant] {
-        restaurantsStore.restaurants.filter { store in
-            return store.foodType.contains(self.data)
-        }
-    }
+//    var filterFoodType: [Restaurant] {
+//        restaurantsStore.restaurants.filter { store in
+//            return store.foodType.contains(self.data)
+//        }
+//    }
     // filter된 배열에서 score를 가져다가 평균을 낸 값
     // filterFoodType은 배열임 -> 배열에 접근해서 값을 가지고 나오고, 거기서 평균내서 Return의 방식이 되는거겟지 ?
     // filterFoodType 안에 reviews안에 또 배열잇음.
-//    var averageScore: [[Double]] {
-//        let mollu = filterFoodType.map { store in
-//            let mollu3 = store.reviews.map { review in
-//                let mollu2 = review.score / Double(store.reviews.count)
-//                return mollu2
-//            }
-//
-//            return mollu3
-//        }
-//        return mollu
-//    }
     
-    var averageScore: [Double] {
-        let averageScores = filterFoodType.map { store in
-            let totalScore = store.reviews.reduce(0.0) { (result, review) in
-                return result + review.score
-            }
-            let average = totalScore / Double(store.reviews.count)
-            return average
-        }
-        return averageScores
-    }
     
     var heartImage: String {
         isFavorited ? "heart.fill" : "heart"
@@ -53,7 +31,7 @@ struct RestaurantCardView: View {
     var body: some View {
         NavigationStack {
             // FoodType으로 먼저 분류 -> 분류된 목록에서 ForEach로 반복
-            ForEach(filterFoodType){ store in
+            ForEach(restaurantsStore.filterFoodType){ store in
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 380, height: 300)
@@ -65,7 +43,7 @@ struct RestaurantCardView: View {
                         .padding(2)
                         .shadow(radius: 3)
                     NavigationLink {
-//                        RestaurantView()
+//                        RestaurantView(restaurant: $store)
                     } label: {
                         VStack {
                             ZStack {
@@ -94,7 +72,7 @@ struct RestaurantCardView: View {
                                 Text("최소 금액: \(store.minimumPrice)원")
                             }
                             HStack {
-                                Text("⭐️평점 : 값\(averageScore[0])")
+                                Text("⭐️ 평점 : \(store.scoreMessage)")
                                 Text("배달비 : \(store.deliveryFee)원")
                                 Spacer()
                             }
