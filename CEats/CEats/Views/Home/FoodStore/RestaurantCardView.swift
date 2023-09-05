@@ -65,7 +65,7 @@ struct RestaurantCardView: View {
                         .padding(2)
                         .shadow(radius: 3)
                     NavigationLink {
-                        RestaurantView()
+//                        RestaurantView()
                     } label: {
                         VStack {
                             ZStack {
