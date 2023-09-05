@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		12ACE0932AA5F2FF005C75EF /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ACE0922AA5F2FF005C75EF /* RestaurantViewModel.swift */; };
-		C929ADEA2AA6E9B500515445 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929ADE92AA6E9B500515445 /* TestView.swift */; };
 		D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B212AA5A14C009231E4 /* CEatsApp.swift */; };
 		D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B232AA5A14C009231E4 /* ContentView.swift */; };
 		D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D18E9B252AA5A14E009231E4 /* Assets.xcassets */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		12ACE0922AA5F2FF005C75EF /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
-		C929ADE92AA6E9B500515445 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
 		D18E9B232AA5A14C009231E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				D1DB3B352AA6B07E00212573 /* FoodStoreListView.swift */,
 				D1DB3B312AA6B07E00212573 /* FoodStoreListDetailView.swift */,
 				D1DB3B652AA6B1AD00212573 /* RestaurantCardView.swift */,
-				C929ADE92AA6E9B500515445 /* TestView.swift */,
 			);
 			path = FoodStore;
 			sourceTree = "<group>";
@@ -333,7 +330,6 @@
 				D18E9B542AA5D0AE009231E4 /* SearchData.swift in Sources */,
 				D1DB3B562AA6B17300212573 /* HomeSearchView.swift in Sources */,
 				D1DB3B692AA6B1BE00212573 /* Extension+CGFloat.swift in Sources */,
-				C929ADEA2AA6E9B500515445 /* TestView.swift in Sources */,
 				D1DB3B662AA6B1AD00212573 /* RestaurantCardView.swift in Sources */,
 				12ACE0932AA5F2FF005C75EF /* RestaurantViewModel.swift in Sources */,
 				D1DB3B632AA6B19200212573 /* ReviewInfoView.swift in Sources */,

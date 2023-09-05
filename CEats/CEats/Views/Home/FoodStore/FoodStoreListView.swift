@@ -16,17 +16,14 @@ struct FoodStoreListView: View {
     var body: some View {
         NavigationStack {
             FoodStoreListDetailView(restaurantsStore: restaurantsStore, data: $data)
-            
             ScrollView(.vertical, showsIndicators: false) {
                 RestaurantCardView(restaurantsStore: restaurantsStore, data: $data)
             }
-            
-            
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem {
                     NavigationLink {
-                        
+                        SearchView()
                     } label: {
                         Image(systemName: "magnifyingglass")
                     }
