@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct FoodStoreListDetailView: View {
-    
+    // MARK: - properties
+    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @Binding var data: FoodType
+    @State private var isClickedCategory: Bool = false
     //MARK: - View
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 20) {
                 ForEach(FoodType.allCases, id: \.self) { food in
                     Button {
-                        
+                        data = food
+                        isClickedCategory.toggle()
+                        print("\(data)")
                     } label: {
                         VStack {
                             Image("\(food)")
@@ -25,10 +30,19 @@ struct FoodStoreListDetailView: View {
                                 .clipShape(Circle())
                                 .cornerRadius(10)
                             Text("\(food.rawValue)")
+                                .foregroundColor(.black)
+                            
                         }
+                    }
+                    .overlay {
+                        Rectangle()
+                            .frame(width: 80, height: 10)
+                            .foregroundColor(data == food ? .black : .clear)
+                            .offset(y: .screenWidth * 0.16 )
                     }
                 }
             }
+            .frame(height: 90)
             .padding()
         }
     }
@@ -36,6 +50,6 @@ struct FoodStoreListDetailView: View {
 
 struct FoodStoreListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListDetailView()
+        FoodStoreListDetailView(restaurantsStore: RestaurantViewModel(), data: .constant(.korean))
     }
 }

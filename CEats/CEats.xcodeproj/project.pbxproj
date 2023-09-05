@@ -282,8 +282,8 @@
 		D1DB3B392AA6B07E00212573 /* FoodStore */ = {
 			isa = PBXGroup;
 			children = (
-				D1DB3B312AA6B07E00212573 /* FoodStoreListDetailView.swift */,
 				D1DB3B352AA6B07E00212573 /* FoodStoreListView.swift */,
+				D1DB3B312AA6B07E00212573 /* FoodStoreListDetailView.swift */,
 				D1DB3B652AA6B1AD00212573 /* RestaurantCardView.swift */,
 			);
 			path = FoodStore;
