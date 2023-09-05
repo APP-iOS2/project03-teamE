@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct FoodStoreListView: View {
+    // MARK: - properties
+    @ObservedObject var restaurantsStore: RestaurantViewModel = RestaurantViewModel()
+    @State var data: FoodType
     
     //MARK: - View
     var body: some View {
         NavigationStack {
-            FoodStoreListDetailView()
-            
+            FoodStoreListDetailView(restaurantsStore: restaurantsStore, data: $data)
+            ScrollView(.vertical, showsIndicators: false) {
+                RestaurantCardView(restaurantsStore: restaurantsStore, data: $data)
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem {
                     NavigationLink {
-                        
+                        SearchView()
                     } label: {
                         Image(systemName: "magnifyingglass")
                     }
@@ -31,6 +36,6 @@ struct FoodStoreListView: View {
 
 struct FoodStoreListView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListView()
+        FoodStoreListView(data: .korean)
     }
 }

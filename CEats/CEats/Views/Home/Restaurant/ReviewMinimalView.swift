@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct ReviewMinimalView: View {
-    @Binding var review: SampleReview
+    @Binding var review: Review
+    
     var body: some View {
         HStack {
-            Image(systemName: "\(review.imageName)")
+            Image(review.image ?? "korean")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            VStack {
-                Text("\(review.message)")
-                starRating(rating: review.grade)
+                .padding(.trailing, 10)
+            VStack(alignment: .leading) {
+                Text("\(review.contents)")
+                    .font(.system(size:15))
+                Spacer()
+                starRating(rating: review.score)
             }
         }
     }
@@ -29,10 +33,13 @@ struct ReviewMinimalView: View {
             ForEach(1...5, id: \.self) { index in
                 if index <= fullStarCount {
                     Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
                 } else if index == fullStarCount + 1 && hasHalfStar {
                     Image(systemName: "star.leadinghalf.filled")
+                        .foregroundColor(.yellow)
                 } else {
-                    Image(systemName: "star")
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.gray)
                 }
             }
         }
@@ -41,6 +48,6 @@ struct ReviewMinimalView: View {
 
 struct ReviewMinimalView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewMinimalView(review: .constant(.sampleData))
+        ReviewMinimalView(review: .constant(Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함")))
     }
 }
