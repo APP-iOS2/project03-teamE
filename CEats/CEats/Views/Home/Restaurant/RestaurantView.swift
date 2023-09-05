@@ -13,11 +13,16 @@ struct RestaurantView: View {
     private let offsetY: CGFloat = .screenHeight / 12
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
-                RestaurantTitleImageView(imageNamss: $restaurant.mainImage)
-                    .frame(width: .screenWidth, height: .screenHeight / 4)
-                    .background(.clear)
+                GeometryReader { geometry in
+                    let offset = geometry.frame(in: .global).minY
+                    RestaurantTitleImageView(imageNamss: $restaurant.mainImage)
+                        .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
+                        .background(.clear)
+                        .offset(y: offset > 0 ? -offset : 0)
+                }
+                .frame(width: .screenWidth, height: .screenHeight / 4)
                 RestaurantTitleInfoView(restaurant: $restaurant)
                     .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
                     .background(.white)
@@ -28,25 +33,26 @@ struct RestaurantView: View {
                     RestaurantSubInfoView(restaurant: $restaurant)
                         .padding(.top, 30)
                         .padding(.horizontal)
-                    ScrollView(.horizontal) {
+                    ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach($restaurant.reviews, id: \.id) { $review in
                                 ReviewMinimalView(review: $review)
                                     .padding()
                                     .border(.quaternary, width: 1)
-                                    .cornerRadius(5)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke()
+                                    )
                                     .frame(height: .screenHeight / 10)
                                     .padding(.trailing, 10)
                             }
                             .padding()
                         }
                     }
-                    .scrollIndicators(.hidden)
                     RestaurantFoodCategoryView(categories: $restaurant.foodCategory)
                         .frame(width: .screenWidth)
                     RestaurantFoodListView(restaurant: $restaurant)
                 }
-
             }
         }
         .ignoresSafeArea()
