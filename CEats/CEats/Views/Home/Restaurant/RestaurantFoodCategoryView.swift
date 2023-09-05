@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RestaurantFoodCategoryView: View {
     @Binding var categories: [String]
-    @State var selected: String = ""
+    @State private var selected: String = ""
     var body: some View {
         ScrollView(.horizontal) {
             HStack {

@@ -9,10 +9,12 @@ import SwiftUI
 
 struct RestaurantTitleImageView: View {
     @Binding var imageNamss: [String]
+    
     @State private var selectedIndex = 0
-    var totalCount: Int {
+    private var totalCount: Int {
         return imageNamss.count
     }
+    
     var body: some View {
         ZStack {
             TabView(selection: $selectedIndex) {

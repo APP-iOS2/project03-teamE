@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestaurantView: View {
     @Binding var restaurant: Restaurant
+    
     private let offsetY: CGFloat = .screenHeight / 12
     
     var body: some View {

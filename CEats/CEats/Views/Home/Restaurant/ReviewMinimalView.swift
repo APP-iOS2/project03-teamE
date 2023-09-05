@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ReviewMinimalView: View {
     @Binding var review: Review
+    
     var body: some View {
         HStack {
             Image(review.image ?? "korean")

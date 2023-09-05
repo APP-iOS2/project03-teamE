@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct RestaurantTitleInfoView: View {
-    @State private var sampleTitle = "대한냉면"
-    @State private var sampleGrade = 4.9
-    @State private var sampleReviewCount = 60
     @Binding var restaurant: Restaurant
     
     var body: some View {
@@ -29,9 +26,10 @@ struct RestaurantTitleInfoView: View {
                     Image(systemName: "chevron.forward")
                 }
                 .font(.footnote)
-                .foregroundColor(.primary)
+                
             }
         }
+        .foregroundColor(.black)
     }
 }
 

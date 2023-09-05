@@ -10,7 +10,7 @@ import SwiftUI
 struct RestaurantDetailInfoMenuView: View {
     @Binding var phoneNumber: Int
     
-    var numberToString: String {
+    private var numberToString: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
         return formatter.string(from: phoneNumber as NSNumber) ?? ""
