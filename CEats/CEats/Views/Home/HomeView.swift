@@ -63,7 +63,7 @@ struct HomeView: View {
                         LazyHStack(spacing: 20) {
                             ForEach(0..<5, id: \.self) { content in
                                 NavigationLink {
-                                    RestaurantView()
+                                    RestaurantView(restaurant: .constant(.sampleData))
                                 } label: {
                                     RecommendRestaurantView()
                                 }
