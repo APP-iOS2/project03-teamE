@@ -25,14 +25,21 @@ struct RestaurantView: View {
                     .padding(.top, -offsetY)
                 VStack {
                     RestaurantSubInfoView()
+                        .padding(.top, 30)
+                        .padding(.horizontal)
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach($restaurant.reviews, id: \.id) { $review in
                                 ReviewMinimalView(review: $review)
-                                    .frame(width: .screenWidth * 0.7, height: .screenHeight / 20)
+                                    .padding()
+                                    .border(.quaternary, width: 1)
+                                    .frame(height: .screenHeight / 10)
+                                    .padding(.trailing, 10)
                             }
+                            .padding()
                         }
                     }
+                    .scrollIndicators(.hidden)
                 }
                 .padding(.horizontal)
             }

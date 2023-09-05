@@ -10,14 +10,14 @@ import SwiftUI
 struct RestaurantSubInfoView: View {
     var body: some View {
         VStack {
-            HStack {
-                Button("배달") {
-                    
-                }
-                Button("포장") {
-                    
-                }
-            }
+//            HStack {
+//                Button("배달") {
+//                    
+//                }
+//                Button("포장") {
+//                    
+//                }
+//            }
             HStack {
                 Image(systemName: "clock")
                 Text("도착까지 약 19~29분")

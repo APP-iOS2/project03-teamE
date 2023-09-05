@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct ReviewMinimalView: View {
-//    @Binding var review: SampleReview
     @Binding var review: Review
+    
     var body: some View {
         HStack {
             Image(systemName: "\(review.image ?? "photo")")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            VStack {
+                .padding(.trailing, 10)
+            VStack(alignment: .leading) {
                 Text("\(review.contents)")
+                Spacer()
                 starRating(rating: review.score)
             }
         }
@@ -30,10 +32,13 @@ struct ReviewMinimalView: View {
             ForEach(1...5, id: \.self) { index in
                 if index <= fullStarCount {
                     Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
                 } else if index == fullStarCount + 1 && hasHalfStar {
                     Image(systemName: "star.leadinghalf.filled")
+                        .foregroundColor(.yellow)
                 } else {
-                    Image(systemName: "star")
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.gray)
                 }
             }
         }
