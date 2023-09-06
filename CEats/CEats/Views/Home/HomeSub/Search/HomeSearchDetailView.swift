@@ -13,8 +13,8 @@ struct HomeSearchDetailView: View {
     @ObservedObject var restaurantViewModel: RestaurantViewModel
     @State var searchText: String = ""
     @State var isSubmit: Bool = false
-    var array: [String] {
-        restaurantViewModel.collectAllFoodNames()
+    var array: Set<String> {
+        Set(restaurantViewModel.collectAllFoodNames())
     }
      //요거는 이제 레스토랑 안에 있는 배열이 되어야겠지,,
     var body: some View {
