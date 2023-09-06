@@ -10,7 +10,7 @@ import ScalingHeaderScrollView
 
 struct FoodStoreListView: View {
     // MARK: - properties
-    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @StateObject var restaurantsStore: RestaurantViewModel
     @State var selectedFoodType: FoodType?
     
     //MARK: - View
@@ -21,7 +21,7 @@ struct FoodStoreListView: View {
             } content: {
                 RestaurantCardView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
             }
-            .height(min: 25, max: 120)
+            .height(min: 47, max: 150)
             .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

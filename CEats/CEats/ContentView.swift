@@ -29,7 +29,7 @@ struct ContentView: View {
                 }
                 .tag(2)
             
-            FavoriteView()
+            FavoriteView(favoriteStore: restaurantViewModel)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("즐겨찾기")

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SearchView: View {
-    
-    @ObservedObject var restaurantViewModel: RestaurantViewModel
+
+    @StateObject var restaurantViewModel: RestaurantViewModel
+
     @State private var searchTerm = ""
     
     var body: some View {
