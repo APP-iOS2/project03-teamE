@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantTitleImageView: View {
-    @Binding var imageNamss: [String]
+    let imageNamss: [String]
     
     @State private var selectedIndex = 0
     private var totalCount: Int {
@@ -40,10 +40,10 @@ struct RestaurantTitleImageView: View {
 
 struct RestaurantTitleImageView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantTitleImageView(imageNamss: .constant([
+        RestaurantTitleImageView(imageNamss: [
             "photo",
             "photo",
             "photo",
-        ]))
+        ])
     }
 }

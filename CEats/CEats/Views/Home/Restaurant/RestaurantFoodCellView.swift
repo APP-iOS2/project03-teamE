@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantFoodCellView: View {
-    @Binding var food: Food
+    let food: Food
     
     var body: some View {
         HStack {
@@ -33,6 +33,6 @@ struct RestaurantFoodCellView: View {
 
 struct RestaurantFoodCellView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantFoodCellView(food: .constant(.sampleData))
+        RestaurantFoodCellView(food: .sampleData)
     }
 }

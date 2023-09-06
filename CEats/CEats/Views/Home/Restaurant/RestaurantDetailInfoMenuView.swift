@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantDetailInfoMenuView: View {
-    @Binding var phoneNumber: Int
+    let phoneNumber: Int
     
     private var numberToString: String {
         let formatter = NumberFormatter()
@@ -50,6 +50,6 @@ struct RestaurantDetailInfoMenuView: View {
 
 struct RestaurantDetailInfoMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantDetailInfoMenuView(phoneNumber: .constant(00000000000))
+        RestaurantDetailInfoMenuView(phoneNumber: 00000000000)
     }
 }

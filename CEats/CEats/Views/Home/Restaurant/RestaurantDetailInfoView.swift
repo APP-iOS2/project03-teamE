@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct RestaurantDetailInfoView: View {
-    @Binding var restaurant: Restaurant
+    let restaurant: Restaurant
     
     @State private var place: String = ""
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5718, longitude: 126.9769), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -39,7 +39,7 @@ struct RestaurantDetailInfoView: View {
                 .padding(.bottom)
                 HStack {
                     Text("전화번호:")
-                    RestaurantDetailInfoMenuView(phoneNumber: $restaurant.restaurantInfo.phoneNumber)
+                    RestaurantDetailInfoMenuView(phoneNumber: restaurant.restaurantInfo.phoneNumber)
                 }
                 Text("상호명: \(restaurant.restaurantInfo.name)")
                     .padding(.bottom)
@@ -79,7 +79,7 @@ struct RestaurantDetailInfoView: View {
 struct RestaurantDetailInfoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RestaurantDetailInfoView(restaurant: .constant(.sampleData))
+            RestaurantDetailInfoView(restaurant: .sampleData)
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantFoodListView: View {
-    @Binding var restaurant: Restaurant
+    let restaurant: Restaurant
     
     var body: some View {
         ForEach(restaurant.foodCategory, id: \.self) { category in
@@ -19,8 +19,13 @@ struct RestaurantFoodListView: View {
                 Text("메뉴 사진은 연출된 이미지로 실제 조리된 음식과 다를 수 있습니다.")
                     .font(.footnote)
                     .foregroundColor(.secondary)
-                ForEach($restaurant.menus, id: \.name) { $food in
-                    RestaurantFoodCellView(food: $food)
+                ForEach(restaurant.menus, id: \.name) { food in
+                    NavigationLink {
+                        AddCartView(food: food)
+                    } label: {
+                        RestaurantFoodCellView(food: food)
+                    }
+                    .foregroundColor(.primary)
                     Divider()
                 }
             }
@@ -32,6 +37,8 @@ struct RestaurantFoodListView: View {
 
 struct RestaurantFoodListView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantFoodListView(restaurant: .constant(.sampleData))
+        NavigationStack {
+            RestaurantFoodListView(restaurant: .sampleData)
+        }
     }
 }

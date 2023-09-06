@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantTitleInfoView: View {
-    @Binding var restaurant: Restaurant
+    let restaurant: Restaurant
     
     var body: some View {
         VStack {
@@ -36,7 +36,7 @@ struct RestaurantTitleInfoView: View {
 struct RestaurantMinimalInfoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RestaurantTitleInfoView(restaurant: .constant(.sampleData))
+            RestaurantTitleInfoView(restaurant: .sampleData)
         }
     }
 }
