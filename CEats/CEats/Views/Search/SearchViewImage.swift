@@ -15,7 +15,7 @@ struct SearchViewImage: View {
         LazyVGrid(columns: columns, spacing: 30) {
             ForEach(FoodType.allCases, id: \.self) { food in
                 NavigationLink {
-                    RestaurantView(restaurant: .constant(.sampleData))
+                    RTRView(restaurant: .sampleData)
                 } label: {
                     VStack(alignment: .center, spacing: 15) {
                         Image("\(food)")
