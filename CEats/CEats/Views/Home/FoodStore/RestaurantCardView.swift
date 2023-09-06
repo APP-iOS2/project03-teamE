@@ -42,7 +42,7 @@ struct RestaurantCardView: View {
                                 }
                                 restaurantsStore.user.favoriteRestaurant.append(store)
                             } label: {
-                                Image(systemName: heartImage)
+                                Image(systemName: restaurantsStore.checkLike(restaurant: store))
                                     .font(.system(size:20))
                                     .background(
                                         Circle()
@@ -53,9 +53,11 @@ struct RestaurantCardView: View {
                                     .foregroundColor(.red)
                                     .font(.title)
                                     .offset(x: .screenWidth/2.6, y: -(.screenHeight/13))
-                                    .onTapGesture {
-                                        isFavorited.toggle()
-                                    }
+                                    
+                            }
+                            .onTapGesture {
+                                print("btn Tap")
+                                isFavorited.toggle()
                             }
                             .buttonStyle(.plain)
 

@@ -26,9 +26,14 @@ final class RestaurantViewModel: ObservableObject {
         Restaurant(id: "ceoId4", password: "1234", restaurantInfo: .init(), name: "기사식당", reviews: [Review(writer: "유하은", score: 3.0, contents: "다른 bhc 지점에 비해 별로예요"),Review(writer: "함지수", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 2000, minimumPrice: 16000, menus: [Food(name: "뿌링클", price: 18000, isRecommend: true, foodCategory: "치킨", description: "bhc 인기메뉴", image: " "),Food(name: "핫후라이드 치킨", price: 14000, isRecommend: false, foodCategory: "치킨", description: "매운 치킨")], mainImage: [""], foodType: [.korean], foodCategory: ["치킨"], latitude: 34.44, longitude: 129.22),
 
     ]
+
     @Published var user: User = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", favoriteRestaurant: [], orderHistory: [], foodCart: [])
     
     @Published var selectedFoodType: FoodType? = nil
+    
+    func checkLike(restaurant: Restaurant) -> String {
+        return user.favoriteRestaurant.contains(where: { $0.id == restaurant.id }) ? "heart.fill" : "heart"
+    }
     
     func filterFoodTypes(_ data: FoodType?) -> [Restaurant] {
         return restaurants.filter { store in
