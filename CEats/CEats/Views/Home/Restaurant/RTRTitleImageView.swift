@@ -1,5 +1,5 @@
 //
-//  RestaurantTitleImageView.swift
+//  RTRTitleImageView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/04.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct RestaurantTitleImageView: View {
-    @Binding var imageNamss: [String]
+struct RTRTitleImageView: View {
+    let imageNamss: [String]
     
     @State private var selectedIndex = 0
     private var totalCount: Int {
@@ -38,12 +38,12 @@ struct RestaurantTitleImageView: View {
     }
 }
 
-struct RestaurantTitleImageView_Previews: PreviewProvider {
+struct RTRTitleImageView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantTitleImageView(imageNamss: .constant([
+        RTRTitleImageView(imageNamss: [
             "photo",
             "photo",
             "photo",
-        ]))
+        ])
     }
 }

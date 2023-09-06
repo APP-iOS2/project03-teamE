@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct AddCartView: View {
+    let food: Food
     
-    @State private var foodName = "계란볶음밥"
-    @State private var description = "담백하고 고소함이 일품인 볶음밥\n계란 야채 (고수. 고추가루 미포함)"
-    @State private var foodPrice = "5,400원"
     @State private var numberOfFoods: Int = 1
     
     var body: some View {
         VStack {
             GeometryReader { geometry in
-                Image("kimchiSoup")
+                Image("\(food.image)")
                     .resizable()
                     .scaledToFill()
                     .frame(width: geometry.size.width, height: 300)
@@ -27,12 +25,12 @@ struct AddCartView: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("\(foodName)")
+                    Text("\(food.name)")
                         .font(.largeTitle)
                         .bold()
                         .padding(.bottom, 10)
                     
-                    Text("\(description)")
+                    Text("\(food.description)")
                 }
                 
                 Spacer()
@@ -47,7 +45,7 @@ struct AddCartView: View {
                 
                 Spacer()
                 
-                Text("\(foodPrice)")
+                Text("\(food.price * numberOfFoods)")
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 20)
@@ -113,6 +111,6 @@ struct AddCartView: View {
 
 struct AddCartView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCartView()
+        AddCartView(food: .sampleData)
     }
 }

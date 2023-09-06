@@ -1,5 +1,5 @@
 //
-//  RestaurantDetailInfoMenuView.swift
+//  RTRDetailInfoMenuView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/05.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct RestaurantDetailInfoMenuView: View {
-    @Binding var phoneNumber: Int
+struct RTRDetailInfoMenuView: View {
+    let phoneNumber: Int
     
     private var numberToString: String {
         let formatter = NumberFormatter()
@@ -48,8 +48,8 @@ struct RestaurantDetailInfoMenuView: View {
     }
 }
 
-struct RestaurantDetailInfoMenuView_Previews: PreviewProvider {
+struct RTRDetailInfoMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantDetailInfoMenuView(phoneNumber: .constant(00000000000))
+        RTRDetailInfoMenuView(phoneNumber: 00000000000)
     }
 }

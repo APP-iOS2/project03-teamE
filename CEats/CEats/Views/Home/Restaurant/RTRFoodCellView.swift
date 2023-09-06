@@ -1,5 +1,5 @@
 //
-//  RestaurantFoodCellView.swift
+//  RTRFoodCellView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/05.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct RestaurantFoodCellView: View {
-    @Binding var food: Food
+struct RTRFoodCellView: View {
+    let food: Food
     
     var body: some View {
         HStack {
@@ -31,8 +31,8 @@ struct RestaurantFoodCellView: View {
     }
 }
 
-struct RestaurantFoodCellView_Previews: PreviewProvider {
+struct RTRFoodCellView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantFoodCellView(food: .constant(.sampleData))
+        RTRFoodCellView(food: .sampleData)
     }
 }

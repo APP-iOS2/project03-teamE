@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewMinimalView: View {
-    @Binding var review: Review
+    let review: Review
     
     var body: some View {
         HStack {
@@ -48,6 +48,6 @@ struct ReviewMinimalView: View {
 
 struct ReviewMinimalView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewMinimalView(review: .constant(Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함")))
+        ReviewMinimalView(review: Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"))
     }
 }
