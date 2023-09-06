@@ -9,16 +9,17 @@ import SwiftUI
 
 struct FoodStoreListView: View {
     // MARK: - properties
-    @ObservedObject var restaurantsStore: RestaurantViewModel = RestaurantViewModel()
-//    @State var data: FoodType
+    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @State var selectedFoodType: FoodType?
     
     //MARK: - View
     var body: some View {
         NavigationStack {
-            FoodStoreListDetailView(restaurantsStore: restaurantsStore, data: $restaurantsStore.data)
+            FoodStoreListDetailView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
             ScrollView(.vertical, showsIndicators: false) {
-                RestaurantCardView(restaurantsStore: restaurantsStore, data: $restaurantsStore.data)
+                RestaurantCardView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
             }
+            .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem {
@@ -36,6 +37,6 @@ struct FoodStoreListView: View {
 
 struct FoodStoreListView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListView()
+        FoodStoreListView(restaurantsStore: RestaurantViewModel(), selectedFoodType: .korean)
     }
 }

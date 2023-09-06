@@ -10,18 +10,17 @@ import SwiftUI
 struct FoodStoreListDetailView: View {
     // MARK: - properties
     @ObservedObject var restaurantsStore: RestaurantViewModel
-    @Binding var data: FoodType?
+    @Binding var selectedFoodType: FoodType?
     @State private var isClickedCategory: Bool = false
     
-    //MARK: - View
+    // MARK: - View
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 20) {
                 ForEach(FoodType.allCases, id: \.self) { food in
                     Button {
-                        data = food
+                        selectedFoodType = food
                         isClickedCategory.toggle()
-                        print("\(data)")
                     } label: {
                         VStack {
                             Image("\(food)")
@@ -29,21 +28,26 @@ struct FoodStoreListDetailView: View {
                                 .scaledToFit()
                                 .frame(width: 80, height: 80)
                                 .clipShape(Circle())
-                                .cornerRadius(10)
+                                .background(
+                                    Circle()
+                                        .stroke(lineWidth: 3)
+                                        .foregroundColor(selectedFoodType == food ? .blue : .clear)
+                                )
                             Text("\(food.rawValue)")
-                                .foregroundColor(.black)
+                                .font(.system(size: 16, weight: selectedFoodType == food ? .bold : .thin))
+                                .foregroundColor(selectedFoodType == food ? .blue : .black)
                             
                         }
                     }
                     .overlay {
-                        Rectangle()
-                            .frame(width: 80, height: 10)
-                            .foregroundColor(data == food ? .black : .clear)
+                        RoundedRectangle(cornerRadius: 5)
+                            .frame(width: 80, height: 4)
+                            .foregroundColor(selectedFoodType == food ? .blue : .clear)
                             .offset(y: .screenWidth * 0.16 )
                     }
                 }
             }
-            .frame(height: 90)
+            .frame(height: 120)
             .padding()
         }
     }
@@ -51,6 +55,6 @@ struct FoodStoreListDetailView: View {
 
 struct FoodStoreListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListDetailView(restaurantsStore: RestaurantViewModel(), data: .constant(.korean))
+        FoodStoreListDetailView(restaurantsStore: RestaurantViewModel(), selectedFoodType: .constant(.korean))
     }
 }

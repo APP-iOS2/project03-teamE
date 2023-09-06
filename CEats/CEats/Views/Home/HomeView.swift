@@ -9,12 +9,11 @@ import SwiftUI
 //frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
 //.
 struct HomeView: View {
-    @StateObject var restaurantViewModel = RestaurantViewModel()
+    @ObservedObject var restaurantViewModel: RestaurantViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var searchText: String = ""
     
     @State private var isOpenMapSheet: Bool = false
-    
     private let layout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
     
     var body: some View {
@@ -60,7 +59,7 @@ struct HomeView: View {
                     LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..
                         ForEach(FoodType.allCases, id: \.self) { content in
                             NavigationLink {
-                                //content ==> 푸드 타입이 들어감 
+                                FoodStoreListView(restaurantsStore: restaurantViewModel, selectedFoodType: content)
                             } label: {
                                 VStack{
                                     Spacer()
@@ -115,6 +114,6 @@ struct HomeView: View {
 }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(restaurantViewModel: RestaurantViewModel())
     }
 }

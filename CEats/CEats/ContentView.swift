@@ -10,11 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @State var tabIndex: Int = 0
+    @StateObject var restaurantViewModel = RestaurantViewModel()
     
     var body: some View {
         TabView(selection: $tabIndex) {
             
-            HomeView()
+            HomeView(restaurantViewModel: restaurantViewModel)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("홈")
