@@ -35,12 +35,13 @@ final class RestaurantViewModel: ObservableObject {
         }
     }
     
-    func collectAllFoodNames() -> [String] {
-        var foodNames: [String] = []
+    func collectAllFoodNames() -> Set<String> {
+        var foodNames: Set<String> = []
         
         for restaurant in restaurants {
             for menu in restaurant.menus {
-                foodNames.append(menu.name)
+                foodNames.insert(menu.name)
+
             }
         }
         

@@ -20,16 +20,6 @@ struct HomeSearchDetailView: View {
     var body: some View {
         NavigationStack{
             VStack{
-                /*
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.backward")
-                        .bold()
-                        .offset(x: -(.screenWidth/2.2))
-                }
-                 */
-
                 ZStack{
                     Rectangle()
                         .frame(width: 350,height: 45) //뷰 바운드로 수정
@@ -40,7 +30,9 @@ struct HomeSearchDetailView: View {
                         HStack{
                             Image(systemName: "magnifyingglass")
                             TextField("ooo님, 서브웨이 어때요?", text: $searchText)
-                            
+                                .onSubmit{
+                                    isSubmit.toggle()
+                            }
                             if !searchText.isEmpty {
                                 Button(action: {
                                     self.searchText = ""
@@ -55,25 +47,20 @@ struct HomeSearchDetailView: View {
                     }
                 }
                 
-                //            PopularSearchView()
-                //                .padding(.leading,30)
-                //                .padding(.top,30)
-                //            Rectangle()
-                //                .foregroundColor(.veryLightGray)
-                //                .frame(width: .screenWidth, height: 10)
-                //            RecentSearchView()
-                //                .padding(20)
                 Spacer()
                 List {
                     ForEach(array.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self) {
-                        searchText in Text(searchText)
+                        searchText in
+                        Text(searchText)
+                            
                     }
                 }
-                .onSubmit{
-                    isSubmit.toggle() //문제가 될 수도 있음.
-                }
+                
                 .listStyle(PlainListStyle())
             }
+        }
+        .sheet(isPresented: $isSubmit) {
+            AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
         }
     }
 }
