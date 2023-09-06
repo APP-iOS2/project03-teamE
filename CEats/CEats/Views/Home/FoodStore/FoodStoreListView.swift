@@ -21,7 +21,7 @@ struct FoodStoreListView: View {
             } content: {
                 RestaurantCardView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
             }
-            .height(min: 25, max: 120)
+            .height(min: 44, max: 150)
             .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

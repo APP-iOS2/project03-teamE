@@ -26,7 +26,7 @@ struct FoodStoreListDetailView: View {
                             Image("\(food)")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 80, height: 80)
+                                .frame(width: 60, height: 60)
                                 .clipShape(Circle())
                                 .background(
                                     Circle()
