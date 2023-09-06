@@ -50,17 +50,23 @@ struct HomeSearchDetailView: View {
                 List {
                     ForEach(array.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self) {
                         searchText in
-                        Text(searchText)
-                            
+                        NavigationLink {
+                            AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
+
+                        } label: {
+                            Text(searchText)
+
+                        }
                     }
                 }
                 
                 .listStyle(PlainListStyle())
             }
         }
-        .onTapGesture {
-            hideKeyboard() //추가
-        }
+//        .onTapGesture {
+//            hideKeyboard() //추가
+//        }
+        
         .sheet(isPresented: $isSubmit) {
             AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
         }
