@@ -16,29 +16,27 @@ struct RTRFoodCategoryView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(categories, id: \.self) { category in
-                    VStack{
-                        Button(category) {
+                    VStack {
+                        Button {
                             selected = category
+                        } label: {
+                            Text("\(category)")
+                                .frame(minWidth: .screenWidth / 3)
                         }
-                        .padding()
                         .font(.system(size: 17, weight: category == selected ? .bold : .thin))
                         .foregroundColor(.primary)
-                        
                         if selected == category {
                             Capsule()
                                 .foregroundColor(.black)
                                 .frame(height: 3)
                             
-                        }
-                        else {
+                        } else {
                             Capsule()
                                 .foregroundColor(.clear)
                                 .frame(height:3)
                         }
                     }
-
                 }
-            
             }
             .overlay(Divider().offset(x:0,y:30))
         }
