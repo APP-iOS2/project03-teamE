@@ -26,7 +26,7 @@ struct SearchView: View {
                     }
                 }
                 ScrollView {
-                    SearchViewImage()
+                    SearchViewImage(restaurantViewModel: restaurantViewModel)
                 }
             }
         }

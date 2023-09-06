@@ -14,18 +14,18 @@ struct SearchViewImage: View {
     
     var body: some View {
         LazyVGrid(columns: columns, spacing: 30) {
-            ForEach(FoodType.allCases, id: \.self) { food in
+            ForEach(FoodType.allCases, id: \.self) { content in
                 NavigationLink {
-                    HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+                    FoodStoreListView(restaurantsStore: restaurantViewModel, selectedFoodType: content)
                 } label: {
                     VStack(alignment: .center, spacing: 15) {
-                        Image("\(food)")
+                        Image("\(content)")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: imageSize, height: imageSize)
                             .padding(.top,10)
                             .offset(y:3)
-                        Text("\(food.rawValue)")
+                        Text("\(content.rawValue)")
                             .font(.body)
                             .foregroundColor(.black)
                     }

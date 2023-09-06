@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FavoriteView: View {
     // MARK: - Properties
+    @Binding var tabIndex: Int
     @ObservedObject var favoriteStore: RestaurantViewModel
     @State private var isEdited: Bool = false
     @State private var isPicked: Bool = false
@@ -37,8 +38,8 @@ struct FavoriteView: View {
                             .cornerRadius(10)
                             .padding()
                         
-                        NavigationLink {
-                            HomeView(restaurantViewModel: RestaurantViewModel())
+                        Button {
+                            tabIndex = 0
                         } label: {
                             Text("쿠팡이츠 맛집 구경가기")
                                 .frame(width: 180, height: 50)
@@ -141,6 +142,6 @@ struct FavoriteView: View {
 
 struct FavoriteView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteView(favoriteStore: RestaurantViewModel())
+        FavoriteView(tabIndex: .constant(2), favoriteStore: RestaurantViewModel())
     }
 }
