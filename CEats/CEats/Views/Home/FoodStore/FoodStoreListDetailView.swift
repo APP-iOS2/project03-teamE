@@ -29,22 +29,25 @@ struct FoodStoreListDetailView: View {
                                 .scaledToFit()
                                 .frame(width: 80, height: 80)
                                 .clipShape(Circle())
-                                .cornerRadius(10)
+                                .background(
+                                    Circle()
+                                        .stroke(lineWidth: 3)
+                                        .foregroundColor(data == food ? .blue : .clear)
+                                )
                             Text("\(food.rawValue)")
+                                .font(.system(size: 20, weight: data == food ? .bold : .thin))
                                 .foregroundColor(.black)
                             
                         }
                     }
                     .overlay {
                         Rectangle()
-                            .frame(width: 80, height: 10)
-                            .foregroundColor(data == food ? .black : .clear)
+                            .frame(width: 80, height: 7)
+                            .foregroundColor(data == food ? .blue : .clear)
                             .offset(y: .screenWidth * 0.16 )
                     }
                 }
-            }
-            .frame(height: 90)
-            .padding()
+            }.frame(height: 125)
         }
     }
 }

@@ -19,6 +19,7 @@ struct FoodStoreListView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 RestaurantCardView(restaurantsStore: restaurantsStore, data: $restaurantsStore.data)
             }
+            .navigationTitle("값 넘겨받을 것")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem {
