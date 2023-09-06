@@ -8,23 +8,31 @@
 import SwiftUI
 
 struct SearchView: View {
-    @StateObject var restaurantViewModel: RestaurantViewModel
-    @State private var searchTerm = ""
 
+    @StateObject var restaurantViewModel: RestaurantViewModel
+
+    @State private var searchTerm = ""
     
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                SearchBarView(text: $searchTerm)
-                Image(systemName: "magnifyingglass")
-                Spacer()
-            }
-            Spacer()
-            ScrollView {
-                SearchViewImage(restaurantViewModel: restaurantViewModel)
+        NavigationStack{
+            VStack {
+                HStack {
+                    Spacer()
+                    NavigationLink {
+//                        ResentSearchView()
+                        HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+                    } label: {
+                        SearchBarView(text: $searchTerm)
+                    }
+                }
+                ScrollView {
+                    SearchViewImage()
+                }
             }
         }
+//        .onTapGesture {
+//            hideKeyboard() //추가
+//        }
     }
 }
 
