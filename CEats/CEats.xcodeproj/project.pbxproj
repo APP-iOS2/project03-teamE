@@ -21,10 +21,12 @@
 		1283211B2AA6F34000EAB4BD /* RestaurantFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128321182AA6F34000EAB4BD /* RestaurantFoodListView.swift */; };
 		1283211C2AA6F34000EAB4BD /* RestaurantFoodCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128321192AA6F34000EAB4BD /* RestaurantFoodCategoryView.swift */; };
 		1283211E2AA70BAE00EAB4BD /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1283211D2AA70BAE00EAB4BD /* RestaurantInfo.swift */; };
+		1293DA9D2AA81EDB00368C3E /* AfterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1293DA9C2AA81EDB00368C3E /* AfterSearchView.swift */; };
 		3C918EDE2AA6B6710043111A /* AddCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EDD2AA6B6710043111A /* AddCartView.swift */; };
 		3C918EE02AA6BD230043111A /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EDF2AA6BD230043111A /* Color+.swift */; };
 		3C918EE22AA703150043111A /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EE12AA703150043111A /* MapDetailView.swift */; };
 		3C918EE42AA81CCA0043111A /* DetailToMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EE32AA81CCA0043111A /* DetailToMapView.swift */; };
+		3F4A0CEF2AA82B590029F34E /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 3F4A0CEE2AA82B590029F34E /* ScalingHeaderScrollView */; };
 		BE5D6C5C2AA6E80100347A22 /* RestaurantSubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D6C552AA6E80000347A22 /* RestaurantSubInfoView.swift */; };
 		BE5D6C5D2AA6E80100347A22 /* ReviewMinimalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D6C562AA6E80000347A22 /* ReviewMinimalView.swift */; };
 		BE5D6C5F2AA6E80100347A22 /* RestaurantTitleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D6C582AA6E80000347A22 /* RestaurantTitleInfoView.swift */; };
@@ -35,6 +37,7 @@
 		BE5D6C692AA6E82500347A22 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D6C682AA6E82500347A22 /* RestaurantViewModel.swift */; };
 		BED6DADB2AA6F58A00EB8F0B /* RestaurantDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6DADA2AA6F58A00EB8F0B /* RestaurantDetailInfoView.swift */; };
 		BED6DADD2AA6FD8E00EB8F0B /* RestaurantDetailInfoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6DADC2AA6FD8E00EB8F0B /* RestaurantDetailInfoMenuView.swift */; };
+		D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14F18472AA802E6008665F4 /* SearchViewImage.swift */; };
 		D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B212AA5A14C009231E4 /* CEatsApp.swift */; };
 		D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B232AA5A14C009231E4 /* ContentView.swift */; };
 		D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D18E9B252AA5A14E009231E4 /* Assets.xcassets */; };
@@ -73,6 +76,7 @@
 		128321182AA6F34000EAB4BD /* RestaurantFoodListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantFoodListView.swift; sourceTree = "<group>"; };
 		128321192AA6F34000EAB4BD /* RestaurantFoodCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantFoodCategoryView.swift; sourceTree = "<group>"; };
 		1283211D2AA70BAE00EAB4BD /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
+		1293DA9C2AA81EDB00368C3E /* AfterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterSearchView.swift; sourceTree = "<group>"; };
 		3C918EDD2AA6B6710043111A /* AddCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartView.swift; sourceTree = "<group>"; };
 		3C918EDF2AA6BD230043111A /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		3C918EE12AA703150043111A /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 		BE5D6C682AA6E82500347A22 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		BED6DADA2AA6F58A00EB8F0B /* RestaurantDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailInfoView.swift; sourceTree = "<group>"; };
 		BED6DADC2AA6FD8E00EB8F0B /* RestaurantDetailInfoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailInfoMenuView.swift; sourceTree = "<group>"; };
+		D14F18472AA802E6008665F4 /* SearchViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewImage.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
 		D18E9B232AA5A14C009231E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4A0CEF2AA82B590029F34E /* ScalingHeaderScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +147,7 @@
 			children = (
 				D1DB3B532AA6B17300212573 /* HomeSearchView.swift */,
 				121D94742AA71114005177E0 /* HomeSearchDetailView.swift */,
+				1293DA9C2AA81EDB00368C3E /* AfterSearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				D18E9B382AA5A44A009231E4 /* SearchView.swift */,
+				D14F18472AA802E6008665F4 /* SearchViewImage.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -340,6 +348,9 @@
 			dependencies = (
 			);
 			name = CEats;
+			packageProductDependencies = (
+				3F4A0CEE2AA82B590029F34E /* ScalingHeaderScrollView */,
+			);
 			productName = CEats;
 			productReference = D18E9B1E2AA5A14C009231E4 /* CEats.app */;
 			productType = "com.apple.product-type.application";
@@ -368,6 +379,9 @@
 				Base,
 			);
 			mainGroup = D18E9B152AA5A14C009231E4;
+			packageReferences = (
+				3F4A0CED2AA82B590029F34E /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
+			);
 			productRefGroup = D18E9B1F2AA5A14C009231E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -401,6 +415,7 @@
 				D1DB3B6F2AA6B26800212573 /* HomeView.swift in Sources */,
 				1283211E2AA70BAE00EAB4BD /* RestaurantInfo.swift in Sources */,
 				121D947A2AA71AD2005177E0 /* PopularSearchesView.swift in Sources */,
+				D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */,
 				121FCCC92AA6C1F800A59B7D /* MapSearchView.swift in Sources */,
 				D1DB3B562AA6B17300212573 /* HomeSearchView.swift in Sources */,
 				D1DB3B692AA6B1BE00212573 /* Extension+CGFloat.swift in Sources */,
@@ -419,6 +434,7 @@
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
 				D1DB3B402AA6B07E00212573 /* FoodStoreListDetailView.swift in Sources */,
 				121D947E2AA74008005177E0 /* Extension+View.swift in Sources */,
+				1293DA9D2AA81EDB00368C3E /* AfterSearchView.swift in Sources */,
 				BED6DADD2AA6FD8E00EB8F0B /* RestaurantDetailInfoMenuView.swift in Sources */,
 				D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */,
 				121D94752AA71114005177E0 /* HomeSearchDetailView.swift in Sources */,
@@ -658,6 +674,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F4A0CED2AA82B590029F34E /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ScalingHeaderScrollView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F4A0CEE2AA82B590029F34E /* ScalingHeaderScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F4A0CED2AA82B590029F34E /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
+			productName = ScalingHeaderScrollView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D18E9B162AA5A14C009231E4 /* Project object */;
 }

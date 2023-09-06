@@ -12,26 +12,30 @@ struct SearchBarView: View {
     @Binding var text: String
     
     var body: some View {
-        HStack{
-            TextField("고객님, 이거 어때요?", text: $text)
-                .foregroundColor(.primary)
-            
-            if !text.isEmpty {
-                Button(action: {
-                    self.text = ""
-                }) {
-                    Image(systemName: "xmark.circle.fill")
+        ZStack{
+            Rectangle()
+                .frame(width: 340,height: 45) //뷰 바운드로 수정
+                .foregroundColor(.white)
+                .cornerRadius(30)
+                .shadow(radius: 5)
+            ZStack{
+                HStack{
+                    TextField(" 고객님, 이거 어때요?", text: $text)
+                        .foregroundColor(.primary)
+                    
+                    if !text.isEmpty {
+                        Button(action: {
+                            self.text = ""
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                        }
+                    } else {
+                        EmptyView()
+                    }
                 }
-            } else {
-                EmptyView()
             }
+            .padding()
         }
-        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
-        .foregroundColor(.secondary)
-#if os(iOS)
-        .background(Color(.secondarySystemBackground))
-#endif
-        .cornerRadius(10.0)
     }
-
 }
+    
