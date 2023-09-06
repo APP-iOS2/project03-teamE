@@ -1,17 +1,17 @@
 //
-//  RestaurantCardView.swift
+//  AfterSearchView.swift
 //  CEats
 //
-//  Created by 장여훈 on 2023/09/04.
+//  Created by 유하은 on 2023/09/06.
 //
 
 import SwiftUI
 
-struct RestaurantCardView: View {
+struct AfterSearchView: View {
     // MARK: - properties
     @State var isFavorited: Bool = false
     @ObservedObject var restaurantsStore: RestaurantViewModel
-    @Binding var selectedFoodType: FoodType?
+    @Binding var data: FoodType?
     
     var heartImage: String {
         isFavorited ? "heart.fill" : "heart"
@@ -21,7 +21,7 @@ struct RestaurantCardView: View {
     var body: some View {
         NavigationStack {
             // FoodType으로 먼저 분류 -> 분류된 목록에서 ForEach로 반복
-            ForEach(restaurantsStore.filterFoodTypes(selectedFoodType)) { store in
+            ForEach(restaurantsStore.filterFoodType){ store in
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 380, height: 300)
@@ -38,7 +38,7 @@ struct RestaurantCardView: View {
                         VStack {
                             ZStack {
                                 AsyncImage(url: URL(string: "https://www.jungle.co.kr/image/90e4ffc149968a50c80cac37"))
-                                    .frame(width: 300, height: 200)
+                                    .frame(width: 360, height: 200)
                                     .cornerRadius(10)
                                 
                                 Image(systemName: heartImage)
@@ -76,8 +76,9 @@ struct RestaurantCardView: View {
     }
 }
 
-struct RestaurantCardView_Previews: PreviewProvider {
+
+struct AfterSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantCardView(restaurantsStore: RestaurantViewModel(), selectedFoodType: .constant(.korean))
+        AfterSearchView(restaurantsStore: RestaurantViewModel(), data: .constant(.korean))
     }
 }

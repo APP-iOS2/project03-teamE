@@ -23,8 +23,8 @@ struct HomeSearchView: View {
                     HStack{
                         Image(systemName: "magnifyingglass")
                         TextField("ooo님, 서브웨이 어때요?", text: $searchText)
+                            .padding(15)
                     }
-
                 }
             }
         }
