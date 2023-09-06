@@ -49,7 +49,7 @@ struct FoodStoreListDetailView: View {
             }
             .frame(height: 120)
             .padding()
-        }
+        }.background(.white)
     }
 }
 
