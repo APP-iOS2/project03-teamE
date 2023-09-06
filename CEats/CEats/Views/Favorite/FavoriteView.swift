@@ -21,11 +21,15 @@ struct FavoriteView: View {
             NavigationStack {
                 // 유저.Favorite배열.count 해서 값 받아올 예정
                 // 왼쪽에 붙었으면 좋겠는데 안붙.. 왜?
-                Text("총 N개")
-                    .font(.title3)
-                    .bold()
-                
-                if isFavoriteEmpty {
+                HStack {
+                    Text("총 \(favoriteStore.user.favoriteRestaurant.count)개")
+                        .font(.title3)
+                        .bold()
+                        .padding()
+                    
+                    Spacer()
+                }
+                if !isFavoriteEmpty {
                     VStack {
                         Image("isFavorite")
                             .resizable()
@@ -48,7 +52,7 @@ struct FavoriteView: View {
                 } else {
                     ScrollView {
                         VStack {
-                            ForEach(favoriteStore.restaurants) { store in
+                            ForEach(favoriteStore.user.favoriteRestaurant) { store in
                                 NavigationLink {
                                     // RTRView로
                                 } label: {
@@ -61,7 +65,7 @@ struct FavoriteView: View {
                                                     .scaledToFill()
                                                     .aspectRatio(contentMode: .fit)
                                                     .frame(width: .screenWidth * 0.44, height: .screenHeight * 0.17)
-                            
+                                                
                                             }placeholder: {
                                                 ProgressView()
                                             }
@@ -103,9 +107,9 @@ struct FavoriteView: View {
                                                 }
                                             }
                                             
-
+                                            
                                         }
-//                                        .padding(.leading, -20)
+                                        //                                        .padding(.leading, -20)
                                         
                                         Divider()
                                             .padding(.bottom,20)
@@ -126,7 +130,7 @@ struct FavoriteView: View {
                             } label: {
                                 Text(isEdited ? "취소" : "수정")
                             }
-
+                            
                         }
                     }
                 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FoodStoreListDetailView: View {
     // MARK: - properties
-    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @StateObject var restaurantsStore: RestaurantViewModel
     @Binding var selectedFoodType: FoodType?
     @State private var isClickedCategory: Bool = false
     

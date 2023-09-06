@@ -10,7 +10,7 @@ import SwiftUI
 struct RestaurantCardView: View {
     // MARK: - properties
     @State var isFavorited: Bool = false
-    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @StateObject var restaurantsStore: RestaurantViewModel
     @Binding var selectedFoodType: FoodType?
     
     var heartImage: String {
@@ -32,17 +32,10 @@ struct RestaurantCardView: View {
                                 .cornerRadius(10)
                             
                             Button {
-                                if isFavorited {
-                                    restaurantsStore.user.favoriteRestaurant.append(store)
-                                    print(restaurantsStore.user.favoriteRestaurant)
-                                    isFavorited.toggle()
-                                } else {
-//                                    restaurantsStore.user.favoriteRestaurant.remove(atOffsets: store)
-                                    isFavorited.toggle()
-                                }
+                                
                                 restaurantsStore.user.favoriteRestaurant.append(store)
                             } label: {
-                                Image(systemName: restaurantsStore.checkLike(restaurant: store))
+                                Image(systemName: restaurantsStore.checkLike(restaurant: store) ? "heart.fill" : "heart")
                                     .font(.system(size:20))
                                     .background(
                                         Circle()
@@ -56,6 +49,15 @@ struct RestaurantCardView: View {
                                     
                             }
                             .onTapGesture {
+                                if !restaurantsStore.checkLike(restaurant: store) {
+                                    restaurantsStore.user.favoriteRestaurant.append(store)
+                                    print(restaurantsStore.user.favoriteRestaurant)
+                                    isFavorited.toggle()
+                                } else {
+                                    restaurantsStore.removeRestaurant(restaurant: store)
+                                    
+                                    isFavorited.toggle()
+                                }
                                 print("btn Tap")
                                 isFavorited.toggle()
                             }
