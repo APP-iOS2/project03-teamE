@@ -55,33 +55,34 @@ struct FavoriteView: View {
                                     VStack{
                                         HStack {
                                             // 로고 - 프레임 크기가 비슷한 이미지를 가져와야함
-                                            AsyncImage(url: URL(string: "https://modo-phinf.pstatic.net/20180801_18/1533094943595JAukT_PNG/mosahFjNCA.png?type=w1100")) { image in
+                                            AsyncImage(url: URL(string: "https://is2-ssl.mzstatic.com/image/thumb/Purple115/v4/a1/ab/24/a1ab2400-647c-53f1-629d-1000f10e8e6e/source/512x512bb.jpg")) { image in
                                                 image
                                                     .resizable()
-                                                    .frame(width: .screenWidth * 0.44, height: .screenHeight * 0.17)
                                                     .scaledToFill()
                                                     .aspectRatio(contentMode: .fit)
-                                                
+                                                    .frame(width: .screenWidth * 0.44, height: .screenHeight * 0.17)
+                            
                                             }placeholder: {
                                                 ProgressView()
                                             }
                                             .frame(width: .screenWidth * 0.35, height: .screenHeight * 0.13)
                                             .clipShape(RoundedRectangle(cornerRadius: 10))
                                             //라운드 된건지 확인하기 위함
-                                            .background(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.black, lineWidth: 1)
-                                            )
-                                            .padding(.bottom, 10)
+                                            .padding(.bottom, 20)
                                             
                                             VStack(alignment: .leading, spacing: 10) {
                                                 Spacer()
                                                 Text(store.name)
-                                                    .font(.title3)
+                                                    .font(.system(size:17))
                                                     .bold()
-                                                Text("⭐️ \(store.scoreMessage) (\(store.reviews.count))")
-                                                    .font(.subheadline)
-                                                    .bold()
+                                                    .padding(.top,-20)
+                                                HStack{
+                                                    Image(systemName: "star.fill")
+                                                        .foregroundColor(.yellow)
+                                                    Text("\(store.scoreMessage) (\(store.reviews.count))")
+                                                }
+                                                .padding(.bottom,-5)
+                                                .font(.system(size:14))
                                                 HStack{
                                                     Text("0.5 km • 35~45 분 •")
                                                     Text("배달비 \(store.deliveryFee)원")
@@ -107,7 +108,9 @@ struct FavoriteView: View {
 //                                        .padding(.leading, -20)
                                         
                                         Divider()
+                                            .padding(.bottom,20)
                                     }
+                                    
                                     .foregroundColor(.black)
                                 }
                             }
