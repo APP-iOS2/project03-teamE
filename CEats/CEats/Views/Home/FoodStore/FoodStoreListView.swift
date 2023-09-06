@@ -27,7 +27,7 @@ struct FoodStoreListView: View {
             .toolbar {
                 ToolbarItem {
                     NavigationLink {
-                        SearchView()
+                        SearchView(restaurantViewModel: RestaurantViewModel())
                     } label: {
                         Image(systemName: "magnifyingglass")
                     }
