@@ -102,6 +102,7 @@ struct AddCartView: View {
             }
 
         }
+        .padding(.init(top: 20, leading: 1, bottom: 1, trailing: 1))
     }
 }
 

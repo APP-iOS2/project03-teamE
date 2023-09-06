@@ -25,6 +25,7 @@ struct RTRFoodListView: View {
                     } label: {
                         RTRFoodCellView(food: food)
                     }
+                    .toolbar(.hidden, for: .tabBar)
                     .foregroundColor(.primary)
                     Divider()
                 }
