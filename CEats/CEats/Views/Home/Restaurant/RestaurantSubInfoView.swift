@@ -33,7 +33,6 @@ struct RestaurantSubInfoView: View {
                         .padding(.vertical, 5)
                     Text("최소주문")
                 }
-                Spacer()
                 VStack(alignment: .leading) {
                     HStack {
                         Text("0~1,900원")
@@ -49,6 +48,7 @@ struct RestaurantSubInfoView: View {
                     }
                     Text("5,000원")
                 }
+                .padding(.leading,10)
                 Spacer()
             }
             .font(.footnote)

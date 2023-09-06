@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var searchText: String = ""
     
     @State private var isOpenMapSheet: Bool = false
     
@@ -35,21 +36,45 @@ struct HomeView: View {
                         Image(systemName: "bell")
                     }
                     .padding(20)
-                    HomeSearchView() //검색뷰
-                        .padding(.bottom,20)
+                    
+                    NavigationLink {
+                        HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+                    } label: {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 350,height: 45) //뷰 바운드로 수정
+                                .foregroundColor(.white)
+                                .cornerRadius(30)
+                                .shadow(radius: 5)
+                                HStack{
+                                    Image(systemName: "magnifyingglass")
+                                        .padding(.leading,40)
+                                        .foregroundColor(.black)
+                                    TextField("ooo님, 서브웨이 어때요?", text: $searchText)
+                                        .offset(x: -30)
+                                }
+
+                        } //검색뷰
+                            .padding(.bottom, 20)
+                    }
                     LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..
                         ForEach(FoodType.allCases, id: \.self) { content in
-                            VStack{
-                                Spacer()
-                                Image("\(content)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 30)
-                                    .padding(.bottom,10)
-                                    .offset(y:3)
-                                Spacer()
-                                Text(content.rawValue)
-                                    .font(.footnote)
+                            NavigationLink {
+                                //content ==> 푸드 타입이 들어감 
+                            } label: {
+                                VStack{
+                                    Spacer()
+                                    Image("\(content)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 50, height: 30)
+                                        .padding(.bottom,10)
+                                        .offset(y:3)
+                                    Spacer()
+                                    Text(content.rawValue)
+                                        .font(.footnote)
+                                        .foregroundColor(.black)
+                                }
                             }
                         }
                     }
