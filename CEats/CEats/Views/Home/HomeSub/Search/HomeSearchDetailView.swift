@@ -11,6 +11,7 @@ struct HomeSearchDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var restaurantViewModel: RestaurantViewModel
+    @FocusState private var isFocused: Bool
     @State var searchText: String = ""
     @State var isSubmit: Bool = false
     var array: Set<String> {
@@ -29,6 +30,8 @@ struct HomeSearchDetailView: View {
                         HStack{
                             Image(systemName: "magnifyingglass")
                             TextField("ooo님, 서브웨이 어때요?", text: $searchText)
+                            //TextField 수정자
+                                .focused($isFocused)
                                 .onSubmit{
                                     isSubmit.toggle()
                             }
@@ -50,17 +53,22 @@ struct HomeSearchDetailView: View {
                 List {
                     ForEach(array.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self) {
                         searchText in
-                        Text(searchText)
-                            
+                        NavigationLink {
+                            AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
+                        } label: {
+                            Text(searchText)
+                        }
                     }
                 }
-                
                 .listStyle(PlainListStyle())
             }
         }
-        .onTapGesture {
-            hideKeyboard() //추가
-        }
+        .onAppear {
+                   if isFocused == false {
+                       // 포커스가 잃어진 경우 키보드 숨기기
+                      hideKeyboard()
+                   }
+               }
         .sheet(isPresented: $isSubmit) {
             AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
         }
