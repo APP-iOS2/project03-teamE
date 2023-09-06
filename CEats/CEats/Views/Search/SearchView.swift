@@ -9,28 +9,44 @@ import SwiftUI
 
 struct SearchView: View {
     
+    @ObservedObject var restaurantViewModel: RestaurantViewModel
     @State private var searchTerm = ""
-
+    
+//    init() {
+//        if let savedSearchTerm = UserDefaults.standard.string(forKey: "searchTerm") {
+//            searchTerm = savedSearchTerm
+//        }
+//    }
     
     var body: some View {
-        VStack {
-            HStack {
+        NavigationView{
+            VStack {
+                HStack {
+                    Spacer()
+                    SearchBarView(text: $searchTerm)
+                    Image(systemName: "magnifyingglass")
+                    Spacer()
+                }
+                .onChange(of: searchTerm) { newValue in
+                    UserDefaults.standard.set(newValue, forKey: "searchTerm")
+                }
                 Spacer()
-                SearchBarView(text: $searchTerm)
-                Image(systemName: "magnifyingglass")
-                Spacer()
+                ScrollView {
+                    SearchViewImage()
+                }
             }
-            Spacer()
-            ScrollView {
-                SearchViewImage()
-            }
-        }
-    }
-}
+            .background(
+            NavigationLink(destination: ResentSearchView(restaurantViewModel: RestaurantViewModel())) {
+                     EmptyView()
+                 }
+             )
+         }
+     }
+ }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(restaurantViewModel: RestaurantViewModel())
     }
 }
 
