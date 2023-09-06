@@ -17,7 +17,7 @@ struct AddCartView: View {
         VStack {
             Image(food.image ?? "")
                 .frame(width: .screenWidth, height: 300)
-            
+                .padding(.top,40)
             HStack {
                 VStack(alignment: .leading) {
                     Text("\(food.name)")
@@ -100,9 +100,7 @@ struct AddCartView: View {
                     .frame(height: 60)
                     .background(Color.blue)
             }
-
         }
-        .padding(.init(top: 20, leading: 1, bottom: 1, trailing: 1))
     }
 }
 
