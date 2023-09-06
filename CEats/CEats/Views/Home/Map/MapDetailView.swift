@@ -53,7 +53,7 @@ struct MapDetailView: View {
                     .padding(.leading, 10)
                 
                 NavigationLink {
-                    NowMapView(isOpenMapSheet: $isOpenMapSheet ,isSelectedPlace: .constant(""), selectedPlaceLat: .constant(0), selectedPlaceLong: .constant(0))
+                    DetailToMapView(isOpenMapSheet: $isOpenMapSheet ,isSelectedPlace: $selectedPlace, selectedPlaceLat: $selectedPlaceLat, selectedPlaceLong: $selectedPlaceLong)
                 } label: {
                     Label("지도에서 위치 확인하기", systemImage: "location.north")
                         .frame(width: .screenWidth * 0.8, height: 60)
@@ -89,6 +89,12 @@ struct MapDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton)
+        
+        .onAppear {
+            print("\(selectedPlace)")
+            print("\(selectedPlaceLat)")
+            print("\(selectedPlaceLong)")
+        }
         
         .sheet(isPresented: $isOKSheet) {
             VStack {
