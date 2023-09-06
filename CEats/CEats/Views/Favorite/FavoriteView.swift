@@ -13,7 +13,7 @@ struct FavoriteView: View {
     @State private var isEdited: Bool = false
     @State private var isPicked: Bool = false
     private var isFavoriteEmpty: Bool {
-        favoriteStore.restaurants.isEmpty
+        favoriteStore.user.favoriteRestaurant.isEmpty
     }
     // MARK: - Views
     var body: some View {
@@ -29,7 +29,7 @@ struct FavoriteView: View {
                     
                     Spacer()
                 }
-                if !isFavoriteEmpty {
+                if isFavoriteEmpty {
                     VStack {
                         Image("isFavorite")
                             .resizable()
@@ -54,7 +54,7 @@ struct FavoriteView: View {
                         VStack {
                             ForEach(favoriteStore.user.favoriteRestaurant) { store in
                                 NavigationLink {
-                                    // RTRView로
+                                    RTRView(restaurant: store)
                                 } label: {
                                     VStack{
                                         HStack {

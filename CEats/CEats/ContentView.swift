@@ -22,14 +22,14 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-            SearchView()
+            SearchView(restaurantViewModel: restaurantViewModel)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("검색")
                 }
                 .tag(2)
             
-            FavoriteView(favoriteStore: RestaurantViewModel())
+            FavoriteView(favoriteStore: restaurantViewModel)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("즐겨찾기")

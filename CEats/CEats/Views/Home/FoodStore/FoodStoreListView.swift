@@ -21,13 +21,13 @@ struct FoodStoreListView: View {
             } content: {
                 RestaurantCardView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
             }
-            .height(min: 47, max: 140)
+            .height(min: 47, max: 150)
             .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem {
                     NavigationLink {
-                        SearchView()
+                        SearchView(restaurantViewModel: restaurantsStore)
                     } label: {
                         Image(systemName: "magnifyingglass")
                     }

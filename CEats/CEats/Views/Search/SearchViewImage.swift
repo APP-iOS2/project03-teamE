@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchViewImage: View {
+    @StateObject var restaurantViewModel: RestaurantViewModel
     var columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
     let imageSize: CGFloat = 99
     
@@ -15,7 +16,7 @@ struct SearchViewImage: View {
         LazyVGrid(columns: columns, spacing: 30) {
             ForEach(FoodType.allCases, id: \.self) { food in
                 NavigationLink {
-                    RTRView(restaurant: .sampleData)
+                    HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
                 } label: {
                     VStack(alignment: .center, spacing: 15) {
                         Image("\(food)")
@@ -36,6 +37,6 @@ struct SearchViewImage: View {
 
 struct SearchViewImage_Previews: PreviewProvider {
     static var previews: some View {
-        SearchViewImage()
+        SearchViewImage(restaurantViewModel: RestaurantViewModel())
     }
 }
