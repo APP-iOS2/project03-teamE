@@ -12,11 +12,11 @@ struct SearchView: View {
     @ObservedObject var restaurantViewModel: RestaurantViewModel
     @State private var searchTerm = ""
     
-//    init() {
-//        if let savedSearchTerm = UserDefaults.standard.string(forKey: "searchTerm") {
-//            searchTerm = savedSearchTerm
-//        }
-//    }
+    //    init() {
+    //        if let savedSearchTerm = UserDefaults.standard.string(forKey: "searchTerm") {
+    //            searchTerm = savedSearchTerm
+    //        }
+    //    }
     
     var body: some View {
         NavigationView{
@@ -35,24 +35,12 @@ struct SearchView: View {
                     SearchViewImage()
                 }
             }
-            Spacer()
-            ScrollView {
-                SearchViewImage()
+            .onTapGesture {
+                hideKeyboard()
             }
-        }
-        .onTapGesture {
-            hideKeyboard()
         }
     }
 }
-            .background(
-            NavigationLink(destination: ResentSearchView(restaurantViewModel: RestaurantViewModel())) {
-                     EmptyView()
-                 }
-             )
-         }
-     }
- }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
