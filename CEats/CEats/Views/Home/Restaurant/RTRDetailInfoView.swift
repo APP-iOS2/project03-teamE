@@ -1,5 +1,5 @@
 //
-//  RestaurantDetailInfoView.swift
+//  RTRDetailInfoView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/05.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct RestaurantDetailInfoView: View {
+struct RTRDetailInfoView: View {
     let restaurant: Restaurant
     
     @State private var place: String = ""
@@ -39,7 +39,7 @@ struct RestaurantDetailInfoView: View {
                 .padding(.bottom)
                 HStack {
                     Text("전화번호:")
-                    RestaurantDetailInfoMenuView(phoneNumber: restaurant.restaurantInfo.phoneNumber)
+                    RTRDetailInfoMenuView(phoneNumber: restaurant.restaurantInfo.phoneNumber)
                 }
                 Text("상호명: \(restaurant.restaurantInfo.name)")
                     .padding(.bottom)
@@ -76,10 +76,10 @@ struct RestaurantDetailInfoView: View {
 }
 
 
-struct RestaurantDetailInfoView_Previews: PreviewProvider {
+struct RTRDetailInfoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RestaurantDetailInfoView(restaurant: .sampleData)
+            RTRDetailInfoView(restaurant: .sampleData)
         }
     }
 }

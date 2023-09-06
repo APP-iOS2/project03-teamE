@@ -1,5 +1,5 @@
 //
-//  RestaurantFoodCategoryView.swift
+//  RTRFoodCategoryView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RestaurantFoodCategoryView: View {
+struct RTRFoodCategoryView: View {
     let categories: [String]
     
     @Binding var selected: String
@@ -50,8 +50,8 @@ struct RestaurantFoodCategoryView: View {
     }
 }
 
-struct RestaurantFoodCategoryView_Previews: PreviewProvider {
+struct RTRFoodCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantFoodCategoryView(categories: ["테스트1", "테스트2", "테스트3", "테스트4"], selected: .constant(""))
+        RTRFoodCategoryView(categories: ["테스트1", "테스트2", "테스트3", "테스트4"], selected: .constant(""))
     }
 }

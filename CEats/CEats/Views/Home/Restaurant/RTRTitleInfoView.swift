@@ -1,5 +1,5 @@
 //
-//  RestaurantTitleInfoView.swift
+//  RTRTitleInfoView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/04.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RestaurantTitleInfoView: View {
+struct RTRTitleInfoView: View {
     let restaurant: Restaurant
     
     var body: some View {
@@ -33,10 +33,10 @@ struct RestaurantTitleInfoView: View {
     }
 }
 
-struct RestaurantMinimalInfoView_Previews: PreviewProvider {
+struct RTRMinimalInfoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RestaurantTitleInfoView(restaurant: .sampleData)
+            RTRTitleInfoView(restaurant: .sampleData)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  RestaurantSubInfoView.swift
+//  RTRSubInfoView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/04.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RestaurantSubInfoView: View {
+struct RTRSubInfoView: View {
     let restaurant: Restaurant
     
     var body: some View {
@@ -18,7 +18,7 @@ struct RestaurantSubInfoView: View {
                     .font(.system(size: 15, weight: .bold))
                 Spacer()
                 NavigationLink {
-                    RestaurantDetailInfoView(restaurant: restaurant)
+                    RTRDetailInfoView(restaurant: restaurant)
                 } label: {
                     Text("매장•원산지정보")
                     Image(systemName: "chevron.forward")
@@ -56,8 +56,8 @@ struct RestaurantSubInfoView: View {
     }
 }
 
-struct RestaurantSubInfoView_Previews: PreviewProvider {
+struct RTRSubInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantSubInfoView(restaurant: .sampleData)
+        RTRSubInfoView(restaurant: .sampleData)
     }
 }

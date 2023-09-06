@@ -1,5 +1,5 @@
 //
-//  RestaurantFoodListView.swift
+//  RTRFoodListView.swift
 //  CEats
 //
 //  Created by gnksbm on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RestaurantFoodListView: View {
+struct RTRFoodListView: View {
     let restaurant: Restaurant
     
     var body: some View {
@@ -23,7 +23,7 @@ struct RestaurantFoodListView: View {
                     NavigationLink {
                         AddCartView(food: food)
                     } label: {
-                        RestaurantFoodCellView(food: food)
+                        RTRFoodCellView(food: food)
                     }
                     .foregroundColor(.primary)
                     Divider()
@@ -35,10 +35,10 @@ struct RestaurantFoodListView: View {
     }
 }
 
-struct RestaurantFoodListView_Previews: PreviewProvider {
+struct RTRFoodListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RestaurantFoodListView(restaurant: .sampleData)
+            RTRFoodListView(restaurant: .sampleData)
         }
     }
 }
