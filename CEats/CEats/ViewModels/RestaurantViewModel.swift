@@ -22,4 +22,25 @@ final class RestaurantViewModel: ObservableObject {
             return store.foodType.contains(data)
         }
     }
+    
+ 
+    func filterFoodName(_ name: String) -> [Restaurant] {
+        return restaurants.filter { restaurant in
+            restaurant.menus.contains { food in
+                return food.name == name
+            }
+        }
+    }
+    
+    func collectAllFoodNames() -> [String] {
+        var foodNames: [String] = []
+        
+        for restaurant in restaurants {
+            for menu in restaurant.menus {
+                foodNames.append(menu.name)
+            }
+        }
+        
+        return foodNames
+    }
 }

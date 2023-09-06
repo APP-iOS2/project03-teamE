@@ -1,27 +1,17 @@
 //
-//  RestaurantCardView.swift
+//  AfterSearchView.swift
 //  CEats
 //
-//  Created by 장여훈 on 2023/09/04.
+//  Created by 유하은 on 2023/09/06.
 //
 
 import SwiftUI
 
-struct RestaurantCardView: View {
+struct AfterSearchView: View {
     // MARK: - properties
     @State var isFavorited: Bool = false
     @ObservedObject var restaurantsStore: RestaurantViewModel
     @Binding var data: FoodType?
-    
-//    var filterFoodType: [Restaurant] {
-//        restaurantsStore.restaurants.filter { store in
-//            return store.foodType.contains(self.data)
-//        }
-//    }
-    // filter된 배열에서 score를 가져다가 평균을 낸 값
-    // filterFoodType은 배열임 -> 배열에 접근해서 값을 가지고 나오고, 거기서 평균내서 Return의 방식이 되는거겟지 ?
-    // filterFoodType 안에 reviews안에 또 배열잇음.
-    
     
     var heartImage: String {
         isFavorited ? "heart.fill" : "heart"
@@ -48,7 +38,7 @@ struct RestaurantCardView: View {
                         VStack {
                             ZStack {
                                 AsyncImage(url: URL(string: "https://www.jungle.co.kr/image/90e4ffc149968a50c80cac37"))
-                                    .frame(width: 300, height: 200)
+                                    .frame(width: 360, height: 200)
                                     .cornerRadius(10)
                                 
                                 Image(systemName: heartImage)
@@ -86,8 +76,9 @@ struct RestaurantCardView: View {
     }
 }
 
-struct RestaurantCardView_Previews: PreviewProvider {
+
+struct AfterSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantCardView(restaurantsStore: RestaurantViewModel(), data: .constant(.korean))
+        AfterSearchView(restaurantsStore: RestaurantViewModel(), data: .constant(.korean))
     }
 }
