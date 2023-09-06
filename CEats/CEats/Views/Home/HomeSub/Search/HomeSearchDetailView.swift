@@ -59,7 +59,7 @@ struct HomeSearchDetailView: View {
             }
         }
         .onTapGesture {
-            hideKeyboard() 
+            hideKeyboard() //추가
         }
         .sheet(isPresented: $isSubmit) {
             AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
