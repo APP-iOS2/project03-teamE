@@ -20,9 +20,9 @@ struct FoodStoreListView: View {
             // 좌우 스크롤에 맞춘 가게들 나오는 상하 스크롤
             // 근데 지금 안됨 왜 ?
             ScrollView(.vertical, showsIndicators: false) {
-                RestaurantCardView(restaurantsStore: restaurantsStore, data: $selectedFoodType)
+                RestaurantCardView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
             }
-            .navigationTitle("값 넘겨받을 것")
+            .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem {
