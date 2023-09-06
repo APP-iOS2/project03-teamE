@@ -29,7 +29,6 @@ struct MapSearchView: View {
                     performSearch()
                 })
                     .foregroundColor(.black)
-                
                 Spacer()
             }
             .padding(.top, 30)

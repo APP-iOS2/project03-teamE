@@ -10,18 +10,13 @@ import SwiftUI
 struct AddCartView: View {
     let food: Food
     
+    @Environment(\.dismiss) private var dismiss
     @State private var numberOfFoods: Int = 1
     //
     var body: some View {
         VStack {
-            GeometryReader { geometry in
-                Image("\(food.image)")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geometry.size.width, height: 300)
-            }
-            .frame(height: 300)
-            .ignoresSafeArea()
+            Image(food.image ?? "")
+                .frame(width: .screenWidth, height: 300)
             
             HStack {
                 VStack(alignment: .leading) {
@@ -35,6 +30,7 @@ struct AddCartView: View {
                 
                 Spacer()
             }
+            .padding(.top, 40)
             .padding(.horizontal, 30)
             .padding(.bottom, 30)
             
@@ -94,7 +90,7 @@ struct AddCartView: View {
             Spacer()
             
             Button {
-                print("담아")
+                dismiss()
             } label: {
                 Text("배달 카트에 담기")
                     .font(.title3)

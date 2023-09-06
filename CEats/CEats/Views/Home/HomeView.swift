@@ -53,10 +53,10 @@ struct HomeView: View {
                                         .offset(x: -30)
                                 }
 
-                        } //검색뷰
-                            .padding(.bottom, 20)
+                        }
+                        .padding(.bottom, 20)
                     }
-                    LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..
+                    LazyVGrid(columns: layout, alignment: .center) {
                         ForEach(FoodType.allCases, id: \.self) { content in
                             NavigationLink {
                                 FoodStoreListView(restaurantsStore: restaurantViewModel, selectedFoodType: content)
@@ -91,11 +91,11 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 20) {
-                            ForEach(0..<5, id: \.self) { content in
+                            ForEach(restaurantViewModel.restaurants) { restaurant in
                                 NavigationLink {
-                                    RTRView(restaurant: .sampleData)
+                                    RTRView(restaurant: restaurant)
                                 } label: {
-                                    RecommendRestaurantView()
+                                    RecommendRestaurantView(restaurant: restaurant)
                                 }
                             }
                         }
