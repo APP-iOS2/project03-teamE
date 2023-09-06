@@ -31,20 +31,35 @@ struct RestaurantCardView: View {
                                 .frame(width: .screenWidth * 0.92, height: .screenHeight * 0.23)
                                 .cornerRadius(10)
                             
-                            Image(systemName: heartImage)
-                                .font(.system(size:20))
-                                .background(
-                                    Circle()
-                                        .foregroundColor(.white)
-                                        .frame(width: 30,height: 30)
-                                        .opacity(0.6)
-                                )
-                                .foregroundColor(.red)
-                                .font(.title)
-                                .offset(x: .screenWidth/2.6, y: -(.screenHeight/13))
-                                .onTapGesture {
+                            Button {
+                                if isFavorited {
+                                    restaurantsStore.user.favoriteRestaurant.append(store)
+                                    print(restaurantsStore.user.favoriteRestaurant)
+                                    isFavorited.toggle()
+                                } else {
+//                                    restaurantsStore.user.favoriteRestaurant.remove(atOffsets: store)
                                     isFavorited.toggle()
                                 }
+                                restaurantsStore.user.favoriteRestaurant.append(store)
+                            } label: {
+                                Image(systemName: heartImage)
+                                    .font(.system(size:20))
+                                    .background(
+                                        Circle()
+                                            .foregroundColor(.white)
+                                            .frame(width: 30,height: 30)
+                                            .opacity(0.6)
+                                    )
+                                    .foregroundColor(.red)
+                                    .font(.title)
+                                    .offset(x: .screenWidth/2.6, y: -(.screenHeight/13))
+                                    .onTapGesture {
+                                        isFavorited.toggle()
+                                    }
+                            }
+                            .buttonStyle(.plain)
+
+                            
                         }
                         
                         VStack{

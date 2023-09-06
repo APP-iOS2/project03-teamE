@@ -13,7 +13,7 @@ struct User: Identifiable {
     var email: String
     var phoneNumber: String
 //    var homeAddress: location이랑 똑같은 타입일거같음
-    var favoriteRestaurant: [Restaurant]
-    var orderHistory : [Order] //
+    var favoriteRestaurant: [Restaurant] // 즐겨찾기
+    var orderHistory: [Order] //
     var foodCart: [Food] //장바구니
 }
