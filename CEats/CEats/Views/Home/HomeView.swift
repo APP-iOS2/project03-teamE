@@ -105,12 +105,13 @@ struct HomeView: View {
                 }
                 .padding(.bottom, 20)
             }
+            .padding(.init(top: 1, leading: 1, bottom: 1, trailing: 1))
             .scrollIndicators(.hidden)
         }
         .fullScreenCover(isPresented: $isOpenMapSheet, content: {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         })
-        .padding(.init(top: 1, leading: 1, bottom: 1, trailing: 1))
+
     }
     
 }

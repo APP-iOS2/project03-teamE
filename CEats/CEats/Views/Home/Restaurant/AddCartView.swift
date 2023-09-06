@@ -11,7 +11,7 @@ struct AddCartView: View {
     let food: Food
     
     @State private var numberOfFoods: Int = 1
-    
+    //
     var body: some View {
         VStack {
             GeometryReader { geometry in

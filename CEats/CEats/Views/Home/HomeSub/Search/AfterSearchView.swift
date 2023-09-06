@@ -53,7 +53,7 @@ struct AfterSearchView: View {
                                     .bold()
                                     .padding(.bottom,0.1)
                                 Spacer()
-                                Text("35~45 분") //배달시간 프로퍼티가 업서요~ 필요할거 같아요
+                                Text("35~45 분") //배달시간 프로퍼티가 업서요~ 필요할거 같아요 이게 오더에 있어요.
                                     .foregroundColor(.gray)
                                     .font(.subheadline)
                             }
