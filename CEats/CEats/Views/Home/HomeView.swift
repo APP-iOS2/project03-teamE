@@ -9,7 +9,7 @@ import SwiftUI
 //frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
 //.
 struct HomeView: View {
-    @StateObject var restaurantViewModel = RestaurantViewModel()
+    @ObservedObject var restaurantViewModel: RestaurantViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var isOpenMapSheet: Bool = false
@@ -39,17 +39,22 @@ struct HomeView: View {
                         .padding(.bottom,20)
                     LazyVGrid(columns: layout, alignment: .center) { //각각을 네비게이션 링크로 만들어야함..
                         ForEach(FoodType.allCases, id: \.self) { content in
-                            VStack{
-                                Spacer()
-                                Image("\(content)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 30)
-                                    .padding(.bottom,10)
-                                    .offset(y:3)
-                                Spacer()
-                                Text(content.rawValue)
-                                    .font(.footnote)
+                            NavigationLink {
+                                FoodStoreListView(restaurantsStore: restaurantViewModel, selectedFoodType: content)
+                            } label: {
+                                VStack{
+                                    Spacer()
+                                    Image("\(content)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 50, height: 30)
+                                        .padding(.bottom,10)
+                                        .offset(y:3)
+                                    Spacer()
+                                    Text(content.rawValue)
+                                        .font(.footnote)
+                                        .foregroundColor(.black)
+                                }
                             }
                         }
                     }
@@ -88,6 +93,6 @@ struct HomeView: View {
 }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(restaurantViewModel: RestaurantViewModel())
     }
 }

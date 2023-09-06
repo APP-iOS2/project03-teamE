@@ -9,15 +9,18 @@ import SwiftUI
 
 struct FoodStoreListView: View {
     // MARK: - properties
-    @ObservedObject var restaurantsStore: RestaurantViewModel = RestaurantViewModel()
-//    @State var data: FoodType
+    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @State var selectedFoodType: FoodType?
     
     //MARK: - View
     var body: some View {
         NavigationStack {
-            FoodStoreListDetailView(restaurantsStore: restaurantsStore, data: $restaurantsStore.data)
+            // 좌우 스크롤
+            FoodStoreListDetailView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
+            // 좌우 스크롤에 맞춘 가게들 나오는 상하 스크롤
+            // 근데 지금 안됨 왜 ?
             ScrollView(.vertical, showsIndicators: false) {
-                RestaurantCardView(restaurantsStore: restaurantsStore, data: $restaurantsStore.data)
+                RestaurantCardView(restaurantsStore: restaurantsStore, data: $selectedFoodType)
             }
             .navigationTitle("값 넘겨받을 것")
             .navigationBarTitleDisplayMode(.inline)
@@ -37,6 +40,6 @@ struct FoodStoreListView: View {
 
 struct FoodStoreListView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListView()
+        FoodStoreListView(restaurantsStore: RestaurantViewModel(), selectedFoodType: .korean)
     }
 }
