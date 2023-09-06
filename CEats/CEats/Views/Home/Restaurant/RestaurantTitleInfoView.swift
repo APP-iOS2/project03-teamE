@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct RestaurantTitleInfoView: View {
-    @State private var sampleTitle = "대한냉면"
-    @State private var sampleGrade = 4.9
-    @State private var sampleReviewCount = 60
     @Binding var restaurant: Restaurant
     
     var body: some View {
         VStack {
             Text(restaurant.name)
-                .font(.system(size: 36, weight: .medium))
+                .font(.system(size: 25, weight: .medium))
             NavigationLink {
                 ReviewInfoView()
             } label: {
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
-                        .padding(0)
-                    Text("\(restaurant.scoreMessage) \(restaurant.reviews.count)")
+                    Text("\(restaurant.scoreMessage)")
+                    Text("\(restaurant.reviews.count)")
+                        .padding(.leading,10)
                     Image(systemName: "chevron.forward")
                 }
-                .foregroundColor(.primary)
+                .font(.footnote)
+                
             }
         }
+        .foregroundColor(.primary)
     }
 }
 

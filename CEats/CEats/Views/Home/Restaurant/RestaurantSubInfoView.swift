@@ -8,46 +8,35 @@
 import SwiftUI
 
 struct RestaurantSubInfoView: View {
+    @Binding var restaurant: Restaurant
+    
     var body: some View {
         VStack {
-//            HStack {
-//                Button("배달") {
-//                    
-//                }
-//                Button("포장") {
-//                    
-//                }
-//            }
             HStack {
                 Image(systemName: "clock")
-                Button("배달") {
-                    
-                }
-                Button("포장") {
-                }
-            }
-            HStack {
-                Text("도착까지 약 19~29분")
-                    .font(.system(size: 18, weight: .bold))
+                Text("19~29분")
+                    .font(.system(size: 15, weight: .bold))
                 Spacer()
                 NavigationLink {
-                    //가게 정보
+                    RestaurantDetailInfoView(restaurant: $restaurant)
                 } label: {
                     Text("매장•원산지정보")
                     Image(systemName: "chevron.forward")
                 }
+                .font(.footnote)
                 .foregroundColor(.primary)
             }
+            .padding(.bottom,20)
             HStack {
                 VStack(alignment: .leading) {
                     Text("배달비")
                         .padding(.vertical, 5)
                     Text("최소주문")
                 }
-                Spacer()
                 VStack(alignment: .leading) {
                     HStack {
                         Text("0~1,900원")
+                            .font(.footnote)
                         Button("자세히") {
                             
                         }
@@ -59,14 +48,16 @@ struct RestaurantSubInfoView: View {
                     }
                     Text("5,000원")
                 }
+                .padding(.leading,10)
                 Spacer()
             }
+            .font(.footnote)
         }
     }
 }
 
 struct RestaurantSubInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantSubInfoView()
+        RestaurantSubInfoView(restaurant: .constant(.sampleData))
     }
 }

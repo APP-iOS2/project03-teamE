@@ -12,12 +12,13 @@ struct ReviewMinimalView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "\(review.image ?? "photo")")
+            Image(review.image ?? "korean")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.trailing, 10)
             VStack(alignment: .leading) {
                 Text("\(review.contents)")
+                    .font(.system(size:15))
                 Spacer()
                 starRating(rating: review.score)
             }

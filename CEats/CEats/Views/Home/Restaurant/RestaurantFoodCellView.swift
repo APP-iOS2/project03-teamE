@@ -9,16 +9,16 @@ import SwiftUI
 
 struct RestaurantFoodCellView: View {
     @Binding var food: Food
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text("\(food.name)")
-                    .font(.system(size: 30, weight: .bold))
-                    .padding(.vertical, 5)
+                    .font(.system(size: 20, weight: .bold))
                 Text("\(food.priceToString)원")
-                    .font(.system(size: 30))
+                    .font(.system(size: 18))
                 Text("\(food.description)")
-                    .font(.system(size: 24))
+                    .font(.system(size: 15))
                     .foregroundColor(.gray)
                     .padding(.vertical, 5)
             }
@@ -26,6 +26,7 @@ struct RestaurantFoodCellView: View {
             Image(food.image ?? "")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 150)
         }
     }
 }
