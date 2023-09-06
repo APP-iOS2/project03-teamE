@@ -32,7 +32,7 @@ struct HomeView: View {
                             }
                         }
                         Spacer()
-                        Image(systemName: "bell")
+                        //Image(systemName: "bell")
                     }
                     .padding(20)
                     
@@ -110,7 +110,9 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $isOpenMapSheet, content: {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         })
+        .padding(.init(top: 1, leading: 1, bottom: 1, trailing: 1))
     }
+    
 }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
