@@ -96,7 +96,7 @@ struct MyView: View {
                     }
                 }
             }
-            .listStyle(.grouped)
+            .listStyle(.plain)
         }
     }
 }

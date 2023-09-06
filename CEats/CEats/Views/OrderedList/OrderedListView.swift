@@ -92,7 +92,7 @@ struct OrderedListView: View {
                         
                     }
                 }
-                .listStyle(.grouped)
+                .listStyle(.plain)
             }
         }
     }

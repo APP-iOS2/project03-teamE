@@ -17,3 +17,5 @@ struct User: Identifiable {
     var orderHistory : [Order] //
     var foodCart: [Food] //장바구니
 }
+
+
