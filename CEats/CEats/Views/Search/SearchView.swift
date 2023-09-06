@@ -29,9 +29,9 @@ struct SearchView: View {
                 }
             }
         }
-        .onTapGesture {
-            hideKeyboard() //추가
-        }
+//        .onTapGesture {
+//            hideKeyboard() //추가
+//        }
     }
 }
 
