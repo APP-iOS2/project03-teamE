@@ -5,51 +5,69 @@
 //  Created by gnksbm on 2023/09/04.
 //
 
+/*
+ 이름변경고민중
+ RestaurantTitleImageView -> RTRStickyImgView
+ RestaurantTitleInfoView -> RTRMainHeaderView
+ */
+
 import SwiftUI
 
 struct RestaurantView: View {
     @Binding var restaurant: Restaurant
     
+    @State private var selected = ""
     private let offsetY: CGFloat = .screenHeight / 12
     
     var body: some View {
-        ScrollView {
-            VStack {
-                RestaurantTitleImageView(imageNamss: $restaurant.mainImage)
-                    .frame(width: .screenWidth, height: .screenHeight / 4)
-                    .background(.clear)
+        ScrollViewReader { proxy in
+            ScrollView(showsIndicators: false) {
+                GeometryReader { geo in
+                    let offset = geo.frame(in: .global).minY
+                    RestaurantTitleImageView(imageNamss: $restaurant.mainImage)
+                        .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
+                        .background(.clear)
+                        .offset(y: offset > 0 ? -offset : 0)
+                }
+                .frame(width: .screenWidth, height: .screenHeight / 4)
                 RestaurantTitleInfoView(restaurant: $restaurant)
                     .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
-                    .background(.white)
+                    .background(.background)
                     .clipped()
-                    .shadow(radius: 5)
+                    .shadow(color: .secondary, radius: 5)
                     .padding(.top, -offsetY)
-                VStack {
-                    RestaurantSubInfoView(restaurant: $restaurant)
-                        .padding(.top, 30)
-                        .padding(.horizontal)
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach($restaurant.reviews, id: \.id) { $review in
-                                ReviewMinimalView(review: $review)
-                                    .padding()
-                                    .border(.quaternary, width: 1)
-                                    .cornerRadius(5)
-                                    .frame(height: .screenHeight / 10)
-                                    .padding(.trailing, 10)
-                            }
-                            .padding()
+                RestaurantSubInfoView(restaurant: $restaurant)
+                    .padding(.top, 30)
+                    .padding(.horizontal)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach($restaurant.reviews, id: \.id) { $review in
+                            ReviewMinimalView(review: $review)
+                                .padding()
+                                .border(.quaternary, width: 1)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke()
+                                )
+                                .frame(height: .screenHeight / 10)
+                                .padding(.trailing, 10)
                         }
+                        .padding()
+                        
                     }
-                    .scrollIndicators(.hidden)
-                    RestaurantFoodCategoryView(categories: $restaurant.foodCategory)
-                        .frame(width: .screenWidth)
-                    RestaurantFoodListView(restaurant: $restaurant)
                 }
-
+                RestaurantFoodCategoryView(categories: restaurant.foodCategory, selected: $selected)
+                    .frame(width: .screenWidth)
+                RestaurantFoodListView(restaurant: $restaurant)
+            }
+            .onChange(of: selected) { newValue in
+                print("onchangh: \(newValue)")
+                guard newValue != "" else { return }
+                withAnimation {
+                    proxy.scrollTo(selected, anchor: .center)
+                }
             }
         }
-        .ignoresSafeArea()
     }
 }
 

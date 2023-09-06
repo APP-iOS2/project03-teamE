@@ -29,7 +29,7 @@ struct RestaurantTitleInfoView: View {
                 
             }
         }
-        .foregroundColor(.black)
+        .foregroundColor(.primary)
     }
 }
 

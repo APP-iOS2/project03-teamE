@@ -25,6 +25,7 @@ struct RestaurantFoodListView: View {
                 }
             }
             .padding(.horizontal)
+            .id(category)
         }
     }
 }
