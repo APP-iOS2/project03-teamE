@@ -37,14 +37,14 @@ struct RTRSubInfoView: View {
                     HStack {
                         Text("0~1,900원")
                             .font(.footnote)
-                        Button("자세히") {
-                            
-                        }
-                        .foregroundColor(.primary)
+//                        Button("자세히") {
+//
+//                        }
+//                        .foregroundColor(.primary)
                         .padding(.vertical, 5)
-                        .padding(.horizontal, 10)
-                        .background(.quaternary)
-                        .cornerRadius(.greatestFiniteMagnitude)
+//                        .padding(.horizontal, 10)
+//                        .background(.quaternary)
+//                        .cornerRadius(.greatestFiniteMagnitude)
                     }
                     Text("5,000원")
                 }

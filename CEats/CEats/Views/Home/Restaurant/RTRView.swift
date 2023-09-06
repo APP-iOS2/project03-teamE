@@ -40,7 +40,7 @@ struct RTRView: View {
                     .padding(.top, 30)
                     .padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
+                    LazyHStack {
                         ForEach(restaurant.reviews, id: \.id) { review in
                             ReviewMinimalView(review: review)
                                 .padding()
@@ -51,9 +51,8 @@ struct RTRView: View {
                                 .frame(height: .screenHeight / 10)
                                 .padding(.trailing, 10)
                         }
-                        .padding()
-                        
                     }
+                    .padding()
                 }
                 RTRFoodCategoryView(categories: restaurant.foodCategory, selected: $selected)
                     .frame(width: .screenWidth)
