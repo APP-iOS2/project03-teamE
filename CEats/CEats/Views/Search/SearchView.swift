@@ -35,6 +35,16 @@ struct SearchView: View {
                     SearchViewImage()
                 }
             }
+            Spacer()
+            ScrollView {
+                SearchViewImage()
+            }
+        }
+        .onTapGesture {
+            hideKeyboard()
+        }
+    }
+}
             .background(
             NavigationLink(destination: ResentSearchView(restaurantViewModel: RestaurantViewModel())) {
                      EmptyView()
