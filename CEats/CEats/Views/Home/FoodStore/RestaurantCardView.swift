@@ -13,17 +13,6 @@ struct RestaurantCardView: View {
     @ObservedObject var restaurantsStore: RestaurantViewModel
     @Binding var selectedFoodType: FoodType?
     
-//    var filterFoodType: [Restaurant] {
-//        restaurantsStore.restaurants.filter { store in
-//            guard let selectedFoodType else { return true }
-//            return store.foodType.contains(selectedFoodType)
-//        }
-//    }
-    // filter된 배열에서 score를 가져다가 평균을 낸 값
-    // filterFoodType은 배열임 -> 배열에 접근해서 값을 가지고 나오고, 거기서 평균내서 Return의 방식이 되는거겟지 ?
-    // filterFoodType 안에 reviews안에 또 배열잇음.
-    
-    
     var heartImage: String {
         isFavorited ? "heart.fill" : "heart"
     }
@@ -32,7 +21,7 @@ struct RestaurantCardView: View {
     var body: some View {
         NavigationStack {
             // FoodType으로 먼저 분류 -> 분류된 목록에서 ForEach로 반복
-            ForEach(restaurantsStore.filterFoodType) { store in
+            ForEach(restaurantsStore.filterFoodTypes(selectedFoodType)) { store in
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 380, height: 300)

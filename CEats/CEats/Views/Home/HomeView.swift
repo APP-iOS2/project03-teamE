@@ -11,9 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var restaurantViewModel: RestaurantViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     @State private var isOpenMapSheet: Bool = false
-    
     private let layout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
     
     var body: some View {

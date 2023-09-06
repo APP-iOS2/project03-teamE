@@ -15,10 +15,7 @@ struct FoodStoreListView: View {
     //MARK: - View
     var body: some View {
         NavigationStack {
-            // 좌우 스크롤
             FoodStoreListDetailView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
-            // 좌우 스크롤에 맞춘 가게들 나오는 상하 스크롤
-            // 근데 지금 안됨 왜 ?
             ScrollView(.vertical, showsIndicators: false) {
                 RestaurantCardView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
             }

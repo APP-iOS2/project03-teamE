@@ -16,10 +16,13 @@ final class RestaurantViewModel: ObservableObject {
     ]
     @Published var selectedFoodType: FoodType? = nil
     
-    var filterFoodType: [Restaurant] {
-        restaurants.filter { store in
-            guard let selectedFoodType else { return true }
-            return store.foodType.contains(selectedFoodType)
+    func filterFoodTypes(_ data: FoodType?) -> [Restaurant] {
+        return restaurants.filter { store in
+            if let data = data {
+                return store.foodType.contains(data)
+            } else {
+                return true
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ struct FoodStoreListDetailView: View {
     @Binding var selectedFoodType: FoodType?
     @State private var isClickedCategory: Bool = false
     
-    //MARK: - View
+    // MARK: - View
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 20) {
@@ -21,7 +21,6 @@ struct FoodStoreListDetailView: View {
                     Button {
                         selectedFoodType = food
                         isClickedCategory.toggle()
-                        print("\(selectedFoodType)")
                     } label: {
                         VStack {
                             Image("\(food)")
@@ -35,8 +34,8 @@ struct FoodStoreListDetailView: View {
                                         .foregroundColor(selectedFoodType == food ? .blue : .clear)
                                 )
                             Text("\(food.rawValue)")
-                                .font(.system(size: 14, weight: selectedFoodType == food ? .bold : .thin))
-                                .foregroundColor(.black)
+                                .font(.system(size: 16, weight: selectedFoodType == food ? .bold : .thin))
+                                .foregroundColor(selectedFoodType == food ? .blue : .black)
                             
                         }
                     }
@@ -48,7 +47,7 @@ struct FoodStoreListDetailView: View {
                     }
                 }
             }
-            .frame(height: 125)
+            .frame(height: 120)
             .padding()
         }
     }
