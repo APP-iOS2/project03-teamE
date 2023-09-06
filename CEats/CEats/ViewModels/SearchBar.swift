@@ -14,15 +14,15 @@ struct SearchBarView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .frame(width: 340,height: 45) //뷰 바운드로 수정
+                .frame(width: 300,height: 45) //뷰 바운드로 수정
                 .foregroundColor(.white)
                 .cornerRadius(30)
                 .shadow(radius: 5)
             ZStack{
                 HStack{
-                    TextField(" 고객님, 이거 어때요?", text: $text)
+                    TextField("고객님, 이거 어때요?", text: $text)
+                        .multilineTextAlignment(.center)
                         .foregroundColor(.primary)
-                    
                     if !text.isEmpty {
                         Button(action: {
                             self.text = ""
@@ -32,6 +32,8 @@ struct SearchBarView: View {
                     } else {
                         EmptyView()
                     }
+                    Spacer()
+                    Image(systemName: "magnifyingglass")
                 }
             }
             .padding()

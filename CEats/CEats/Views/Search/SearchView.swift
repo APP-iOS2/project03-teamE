@@ -12,32 +12,25 @@ struct SearchView: View {
     @ObservedObject var restaurantViewModel: RestaurantViewModel
     @State private var searchTerm = ""
     
-    //    init() {
-    //        if let savedSearchTerm = UserDefaults.standard.string(forKey: "searchTerm") {
-    //            searchTerm = savedSearchTerm
-    //        }
-    //    }
-    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack {
                 HStack {
                     Spacer()
-                    SearchBarView(text: $searchTerm)
-                    Image(systemName: "magnifyingglass")
-                    Spacer()
+                    NavigationLink {
+//                        ResentSearchView()
+                        HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+                    } label: {
+                        SearchBarView(text: $searchTerm)
+                    }
                 }
-                .onChange(of: searchTerm) { newValue in
-                    UserDefaults.standard.set(newValue, forKey: "searchTerm")
-                }
-                Spacer()
                 ScrollView {
                     SearchViewImage()
                 }
             }
-            .onTapGesture {
-                hideKeyboard()
-            }
+        }
+        .onTapGesture {
+            hideKeyboard() //추가
         }
     }
 }
