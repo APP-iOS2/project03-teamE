@@ -25,6 +25,9 @@ struct SearchView: View {
                 SearchViewImage()
             }
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 

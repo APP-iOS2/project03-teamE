@@ -16,7 +16,6 @@ struct HomeSearchDetailView: View {
     var array: Set<String> {
         Set(restaurantViewModel.collectAllFoodNames())
     }
-     //요거는 이제 레스토랑 안에 있는 배열이 되어야겠지,,
     var body: some View {
         NavigationStack{
             VStack{
@@ -58,6 +57,9 @@ struct HomeSearchDetailView: View {
                 
                 .listStyle(PlainListStyle())
             }
+        }
+        .onTapGesture {
+            hideKeyboard() 
         }
         .sheet(isPresented: $isSubmit) {
             AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
