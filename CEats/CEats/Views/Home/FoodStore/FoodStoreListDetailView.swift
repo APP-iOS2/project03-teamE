@@ -27,7 +27,7 @@ struct FoodStoreListDetailView: View {
                                 Image("\(food)")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 80, height: 80)
+                                    .frame(width: 65, height: 80)
                                     .clipShape(Circle())
                                     .background(
                                         Circle()
@@ -35,7 +35,7 @@ struct FoodStoreListDetailView: View {
                                             .foregroundColor(selectedFoodType == food ? .blue : .clear)
                                     )
                                 Text("\(food.rawValue)")
-                                    .font(.system(size: 16, weight: selectedFoodType == food ? .bold : .thin))
+                                    .font(.system(size: 16, weight: selectedFoodType == food ? .bold : .regular))
                                     .foregroundColor(selectedFoodType == food ? .blue : .black)
                                 
                             }

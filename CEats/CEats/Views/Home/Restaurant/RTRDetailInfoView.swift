@@ -26,29 +26,30 @@ struct RTRDetailInfoView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(restaurant.name)
-                            .font(.system(size: 26, weight: .bold))
+                            .font(.system(size: 23, weight: .bold))
                         Text(place)
-                            .font(.system(size: 20))
+                            .font(.system(size: 18))
                     }
                     Spacer()
                     Button("주소복사") {
                         
                     }
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 15, weight: .bold))
                 }
                 .padding(.bottom)
                 HStack {
                     Text("전화번호:")
+                        .font(.system(size: 18, weight: .bold))
                     RTRDetailInfoMenuView(phoneNumber: restaurant.restaurantInfo.phoneNumber)
                 }
                 Text("상호명: \(restaurant.restaurantInfo.name)")
                     .padding(.bottom)
                 Text("영업시간")
-                    .font(.system(size: 26, weight: .bold))
+                    .font(.system(size: 18, weight: .bold))
                 Text(restaurant.restaurantInfo.timeTable)
                     .padding(.bottom)
                 Text("매장소개")
-                    .font(.system(size: 26, weight: .bold))
+                    .font(.system(size: 18, weight: .bold))
                 Text(restaurant.restaurantInfo.introduce)
                     .padding(.bottom)
                 

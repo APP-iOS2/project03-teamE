@@ -14,9 +14,9 @@ struct RTRFoodCellView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text("\(food.name)")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 18, weight: .bold))
                 Text("\(food.priceToString)원")
-                    .font(.system(size: 18))
+                    .font(.system(size: 16))
                 Text("\(food.description)")
                     .font(.system(size: 15))
                     .foregroundColor(.gray)
