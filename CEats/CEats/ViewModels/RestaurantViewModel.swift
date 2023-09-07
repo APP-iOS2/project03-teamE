@@ -43,21 +43,4 @@ final class RestaurantViewModel: ObservableObject {
         
         return foodNames
     }
-    
-//    func removeRestaurant(restaurant: Restaurant) {
-//        guard let index = user.favoriteRestaurant.firstIndex(where: { $0.id == restaurant.id }) else { return }
-//        user.favoriteRestaurant.remove(at: index)
-//    }
-    
-//    func removeRTR(store: Restaurant) {
-//        var index: Int = 0
-//
-//        for tempStore in user.favoriteRestaurant {
-//            if tempStore.id == store.id {
-//                user.favoriteRestaurant.remove(at: index)
-//                break
-//            }
-//            index += 1
-//        }
-//    }
 }
