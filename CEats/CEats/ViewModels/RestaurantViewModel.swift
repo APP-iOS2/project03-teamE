@@ -44,7 +44,7 @@ final class RestaurantViewModel: ObservableObject {
          
      ]
     
-    @Published var user: User = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [], foodCart: [], latitude: 0, longitude: 0)
+    @Published var user: User = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [], foodCart: [Food(name: "짜장면", price: 8000, isRecommend: false, foodCategory: "짜장면", description: "맛있는 짜장면"), Food(name: "짬뽕", price: 8000, isRecommend: false, foodCategory: "짜장면", description: "맛있는 짬뽕"), Food(name: "탕수육", price: 8000, isRecommend: false, foodCategory: "탕수육", description: "맛있는 탕수육")], latitude: 0, longitude: 0)
     
     @Published var selectedFoodType: FoodType? = nil
     
