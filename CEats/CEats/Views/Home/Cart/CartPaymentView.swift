@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct CartPaymentView: View {
+    var user: User = User.sampleData
+    @State var ispayMoneyMethod: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Button {
+                
+            } label: {
+                Image(systemName: ispayMoneyMethod ? "circle" : "circle.fill")
+                Text("CEats 머니 (보유: \(user.cEatsMoney)원)")
+                    .font(.system(size: 15))
+            }
+        }
+        Spacer()
     }
 }
 
