@@ -242,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */,
-				D18E9B452AA5AF64009231E4 /* SearchBar.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -271,6 +270,7 @@
 				D18E9B382AA5A44A009231E4 /* SearchView.swift */,
 				D14F18472AA802E6008665F4 /* SearchViewImage.swift */,
 				D16DDBBA2AA84E750009C29F /* ResentSearchView.swift */,
+				D18E9B452AA5AF64009231E4 /* SearchBar.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
