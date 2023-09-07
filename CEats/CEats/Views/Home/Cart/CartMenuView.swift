@@ -9,7 +9,8 @@ import SwiftUI
 
 // 장바구니: 사용자1 -> 가게1(음식1, 음식2)
 struct CartMenuView: View {
-    @ObservedObject var cartStore: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var cartStore: RestaurantViewModel
     @State private var count = 1
     var colorSet: UIColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     
@@ -19,7 +20,7 @@ struct CartMenuView: View {
                 Text("홍콩반점 서울시청점")
                     .font(.title3)
                     .bold()
-                ForEach(cartStore.user.foodCart, id: \.name) { cart in
+                ForEach(userViewModel.user.foodCart?.foodCart ?? [], id: \.name) { cart in
                     VStack {
                         Divider()
                         HStack {
@@ -84,7 +85,7 @@ struct CartMenuView: View {
                 }
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(cartStore.user.foodCart, id: \.name) { cart in
+                        ForEach(userViewModel.user.foodCart?.foodCart ?? [], id: \.name) { cart in
                             
                             Button {
                                 
@@ -118,6 +119,8 @@ struct CartMenuView: View {
 
 struct CartMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        CartMenuView(cartStore: RestaurantViewModel())
+        CartMenuView()
+            .environmentObject(RestaurantViewModel())
+            .environmentObject(UserViewModel())
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartPayView: View {
-     var food: Food = Food.sampleData
+    var food: Restaurant.Food = .sampleData
     var restaurant: Restaurant = Restaurant.sampleData
     
     @State var isappeal: Bool = false
