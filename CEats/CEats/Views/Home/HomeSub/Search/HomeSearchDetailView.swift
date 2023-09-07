@@ -14,6 +14,7 @@ struct HomeSearchDetailView: View {
     @FocusState private var isFocused: Bool
     @State var searchText: String = ""
     @State var isSubmit: Bool = false
+    @StateObject private var keyboardHandler = KeyboardHandler()
     var array: Set<String> {
         Set(restaurantViewModel.collectAllFoodNames())
     }
@@ -34,7 +35,11 @@ struct HomeSearchDetailView: View {
                                 .focused($isFocused)
                                 .onSubmit{
                                     isSubmit.toggle()
+                                    
                             }
+                                .onAppear {
+                                    isFocused = true
+                                }
                             if !searchText.isEmpty {
                                 Button(action: {
                                     self.searchText = ""

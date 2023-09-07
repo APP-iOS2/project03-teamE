@@ -38,6 +38,7 @@
 		BED6DADD2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */; };
 		C99358EF2AA8BA9F00D631B8 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */; };
 		D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14F18472AA802E6008665F4 /* SearchViewImage.swift */; };
+		D166C8902AA96D4800BEE09B /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */; };
 		D16DDBBB2AA84E750009C29F /* ResentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBBA2AA84E750009C29F /* ResentSearchView.swift */; };
 		D16DDBBE2AA85EF40009C29F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D16DDBBD2AA85EF40009C29F /* FirebaseAuth */; };
 		D16DDBC02AA85EF40009C29F /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D16DDBBF2AA85EF40009C29F /* FirebaseAuthCombine-Community */; };
@@ -102,6 +103,7 @@
 		BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRDetailInfoMenuView.swift; sourceTree = "<group>"; };
 		C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		D14F18472AA802E6008665F4 /* SearchViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewImage.swift; sourceTree = "<group>"; };
+		D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		D16DDBBA2AA84E750009C29F /* ResentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResentSearchView.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */,
 				3C918EDF2AA6BD230043111A /* Color+.swift */,
 				121D947D2AA74008005177E0 /* Extension+View.swift */,
+				D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				121D947A2AA71AD2005177E0 /* PopularSearchesView.swift in Sources */,
 				D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */,
 				121FCCC92AA6C1F800A59B7D /* MapSearchView.swift in Sources */,
+				D166C8902AA96D4800BEE09B /* KeyBoardHandler.swift in Sources */,
 				D1DB3B562AA6B17300212573 /* HomeSearchView.swift in Sources */,
 				D1DB3B692AA6B1BE00212573 /* Extension+CGFloat.swift in Sources */,
 				121FCCD12AA6DBA700A59B7D /* MapGuide.swift in Sources */,
