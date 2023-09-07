@@ -21,3 +21,9 @@ struct User: Identifiable {
     var longitude: Double //경도
     
 }
+
+#if DEBUG
+extension User {
+    static let sampleData: Self = .init(id: UUID().uuidString, username: "Sample", email: "sample@sample.com", phoneNumber: "01010091004", userAddress: "서울특별시 어쩌구 무슨로 1004", favoriteRestaurant: [], orderHistory: [], foodCart: [], latitude: 37.566535, longitude: 126.9779692)
+}
+#endif
