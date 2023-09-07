@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeSearchView: View {
     @State var searchText: String = ""
     @State var isShowingSheet: Bool = false
-    @StateObject var restaurantViewModel: RestaurantViewModel
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -33,6 +33,6 @@ struct HomeSearchView: View {
 
 struct HomeSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeSearchView(restaurantViewModel: RestaurantViewModel())
+        HomeSearchView()
     }
 }

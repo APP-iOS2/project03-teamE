@@ -1,5 +1,5 @@
 //
-//  Food.swift
+//  FoodType.swift
 //  CEats
 //
 //  Created by 박범수 on 2023/09/04.
@@ -24,25 +24,3 @@ enum FoodType: String, CaseIterable, Identifiable {
    
    var id: String { self.rawValue }
 }
-
-struct Food {
-    var name: String //메뉴이름
-    var price: Int //메뉴 가격
-    var isRecommend: Bool //추천여부 추천이면 가게 클릭시 상단에 뜸
-    var foodCategory: String
-    var description: String // 메뉴설명
-    var image: String?
-    // var option: 추가옵션
-    var priceToString: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        guard let result = formatter.string(from: price as NSNumber) else { return "" }
-        return result
-    }
-}
-
-#if DEBUG
-extension Food {
-    static let sampleData = Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza")
-}
-#endif

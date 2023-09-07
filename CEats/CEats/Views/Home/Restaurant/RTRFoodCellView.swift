@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RTRFoodCellView: View {
-    let food: Food
+    let food: Restaurant.Food
     
     var body: some View {
         HStack {
@@ -33,6 +33,6 @@ struct RTRFoodCellView: View {
 
 struct RTRFoodCellView_Previews: PreviewProvider {
     static var previews: some View {
-        RTRFoodCellView(food: .sampleData)
+        RTRFoodCellView(food: .init(name: "", price: 0, isRecommend: false, foodCategory: "", description: ""))
     }
 }

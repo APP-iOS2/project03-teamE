@@ -10,7 +10,7 @@ import SwiftUI
 struct AfterSearchView: View {
     // MARK: - properties
     @State var isFavorited: Bool = false
-    @ObservedObject var restaurantsStore: RestaurantViewModel
+    @EnvironmentObject var restaurantsStore: RestaurantViewModel
     @State var data: String
     
     var heartImage: String {
@@ -84,6 +84,7 @@ struct AfterSearchView: View {
 
 struct AfterSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        AfterSearchView(restaurantsStore: RestaurantViewModel(), data: "김치찌개")
+        AfterSearchView(data: "김치찌개")
+            .environmentObject(RestaurantViewModel())
     }
 }

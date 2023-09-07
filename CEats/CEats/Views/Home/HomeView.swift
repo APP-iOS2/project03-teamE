@@ -9,7 +9,7 @@ import SwiftUI
 //frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
 //.
 struct HomeView: View {
-    @ObservedObject var restaurantViewModel: RestaurantViewModel
+    @EnvironmentObject var restaurantViewModel: RestaurantViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var searchText: String = ""
     
@@ -37,7 +37,7 @@ struct HomeView: View {
                     .padding(20)
                     
                     NavigationLink {
-                        HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+                        HomeSearchDetailView()
                     } label: {
                         ZStack{
                             Rectangle()
@@ -58,7 +58,7 @@ struct HomeView: View {
                     LazyVGrid(columns: layout, alignment: .center) {
                         ForEach(FoodType.allCases, id: \.self) { content in
                             NavigationLink {
-                                FoodStoreListView(restaurantsStore: restaurantViewModel, selectedFoodType: content)
+                                FoodStoreListView(selectedFoodType: content)
                             } label: {
                                 VStack{
                                     Spacer()
@@ -117,6 +117,7 @@ struct HomeView: View {
 }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(restaurantViewModel: RestaurantViewModel())
+        HomeView()
+            .environmentObject(RestaurantViewModel())
     }
 }

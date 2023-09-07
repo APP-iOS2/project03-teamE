@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SearchView: View {
 
-    @StateObject var restaurantViewModel: RestaurantViewModel
-
     @State private var searchTerm = ""
     
     var body: some View {
@@ -20,14 +18,14 @@ struct SearchView: View {
                     Spacer()
                     NavigationLink {
 //                        ResentSearchView()
-                        HomeSearchDetailView(restaurantViewModel: restaurantViewModel)
+                        HomeSearchDetailView()
                     } label: {
                         SearchBarView(text: $searchTerm)
                     }
                     .padding(.bottom,30)
                 }
                 ScrollView {
-                    SearchViewImage(restaurantViewModel: restaurantViewModel)
+                    SearchViewImage()
                 }
             }
         }
@@ -39,7 +37,7 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(restaurantViewModel: RestaurantViewModel())
+        SearchView()
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddCartView: View {
-    let food: Food
+    let food: Restaurant.Food
     
     @Environment(\.dismiss) private var dismiss
     @State private var numberOfFoods: Int = 1
@@ -107,6 +107,6 @@ struct AddCartView: View {
 
 struct AddCartView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCartView(food: Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"))
+        AddCartView(food: Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"))
     }
 }

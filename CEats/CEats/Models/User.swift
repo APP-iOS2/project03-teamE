@@ -15,15 +15,26 @@ struct User: Identifiable {
     var userAddress: String
     var favoriteRestaurant: [Restaurant] // 즐겨찾기
     var orderHistory: [Order] //
-    var foodCart: [Food] //장바구니
+    var foodCart: Cart? //장바구니
     var cEatsMoney: Int = 100000
     var latitude: Double//위도
     var longitude: Double //경도
     
+    struct Cart {
+        var restaurant: Restaurant
+        var restaurantName: String {
+            return restaurant.name
+        }
+        var foodCart: [Restaurant.Food]
+        var fee: Int {
+            let totalFoodFee = foodCart.map({ $0.price }).reduce(0) { $0 + $1 }
+            return totalFoodFee + restaurant.deliveryFee
+        }
+    }
 }
 
 #if DEBUG
 extension User {
-    static let sampleData: Self = .init(id: UUID().uuidString, username: "Sample", email: "sample@sample.com", phoneNumber: "01010091004", userAddress: "서울특별시 어쩌구 무슨로 1004", favoriteRestaurant: [], orderHistory: [], foodCart: [], latitude: 37.566535, longitude: 126.9779692)
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [], latitude: 0, longitude: 0)
 }
 #endif

@@ -10,7 +10,8 @@ import SwiftUI
 struct RestaurantCardView: View {
     // MARK: - properties
     @State var isFavorited: Bool = false
-    @StateObject var restaurantsStore: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var restaurantsStore: RestaurantViewModel
     @Binding var selectedFoodType: FoodType?
 
     
@@ -32,7 +33,7 @@ struct RestaurantCardView: View {
                                 
 //                                restaurantsStore.user.favoriteRestaurant.append(store)
                             } label: {
-                                Image(systemName: restaurantsStore.checkLike(restaurant: store) ? "heart.fill" : "heart")
+                                Image(systemName: userViewModel.checkLike(restaurant: store) ? "heart.fill" : "heart")
                                     .font(.system(size:20))
                                     .background(
                                         Circle()
@@ -46,12 +47,12 @@ struct RestaurantCardView: View {
                                     
                             }
                             .onTapGesture {
-                                if !restaurantsStore.checkLike(restaurant: store) {
-                                    restaurantsStore.user.favoriteRestaurant.append(store)
-                                    print(restaurantsStore.user.favoriteRestaurant)
+                                if !userViewModel.checkLike(restaurant: store) {
+                                    userViewModel.user.favoriteRestaurant.append(store)
+                                    print(userViewModel.user.favoriteRestaurant)
                                     isFavorited.toggle()
                                 } else {
-                                    restaurantsStore.removeRestaurant(restaurant: store)
+                                    userViewModel.removeRestaurant(restaurant: store)
                                     
                                     isFavorited.toggle()
                                 }
@@ -99,6 +100,7 @@ struct RestaurantCardView: View {
 
 struct RestaurantCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantCardView(restaurantsStore: RestaurantViewModel(), selectedFoodType: .constant(.korean))
+        RestaurantCardView(selectedFoodType: .constant(.korean))
+            .environmentObject(RestaurantViewModel())
     }
 }

@@ -244,11 +244,11 @@
 			children = (
 				BE5D6C632AA6E81500347A22 /* Food.swift */,
 				BE5D6C642AA6E81500347A22 /* Restaurant.swift */,
+				1283211D2AA70BAE00EAB4BD /* RestaurantInfo.swift */,
 				BE5D6C622AA6E81500347A22 /* Review.swift */,
 				D18E9B4D2AA5B380009231E4 /* User.swift */,
 				D166C8912AA98A7700BEE09B /* Seller.swift */,
 				D18E9B4F2AA5B3D3009231E4 /* Order.swift */,
-				1283211D2AA70BAE00EAB4BD /* RestaurantInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -651,7 +651,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = 6R3M7VGRP2;
+				DEVELOPMENT_TEAM = ASU4PNB5MG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
