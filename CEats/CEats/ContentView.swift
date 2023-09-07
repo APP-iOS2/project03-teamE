@@ -13,6 +13,11 @@ struct ContentView: View {
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()
     
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().backgroundImage = UIImage()
+    }
+    
     var body: some View {
         TabView(selection: $tabIndex) {
             

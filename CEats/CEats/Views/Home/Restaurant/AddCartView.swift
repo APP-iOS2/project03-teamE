@@ -34,60 +34,61 @@ struct AddCartView: View {
             .padding(.top, 20)
             .padding(.horizontal, 30)
             .padding(.bottom, 30)
-            
-            HStack {
-                Text("가격")
-                    .bold()
-                    .font(.title3)
+            ScrollView(.vertical) {
+                HStack {
+                    Text("가격")
+                        .bold()
+                        .font(.title3)
+                    
+                    Spacer()
+                    
+                    Text("\(food.price * numberOfFoods)")
+                }
+                .padding(.horizontal, 30)
+                .padding(.bottom, 20)
                 
-                Spacer()
                 
-                Text("\(food.price * numberOfFoods)")
-            }
-            .padding(.horizontal, 30)
-            .padding(.bottom, 20)
-            
-            HStack {
-                Text("수량")
-                    .bold()
-                    .font(.title3)
-                
-                Spacer()
-                
-                Button {
-                    if numberOfFoods > 1 {
-                        numberOfFoods -= 1
+                HStack {
+                    Text("수량")
+                        .bold()
+                        .font(.title3)
+                    
+                    Spacer()
+                    
+                    Button {
+                        if numberOfFoods > 1 {
+                            numberOfFoods -= 1
+                        }
+                    } label: {
+                        Circle()
+                            .stroke(numberOfFoods <= 1 ? Color.lightgray : Color.gray)
+                            .foregroundColor(.clear)
+                            .frame(width: 40, height: 40)
+                            .overlay(
+                                Text("-")
+                                    .foregroundColor(numberOfFoods <= 1 ? .lightgray : .gray)
+                            )
                     }
-                } label: {
-                    Circle()
-                        .stroke(numberOfFoods <= 1 ? Color.lightgray : Color.gray)
-                        .foregroundColor(.clear)
-                        .frame(width: 40, height: 40)
-                        .overlay(
-                            Text("-")
-                                .foregroundColor(numberOfFoods <= 1 ? .lightgray : .gray)
-                        )
+                    .disabled(numberOfFoods <= 1)
+                    
+                    Text("\(numberOfFoods)")
+                        .padding(.horizontal, 5)
+                    
+                    Button {
+                        numberOfFoods += 1
+                    } label: {
+                        Circle()
+                            .stroke(Color.gray)
+                            .foregroundColor(.clear)
+                            .frame(width: 40, height: 40)
+                            .overlay(
+                                Text("+")
+                                    .foregroundColor(.gray)
+                            )
+                    }
                 }
-                .disabled(numberOfFoods <= 1)
-
-                Text("\(numberOfFoods)")
-                    .padding(.horizontal, 5)
-                
-                Button {
-                    numberOfFoods += 1
-                } label: {
-                    Circle()
-                        .stroke(Color.gray)
-                        .foregroundColor(.clear)
-                        .frame(width: 40, height: 40)
-                        .overlay(
-                            Text("+")
-                                .foregroundColor(.gray)
-                        )
-                }
+                .padding(.horizontal, 30)
             }
-            .padding(.horizontal, 30)
-            
             Spacer()
             
             Button {

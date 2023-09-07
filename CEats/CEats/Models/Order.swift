@@ -25,7 +25,7 @@ struct Order: Identifiable {
 
 #if DEBUG
 extension Order {
-    static let sampleData: Self = .init(id: UUID().uuidString, orderer: .sampleData, restaurantName: .sampleData, orderedMenu: [], deliveryTime: 50, totalFee: 0)
+    static let sampleData: Self = .init(id: UUID().uuidString, orderer: .sampleData, restaurantName: .sampleData, orderedMenu: [Food(name: "핫후라이드", price: 10000, isRecommend: true, foodCategory: "치킨", description: "치킨"), Food(name: "치킨 뭐 다른 메뉴요", price: 11500, isRecommend: false, foodCategory: "치킨", description: "치킨")], deliveryTime: 50, totalFee: 0)
 }
 #endif
 

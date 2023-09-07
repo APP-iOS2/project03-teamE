@@ -14,6 +14,10 @@ struct FavoriteView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var isEdited: Bool = false
     @State private var isPicked: Bool = false
+    @State private var progress: CGFloat = 0.0
+    @State private var isAnimating = false
+    
+    
     private var isFavoriteEmpty: Bool {
         userViewModel.user.favoriteRestaurant.isEmpty
     }
@@ -40,15 +44,30 @@ struct FavoriteView: View {
                             .padding()
                         
                         Button {
-                            tabIndex = 0
+                            do { withAnimation(.easeOut(duration: 0.1)) {
+                                    self.isAnimating.toggle()
+                                    self.progress = self.isAnimating ? 1 : 0
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    // 버튼 누른 이벤트 발생
+                                    tabIndex = 0
+                                    self.isAnimating.toggle()
+                                    self.progress = 0
+                                }
+                            }
                         } label: {
-                            Text("쿠팡이츠 맛집 구경가기")
-                                .frame(width: 180, height: 50)
-                                .clipShape(Rectangle())
-                                .overlay(
-                                    Rectangle()
-                                        .stroke(Color.gray,lineWidth: 1)
-                                )
+                            ZStack(alignment: .leading) {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 2)
+                                    .frame(width: 180, height: 50)
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.gray)
+                                    .frame(width: 180 * progress, height: 50)
+                                    .animation(.linear(duration: 0.3), value: isAnimating)
+                                Text("쿠팡이츠 맛집 구경가기")
+                                    .foregroundColor(.black)
+                                    .frame(width: 180, height: 50)
+                            }
                         }
                     }
                 } else {
