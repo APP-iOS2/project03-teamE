@@ -58,6 +58,7 @@ struct ContentView: View {
         }
         .environmentObject(restaurantViewModel)
         .environmentObject(userViewModel)
+// MARK: 파이어 베이스 테스팅 코드 .toolbar, .onAppear
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("추가후 네트워킹") {
