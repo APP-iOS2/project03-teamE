@@ -8,13 +8,39 @@
 import SwiftUI
 
 struct CartView: View {
+    @Binding var order: Order
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("(으)로 배달")
+                    Text("\(order.orderer.userAddress)")
+                }
+                Spacer()
+                NavigationLink {
+                    
+                } label: {
+                    Text("수정")
+                }
+            }
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("배달 방법")
+                        .font(.system(size: 28, weight: .bold))
+                    Spacer()
+                }
+                .padding()
+            }
+        }
+        .padding()
     }
 }
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView()
+        NavigationStack {
+            CartView(order: .constant(.sampleData))
+        }
     }
 }
