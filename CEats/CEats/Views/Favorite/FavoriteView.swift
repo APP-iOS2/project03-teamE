@@ -13,7 +13,6 @@ struct FavoriteView: View {
     @EnvironmentObject var favoriteStore: RestaurantViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @State private var isEdited: Bool = false
-    @State private var isPicked: Bool = false
     @State private var progress: CGFloat = 0.0
     @State private var isAnimating = false
     
@@ -105,12 +104,7 @@ struct FavoriteView: View {
                                                     Spacer()
                                                     if isEdited {
                                                         Button {
-                                                            //                                                print("btn Tap favorite")
-                                                            if !isPicked {
-                                                                isPicked.toggle()
-                                                                userViewModel.removeRestaurant(restaurant: store)
-                                                            }
-                                                            isPicked.toggle()
+                                                            userViewModel.likeButtonTapped(restaurant: store)
                                                         } label: {
                                                             Text("삭제")
                                                                 .font(.system(size: 12))
