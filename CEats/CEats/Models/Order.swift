@@ -14,4 +14,7 @@ struct Order: Identifiable {
     var orderedMenu: [Food]
     var deliveryTime: Int
     var totalFee: Int
+    var rtrRequest: String?
+    var deliveryRequest: String?
+    var orderAccepted: Bool
 }

@@ -7,7 +7,13 @@
 
 import Combine
 import SwiftUI
+// 키보드가 올라갈때 뷰도 같이올라가 가리지 않는 함수
 
+//@StateObject private var keyboardHandler = KeyboardHandler() //struct view 내 변수로 선언
+//
+//ScrollView(.vertical){
+//}
+//.padding(.bottom, keyboardHandler.keyboardHeight)
 final class KeyboardHandler: ObservableObject {
     @Published private(set) var keyboardHeight: CGFloat = 0
     

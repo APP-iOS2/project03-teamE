@@ -14,7 +14,6 @@ struct HomeSearchDetailView: View {
     @FocusState private var isFocused: Bool
     @State var searchText: String = ""
     @State var isSubmit: Bool = false
-    @StateObject private var keyboardHandler = KeyboardHandler()
     var array: Set<String> {
         Set(restaurantViewModel.collectAllFoodNames())
     }
@@ -26,7 +25,7 @@ struct HomeSearchDetailView: View {
                         .frame(width: 350,height: 45) //뷰 바운드로 수정
                         .foregroundColor(.white)
                         .cornerRadius(30)
-                        .shadow(radius: 3)
+                        .shadow(radius: 2)
                     ZStack{
                         HStack{
                             Image(systemName: "magnifyingglass")
