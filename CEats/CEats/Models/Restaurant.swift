@@ -13,7 +13,7 @@ struct Restaurant: Identifiable {
     var restaurantInfo: RestaurantInfo
     var name: String //음식점 이름
     var reviews: [Review]
-    var deliveryFee : Int
+    var deliveryFee : Int // 배달비
     var minimumPrice: Int
     var menus: [Food]
     var mainImage: [String] //가게 메인 이미지

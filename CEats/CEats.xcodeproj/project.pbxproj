@@ -45,6 +45,8 @@
 		D166C8992AA98B7500BEE09B /* RealTimeOrderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8982AA98B7500BEE09B /* RealTimeOrderInfoView.swift */; };
 		D166C89B2AA99B2900BEE09B /* CartDeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C89A2AA99B2900BEE09B /* CartDeliveryView.swift */; };
 		D166C89D2AA99B3500BEE09B /* CartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C89C2AA99B3500BEE09B /* CartMenuView.swift */; };
+		D166C8A12AA9BF4100BEE09B /* CartAppealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8A02AA9BF4100BEE09B /* CartAppealView.swift */; };
+		D166C8A32AA9BF9400BEE09B /* CartPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8A22AA9BF9400BEE09B /* CartPaymentView.swift */; };
 		D16DDBBB2AA84E750009C29F /* ResentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBBA2AA84E750009C29F /* ResentSearchView.swift */; };
 		D16DDBBE2AA85EF40009C29F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D16DDBBD2AA85EF40009C29F /* FirebaseAuth */; };
 		D16DDBC02AA85EF40009C29F /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D16DDBBF2AA85EF40009C29F /* FirebaseAuthCombine-Community */; };
@@ -116,6 +118,8 @@
 		D166C8982AA98B7500BEE09B /* RealTimeOrderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeOrderInfoView.swift; sourceTree = "<group>"; };
 		D166C89A2AA99B2900BEE09B /* CartDeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDeliveryView.swift; sourceTree = "<group>"; };
 		D166C89C2AA99B3500BEE09B /* CartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartMenuView.swift; sourceTree = "<group>"; };
+		D166C8A02AA9BF4100BEE09B /* CartAppealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartAppealView.swift; sourceTree = "<group>"; };
+		D166C8A22AA9BF9400BEE09B /* CartPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPaymentView.swift; sourceTree = "<group>"; };
 		D16DDBBA2AA84E750009C29F /* ResentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResentSearchView.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
@@ -190,9 +194,11 @@
 			isa = PBXGroup;
 			children = (
 				D166C8942AA98B0100BEE09B /* CartView.swift */,
+				D166C8962AA98B2C00BEE09B /* CartPayView.swift */,
+				D166C8A02AA9BF4100BEE09B /* CartAppealView.swift */,
+				D166C8A22AA9BF9400BEE09B /* CartPaymentView.swift */,
 				D166C89A2AA99B2900BEE09B /* CartDeliveryView.swift */,
 				D166C89C2AA99B3500BEE09B /* CartMenuView.swift */,
-				D166C8962AA98B2C00BEE09B /* CartPayView.swift */,
 				D166C8982AA98B7500BEE09B /* RealTimeOrderInfoView.swift */,
 			);
 			path = Cart;
@@ -497,6 +503,7 @@
 				D1DB3B442AA6B07E00212573 /* FoodStoreListView.swift in Sources */,
 				121D94782AA71AB1005177E0 /* RecentSearchView.swift in Sources */,
 				D1DB3B542AA6B17300212573 /* AdvertisementView.swift in Sources */,
+				D166C8A32AA9BF9400BEE09B /* CartPaymentView.swift in Sources */,
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
 				D1DB3B402AA6B07E00212573 /* FoodStoreListDetailView.swift in Sources */,
 				121D947E2AA74008005177E0 /* Extension+View.swift in Sources */,
@@ -505,6 +512,7 @@
 				D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */,
 				D166C89B2AA99B2900BEE09B /* CartDeliveryView.swift in Sources */,
 				121D94752AA71114005177E0 /* HomeSearchDetailView.swift in Sources */,
+				D166C8A12AA9BF4100BEE09B /* CartAppealView.swift in Sources */,
 				D18E9B462AA5AF64009231E4 /* SearchBar.swift in Sources */,
 				3C918EE22AA703150043111A /* MapDetailView.swift in Sources */,
 				D18E9B4E2AA5B380009231E4 /* User.swift in Sources */,
