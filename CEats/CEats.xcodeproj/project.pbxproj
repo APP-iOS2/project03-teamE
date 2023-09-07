@@ -190,9 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				D166C8942AA98B0100BEE09B /* CartView.swift */,
-				D166C8962AA98B2C00BEE09B /* CartPayView.swift */,
 				D166C89A2AA99B2900BEE09B /* CartDeliveryView.swift */,
 				D166C89C2AA99B3500BEE09B /* CartMenuView.swift */,
+				D166C8962AA98B2C00BEE09B /* CartPayView.swift */,
 				D166C8982AA98B7500BEE09B /* RealTimeOrderInfoView.swift */,
 			);
 			path = Cart;
