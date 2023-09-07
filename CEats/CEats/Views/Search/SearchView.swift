@@ -24,6 +24,7 @@ struct SearchView: View {
                     } label: {
                         SearchBarView(text: $searchTerm)
                     }
+                    .padding(.bottom,30)
                 }
                 ScrollView {
                     SearchViewImage(restaurantViewModel: restaurantViewModel)

@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct RTRView: View {
-    let restaurant: Restaurant
+    @Environment(\.dismiss) private var dismiss
     
     @State private var selected = ""
+    
+    let restaurant: Restaurant
     private let offsetY: CGFloat = .screenHeight / 12
     
     var body: some View {
@@ -65,6 +67,19 @@ struct RTRView: View {
                     proxy.scrollTo(selected, anchor: .top)
                 }
             }
+        }
+        
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
+    }
+    
+    var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "xmark")
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(Color.black)
         }
     }
 }

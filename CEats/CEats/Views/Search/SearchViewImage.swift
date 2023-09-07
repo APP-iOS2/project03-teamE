@@ -21,13 +21,13 @@ struct SearchViewImage: View {
                     VStack(alignment: .center, spacing: 15) {
                         Image("\(content)")
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: imageSize, height: imageSize)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 70, height: 70)
                             .padding(.top,10)
-                            .offset(y:3)
                         Text("\(content.rawValue)")
-                            .font(.body)
+                            .font(.system(size:15))
                             .foregroundColor(.black)
+                            .offset(y:0)
                     }
                 }
             }

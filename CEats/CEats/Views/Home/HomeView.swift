@@ -52,7 +52,6 @@ struct HomeView: View {
                                     TextField("ooo님, 서브웨이 어때요?", text: $searchText)
                                         .offset(x: -30)
                                 }
-
                         }
                         .padding(.bottom, 20)
                     }

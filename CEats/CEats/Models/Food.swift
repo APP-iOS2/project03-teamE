@@ -13,7 +13,7 @@ enum FoodType: String, CaseIterable, Identifiable {
    case chicken = "치킨"
    case koreanSnack = "간식"
    case jokbalbossam = "족발/보쌈"
-   case steamed = "찜탕"
+   case steamed = "찜/탕"
    case pizza = "피자"
    case chinese = "짜장면"
    case japanese = "일식"

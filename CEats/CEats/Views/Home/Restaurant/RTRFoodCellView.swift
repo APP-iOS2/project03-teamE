@@ -26,7 +26,7 @@ struct RTRFoodCellView: View {
             Image(food.image ?? "")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 150)
+                .frame(width: 130, height: 130)
         }
     }
 }
