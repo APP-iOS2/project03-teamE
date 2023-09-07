@@ -8,7 +8,7 @@
 import Foundation
 
 //전화번호, 상호명(레스토랑 이름), 영업시간, 매장소개,
-struct RestaurantInfo {
+struct RestaurantInfo: Codable {
     var phoneNumber: Int = 0103920313
     var name: String = "멋쟁이 xxxx"
     var timeTable: String = "12:00 ~ 23:00"

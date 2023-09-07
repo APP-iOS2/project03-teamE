@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id: String
     var username: String
     var email: String
@@ -20,7 +24,7 @@ struct User: Identifiable {
     var latitude: Double//위도
     var longitude: Double //경도
     
-    struct Cart {
+    struct Cart: Codable {
         var restaurant: Restaurant
         var restaurantName: String {
             return restaurant.name

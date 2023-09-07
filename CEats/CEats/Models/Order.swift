@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Order: Identifiable {
+struct Order: Identifiable, Codable {
     var id: String
     var orderer: User
     var restaurantName : Restaurant //
@@ -18,7 +18,7 @@ struct Order: Identifiable {
     var deliveryRequest: String?
     var orderStatus: OrderStatus = .waiting //여기도 불값이 되어야 하지 않나. 수락 받기 전 상태
     
-    enum OrderStatus {
+    enum OrderStatus: Codable {
         case waiting, canceled, accepted
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Restaurant: Identifiable {
+struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
     var id: String
     var password: String
     var restaurantInfo: RestaurantInfo
@@ -33,7 +33,7 @@ struct Restaurant: Identifiable {
         return score != nil ? String(format: "%.1f", score!) : "리뷰가 없습니다"
     }
     
-    struct Food {
+    struct Food: Codable {
         var name: String //메뉴이름
         var price: Int //메뉴 가격
         var isRecommend: Bool //추천여부 추천이면 가게 클릭시 상단에 뜸
@@ -62,7 +62,7 @@ extension Restaurant {
     ], deliveryFee: 3000, minimumPrice: 14000, menus: [Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "korean"),Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22)
     
     static let sampleArray = [
-        Restaurant(id: "ceoId", password: "1234", restaurantInfo: .init(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, image: "korean", contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3000, minimumPrice: 14000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼", image: "soju")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22),
+        Restaurant(id: "ceoId", password: "1234", restaurantInfo: .init(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, image: "korean", contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3001, minimumPrice: 14000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼", image: "soju")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22),
         
         Restaurant(id: "ceoId2", password: "1234", restaurantInfo: .init(), name: "엽기떡볶이", reviews: [Review(writer: "유하은", score: 3.0,image:"koreanSnack", contents: "다른 엽떡 지점에 비해 별로예요"),Review(writer: "함지수", score: 5.0,image: "korean", contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 2000, minimumPrice: 16000, menus: [Restaurant.Food(name: "동대문 엽기 떡볶이", price: 14000, isRecommend: true, foodCategory: "떡볶이", description: "엽떡 인기메뉴", image: "koreanSnack"),Restaurant.Food(name: "동대문 엽기 오뎅", price: 14000, isRecommend: false, foodCategory: "떡볶이", description: "떡볶이 30% 오뎅 70%")], mainImage: ["yupddeock"], foodType: [.koreanSnack], foodCategory: ["떡볶이","사이드","주류"], latitude: 34.44, longitude: 129.22),
         
