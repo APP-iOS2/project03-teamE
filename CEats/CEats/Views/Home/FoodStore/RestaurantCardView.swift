@@ -12,10 +12,7 @@ struct RestaurantCardView: View {
     @State var isFavorited: Bool = false
     @StateObject var restaurantsStore: RestaurantViewModel
     @Binding var selectedFoodType: FoodType?
-    
-    var heartImage: String {
-        isFavorited ? "heart.fill" : "heart"
-    }
+
     
     // MARK: - Views
     var body: some View {
@@ -33,7 +30,7 @@ struct RestaurantCardView: View {
                             
                             Button {
                                 
-                                restaurantsStore.user.favoriteRestaurant.append(store)
+//                                restaurantsStore.user.favoriteRestaurant.append(store)
                             } label: {
                                 Image(systemName: restaurantsStore.checkLike(restaurant: store) ? "heart.fill" : "heart")
                                     .font(.system(size:20))

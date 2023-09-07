@@ -99,16 +99,20 @@ struct FavoriteView: View {
                                             }
                                             .padding(.leading, 10)
                                             
-                                            //얘도 결국 하나 누르면 다 눌림..
-                                            if isEdited {
-                                                Button {
+                                            //얘도 결국 하나 누르면 다 눌림.
+                                            Button {
+                                                //                                                print("btn Tap favorite")
+                                                if !isPicked {
                                                     isPicked.toggle()
-                                                } label: {
-                                                    Image(systemName: isPicked ? "checkmark.circle.fill" : "circle")
+                                                    favoriteStore.removeRestaurant(restaurant: store)
                                                 }
+                                                isPicked.toggle()
+                                            } label: {
+                                                Text("삭제")
+                                                    .background(Color.red)
+                                                    .foregroundColor(.white)
+                                                    .padding()
                                             }
-                                            
-                                            
                                         }
                                         //                                        .padding(.leading, -20)
                                         
@@ -126,18 +130,24 @@ struct FavoriteView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem {
-                            Button {
-                                isEdited.toggle()
-                            } label: {
-                                Text(isEdited ? "취소" : "수정")
-                            }
-                            
+                            //                            Button {
+                            //                                isEdited.toggle()
+                            //                            } label: {
+                            //                                Text(isEdited ? "취소" : "수정")
+                            //                            }
+                            //
                         }
                     }
                 }
             }
         }
     }
+    //    func removeFavorite() {
+    //        if !isPicked {
+    //            isPicked.toggle()
+    //            favoriteStore.removeRestaurant(restaurant: store)
+    //        }
+    //    }
 }
 
 struct FavoriteView_Previews: PreviewProvider {
