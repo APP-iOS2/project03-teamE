@@ -77,10 +77,33 @@ struct FavoriteView: View {
                                             
                                             VStack(alignment: .leading, spacing: 10) {
                                                 Spacer()
-                                                Text(store.name)
-                                                    .font(.system(size:17))
-                                                    .bold()
-                                                    .padding(.top,-20)
+                                                HStack {
+                                                    Text(store.name)
+                                                        .font(.system(size:17))
+                                                        .bold()
+                                                        .padding(.top,-20)
+                                                    Spacer()
+                                                    if isEdited {
+                                                        Button {
+                                                            //                                                print("btn Tap favorite")
+                                                            if !isPicked {
+                                                                isPicked.toggle()
+                                                                favoriteStore.removeRestaurant(restaurant: store)
+                                                            }
+                                                            isPicked.toggle()
+                                                        } label: {
+                                                            Text("삭제")
+                                                                .font(.system(size: 12))
+                                                                .padding([.all], 5)
+                                                                .background(Color.red)
+                                                                .foregroundColor(.white)
+                                                                .cornerRadius(5)
+                                                            
+                                                        }
+                                                        .padding(.top, -20)
+                                                        Spacer()
+                                                    }
+                                                }
                                                 HStack{
                                                     Image(systemName: "star.fill")
                                                         .foregroundColor(.yellow)
@@ -98,19 +121,8 @@ struct FavoriteView: View {
                                                 Spacer()
                                             }
                                             .padding(.leading, 10)
-                                            
-                                            //얘도 결국 하나 누르면 다 눌림..
-                                            if isEdited {
-                                                Button {
-                                                    isPicked.toggle()
-                                                } label: {
-                                                    Image(systemName: isPicked ? "checkmark.circle.fill" : "circle")
-                                                }
-                                            }
-                                            
-                                            
                                         }
-                                        //                                        .padding(.leading, -20)
+                                        .padding(.leading, 20)
                                         
                                         Divider()
                                             .padding(.bottom,20)
