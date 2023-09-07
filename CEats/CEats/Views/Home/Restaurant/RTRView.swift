@@ -77,9 +77,9 @@ struct RTRView: View {
         Button {
             dismiss()
         } label: {
-            Image(systemName: "chevron.left")
+            Image(systemName: "xmark")
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(.white)
+                .foregroundColor(Color.black)
         }
     }
 }
