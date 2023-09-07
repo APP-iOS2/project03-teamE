@@ -10,7 +10,8 @@ import SwiftUI
 struct FavoriteView: View {
     // MARK: - Properties
     @Binding var tabIndex: Int
-    @ObservedObject var favoriteStore: RestaurantViewModel
+    @EnvironmentObject var favoriteStore: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var isEdited: Bool = false
     @State private var isPicked: Bool = false
     @State private var progress: CGFloat = 0.0
@@ -18,7 +19,7 @@ struct FavoriteView: View {
     
     
     private var isFavoriteEmpty: Bool {
-        favoriteStore.user.favoriteRestaurant.isEmpty
+        userViewModel.user.favoriteRestaurant.isEmpty
     }
     // MARK: - Views
     var body: some View {
@@ -27,7 +28,7 @@ struct FavoriteView: View {
                 // 유저.Favorite배열.count 해서 값 받아올 예정
                 // 왼쪽에 붙었으면 좋겠는데 안붙.. 왜?
                 HStack {
-                    Text("총 \(favoriteStore.user.favoriteRestaurant.count)개")
+                    Text("총 \(userViewModel.user.favoriteRestaurant.count)개")
                         .font(.title3)
                         .bold()
                         .padding()
@@ -72,7 +73,7 @@ struct FavoriteView: View {
                 } else {
                     ScrollView {
                         VStack {
-                            ForEach(favoriteStore.user.favoriteRestaurant) { store in
+                            ForEach(userViewModel.user.favoriteRestaurant) { store in
                                 NavigationLink {
                                     RTRView(restaurant: store)
                                 } label: {
@@ -107,7 +108,7 @@ struct FavoriteView: View {
                                                             //                                                print("btn Tap favorite")
                                                             if !isPicked {
                                                                 isPicked.toggle()
-                                                                favoriteStore.removeRestaurant(restaurant: store)
+                                                                userViewModel.removeRestaurant(restaurant: store)
                                                             }
                                                             isPicked.toggle()
                                                         } label: {
@@ -173,6 +174,8 @@ struct FavoriteView: View {
 
 struct FavoriteView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteView(tabIndex: .constant(2), favoriteStore: RestaurantViewModel())
+        FavoriteView(tabIndex: .constant(2))
+            .environmentObject(RestaurantViewModel())
+            .environmentObject(UserViewModel())
     }
 }

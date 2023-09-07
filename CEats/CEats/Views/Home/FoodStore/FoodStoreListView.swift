@@ -10,16 +10,16 @@ import ScalingHeaderScrollView
 
 struct FoodStoreListView: View {
     // MARK: - properties
-    @StateObject var restaurantsStore: RestaurantViewModel
+    @EnvironmentObject var restaurantsStore: RestaurantViewModel
     @State var selectedFoodType: FoodType?
     
     //MARK: - View
     var body: some View {
         NavigationStack {
             ScalingHeaderScrollView {
-                FoodStoreListDetailView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
+                FoodStoreListDetailView(selectedFoodType: $selectedFoodType)
             } content: {
-                RestaurantCardView(restaurantsStore: restaurantsStore, selectedFoodType: $selectedFoodType)
+                RestaurantCardView(selectedFoodType: $selectedFoodType)
             }
             .height(min: 47, max: 150)
             .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
@@ -27,7 +27,7 @@ struct FoodStoreListView: View {
             .toolbar {
                 ToolbarItem {
                     NavigationLink {
-                        SearchView(restaurantViewModel: restaurantsStore)
+                        SearchView()
                     } label: {
                         Image(systemName: "magnifyingglass")
                     }
@@ -39,6 +39,7 @@ struct FoodStoreListView: View {
 
 struct FoodStoreListView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListView(restaurantsStore: RestaurantViewModel(), selectedFoodType: .korean)
+        FoodStoreListView(selectedFoodType: .korean)
+            .environmentObject(RestaurantViewModel())
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeSearchDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var restaurantViewModel: RestaurantViewModel
+    @EnvironmentObject var restaurantViewModel: RestaurantViewModel
     @FocusState private var isFocused: Bool
     @State var searchText: String = ""
     @State var isSubmit: Bool = false
@@ -58,7 +58,7 @@ struct HomeSearchDetailView: View {
                     ForEach(array.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self) {
                         searchText in
                         NavigationLink {
-                            AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
+                            AfterSearchView(data: searchText)
                         } label: {
                             Text(searchText)
                         }
@@ -74,13 +74,14 @@ struct HomeSearchDetailView: View {
                    }
                }
         .sheet(isPresented: $isSubmit) {
-            AfterSearchView(restaurantsStore: restaurantViewModel, data: searchText)
+            AfterSearchView(data: searchText)
         }
     }
 }
 
 struct HomeSearchDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeSearchDetailView(restaurantViewModel: RestaurantViewModel())
+        HomeSearchDetailView()
+            .environmentObject(RestaurantViewModel())
     }
 }

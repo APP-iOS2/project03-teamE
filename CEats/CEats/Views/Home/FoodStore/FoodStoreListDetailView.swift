@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FoodStoreListDetailView: View {
     // MARK: - properties
-    @StateObject var restaurantsStore: RestaurantViewModel
+    @EnvironmentObject var restaurantsStore: RestaurantViewModel
     @Binding var selectedFoodType: FoodType?
     @State private var isClickedCategory: Bool = false
     
@@ -64,6 +64,7 @@ struct FoodStoreListDetailView: View {
 
 struct FoodStoreListDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodStoreListDetailView(restaurantsStore: RestaurantViewModel(), selectedFoodType: .constant(.korean))
+        FoodStoreListDetailView(selectedFoodType: .constant(.korean))
+            .environmentObject(RestaurantViewModel())
     }
 }

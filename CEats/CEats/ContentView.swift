@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
+    @StateObject var userViewModel = UserViewModel()
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
@@ -20,21 +21,21 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $tabIndex) {
             
-            HomeView(restaurantViewModel: restaurantViewModel)
+            HomeView()
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("홈")
                 }
                 .tag(1)
             
-            SearchView(restaurantViewModel: restaurantViewModel)
+            SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("검색")
                 }
                 .tag(2)
             
-            FavoriteView(tabIndex: $tabIndex, favoriteStore: restaurantViewModel)
+            FavoriteView(tabIndex: $tabIndex)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("즐겨찾기")
@@ -55,6 +56,8 @@ struct ContentView: View {
                 }
                 .tag(5)
         }
+        .environmentObject(restaurantViewModel)
+        .environmentObject(userViewModel)
     }
 }
 
