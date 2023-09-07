@@ -16,21 +16,22 @@ struct AddCartView: View {
     var body: some View {
         VStack {
             Image(food.image ?? "")
-                .frame(width: .screenWidth * 0.8 , height: 150)
-                .padding(40)
-                .padding(.top,40)
+                .resizable()
+                .scaledToFill()
+                .frame(width: .screenWidth * 1 , height: .screenHeight * 0.33)
+                .padding(70)
             HStack {
                 VStack(alignment: .leading) {
                     Text("\(food.name)")
                         .font(.largeTitle)
                         .bold()
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 4)
                     
                     Text("\(food.description)")
                 }
                 Spacer()
             }
-            .padding(.top, 40)
+            .padding(.top, 20)
             .padding(.horizontal, 30)
             .padding(.bottom, 30)
             
@@ -106,6 +107,6 @@ struct AddCartView: View {
 
 struct AddCartView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCartView(food: .sampleData)
+        AddCartView(food: Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"))
     }
 }

@@ -18,7 +18,7 @@ struct HomeSearchView: View {
                     .frame(width: 350,height: 45) //뷰 바운드로 수정
                     .foregroundColor(.white)
                     .cornerRadius(30)
-                    .shadow(radius: 5)
+                    .shadow(radius: 2)
                 ZStack{
                     HStack{
                         Image(systemName: "magnifyingglass")

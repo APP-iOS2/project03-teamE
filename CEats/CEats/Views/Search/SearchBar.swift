@@ -17,7 +17,7 @@ struct SearchBarView: View {
                         .frame(width: 350,height: 45) //뷰 바운드로 수정
                         .foregroundColor(.white)
                         .cornerRadius(30)
-                        .shadow(radius: 5)
+                        .shadow(radius: 2)
                         HStack{
                             Image(systemName: "magnifyingglass")
                                 .padding(.leading,30)
@@ -30,7 +30,7 @@ struct SearchBarView: View {
                                     self.text = ""
                                 }) {
                                     Image(systemName: "xmark.circle.fill")
-                                        .offset(x:-10)
+                                        .offset(x:-30)
                                 }
                             } else {
                                 EmptyView()

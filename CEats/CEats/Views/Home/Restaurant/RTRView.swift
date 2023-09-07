@@ -34,9 +34,9 @@ struct RTRView: View {
                 RTRTitleInfoView(restaurant: restaurant)
                     .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
                     .background(.background)
-                    .cornerRadius(6)
+                    .cornerRadius(3)
                     .clipped()
-                    .shadow(color: .secondary, radius: 5)
+                    .shadow(color: .secondary, radius: 2)
                     .padding(.top, -offsetY)
                 RTRSubInfoView(restaurant: restaurant)
                     .padding(.top, 30)
@@ -69,19 +69,19 @@ struct RTRView: View {
             }
         }
         
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton)
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading: backButton)
     }
     
-    var backButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "chevron.left")
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(.white)
-        }
-    }
+//    var backButton: some View {
+//        Button {
+//            dismiss()
+//        } label: {
+//            Image(systemName: "chevron.left")
+//                .aspectRatio(contentMode: .fit)
+//                .foregroundColor(.white)
+//        }
+//    }
 }
 
 struct RTRView_Previews: PreviewProvider {

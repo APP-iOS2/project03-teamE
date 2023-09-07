@@ -64,14 +64,15 @@ struct HomeView: View {
                                     Spacer()
                                     Image("\(content)")
                                         .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 50, height: 30)
-                                        .padding(.bottom,10)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 60, height: 40)
+                                        .padding(.bottom,3)
                                         .offset(y:3)
                                     Spacer()
                                     Text(content.rawValue)
                                         .font(.footnote)
                                         .foregroundColor(.black)
+                                        .padding(.bottom,10)
                                 }
                             }
                         }

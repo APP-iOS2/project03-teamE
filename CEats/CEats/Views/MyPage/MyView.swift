@@ -58,6 +58,9 @@ struct MyView: View {
                     Text("자세히 보기")
                 }
             }
+            Image("advertisement")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             List {
                 Button {
                     // 주소 관리 뷰로 이동
