@@ -45,7 +45,6 @@
 		D166C8992AA98B7500BEE09B /* RealTimeOrderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8982AA98B7500BEE09B /* RealTimeOrderInfoView.swift */; };
 		D166C89B2AA99B2900BEE09B /* CartDeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C89A2AA99B2900BEE09B /* CartDeliveryView.swift */; };
 		D166C89D2AA99B3500BEE09B /* CartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C89C2AA99B3500BEE09B /* CartMenuView.swift */; };
-		D166C89F2AA9A9AD00BEE09B /* anyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C89E2AA9A9AD00BEE09B /* anyView.swift */; };
 		D16DDBBB2AA84E750009C29F /* ResentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBBA2AA84E750009C29F /* ResentSearchView.swift */; };
 		D16DDBBE2AA85EF40009C29F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D16DDBBD2AA85EF40009C29F /* FirebaseAuth */; };
 		D16DDBC02AA85EF40009C29F /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D16DDBBF2AA85EF40009C29F /* FirebaseAuthCombine-Community */; };
@@ -117,7 +116,6 @@
 		D166C8982AA98B7500BEE09B /* RealTimeOrderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeOrderInfoView.swift; sourceTree = "<group>"; };
 		D166C89A2AA99B2900BEE09B /* CartDeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDeliveryView.swift; sourceTree = "<group>"; };
 		D166C89C2AA99B3500BEE09B /* CartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartMenuView.swift; sourceTree = "<group>"; };
-		D166C89E2AA9A9AD00BEE09B /* anyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = anyView.swift; sourceTree = "<group>"; };
 		D16DDBBA2AA84E750009C29F /* ResentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResentSearchView.swift; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
@@ -309,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				D18E9B3A2AA5A466009231E4 /* FavoriteView.swift */,
-				D166C89E2AA9A9AD00BEE09B /* anyView.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -474,7 +471,6 @@
 				D166C8992AA98B7500BEE09B /* RealTimeOrderInfoView.swift in Sources */,
 				D1DB3B6B2AA6B1F100212573 /* FavoriteView.swift in Sources */,
 				D166C8972AA98B2C00BEE09B /* CartPayView.swift in Sources */,
-				D166C89F2AA9A9AD00BEE09B /* anyView.swift in Sources */,
 				3C918EE42AA81CCA0043111A /* DetailToMapView.swift in Sources */,
 				D18E9B3F2AA5A48D009231E4 /* MyView.swift in Sources */,
 				BE5D6C602AA6E80100347A22 /* RTRView.swift in Sources */,
