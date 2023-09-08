@@ -32,6 +32,7 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
         var foodCart: [Restaurant.Food]
         var fee: Int {
             let totalFoodFee = foodCart.map({ $0.price }).reduce(0) { $0 + $1 }
+            // foodCart.reduce(0){$0.price + $1.price} < 이렇게 써도 되지 안
             return totalFoodFee + restaurant.deliveryFee
         }
     }
@@ -39,6 +40,6 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
 
 #if DEBUG
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [], latitude: 0, longitude: 0)
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0)
 }
 #endif

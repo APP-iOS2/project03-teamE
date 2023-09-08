@@ -14,7 +14,7 @@ struct SearchBarView: View {
     var body: some View {
                 ZStack{
                     Rectangle()
-                        .frame(width: 350,height: 45) //뷰 바운드로 수정
+                        .frame(width: .screenWidth * 0.89, height: .screenHeight * 0.05) //뷰 바운드로 수정
                         .foregroundColor(.white)
                         .cornerRadius(30)
                         .shadow(radius: 2)
@@ -34,11 +34,10 @@ struct SearchBarView: View {
                                 }
                             } else {
                                 EmptyView()
-                            }
                         }
+                    }
                 }
             }
-      
         }
  
 

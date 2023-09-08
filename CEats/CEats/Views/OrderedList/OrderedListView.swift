@@ -8,91 +8,45 @@
 import SwiftUI
 
 struct OrderedListView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    @State private var selectedButton: OrderState = .과거주문내역
+    enum OrderState: String, CaseIterable {
+        case 과거주문내역
+        case 준비중
+    }
     
-    @State var search: String = ""
+    var filteredOrderList: [Order] {
+        if selectedButton == .과거주문내역 {
+           return userViewModel.user.orderHistory.filter { $0.orderStatus != .waiting }
+        } else {
+            return userViewModel.user.orderHistory.filter { $0.orderStatus == .waiting }
+        }
+    }
+    
+    //    userViewModel.user.orderHistory
     
     var body: some View {
-        VStack {
-            Text("과거 주문 내역")
-                .font(.title3)
-            NavigationView {
-                List {
-                    ZStack(alignment: .leading) {
-                        VStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 350, height: 250)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.gray, lineWidth: 1)
-                                )
-                                .foregroundColor(.white)
-                                .padding(2)
-                            
-                        }
-                        VStack(alignment: .leading) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    
-                                    Text("멋쟁이 김치찌개")
-                                        .font(.title2)
-                                        .bold()
-                                    Text("2023-xx-xx 오전 xx:xx")
-                                        .foregroundColor(.gray)
-                                    Text("배달 완료")
-                                        .padding(.top, 5)
-                                }
-                                .padding(.trailing, 25)
-                                Image("kimchiSoup")
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
+        NavigationStack {
+            VStack{
+                HStack{
+                    ForEach(OrderState.allCases, id: \.self) { state in
+                        Button {
+                            selectedButton = state
+                            print("\(selectedButton)")
+                        } label: {
+                            VStack{
+                                Text(state.rawValue)
+                                    .fontWeight(selectedButton == state ? .medium : .regular )
+                                    .foregroundColor(.black)
+                                Rectangle()
+                                    .frame(height: 1)
+                                    .foregroundColor(selectedButton == state ? .black : .clear)
                             }
-                            Text("1     김치찌개")
-                                .padding(.top, 10)
-                            Text("합계: 15,000원")
-                                .padding(.top, 10)
                         }
-                        .padding(.leading, 30)
-                        
-                    }
-                    ZStack(alignment: .leading) {
-                        VStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 350, height: 250)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.gray, lineWidth: 1)
-                                )
-                                .foregroundColor(.white)
-                                .padding(2)
-                            
-                        }
-                        VStack(alignment: .leading) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    
-                                    Text("멋쟁이 피자")
-                                        .font(.title2)
-                                        .bold()
-                                    Text("2023-xx-xx 오전 xx:xx")
-                                        .foregroundColor(.gray)
-                                    Text("배달 중")
-                                        .padding(.top, 5)
-                                }
-                                .padding(.trailing, 25)
-                                Image("pizza")
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                            }
-                            Text("3     페퍼로니 피자")
-                                .padding(.top, 10)
-                            Text("합계: 23,000원")
-                                .padding(.top, 10)
-                        }
-                        .padding(.leading, 30)
-                        
                     }
                 }
-                .listStyle(.plain)
+                OrderListCellView(filteredOrderList: filteredOrderList)
+                    .padding(20)
             }
         }
     }
@@ -101,5 +55,6 @@ struct OrderedListView: View {
 struct OrderedListView_Previews: PreviewProvider {
     static var previews: some View {
         OrderedListView()
+            .environmentObject(UserViewModel())
     }
 }

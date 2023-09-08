@@ -147,7 +147,7 @@ final class CEatsFBManager {
         }
     }
     
-    /// - delete: Firestore의 data의 타입이름인 Collection에서 같은 id를 가진 data를 제거됩니다.
+    /// - delete: Firestore의 data의 타입이름인 Collection에서 같은 id를 가진 data를 제거합니다.
     /// ```
     /// let user = User()
     ///
