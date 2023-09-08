@@ -33,7 +33,37 @@ struct User: Identifiable {
     }
 }
 
+//MARK: User에 Review배열 저장 프로퍼티 필요 / 화면표시위해서 연산프로퍼티로 임시구현
+extension User {
+    var reviews: [Review] {
+        return [
+            .sampleData
+        ]
+    }
+}
+
+//MARK: User에 Coupon배열 저장 프로퍼티 필요 / 화면표시위해서 연산프로퍼티로 임시구현
+extension User {
+    var coupons: [Coupon] {
+        return [
+            .sampleData
+        ]
+    }
+}
+
+struct Coupon: Identifiable {
+    var id = UUID().uuidString
+    var restaurant: Restaurant
+    var discount: Int
+    var priceCondition: Int
+    var endDate: Date
+}
+
 #if DEBUG
+extension Coupon {
+    static let sampleData: Self = .init(restaurant: Restaurant.sampleData, discount: 1000, priceCondition: 30000, endDate: Date().addingTimeInterval(86400 * 7))
+}
+
 extension User {
     static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [], latitude: 0, longitude: 0)
 }

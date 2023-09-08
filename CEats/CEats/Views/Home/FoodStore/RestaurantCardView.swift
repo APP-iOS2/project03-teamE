@@ -91,5 +91,6 @@ struct RestaurantCardView_Previews: PreviewProvider {
     static var previews: some View {
         RestaurantCardView(selectedFoodType: .constant(.korean))
             .environmentObject(RestaurantViewModel())
+            .environmentObject(UserViewModel())
     }
 }

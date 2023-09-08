@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Review {
+struct Review: Identifiable {
     var id = UUID().uuidString
     var writer: String //여기에 유저 정보가 들어가야함. 유저 이메일이나 유저 네임
     var score: Double //평점
@@ -24,3 +24,9 @@ struct Review {
         return dateFormatter.string(from: dateCreatedAt)
     }
 }
+
+#if DEBUG
+extension Review {
+    static let sampleData: Self = .init(writer: "김멋사", score: 4.5, image: "photo", contents: "맛있네요")
+}
+#endif
