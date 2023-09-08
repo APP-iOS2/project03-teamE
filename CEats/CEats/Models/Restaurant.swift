@@ -33,6 +33,10 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
         return score != nil ? String(format: "%.1f", score!) : "리뷰가 없습니다"
     }
     
+    var deliveryTime: String {
+        return "20 ~ 30 분"
+    }
+    
     struct Food: Codable {
         var name: String //메뉴이름
         var price: Int //메뉴 가격
