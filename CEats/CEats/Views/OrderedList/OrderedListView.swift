@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OrderedListView: View {
-    //StateObject , observedObject 는 뷰를 바라보고 있어서 변하면 초기화 돼서 다시 그려줌.
+    //StateObject , observedObject 는 뷰를 바라보고 있어서 변하면 초기화 돼서 다시 그려줌
     @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
