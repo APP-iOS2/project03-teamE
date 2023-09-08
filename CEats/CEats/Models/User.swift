@@ -32,7 +32,6 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
         var foodCart: [Restaurant.Food]
         var fee: Int {
             let totalFoodFee = foodCart.map({ $0.price }).reduce(0) { $0 + $1 }
-            // foodCart.reduce(0){$0.price + $1.price} < 이렇게 써도 되지 안
             return totalFoodFee + restaurant.deliveryFee
         }
     }

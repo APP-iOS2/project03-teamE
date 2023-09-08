@@ -9,13 +9,11 @@ import SwiftUI
 
 struct OrderListCellView: View {
     @EnvironmentObject var userViewModel: UserViewModel
-    @State var filteredOrderList: [Order]
-    //lazy var firstFood = userViewModel.user.orderHistory[0].orderedMenu[0].name
-    //유저 초기화가 되기 전에 쓸 수 없음
+
     var body: some View {
         ScrollView{
-            VStack(alignment: .leading, spacing: 0){
-                ForEach(filteredOrderList) { order in
+            VStack(alignment: .leading){
+                ForEach(userViewModel.filteredOrderList) { order in
                     HStack{
                         VStack(alignment: .leading){
                             Text(order.restaurantName.name)
@@ -36,9 +34,8 @@ struct OrderListCellView: View {
                         Image(order.restaurantName.mainImage[0])
                             .resizable()
                             .scaledToFit()
-                            .frame(width: .screenWidth * 0.30, height: .screenHeight * 0.3)
+                            .frame(width: .screenWidth * 0.30)
                     }
-                    //.border(.red)
                     
                     ForEach(order.orderedMenu, id: \.name) { food in
                         HStack{
@@ -51,20 +48,19 @@ struct OrderListCellView: View {
                             .font(.system(size:14))
                             .padding(.bottom,2)
                     }
-                    .offset(y:-60)
+
                     .foregroundColor(.gray)
                     HStack{
                         Text("합계:")
                         Text("\(order.totalFee)원")
                             .bold()
                     }
-                    .offset(y:-30)
                 }
             }
             .padding(30)
             .background(
                 Group {
-                    if !filteredOrderList.isEmpty {
+                    if !userViewModel.filteredOrderList.isEmpty {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.lightgray)
                     } else {
@@ -80,7 +76,7 @@ struct OrderListCellView: View {
 
 struct waitingListView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderListCellView(filteredOrderList: [Order.sampleData])
+        OrderListCellView()
             .environmentObject(UserViewModel())
     }
 }
