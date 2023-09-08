@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct CartView: View {
+    @Binding var isOpenMapSheet: Bool
     
     var body: some View {
-        Text("안녕")
+        NavigationStack{
+            ScrollView {
+                CartDeliveryView(isOpenMapSheet: $isOpenMapSheet)
+                //            CartMenuView()
+                Text("여기는 메뉴 보여질 뷰 들어갈 자리")
+                CartPayView()
+            }
+        }
     }
 }
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CartView()
+            CartView(isOpenMapSheet: .constant(false))
         }
     }
 }

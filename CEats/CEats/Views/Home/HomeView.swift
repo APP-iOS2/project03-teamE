@@ -6,22 +6,21 @@
 //
 
 import SwiftUI
-//frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
-//.
+
 struct HomeView: View {
+    // MARK: - Properties
     @EnvironmentObject var restaurantViewModel: RestaurantViewModel
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var searchText: String = ""
     @State private var isOpenMapSheet: Bool = false
-    @State var order: Order = .sampleData
+    @State private var isOpenCartSheet: Bool = false
+    var order: Order = .sampleData
     
     private let layout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
     
     // MARK: - View
     var body: some View {
         NavigationStack{
-            ZStack {
                 ScrollView {
                     VStack(alignment: .leading) {
                         HStack {
@@ -36,7 +35,6 @@ struct HomeView: View {
                                 }
                             }
                             Spacer()
-                            //Image(systemName: "bell")
                         }
                     }
                     .padding(20)
@@ -90,10 +88,14 @@ struct HomeView: View {
                     }
                     .padding(20)
                     
-                    Text("이츠 추천 맛집")
-                        .padding(.leading,20)
-                        .bold()
-                    
+                    VStack(alignment: .leading) {
+                        HStack{
+                            Text("이츠 추천 맛집")
+                                .padding(.leading,20)
+                                .bold()
+                            Spacer()
+                        }
+                    }
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 20) {
                             ForEach(restaurantViewModel.restaurants) { restaurant in
@@ -108,52 +110,49 @@ struct HomeView: View {
                     .scrollIndicators(.hidden)
                     .padding(.leading,20)
                 }
-                .padding(.bottom, 20)
-            }
-            .scrollIndicators(.hidden)
+                .padding(.bottom, -10)
+                .scrollIndicators(.hidden)
             
             if order.orderedMenu.count > 0 {
-                VStack{
-                    Spacer()
-                    NavigationLink {
-                        // 바인딩 어케 사용하죠?
-                        CartView()
-                    } label: {
-                        VStack {
-                            HStack{
-                                ZStack{
-                                    Circle()
-                                        .frame(width: 30)
-                                    Text("\(order.orderedMenu.count)")
-                                        .foregroundColor(.blue)
-                                }
-                                Text("카트보기")
-                                Spacer()
-                                ZStack{
-                                    Rectangle()
-                                        .frame(width: 80, height: 1)
-                                    Text("10,700원")
-                                }
-                                .foregroundColor(.lightgray)
-                                
-                                Text("\(order.orderedMenu[0].price)원")
-                                    .font(.system(size: 18, weight: .bold))
-                                
+                Button {
+                    isOpenCartSheet.toggle()
+                } label: {
+                    VStack {
+                        HStack{
+                            ZStack{
+                                Circle()
+                                    .frame(width: 30)
+                                Text("\(order.orderedMenu.count)")
+                                    .foregroundColor(.blue)
                             }
+                            Text("카트보기")
+                            Spacer()
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 80, height: 1)
+                                Text("10,700원")
+                            }
+                            .foregroundColor(.lightgray)
+                            
+                            Text("\(order.orderedMenu[0].price)원")
+                                .font(.system(size: 18, weight: .bold))
+                            
                         }
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(.blue)
                     }
-                    
-                    
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.blue)
                 }
             }
         }
         .fullScreenCover(isPresented: $isOpenMapSheet, content: {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         })
+        .fullScreenCover(isPresented: $isOpenCartSheet, content: {
+            CartView(isOpenMapSheet: $isOpenMapSheet)
+        })
+        
     }
 }
 
