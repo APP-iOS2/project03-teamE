@@ -20,27 +20,7 @@ struct ReviewMinimalView: View {
                 Text("\(review.contents)")
                     .font(.system(size:15))
                 Spacer()
-                starRating(rating: review.score)
-            }
-        }
-    }
-    
-    func starRating(rating: Double) -> some View {
-        let fullStarCount = Int(rating)
-        let hasHalfStar = rating.truncatingRemainder(dividingBy: 1) >= 0.5
-        
-        return HStack {
-            ForEach(1...5, id: \.self) { index in
-                if index <= fullStarCount {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                } else if index == fullStarCount + 1 && hasHalfStar {
-                    Image(systemName: "star.leadinghalf.filled")
-                        .foregroundColor(.yellow)
-                } else {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.gray)
-                }
+                review.score.doubleToStarView
             }
         }
     }
