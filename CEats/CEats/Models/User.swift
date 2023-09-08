@@ -36,9 +36,7 @@ struct User: Identifiable {
 //MARK: User에 Review배열 저장 프로퍼티 필요 / 화면표시위해서 연산프로퍼티로 임시구현
 extension User {
     var reviews: [Review] {
-        return [
-            .sampleData
-        ]
+        return .sampleData
     }
 }
 
