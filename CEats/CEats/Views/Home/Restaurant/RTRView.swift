@@ -19,9 +19,10 @@ struct RTRView: View {
         Button {
             dismiss()
         } label: {
-            Image(systemName: "chevron.left")
+            Image(systemName: "arrow.left")
         }
         .foregroundColor(.white)
+        .bold()
     }
     
     var body: some View {
@@ -54,7 +55,7 @@ struct RTRView: View {
                     LazyHStack {
                         ForEach(restaurant.reviews, id: \.id) { review in
                             NavigationLink {
-                                ReviewInfoView()
+                                ReviewInfoView(restaurant: restaurant, scrollID: review.id)
                             } label: {
                                 ReviewMinimalView(review: review)
                                     .padding()
