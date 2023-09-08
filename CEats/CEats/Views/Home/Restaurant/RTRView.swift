@@ -9,11 +9,21 @@ import SwiftUI
 
 struct RTRView: View {
     @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var userViewModel: UserViewModel
     @State private var selected = ""
     
     let restaurant: Restaurant
     private let offsetY: CGFloat = .screenHeight / 12
+    
+    var navigationBackButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
+        }
+        .foregroundColor(.white)
+        .bold()
+    }
     
     var body: some View {
         /*
@@ -44,14 +54,19 @@ struct RTRView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
                         ForEach(restaurant.reviews, id: \.id) { review in
-                            ReviewMinimalView(review: review)
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.lightgray)
-                                )
-                                .frame(height: .screenHeight / 10)
-                                .padding(.trailing, 10)
+                            NavigationLink {
+                                ReviewInfoView(restaurant: restaurant, scrollID: review.id)
+                            } label: {
+                                ReviewMinimalView(review: review)
+                                    .padding()
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.lightgray)
+                                    )
+                                    .frame(height: .screenHeight / 10)
+                                    .padding(.trailing, 10)
+                            }
+                            .foregroundColor(.primary)
                         }
                     }
                     .padding()
@@ -68,9 +83,25 @@ struct RTRView: View {
                 }
             }
         }
-        
-//        .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading: backButton)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: navigationBackButton)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                HStack {
+                    ShareLink(item: "") {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+                    .padding(.trailing, 10)
+                    Button {
+                        userViewModel.likeButtonTapped(restaurant: restaurant)
+                    } label: {
+                        Image(systemName: userViewModel.user.favoriteRestaurant.contains(where: { $0.id == restaurant.id }) ? "heart.fill" : "heart")
+                    }
+                }
+                .foregroundColor(.white)
+                .bold()
+            }
+        }
     }
     
 //    var backButton: some View {
@@ -89,5 +120,6 @@ struct RTRView_Previews: PreviewProvider {
         NavigationStack {
             RTRView(restaurant: Restaurant(id: "ceoId", password: "1234", restaurantInfo: RestaurantInfo(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3000, minimumPrice: 14000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: " "),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22))
         }
+        .environmentObject(UserViewModel())
     }
 }
