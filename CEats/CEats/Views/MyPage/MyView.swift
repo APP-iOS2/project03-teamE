@@ -300,7 +300,7 @@ struct CouponCardView: View {
             .background(.background)
             .cornerRadius(10)
             NavigationLink {
-                
+                RTRView(restaurant: coupon.restaurant)
             } label: {
                 VStack {
                     Image(systemName: "arrow.right")
