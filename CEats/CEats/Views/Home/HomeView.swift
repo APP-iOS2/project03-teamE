@@ -107,19 +107,19 @@ struct HomeView: View {
                     }
                     .scrollIndicators(.hidden)
                     .padding(.leading,20)
+                    .padding(.bottom, 20)
                 }
-                .padding(.bottom, 20)
+                
             }
             .scrollIndicators(.hidden)
             
             if order.orderedMenu.count > 0 {
-                VStack{
-                    Spacer()
+                VStack(spacing:0){
                     NavigationLink {
                         // 바인딩 어케 사용하죠?
                         CartView()
                     } label: {
-                        VStack {
+                        VStack(spacing:0) {
                             HStack{
                                 ZStack{
                                     Circle()
@@ -146,8 +146,6 @@ struct HomeView: View {
                         .padding()
                         .background(.blue)
                     }
-                    
-                    
                 }
             }
         }

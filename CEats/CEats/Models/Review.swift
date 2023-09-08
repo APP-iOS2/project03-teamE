@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Review: Identifiable {
+struct Review: Identifiable, Codable {
     var id = UUID().uuidString
     var writer: String //여기에 유저 정보가 들어가야함. 유저 이메일이나 유저 네임
     var score: Double //평점

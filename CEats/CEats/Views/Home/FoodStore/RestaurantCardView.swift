@@ -49,8 +49,6 @@ struct RestaurantCardView: View {
                                 userViewModel.likeButtonTapped(restaurant: store)
                             }
                             .buttonStyle(.plain)
-
-                            
                         }
                         
                         VStack{

@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id: String
     var username: String
     var email: String
@@ -20,7 +24,7 @@ struct User: Identifiable {
     var latitude: Double//위도
     var longitude: Double //경도
     
-    struct Cart {
+    struct Cart: Codable {
         var restaurant: Restaurant
         var restaurantName: String {
             return restaurant.name
@@ -28,6 +32,7 @@ struct User: Identifiable {
         var foodCart: [Restaurant.Food]
         var fee: Int {
             let totalFoodFee = foodCart.map({ $0.price }).reduce(0) { $0 + $1 }
+            // foodCart.reduce(0){$0.price + $1.price} < 이렇게 써도 되지 안
             return totalFoodFee + restaurant.deliveryFee
         }
     }
@@ -63,6 +68,6 @@ extension Coupon {
 }
 
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [], latitude: 0, longitude: 0)
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0)
 }
 #endif
