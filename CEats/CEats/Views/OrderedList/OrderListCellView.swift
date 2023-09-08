@@ -62,8 +62,16 @@ struct OrderListCellView: View {
                 }
             }
             .padding(30)
-            .background(RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.lightgray))
+            .background(
+                Group {
+                    if !filteredOrderList.isEmpty {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.lightgray)
+                    } else {
+                        Color.clear
+                    }
+                }
+            )
         }
         .padding(10) // 왜 여기 이렇게 위아래로 패딩이 크게 잡힘?
     }
