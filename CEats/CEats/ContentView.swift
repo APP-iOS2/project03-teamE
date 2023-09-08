@@ -49,7 +49,7 @@ struct ContentView: View {
                 }
                 .tag(4)
             
-            MyView()
+            MyView(tabIndex: $tabIndex)
                 .tabItem {
                     Image(systemName: "person")
                     Text("마이페이지")

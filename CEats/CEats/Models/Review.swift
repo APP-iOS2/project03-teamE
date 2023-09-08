@@ -25,6 +25,7 @@ struct Review: Identifiable {
     }
 }
 
+
 //MARK: 리뷰에 선택될 메뉴가 필요함, 뷰 연결을 위해 연산프로퍼티로 임시구현
 extension Review {
     var menus: [Restaurant.Food] {
@@ -38,5 +39,6 @@ extension [Review] {
         Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),
         Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")
     ]
+
 }
 #endif
