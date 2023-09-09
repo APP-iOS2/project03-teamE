@@ -50,6 +50,7 @@ struct HomeSearchDetailView: View {
                             }
                         }
                         .padding(.leading,40)
+
                     }
                 }
                 

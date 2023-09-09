@@ -58,16 +58,12 @@ final class CEatsFBManager {
     /// fbManager.create(data: User())
     /// ```
     func create<T: CEatsIdentifiable>(data: T) where T: Encodable {
-        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
-        
-        do {
-            try collectionRef.addDocument(from: data) { error in
+            let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+            
+            collectionRef.addDocument(data: [data.id : data]) { error in
                 self.printError(error: error)
             }
-        } catch {
-            print(#function + "fail to try collectionRef.addDocument()")
         }
-    }
     
     func create<T: CEatsIdentifiable>(data: T, completion: @escaping () -> ()) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
