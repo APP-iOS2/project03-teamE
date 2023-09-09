@@ -15,13 +15,13 @@ struct HomeView: View {
     @State var order: Order = Order.sampleData
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 ScrollView{
                     HeaderView(isOpenMapSheet: $isOpenMapSheet)
                     //헤더뷰, 위치 정해주는 뷰
                     NavigationLink {
-                        HomeSearchView()
+                        HomeSearchDetailView()
                     } label: {
                         HomeSearchBarView(searchText: $searchText)
                     }
