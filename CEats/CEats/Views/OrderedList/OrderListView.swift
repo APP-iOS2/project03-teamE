@@ -1,5 +1,5 @@
 //
-//  OrderListCellView.swift
+//  OrderListView.swift
 //  CEats
 //
 //  Created by 유하은 on 2023/09/08.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OrderListCellView: View {
+struct OrderListView: View {
     @EnvironmentObject var userViewModel: UserViewModel
 
     var body: some View {
@@ -76,7 +76,7 @@ struct OrderListCellView: View {
 
 struct waitingListView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderListCellView()
+        OrderListView()
             .environmentObject(UserViewModel())
     }
 }
