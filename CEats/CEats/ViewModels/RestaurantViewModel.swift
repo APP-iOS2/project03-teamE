@@ -8,6 +8,7 @@
 import Foundation
 
 final class RestaurantViewModel: ObservableObject {
+    let fireManager = CEatsFBManager.shared
     @Published var restaurants: [Restaurant] = Restaurant.sampleArray
     
     @Published var selectedFoodType: FoodType? = nil

@@ -11,6 +11,8 @@ final class UserViewModel: ObservableObject {
     @Published var user: User = User.sampleData
     @Published var selectedButton: OrderState = .과거주문내역
     
+    let fireManager = CEatsFBManager.shared
+    
     enum OrderState: String, CaseIterable {
         case 과거주문내역
         case 준비중
