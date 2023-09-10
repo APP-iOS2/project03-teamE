@@ -9,7 +9,6 @@ import SwiftUI
 //frame 하나하나 지정해주면 아이패드에서 다 다르게 나올게 뻔하기 때문에,, 수정해줘야함 뷰한테 맞게
 //.
 struct HomeView: View {
-    @StateObject var restaurantViewModel = RestaurantViewModel()
     @State private var isOpenMapSheet: Bool = false
     @State var searchText: String = ""
     @State var order: Order = Order.sampleData
@@ -44,7 +43,6 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $isOpenMapSheet, content: {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         })
-        .environmentObject(restaurantViewModel)
     }
 }
 
@@ -53,6 +51,5 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(RestaurantViewModel())
-            .environmentObject(UserViewModel())
     }
 }

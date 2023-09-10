@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Coupon: Identifiable {
+struct Coupon: Identifiable, Codable {
     var id = UUID().uuidString
     var restaurant: Restaurant
     var discount: Int

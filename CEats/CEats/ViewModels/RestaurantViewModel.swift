@@ -13,6 +13,21 @@ final class RestaurantViewModel: ObservableObject {
     
     @Published var selectedFoodType: FoodType? = nil
     
+    func updateFee(restaurant: Restaurant, to: Int) {
+        fireManager.update(data: restaurant, value: \.deliveryFee, to: to) { result in
+            
+        }
+    }
+    
+    func appendMenu(restaurant: Restaurant, to: Restaurant.Food) {
+        var newRest = restaurant
+        newRest.menus.append(to)
+        fireManager.update(data: newRest, value: \.menus, to: newRest.menus) { result in
+            guard let index = try? self.restaurants.firstIndex(where: { $0.id == result.id }) else { return }
+            self.restaurants[index] = newRest
+        }
+    }
+    
     func filterFoodTypes(_ data: FoodType?) -> [Restaurant] {
         return restaurants.filter { store in
             if let data = data {
