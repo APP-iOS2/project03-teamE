@@ -10,20 +10,19 @@ import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-enum CEatsError: Error {
-    case propertyError
-}
-
+///Firebase의 Document의 key는 String이어야 하기 때문에 Firebase함수를 이용하는 타입에 프로토콜로 규칙을 부여합니다.
 protocol CEatsIdentifiable: Identifiable {
-    var id: String { get set }
-    
-    func getPropertyName<T: CEatsIdentifiable, U>(_ keyPath: KeyPath<T, U>) -> Result<String, CEatsError>
+    var id: String { get }
 }
 
 extension CEatsIdentifiable {
-    func getPropertyName<T: CEatsIdentifiable, U>(_ keyPath: KeyPath<T, U>) -> Result<String, CEatsError> {
-        guard let propertyName = "\(keyPath.debugDescription)".split(separator: ".").last else { return .failure(.propertyError)}
-        return .success(String(propertyName))
+    func getPropertyName<T: CEatsIdentifiable, U>(_ keyPath: KeyPath<T, U>, completion: (String) -> Void) {
+        guard let propertyName = "\(keyPath.debugDescription)".split(separator: ".").last
+        else {
+            print(#function + ": fail to optional bind")
+            return
+        }
+        completion(String(propertyName))
     }
 }
 
@@ -41,123 +40,53 @@ final class CEatsFBManager {
     
     func addSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (U) -> ()) {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
-        let propertyName: String
-        switch data.getPropertyName(keyPath) {
-        case .success(let result):
-            propertyName = result
-        case .failure(let error):
-            print(error.localizedDescription)
-            return
-        }
         
-        DispatchQueue.global().async {
-            collectionRef.document(data.id).addSnapshotListener { snapshot, error in
-                self.printError(error: error)
-                guard let fbDic = snapshot?.data() else {
-                    print(#function + ": fail to optional bind - [String: Any]")
-                    return
-                }
-                guard let fbAny = fbDic[propertyName] else {
-                    print(#function + ": fail to optional bind - Any")
-                    return
-                }
-                guard let uType = fbAny as? U else {
-                    print(#function + ": fail to optional bind - [Order]")
-                    return
-                }
-                DispatchQueue.main.async {
-                    completion(uType)
+        data.getPropertyName(keyPath) { propertyName in
+            DispatchQueue.global().async {
+                collectionRef.document(data.id).addSnapshotListener { snapshot, error in
+                    self.printError(error: error)
+                    guard let fbDic = snapshot?.data() else {
+                        print(#function + ": fail to optional bind - [String: Any]")
+                        return
+                    }
+                    guard let fbAny = fbDic[propertyName] else {
+                        print(#function + ": fail to optional bind - Any")
+                        return
+                    }
+                    guard let uType = fbAny as? U else {
+                        print(#function + ": fail to optional bind - [Order]")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        completion(uType)
+                    }
                 }
             }
         }
     }
     
-    func addSnapshotArray<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping ([U]) -> ()) {
-        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
-        let propertyName: String
-        switch data.getPropertyName(keyPath) {
-        case .success(let result):
-            propertyName = result
-        case .failure(let error):
-            print(error.localizedDescription)
-            return
-        }
-        
-        DispatchQueue.global().async {
-            collectionRef.document(data.id).addSnapshotListener { snapshot, error in
-                self.printError(error: error)
-                guard let fbDic = snapshot?.data() else {
-                    print(#function + ": fail to optional bind - [String: Any]")
-                    return
-                }
-                guard let fbAny = fbDic[propertyName] else {
-                    print(#function + ": fail to optional bind - Any")
-                    return
-                }
-                guard let uType = fbAny as? [U] else {
-                    print(#function + ": fail to optional bind - [Order]")
-                    return
-                }
-                DispatchQueue.main.async {
-                    completion(uType)
-                }
-            }
-        }
-    }
-    
-    func addSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, propertyName: String, completion: @escaping (U) -> ()) {
+    func addArraySnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping ([U]) -> ()) {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
-        DispatchQueue.global().async {
-            collectionRef.document(data.id).addSnapshotListener { snapshot, error in
-                self.printError(error: error)
-                guard let fbDic = snapshot?.data() else {
-                    print(#function + ": fail to optional bind - [String: Any]")
-                    return
-                }
-                guard let fbAny = fbDic[propertyName] else {
-                    print(#function + ": fail to optional bind - Any")
-                    return
-                }
-                guard let data = try? JSONSerialization.data(withJSONObject: fbAny) else {
-                    print(#function + ": fail to optional bind - Data")
-                    return
-                }
-                guard let uType = try? JSONDecoder().decode(U.self, from: data) else {
-                    print(#function + ": fail to optional bind - [Order]")
-                    return
-                }
-                DispatchQueue.main.async {
-                    completion(uType)
-                }
-            }
-        }
-    }
-    
-    func addSnapshotArray<T: CEatsIdentifiable, U: Decodable>(data: T, propertyName: String, completion: @escaping ([U]) -> ()) {
-        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
-        
-        DispatchQueue.global().async {
-            collectionRef.document(data.id).addSnapshotListener { snapshot, error in
-                self.printError(error: error)
-                guard let fbDic = snapshot?.data() else {
-                    print(#function + ": fail to optional bind - [String: Any]")
-                    return
-                }
-                guard let fbAny = fbDic[propertyName] else {
-                    print(#function + ": fail to optional bind - Any")
-                    return
-                }
-                guard let data = try? JSONSerialization.data(withJSONObject: fbAny) else {
-                    print(#function + ": fail to optional bind - Data")
-                    return
-                }
-                guard let uArray = try? JSONDecoder().decode([U].self, from: data) else {
-                    print(#function + ": fail to optional bind - [Order]")
-                    return
-                }
-                DispatchQueue.main.async {
-                    completion(uArray)
+        data.getPropertyName(keyPath) { propertyName in
+            DispatchQueue.global().async {
+                collectionRef.document(data.id).addSnapshotListener { snapshot, error in
+                    self.printError(error: error)
+                    guard let fbDic = snapshot?.data() else {
+                        print(#function + ": fail to optional bind - [String: Any]")
+                        return
+                    }
+                    guard let fbAny = fbDic[propertyName] else {
+                        print(#function + ": fail to optional bind - Any")
+                        return
+                    }
+                    guard let uType = fbAny as? [U] else {
+                        print(#function + ": fail to optional bind - [Order]")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        completion(uType)
+                    }
                 }
             }
         }
@@ -165,23 +94,28 @@ final class CEatsFBManager {
     /// - create: Firestore의 data의 타입이름인 Collection에 data가 생성됩니다.
     /// - Document의 key는 data의 id 프로퍼티입니다.
     /// ```
-    /// fbManager.create(data: User())
+    /// let user = User()
+    ///
+    /// fbManager.create(data: user)
     /// ```
     func create<T: CEatsIdentifiable>(data: T) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
-        do {
-            try collectionRef.document(data.id).setData(from: data) { error in
-                self.printError(error: error)
+        DispatchQueue.global().async {
+            do {
+                try collectionRef.document(data.id).setData(from: data) { error in
+                    self.printError(error: error)
+                }
+            } catch {
+                print(#function + ": fail to .setData()")
             }
-        } catch {
-            print(#function + "fail to .setData()")
         }
     }
     
     /// - read: Firestore의 type인 Collection에서 입력된 id값을 가진 프로퍼티를 반환합니다.
     /// ```
     /// let user: User
+    /// let id: String = "SomeString" // login정보를 UserDefaults나 CoreData
     ///
     /// fbManager.read(type: User.self, id: "") { result in
     ///     user = result
@@ -193,14 +127,18 @@ final class CEatsFBManager {
             return
         }
         
-        let docRef = db.collection("\(type)").document(id)
+        let documentRef = db.collection("\(type)").document(id)
         
-        docRef.getDocument(as: T.self) { result in
-            switch result {
-            case .success(let success):
-                completion(success)
-            case .failure(let error):
-                self.printError(error: error)
+        DispatchQueue.global().async {
+            documentRef.getDocument(as: T.self) { result in
+                switch result {
+                case .success(let success):
+                    DispatchQueue.main.async {
+                        completion(success)
+                    }
+                case .failure(let error):
+                    self.printError(error: error)
+                }
             }
         }
     }
@@ -209,55 +147,55 @@ final class CEatsFBManager {
     /// ```
     /// let user = User()
     ///
-    /// fireManager.update(data: user)
+    /// fireManager.update(data: user, value: \.cEatsMoney, to: 1000000) { result in
+    ///     user = result
+    /// }
     /// ```
-    /// 
-    func update<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, to: U, completion: @escaping () -> ()) {
+    ///
+    func update<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (T) -> Void) {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
-        let propertyName: String
-        switch data.getPropertyName(keyPath) {
-        case .success(let result):
-            propertyName = result
-        case .failure(let error):
-            print(error.localizedDescription)
-            return
-        }
-        collectionRef.document(data.id).updateData([propertyName: to]) { error in
-            self.printError(error: error, completion: completion)
+        
+        data.getPropertyName(keyPath) { propertyName in
+            DispatchQueue.global().async {
+                collectionRef.document(data.id).updateData([propertyName: to]) { error in
+                    self.printError(error: error) {
+                        var result = data
+                        result[keyPath: keyPath] = to
+                        DispatchQueue.main.async {
+                            completion(result)
+                        }
+                    }
+                }
+            }
         }
     }
     
     /// - delete: Firestore의 data의 타입이름인 Collection에서 같은 id를 가진 data를 제거합니다.
     /// ```
-    /// let user = User()
+    /// let user = User.sampleData
+    /// var userList = [user]
     ///
-    /// fireManager.delete(data: user)
+    /// delete(data: user) { result in
+    ///     guard let index = userList.firstIndex(of: result) else {
+    ///         print(#function + ": fail to optional bind")
+    ///         return
+    ///     }
+    ///     userList.remove(at: index)
+    /// }
     /// ```
-    func delete<T: CEatsIdentifiable>(data: T) {
+    func delete<T: CEatsIdentifiable>(data: T, completion: @escaping (T) -> ()) {
         let documentID = data.id
         guard !documentID.isEmpty else {
-            print(#function + "ERROR!!! documentID is Empty")
+            print(#function + ": documentID is Empty")
             return
         }
         
-        let dbRef: DocumentReference = db.document("\(type(of: data))/\(documentID)")
+        let documentRef = db.document("\(type(of: data))/\(documentID)")
         
-        dbRef.delete() { error in
-            self.printError(error: error)
-        }
-    }
-    
-    func delete<T: CEatsIdentifiable>(data: T, completion: @escaping () -> ()) {
-        let documentID = data.id
-        guard !documentID.isEmpty else {
-            print(#function + "ERROR!!! documentID is Empty")
-            return
-        }
-        
-        let dbRef: DocumentReference = db.document("\(type(of: data))/\(documentID)")
-        
-        dbRef.delete() { error in
-            self.printError(error: error, completion: completion)
+        documentRef.delete() { error in
+            self.printError(error: error) {
+                completion(data)
+            }
         }
     }
     
