@@ -9,12 +9,12 @@ import SwiftUI
 
 struct HomeCartView: View {
     @Binding var order: Order
+    @Binding var isOpenMapSheet: Bool
     
     var body: some View {
         VStack(spacing:0){
             NavigationLink {
-                // 바인딩 어케 사용하죠?
-//                CartView()
+                CartView(isOpenMapSheet: $isOpenMapSheet, order: $order)
             } label: {
                 VStack(spacing:0) {
                     HStack{
