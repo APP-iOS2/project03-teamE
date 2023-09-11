@@ -14,7 +14,8 @@ struct CartDeliveryView: View {
     
     @State var isSelected1: Bool = true
     @State var isSelected2: Bool = false
-    @State var fee: Int = 0
+    @Binding var fee: Int
+    
     @Environment(\.dismiss) private var dismiss
     
     //MARK: - View
@@ -162,7 +163,7 @@ struct DeliveryTypeButton: View, Identifiable {
 
 struct CartDeliveryView_Previews: PreviewProvider {
     static var previews: some View {
-        CartDeliveryView(isOpenMapSheet: .constant(false))
+        CartDeliveryView(isOpenMapSheet: .constant(false), fee: .constant(1000))
             .environmentObject(UserViewModel())
     }
 }

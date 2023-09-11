@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct HomeCartView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
     @Binding var user: User
     @Binding var isOpenMapSheet: Bool
     
     var body: some View {
         VStack {
             NavigationLink {
-                CartView(isOpenMapSheet: $isOpenMapSheet)
+                CartView(userViewModel: UserViewModel(), isOpenMapSheet: $isOpenMapSheet)
             } label: {
                 VStack {
                     HStack{
@@ -52,6 +53,7 @@ struct HomeCartView_Previews: PreviewProvider {
         NavigationStack {
             HomeCartView(user: .constant(.sampleData), isOpenMapSheet: .constant(false))
                 .environmentObject(RestaurantViewModel())
+                .environmentObject(UserViewModel())
         }
     }
 }
