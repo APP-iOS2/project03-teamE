@@ -41,7 +41,7 @@
 		C99358EF2AA8BA9F00D631B8 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */; };
 		D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14F18472AA802E6008665F4 /* SearchViewImage.swift */; };
 		D16010502AAEE5430093E1D2 /* MyPageRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160104F2AAEE5430093E1D2 /* MyPageRestaurantView.swift */; };
-		D16010522AAEE6D20093E1D2 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16010512AAEE6D20093E1D2 /* FullScreenImageView.swift */; };
+		D16010582AAEEB510093E1D2 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16010572AAEEB510093E1D2 /* FullScreenImageView.swift */; };
 		D166C8902AA96D4800BEE09B /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */; };
 		D166C8922AA98A7700BEE09B /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8912AA98A7700BEE09B /* Seller.swift */; };
 		D166C8952AA98B0100BEE09B /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8942AA98B0100BEE09B /* CartView.swift */; };
@@ -135,7 +135,7 @@
 		C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		D14F18472AA802E6008665F4 /* SearchViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewImage.swift; sourceTree = "<group>"; };
 		D160104F2AAEE5430093E1D2 /* MyPageRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRestaurantView.swift; sourceTree = "<group>"; };
-		D16010512AAEE6D20093E1D2 /* FullScreenImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FullScreenImageView.swift; path = ../../../../../../../../../Desktop/FullScreenImageView.swift; sourceTree = "<group>"; };
+		D16010572AAEEB510093E1D2 /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
 		D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		D166C8912AA98A7700BEE09B /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
 		D166C8942AA98B0100BEE09B /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -415,8 +415,8 @@
 				128321172AA6F34000EAB4BD /* RTRFoodCellView.swift */,
 				BED6DADA2AA6F58A00EB8F0B /* RTRDetailInfoView.swift */,
 				BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */,
-				D16010512AAEE6D20093E1D2 /* FullScreenImageView.swift */,
 				D1DB3B5C2AA6B19200212573 /* ReviewInfoView.swift */,
+				D16010572AAEEB510093E1D2 /* FullScreenImageView.swift */,
 				3C918EDD2AA6B6710043111A /* AddCartView.swift */,
 			);
 			path = Restaurant;
@@ -590,7 +590,7 @@
 				D1D3E2902AA9CEA500A60B65 /* FireBaseSecond.swift in Sources */,
 				D166C8A12AA9BF4100BEE09B /* CartAppealView.swift in Sources */,
 				D18E9B462AA5AF64009231E4 /* SearchBar.swift in Sources */,
-				D16010522AAEE6D20093E1D2 /* FullScreenImageView.swift in Sources */,
+				D16010582AAEEB510093E1D2 /* FullScreenImageView.swift in Sources */,
 				3C918EE22AA703150043111A /* MapDetailView.swift in Sources */,
 				D18E9B4E2AA5B380009231E4 /* User.swift in Sources */,
 				D166C8952AA98B0100BEE09B /* CartView.swift in Sources */,
