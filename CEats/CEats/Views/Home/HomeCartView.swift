@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct HomeCartView: View {
-    @Binding var order: Order
+    @Binding var user: User
     @Binding var isOpenMapSheet: Bool
     
     var body: some View {
         VStack(spacing:0){
             NavigationLink {
-                CartView(isOpenMapSheet: $isOpenMapSheet, order: $order)
+                CartView(isOpenMapSheet: $isOpenMapSheet)
             } label: {
                 VStack(spacing:0) {
                     HStack{
                         ZStack{
                             Circle()
                                 .frame(width: 30)
-                            Text("\(order.orderedMenu.count)")
+                            Text("\(user.cart?.foodCart.count ?? 0)")
                                 .foregroundColor(.blue)
                         }
                         Text("카트보기")
@@ -29,11 +29,11 @@ struct HomeCartView: View {
                         ZStack{
                             Rectangle()
                                 .frame(width: 80, height: 1)
-                            Text("10,700원")
+                            Text("\(user.cart?.fee ?? 0) 원")
                         }
                         .foregroundColor(.lightgray)
                         
-                        Text("\(order.orderedMenu[0].price)원")
+                        Text("\(user.cart?.fee ?? 0) 원")
                             .font(.system(size: 18, weight: .bold))
                         
                     }
