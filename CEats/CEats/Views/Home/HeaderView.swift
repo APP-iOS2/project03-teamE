@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
     
     var body: some View {
@@ -16,7 +17,7 @@ struct HeaderView: View {
                 isOpenMapSheet = true
             }) {
                 HStack {
-                    Label("위치를 정해주세요", systemImage: "location.circle")
+                    Label("\(userViewModel.user.userAddress)", systemImage: "location.circle")
                         .foregroundColor(.black)
                     Image(systemName: "chevron.down")
                 }

@@ -11,7 +11,7 @@ import MapKit
 struct DetailToMapView: View {
     
     @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var userViewModel: UserViewModel
     //    @ObservedObject var locationManager: LocationManager = LocationManager()
     
     @Binding var isOpenMapSheet: Bool
@@ -66,7 +66,7 @@ struct DetailToMapView: View {
                 print("=======맵뷰 닫음======")
                 
                 
-                
+                userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: isSelectedPlace)
                 dismiss()
             } label: {
                 Text("설정하기")
