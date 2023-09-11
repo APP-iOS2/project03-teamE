@@ -10,8 +10,8 @@ import SwiftUI
 // 장바구니: 사용자1 -> 가게1(음식1, 음식2)
 // 유저1의 장바구니 -> 선택한 식당 이름, 선택한 음식, 수량, 선택한 식당의 추천 음식(무작위)
 struct CartMenuView: View {
-    @EnvironmentObject var userViewModel: UserViewModel
-    @EnvironmentObject var cartStore: RestaurantViewModel
+//    @EnvironmentObject var userViewModel: UserViewModel
+//    @EnvironmentObject var cartStore: RestaurantViewModel
     @State private var count = 1
     var order: Order = .sampleData
     var colorSet: UIColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)

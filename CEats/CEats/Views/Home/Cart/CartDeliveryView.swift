@@ -7,57 +7,6 @@
 
 import SwiftUI
 
-struct DeliveryTypeButton: View, Identifiable {
-    // MARK: - Properties
-    @Binding var isSelected: Bool
-    var titleLabel: String
-    var deliveryTimeString: String
-    var deliveryFee: UInt = 0
-    var discountedFee: UInt = 0
-    var id: UUID = UUID()
-    
-    // MARK: - View
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack{
-                Image(systemName: isSelected ? "o.circle.fill" : "o.circle")
-                    .foregroundColor(isSelected ? .accentColor : .black)
-                VStack(alignment: .leading) {
-                    Text("\(titleLabel)")
-                        .font(.system(size: 18, weight: isSelected ? .bold : .regular))
-                    Text("\(deliveryTimeString)분")
-                        .font(.footnote)
-                }
-                Spacer()
-                
-                if discountedFee > 0 {
-                    VStack(alignment: .trailing) {
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 60, height: 2)
-                                .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
-                            Text("배달비 \(deliveryFee)원")
-                        }
-                        Text("\(discountedFee)원")
-                            .bold()
-                            .foregroundColor(.red)
-                            .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))
-                    }
-                } else {
-                    Text("배달비 \(deliveryFee)원")
-                }
-            }
-        }
-        .foregroundColor(.black)
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 7)
-                .stroke(isSelected ?  Color.accentColor : Color.black, lineWidth: 1.6)
-                .shadow(color: .gray, radius: 1.3)
-        )
-    }
-}
-
 struct CartDeliveryView: View {
     //MARK: - Properties
     @EnvironmentObject var userViewModel: UserViewModel
@@ -145,7 +94,56 @@ struct CartDeliveryView: View {
     
 }
 
-
+struct DeliveryTypeButton: View, Identifiable {
+    // MARK: - Properties
+    @Binding var isSelected: Bool
+    var titleLabel: String
+    var deliveryTimeString: String
+    var deliveryFee: UInt = 0
+    var discountedFee: UInt = 0
+    var id: UUID = UUID()
+    
+    // MARK: - View
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack{
+                Image(systemName: isSelected ? "o.circle.fill" : "o.circle")
+                    .foregroundColor(isSelected ? .accentColor : .black)
+                VStack(alignment: .leading) {
+                    Text("\(titleLabel)")
+                        .font(.system(size: 18, weight: isSelected ? .bold : .regular))
+                    Text("\(deliveryTimeString)분")
+                        .font(.footnote)
+                }
+                Spacer()
+                
+                if discountedFee > 0 {
+                    VStack(alignment: .trailing) {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 60, height: 2)
+                                .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
+                            Text("배달비 \(deliveryFee)원")
+                        }
+                        Text("\(discountedFee)원")
+                            .bold()
+                            .foregroundColor(.red)
+                            .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))
+                    }
+                } else {
+                    Text("배달비 \(deliveryFee)원")
+                }
+            }
+        }
+        .foregroundColor(.black)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 7)
+                .stroke(isSelected ?  Color.accentColor : Color.black, lineWidth: 1.6)
+                .shadow(color: .gray, radius: 1.3)
+        )
+    }
+}
 
 struct CartDeliveryView_Previews: PreviewProvider {
     static var previews: some View {

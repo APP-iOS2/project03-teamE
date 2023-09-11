@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CartView: View {
-    @EnvironmentObject var userModel: UserViewModel
+    // MARK: - Properties
     @Binding var isOpenMapSheet: Bool
     @Binding var order: Order
     
+    // MARK: - View
     var body: some View {
         NavigationStack{
             ScrollView {
-//                CartDeliveryView(order: $order, isOpenMapSheet: $isOpenMapSheet)
-                //            CartMenuView()
-                Text("여기는 메뉴 보여질 뷰 들어갈 자리")
+                CartDeliveryView(order: $order, isOpenMapSheet: $isOpenMapSheet)
+                CartMenuView()
                 CartPayView()
             }
         }
@@ -26,9 +26,10 @@ struct CartView: View {
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            CartView(isOpenMapSheet: .constant(false), order: .constant(.sampleData))
-                .environmentObject(UserViewModel())
-        }
+        
+        CartView(isOpenMapSheet: .constant(false), order: .constant(.sampleData))
+            .environmentObject(UserViewModel())
+            .environmentObject(RestaurantViewModel())
+        
     }
 }
