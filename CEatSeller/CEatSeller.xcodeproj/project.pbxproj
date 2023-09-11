@@ -7,6 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12E62C032AAF40EC0094D0EC /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C022AAF40EC0094D0EC /* Seller.swift */; };
+		12E62C0A2AAF45B40094D0EC /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C042AAF45B40094D0EC /* Review.swift */; };
+		12E62C0B2AAF45B40094D0EC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C052AAF45B40094D0EC /* Order.swift */; };
+		12E62C0C2AAF45B40094D0EC /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C062AAF45B40094D0EC /* Restaurant.swift */; };
+		12E62C0D2AAF45B40094D0EC /* FoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C072AAF45B40094D0EC /* FoodType.swift */; };
+		12E62C0E2AAF45B40094D0EC /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C082AAF45B40094D0EC /* RestaurantInfo.swift */; };
+		12E62C112AAF46370094D0EC /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C102AAF46370094D0EC /* FireBaseManager.swift */; };
+		12E62C142AAF49270094D0EC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C132AAF49270094D0EC /* FirebaseAuth */; };
+		12E62C162AAF49270094D0EC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C152AAF49270094D0EC /* FirebaseDatabase */; };
+		12E62C182AAF49270094D0EC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C172AAF49270094D0EC /* FirebaseFirestore */; };
+		12E62C1A2AAF49270094D0EC /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C192AAF49270094D0EC /* FirebaseFirestoreSwift */; };
+		12E62C1C2AAF49270094D0EC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C1B2AAF49270094D0EC /* FirebaseStorage */; };
+		12E62C1F2AAF49AF0094D0EC /* SellerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C1E2AAF49AF0094D0EC /* SellerViewModel.swift */; };
+		12E62C262AAF50DF0094D0EC /* ManagingReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C252AAF50DF0094D0EC /* ManagingReview.swift */; };
+		12E62C282AAF51670094D0EC /* CustomerPreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C272AAF51670094D0EC /* CustomerPreView.swift */; };
+		12E62C2A2AAF51A60094D0EC /* ManagingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C292AAF51A60094D0EC /* ManagingMenu.swift */; };
+		12E62C2C2AAF51EC0094D0EC /* BusinessHourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C2B2AAF51EC0094D0EC /* BusinessHourView.swift */; };
+		12E62C3C2AAF53B50094D0EC /* RTRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C302AAF53B50094D0EC /* RTRView.swift */; };
+		12E62C3D2AAF53B50094D0EC /* RTRTitleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C2F2AAF53B40094D0EC /* RTRTitleImageView.swift */; };
+		12E62C3E2AAF53B50094D0EC /* RTRTitleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C362AAF53B50094D0EC /* RTRTitleInfoView.swift */; };
+		12E62C3F2AAF53B50094D0EC /* RTRDetailInfoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C3B2AAF53B50094D0EC /* RTRDetailInfoMenuView.swift */; };
+		12E62C402AAF53B50094D0EC /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C392AAF53B50094D0EC /* FullScreenImageView.swift */; };
+		12E62C412AAF53B50094D0EC /* AddCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C342AAF53B50094D0EC /* AddCartView.swift */; };
+		12E62C422AAF53B50094D0EC /* RTRSubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C3A2AAF53B50094D0EC /* RTRSubInfoView.swift */; };
+		12E62C432AAF53B50094D0EC /* ReviewInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C312AAF53B50094D0EC /* ReviewInfoView.swift */; };
+		12E62C442AAF53B50094D0EC /* RTRFoodCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C372AAF53B50094D0EC /* RTRFoodCategoryView.swift */; };
+		12E62C452AAF53B50094D0EC /* RTRFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C332AAF53B50094D0EC /* RTRFoodListView.swift */; };
+		12E62C462AAF53B50094D0EC /* ReviewMinimalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C382AAF53B50094D0EC /* ReviewMinimalView.swift */; };
+		12E62C472AAF53B50094D0EC /* RTRDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C322AAF53B50094D0EC /* RTRDetailInfoView.swift */; };
+		12E62C482AAF53B50094D0EC /* RTRFoodCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C352AAF53B50094D0EC /* RTRFoodCellView.swift */; };
+		12E62C4A2AAF549F0094D0EC /* Extension +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C492AAF549F0094D0EC /* Extension +.swift */; };
+		12E62C4D2AAF54EF0094D0EC /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C4C2AAF54EF0094D0EC /* SwiftProtobuf */; };
+		12E62C4F2AAF54EF0094D0EC /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C4E2AAF54EF0094D0EC /* SwiftProtobufPluginLibrary */; };
+		12E62C512AAF54EF0094D0EC /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 12E62C502AAF54EF0094D0EC /* protoc-gen-swift */; };
+		12E62C552AAF5E830094D0EC /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C542AAF5E830094D0EC /* SwiftUIView.swift */; };
 		D16DDBDC2AA862890009C29F /* CEatSellerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBDB2AA862890009C29F /* CEatSellerApp.swift */; };
 		D16DDBDE2AA862890009C29F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBDD2AA862890009C29F /* ContentView.swift */; };
 		D16DDBE02AA8628C0009C29F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16DDBDF2AA8628C0009C29F /* Assets.xcassets */; };
@@ -16,10 +51,36 @@
 		D16DDBEE2AA863900009C29F /* WorkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBED2AA863900009C29F /* WorkingView.swift */; };
 		D16DDBF02AA8639D0009C29F /* WorkingViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBEF2AA8639D0009C29F /* WorkingViewDetail.swift */; };
 		D16DDBF22AA863B10009C29F /* OrderedHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBF12AA863B10009C29F /* OrderedHistoryView.swift */; };
-		D16DDBF42AA863C10009C29F /* FoodStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBF32AA863C10009C29F /* FoodStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12E62C022AAF40EC0094D0EC /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
+		12E62C042AAF45B40094D0EC /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		12E62C052AAF45B40094D0EC /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		12E62C062AAF45B40094D0EC /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		12E62C072AAF45B40094D0EC /* FoodType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodType.swift; sourceTree = "<group>"; };
+		12E62C082AAF45B40094D0EC /* RestaurantInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
+		12E62C102AAF46370094D0EC /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireBaseManager.swift; path = ../../CEats/CEats/FireBase/FireBaseManager.swift; sourceTree = "<group>"; };
+		12E62C1E2AAF49AF0094D0EC /* SellerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerViewModel.swift; sourceTree = "<group>"; };
+		12E62C252AAF50DF0094D0EC /* ManagingReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagingReview.swift; sourceTree = "<group>"; };
+		12E62C272AAF51670094D0EC /* CustomerPreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerPreView.swift; sourceTree = "<group>"; };
+		12E62C292AAF51A60094D0EC /* ManagingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagingMenu.swift; sourceTree = "<group>"; };
+		12E62C2B2AAF51EC0094D0EC /* BusinessHourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHourView.swift; sourceTree = "<group>"; };
+		12E62C2F2AAF53B40094D0EC /* RTRTitleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRTitleImageView.swift; sourceTree = "<group>"; };
+		12E62C302AAF53B50094D0EC /* RTRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRView.swift; sourceTree = "<group>"; };
+		12E62C312AAF53B50094D0EC /* ReviewInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInfoView.swift; sourceTree = "<group>"; };
+		12E62C322AAF53B50094D0EC /* RTRDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRDetailInfoView.swift; sourceTree = "<group>"; };
+		12E62C332AAF53B50094D0EC /* RTRFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRFoodListView.swift; sourceTree = "<group>"; };
+		12E62C342AAF53B50094D0EC /* AddCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartView.swift; sourceTree = "<group>"; };
+		12E62C352AAF53B50094D0EC /* RTRFoodCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRFoodCellView.swift; sourceTree = "<group>"; };
+		12E62C362AAF53B50094D0EC /* RTRTitleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRTitleInfoView.swift; sourceTree = "<group>"; };
+		12E62C372AAF53B50094D0EC /* RTRFoodCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRFoodCategoryView.swift; sourceTree = "<group>"; };
+		12E62C382AAF53B50094D0EC /* ReviewMinimalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewMinimalView.swift; sourceTree = "<group>"; };
+		12E62C392AAF53B50094D0EC /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
+		12E62C3A2AAF53B50094D0EC /* RTRSubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRSubInfoView.swift; sourceTree = "<group>"; };
+		12E62C3B2AAF53B50094D0EC /* RTRDetailInfoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRDetailInfoMenuView.swift; sourceTree = "<group>"; };
+		12E62C492AAF549F0094D0EC /* Extension +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension +.swift"; sourceTree = "<group>"; };
+		12E62C542AAF5E830094D0EC /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		D16DDBD82AA862890009C29F /* CEatSeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEatSeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DDBDB2AA862890009C29F /* CEatSellerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatSellerApp.swift; sourceTree = "<group>"; };
 		D16DDBDD2AA862890009C29F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,7 +91,6 @@
 		D16DDBED2AA863900009C29F /* WorkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingView.swift; sourceTree = "<group>"; };
 		D16DDBEF2AA8639D0009C29F /* WorkingViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingViewDetail.swift; sourceTree = "<group>"; };
 		D16DDBF12AA863B10009C29F /* OrderedHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedHistoryView.swift; sourceTree = "<group>"; };
-		D16DDBF32AA863C10009C29F /* FoodStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,12 +98,89 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12E62C512AAF54EF0094D0EC /* protoc-gen-swift in Frameworks */,
+				12E62C162AAF49270094D0EC /* FirebaseDatabase in Frameworks */,
+				12E62C142AAF49270094D0EC /* FirebaseAuth in Frameworks */,
+				12E62C4F2AAF54EF0094D0EC /* SwiftProtobufPluginLibrary in Frameworks */,
+				12E62C182AAF49270094D0EC /* FirebaseFirestore in Frameworks */,
+				12E62C1C2AAF49270094D0EC /* FirebaseStorage in Frameworks */,
+				12E62C1A2AAF49270094D0EC /* FirebaseFirestoreSwift in Frameworks */,
+				12E62C4D2AAF54EF0094D0EC /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12E62C1D2AAF496E0094D0EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12E62C072AAF45B40094D0EC /* FoodType.swift */,
+				12E62C062AAF45B40094D0EC /* Restaurant.swift */,
+				12E62C022AAF40EC0094D0EC /* Seller.swift */,
+				12E62C082AAF45B40094D0EC /* RestaurantInfo.swift */,
+				12E62C052AAF45B40094D0EC /* Order.swift */,
+				12E62C042AAF45B40094D0EC /* Review.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12E62C202AAF4B7C0094D0EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D16DDBF52AA864310009C29F /* Home */,
+				D16DDBF72AA8644B0009C29F /* Order */,
+				D16DDBF62AA864410009C29F /* Work */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12E62C212AAF4B9E0094D0EC /* ManagingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				12E62C292AAF51A60094D0EC /* ManagingMenu.swift */,
+			);
+			path = ManagingMenu;
+			sourceTree = "<group>";
+		};
+		12E62C222AAF4BCD0094D0EC /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				12E62C342AAF53B50094D0EC /* AddCartView.swift */,
+				12E62C392AAF53B50094D0EC /* FullScreenImageView.swift */,
+				12E62C312AAF53B50094D0EC /* ReviewInfoView.swift */,
+				12E62C382AAF53B50094D0EC /* ReviewMinimalView.swift */,
+				12E62C3B2AAF53B50094D0EC /* RTRDetailInfoMenuView.swift */,
+				12E62C322AAF53B50094D0EC /* RTRDetailInfoView.swift */,
+				12E62C372AAF53B50094D0EC /* RTRFoodCategoryView.swift */,
+				12E62C352AAF53B50094D0EC /* RTRFoodCellView.swift */,
+				12E62C332AAF53B50094D0EC /* RTRFoodListView.swift */,
+				12E62C3A2AAF53B50094D0EC /* RTRSubInfoView.swift */,
+				12E62C2F2AAF53B40094D0EC /* RTRTitleImageView.swift */,
+				12E62C362AAF53B50094D0EC /* RTRTitleInfoView.swift */,
+				12E62C302AAF53B50094D0EC /* RTRView.swift */,
+				12E62C272AAF51670094D0EC /* CustomerPreView.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		12E62C232AAF4BD70094D0EC /* BusinessHour */ = {
+			isa = PBXGroup;
+			children = (
+				12E62C2B2AAF51EC0094D0EC /* BusinessHourView.swift */,
+				12E62C542AAF5E830094D0EC /* SwiftUIView.swift */,
+			);
+			path = BusinessHour;
+			sourceTree = "<group>";
+		};
+		12E62C242AAF4BFB0094D0EC /* ManagingReview */ = {
+			isa = PBXGroup;
+			children = (
+				12E62C252AAF50DF0094D0EC /* ManagingReview.swift */,
+			);
+			path = ManagingReview;
+			sourceTree = "<group>";
+		};
 		D16DDBCF2AA862890009C29F = {
 			isa = PBXGroup;
 			children = (
@@ -64,10 +201,11 @@
 			isa = PBXGroup;
 			children = (
 				D16DDBDB2AA862890009C29F /* CEatSellerApp.swift */,
+				12E62C102AAF46370094D0EC /* FireBaseManager.swift */,
 				D16DDBDD2AA862890009C29F /* ContentView.swift */,
-				D16DDBF52AA864310009C29F /* Home */,
-				D16DDBF62AA864410009C29F /* Work */,
-				D16DDBF72AA8644B0009C29F /* Order */,
+				12E62C492AAF549F0094D0EC /* Extension +.swift */,
+				12E62C202AAF4B7C0094D0EC /* View */,
+				12E62C1D2AAF496E0094D0EC /* Model */,
 				D16DDBF82AA864620009C29F /* ViewModel */,
 				D16DDBDF2AA8628C0009C29F /* Assets.xcassets */,
 				D16DDBE12AA8628C0009C29F /* Preview Content */,
@@ -88,6 +226,10 @@
 			children = (
 				D16DDBE92AA8635F0009C29F /* HomeView.swift */,
 				D16DDBEB2AA8636E0009C29F /* HomeViewDetail.swift */,
+				12E62C212AAF4B9E0094D0EC /* ManagingMenu */,
+				12E62C222AAF4BCD0094D0EC /* Preview */,
+				12E62C232AAF4BD70094D0EC /* BusinessHour */,
+				12E62C242AAF4BFB0094D0EC /* ManagingReview */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -112,7 +254,7 @@
 		D16DDBF82AA864620009C29F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D16DDBF32AA863C10009C29F /* FoodStore.swift */,
+				12E62C1E2AAF49AF0094D0EC /* SellerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -133,6 +275,16 @@
 			dependencies = (
 			);
 			name = CEatSeller;
+			packageProductDependencies = (
+				12E62C132AAF49270094D0EC /* FirebaseAuth */,
+				12E62C152AAF49270094D0EC /* FirebaseDatabase */,
+				12E62C172AAF49270094D0EC /* FirebaseFirestore */,
+				12E62C192AAF49270094D0EC /* FirebaseFirestoreSwift */,
+				12E62C1B2AAF49270094D0EC /* FirebaseStorage */,
+				12E62C4C2AAF54EF0094D0EC /* SwiftProtobuf */,
+				12E62C4E2AAF54EF0094D0EC /* SwiftProtobufPluginLibrary */,
+				12E62C502AAF54EF0094D0EC /* protoc-gen-swift */,
+			);
 			productName = CEatSeller;
 			productReference = D16DDBD82AA862890009C29F /* CEatSeller.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +313,10 @@
 				Base,
 			);
 			mainGroup = D16DDBCF2AA862890009C29F;
+			packageReferences = (
+				12E62C122AAF49270094D0EC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				12E62C4B2AAF54EF0094D0EC /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
 			productRefGroup = D16DDBD92AA862890009C29F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,14 +343,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12E62C432AAF53B50094D0EC /* ReviewInfoView.swift in Sources */,
+				12E62C3E2AAF53B50094D0EC /* RTRTitleInfoView.swift in Sources */,
+				12E62C552AAF5E830094D0EC /* SwiftUIView.swift in Sources */,
+				12E62C412AAF53B50094D0EC /* AddCartView.swift in Sources */,
+				12E62C2A2AAF51A60094D0EC /* ManagingMenu.swift in Sources */,
 				D16DDBEA2AA8635F0009C29F /* HomeView.swift in Sources */,
+				12E62C442AAF53B50094D0EC /* RTRFoodCategoryView.swift in Sources */,
 				D16DDBF02AA8639D0009C29F /* WorkingViewDetail.swift in Sources */,
 				D16DDBF22AA863B10009C29F /* OrderedHistoryView.swift in Sources */,
+				12E62C262AAF50DF0094D0EC /* ManagingReview.swift in Sources */,
 				D16DDBEE2AA863900009C29F /* WorkingView.swift in Sources */,
+				12E62C2C2AAF51EC0094D0EC /* BusinessHourView.swift in Sources */,
+				12E62C482AAF53B50094D0EC /* RTRFoodCellView.swift in Sources */,
+				12E62C0E2AAF45B40094D0EC /* RestaurantInfo.swift in Sources */,
+				12E62C0B2AAF45B40094D0EC /* Order.swift in Sources */,
+				12E62C0D2AAF45B40094D0EC /* FoodType.swift in Sources */,
+				12E62C1F2AAF49AF0094D0EC /* SellerViewModel.swift in Sources */,
 				D16DDBDE2AA862890009C29F /* ContentView.swift in Sources */,
+				12E62C0A2AAF45B40094D0EC /* Review.swift in Sources */,
 				D16DDBEC2AA8636E0009C29F /* HomeViewDetail.swift in Sources */,
+				12E62C452AAF53B50094D0EC /* RTRFoodListView.swift in Sources */,
+				12E62C422AAF53B50094D0EC /* RTRSubInfoView.swift in Sources */,
+				12E62C0C2AAF45B40094D0EC /* Restaurant.swift in Sources */,
+				12E62C3D2AAF53B50094D0EC /* RTRTitleImageView.swift in Sources */,
+				12E62C462AAF53B50094D0EC /* ReviewMinimalView.swift in Sources */,
+				12E62C282AAF51670094D0EC /* CustomerPreView.swift in Sources */,
+				12E62C032AAF40EC0094D0EC /* Seller.swift in Sources */,
 				D16DDBDC2AA862890009C29F /* CEatSellerApp.swift in Sources */,
-				D16DDBF42AA863C10009C29F /* FoodStore.swift in Sources */,
+				12E62C3F2AAF53B50094D0EC /* RTRDetailInfoMenuView.swift in Sources */,
+				12E62C402AAF53B50094D0EC /* FullScreenImageView.swift in Sources */,
+				12E62C112AAF46370094D0EC /* FireBaseManager.swift in Sources */,
+				12E62C4A2AAF549F0094D0EC /* Extension +.swift in Sources */,
+				12E62C472AAF53B50094D0EC /* RTRDetailInfoView.swift in Sources */,
+				12E62C3C2AAF53B50094D0EC /* RTRView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +577,68 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		12E62C122AAF49270094D0EC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		12E62C4B2AAF54EF0094D0EC /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		12E62C132AAF49270094D0EC /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C122AAF49270094D0EC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		12E62C152AAF49270094D0EC /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C122AAF49270094D0EC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		12E62C172AAF49270094D0EC /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C122AAF49270094D0EC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		12E62C192AAF49270094D0EC /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C122AAF49270094D0EC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		12E62C1B2AAF49270094D0EC /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C122AAF49270094D0EC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		12E62C4C2AAF54EF0094D0EC /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C4B2AAF54EF0094D0EC /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		12E62C4E2AAF54EF0094D0EC /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C4B2AAF54EF0094D0EC /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
+		12E62C502AAF54EF0094D0EC /* protoc-gen-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12E62C4B2AAF54EF0094D0EC /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = "protoc-gen-swift";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D16DDBD02AA862890009C29F /* Project object */;
 }
