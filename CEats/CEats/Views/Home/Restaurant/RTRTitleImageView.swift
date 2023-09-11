@@ -18,7 +18,7 @@ struct RTRTitleImageView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedIndex) {
-                ForEach(Array(zip(imageNamss, imageNamss.indices)), id: \.1) { imgName, index in
+                ForEach(Array(zip(imageNamss, imageNamss.indices)), id: \.1) { imgName, _ in
                     Image(imgName)
                         .resizable()
                         .aspectRatio(contentMode: .fill)

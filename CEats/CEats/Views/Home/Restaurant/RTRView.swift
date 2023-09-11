@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RTRView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @State private var selected = ""
     
     let restaurant: Restaurant
@@ -36,9 +36,11 @@ struct RTRView: View {
             ScrollView(showsIndicators: false) {
                 GeometryReader { geo in
                     let offset = geo.frame(in: .global).minY
-                    RTRTitleImageView(imageNamss: restaurant.mainImage)
-                        .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
-                        .offset(y: offset > 0 ? -offset : 0)
+                    NavigationLink(destination: FullScreenImageView(imageName: restaurant.mainImage)) {
+                        RTRTitleImageView(imageNamss: restaurant.mainImage)
+                            .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
+                            .offset(y: offset > 0 ? -offset : 0)
+                    }
                 }
                 .frame(width: .screenWidth, height: .screenHeight / 4)
                 RTRTitleInfoView(restaurant: restaurant)

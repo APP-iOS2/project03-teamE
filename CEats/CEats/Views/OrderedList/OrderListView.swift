@@ -9,14 +9,15 @@ import SwiftUI
 
 struct OrderListView: View {
     @EnvironmentObject var userViewModel: UserViewModel
-
+    @State var isShowingSheet: Bool = false
+    
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){
                 ForEach(userViewModel.filteredOrderList) { order in
                     HStack{
                         VStack(alignment: .leading){
-                            Text(order.restaurantName.name)
+                            Text(order.restaurant.name)
                                 .font(.system(size:22))
                                 .bold()
                             Text("2023-09-07 오전 11:29")
@@ -31,7 +32,7 @@ struct OrderListView: View {
                             }
                         }
                         Spacer()
-                        Image(order.restaurantName.mainImage[0])
+                        Image(order.restaurant.mainImage[0])
                             .resizable()
                             .scaledToFit()
                             .frame(width: .screenWidth * 0.30)
@@ -48,16 +49,33 @@ struct OrderListView: View {
                             .font(.system(size:14))
                             .padding(.bottom,2)
                     }
-
+                    
                     .foregroundColor(.gray)
                     HStack{
                         Text("합계:")
                         Text("\(order.totalFee)원")
                             .bold()
                     }
+                    .padding(.bottom,10)
+                    Spacer()
+                    HStack{ //위치가 아래로 바뀌어야함
+                        Spacer()
+                        Button {
+                            isShowingSheet = true
+                        } label: {
+                            Text("영수증 보기")
+                                .padding(5)
+                                .foregroundColor(.white)
+                                .background(RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray)
+                                    .frame(width: .screenWidth))
+                            
+                        }
+                        Spacer()
+                    }
                 }
             }
-            .padding(30)
+            .padding([.top,.leading,.trailing],20)
             .background(
                 Group {
                     if !userViewModel.filteredOrderList.isEmpty {
@@ -69,7 +87,13 @@ struct OrderListView: View {
                 }
             )
         }
-        .padding(10) // 왜 여기 이렇게 위아래로 패딩이 크게 잡힘?
+        .sheet(isPresented: $isShowingSheet, content: {
+            NavigationStack{
+                ReciptView()
+                    .padding(20)
+            }
+        })
+        .padding(10)
     }
 }
 

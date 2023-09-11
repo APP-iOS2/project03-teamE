@@ -31,3 +31,10 @@ struct CouponView: View {
         .navigationTitle("할인쿠폰")
     }
 }
+
+struct CouponView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyView(tabIndex: .constant(0))
+            .environmentObject(UserViewModel())
+    }
+}

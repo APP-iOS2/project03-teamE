@@ -11,6 +11,7 @@ import SwiftUI
 struct MyView: View {
     @Binding var tabIndex: Int
     @EnvironmentObject private var userViewModel: UserViewModel
+    @State private var isOpenMapSheet: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -67,7 +68,7 @@ struct MyView: View {
                 .aspectRatio(contentMode: .fit)
             VStack {
                 NavigationLink {
-                    MapHomeView(isOpenMapSheet: .constant(true))
+                    MapHomeView(isOpenMapSheet: $isOpenMapSheet)
                 } label: {
                     HStack {
                         Image(systemName: "list.bullet.rectangle.portrait")

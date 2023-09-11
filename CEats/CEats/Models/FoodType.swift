@@ -16,7 +16,6 @@ enum FoodType: String, CaseIterable, Identifiable, Codable {
             print(newValue)
         }
     }
-    
 
    case korean = "한식"
    case chicken = "치킨"

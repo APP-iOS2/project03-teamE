@@ -60,21 +60,6 @@ struct ContentView: View {
         .environmentObject(userViewModel)
     }
 }
-// MARK: 파이어 베이스 테스팅 코드 .toolbar, .onAppear
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button("추가후 네트워킹") {
-//                    userViewModel.user.orderHistory.append(.sampleData)
-//                    fireManager.create(data: userViewModel.user)
-//                }
-//            }
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                Text("\(orders.count)")
-//            }
-//        }
-//        .onAppear {
-//            fireManager.read(type: User.self, id: "cce85ebzswcF8HxlCVv4") { print($0) }
-//        }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

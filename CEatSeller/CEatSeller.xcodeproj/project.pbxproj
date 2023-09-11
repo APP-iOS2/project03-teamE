@@ -69,7 +69,6 @@
 				D16DDBF62AA864410009C29F /* Work */,
 				D16DDBF72AA8644B0009C29F /* Order */,
 				D16DDBF82AA864620009C29F /* ViewModel */,
-				D16DDBF92AA8646D0009C29F /* Model */,
 				D16DDBDF2AA8628C0009C29F /* Assets.xcassets */,
 				D16DDBE12AA8628C0009C29F /* Preview Content */,
 			);
@@ -116,13 +115,6 @@
 				D16DDBF32AA863C10009C29F /* FoodStore.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		D16DDBF92AA8646D0009C29F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
