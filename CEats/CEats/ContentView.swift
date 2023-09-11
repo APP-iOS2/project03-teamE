@@ -12,6 +12,7 @@ struct ContentView: View {
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()
     @State var orders = [Order]()
+    
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
         UITabBar.appearance().backgroundImage = UIImage()
@@ -62,8 +63,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ContentView()
-        }
+        ContentView()
     }
 }

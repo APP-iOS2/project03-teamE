@@ -8,6 +8,7 @@
 import Foundation
 
 final class UserViewModel: ObservableObject {
+    @Published var deliveryFee: Int = 0
     @Published var user: User = User.sampleData
     @Published var selectedButton: OrderState = .과거주문내역
     
@@ -16,6 +17,32 @@ final class UserViewModel: ObservableObject {
     enum OrderState: String, CaseIterable {
         case 과거주문내역
         case 준비중
+    }
+    
+//    func recommendFoods(food: [Restaurant.Food]?, restaurant: Restaurant?) -> [Restaurant.Food] {
+//        var menus = restaurant!.menus
+//        
+//        if menus.count < 3 {
+//            return restaurant!.menus
+//        }
+//        
+//        for selectedFood in food {
+//            menus.removeAll { $0.name == selectedFood.name }
+//        }
+//        
+//        return menus
+//    }
+    
+    func addCount(food: Restaurant.Food){
+        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            self.user.foodCart?.cart[index].foodCount += 1
+        }
+    }
+    
+    func subtractCount(food: Restaurant.Food){
+        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            self.user.foodCart?.cart[index].foodCount -= 1
+        }
     }
     
     var filteredOrderList: [Order] {

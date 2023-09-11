@@ -34,19 +34,19 @@ struct Order: Identifiable, Codable {
     }
     
     enum OrderStatus: Codable {
-            case waiting, canceled, accepted
-            
-            var toString: String {
-                switch self {
-                case .waiting:
-                    return "준비중"
-                case .canceled:
-                    return "주문 취소됨"
-                case .accepted:
-                    return "주문 완료됨"
-                }
+        case waiting, canceled, accepted
+        
+        var toString: String {
+            switch self {
+            case .waiting:
+                return "준비중"
+            case .canceled:
+                return "주문 취소됨"
+            case .accepted:
+                return "주문 완료됨"
             }
         }
+    }
 }
 
 

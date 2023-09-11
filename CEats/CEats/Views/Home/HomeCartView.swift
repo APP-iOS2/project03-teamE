@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct HomeCartView: View {
-    @Binding var order: Order
+    @EnvironmentObject var userViewModel: UserViewModel
+    @Binding var user: User
+    @Binding var isOpenMapSheet: Bool
     
     var body: some View {
-        VStack(spacing:0){
+        VStack {
             NavigationLink {
-                // 바인딩 어케 사용하죠?
-//                CartView()
+                CartView(userViewModel: UserViewModel(), isOpenMapSheet: $isOpenMapSheet)
             } label: {
-                VStack(spacing:0) {
+                VStack {
                     HStack{
                         ZStack{
                             Circle()
                                 .frame(width: 30)
-                            Text("\(order.orderedMenu.count)")
+                            Text("\(user.foodCart?.cart.count ?? 0)")
                                 .foregroundColor(.blue)
                         }
                         Text("카트보기")
@@ -29,11 +30,11 @@ struct HomeCartView: View {
                         ZStack{
                             Rectangle()
                                 .frame(width: 80, height: 1)
-                            Text("10,700원")
+                            Text("\(user.foodCart?.fee ?? 0) 원")
                         }
                         .foregroundColor(.lightgray)
                         
-                        Text("\(order.orderedMenu[0].price)원")
+                        Text("\(user.foodCart?.fee ?? 0) 원")
                             .font(.system(size: 18, weight: .bold))
                     }
                 }
@@ -42,6 +43,16 @@ struct HomeCartView: View {
                 .padding()
                 .background(.blue)
             }
+        }
+    }
+}
+
+struct HomeCartView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            HomeCartView(user: .constant(.sampleData), isOpenMapSheet: .constant(false))
+                .environmentObject(RestaurantViewModel())
+                .environmentObject(UserViewModel())
         }
     }
 }
