@@ -31,18 +31,16 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
         var restaurantName: String {
             return restaurant.name
         }
-        var foodCart: [Restaurant.Food] // [filter] 푸드의 이름이 같은 것 count 해서 숫자 사용
+        var cart: [Restaurant.Food] // [filter] 푸드의 이름이 같은 것 count 해서 숫자 사용
         var fee: Int {
-            let totalFoodFee = foodCart.map({ $0.price }).reduce(0) { $0 + $1 }
+            let totalFoodFee = cart.map({ $0.price }).reduce(0) { $0 + $1 }
             return totalFoodFee + restaurant.deliveryFee
         }
     }
 }
 
-
-
 #if DEBUG
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0, reviews: .sampleData, coupons: [.sampleData])
+    static var sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], foodCart: Cart(restaurant: Restaurant.sampleData, cart: [Restaurant.Food.sampleData]) , latitude: 0 ,longitude: 0, reviews: .sampleData, coupons: [.sampleData])
 }
 #endif

@@ -18,11 +18,60 @@ final class UserViewModel: ObservableObject {
         case 준비중
     }
     
+//    func recommendFoods(food: [Restaurant.Food]?, restaurant: Restaurant?) -> [Restaurant.Food] {
+//        var menus = restaurant!.menus
+//        
+//        if menus.count < 3 {
+//            return restaurant!.menus
+//        }
+//        
+//        for selectedFood in food {
+//            menus.removeAll { $0.name == selectedFood.name }
+//        }
+//        
+//        return menus
+//    }
+    
+    func addCount(food: Restaurant.Food){
+        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            self.user.foodCart?.cart[index].foodCount += 1
+        }
+    }
+    
+    func subtractCount(food: Restaurant.Food){
+        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            self.user.foodCart?.cart[index].foodCount -= 1
+        }
+    }
+    
     var filteredOrderList: [Order] {
         if selectedButton == .과거주문내역 {
             return user.orderHistory.filter { $0.orderStatus != .waiting }
         } else {
             return user.orderHistory.filter { $0.orderStatus == .waiting }
+        }
+    }
+    
+    func updateUserLocation(user: User, lat: Double, long: Double, adress: String) {
+        fireManager.update(data: user, value: \.latitude, to: lat) { result in
+            self.user = result
+        }
+        fireManager.update(data: user, value: \.longitude, to: long) { result in
+            self.user = result
+        }
+        fireManager.update(data: user, value: \.userAddress, to: adress) { result in
+            self.user = result
+        }
+    }
+    
+    func updateUserCart(restaurant: Restaurant, food: Restaurant.Food) {
+        user.foodCart?.cart.append(food)
+        fireManager.create(data: user)
+    }
+    
+    func updateUserOrder(user: User, order: [Order]){
+        fireManager.update(data: user, value: \.orderHistory, to: order) { result in
+            self.user = result
         }
     }
     

@@ -38,13 +38,15 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
         return "20 ~ 30 분"
     }
     
-    struct Food: Codable {
+    struct Food: Codable, Identifiable {
+        var id: UUID = UUID()
         var name: String //메뉴이름
         var price: Int //메뉴 가격
         var isRecommend: Bool //추천여부 추천이면 가게 클릭시 상단에 뜸
         var foodCategory: String
         var description: String // 메뉴설명
         var image: String?
+        var foodCount: Int = 1 // 메뉴 수량 변수
         // var option: 추가옵션
         var priceToString: String {
             let formatter = NumberFormatter()
@@ -57,7 +59,7 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
 
 #if DEBUG
 extension Restaurant.Food {
-    static let sampleData = Restaurant.Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza")
+    static var sampleData = Restaurant.Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza")
 }
 
 extension Restaurant {
