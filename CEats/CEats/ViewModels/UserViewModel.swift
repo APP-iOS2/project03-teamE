@@ -54,22 +54,29 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-    func newOrder(user: User, restaurant: Restaurant, completion: (Order) -> ()) {
+    func newOrder(restaurant: Restaurant, completion: @escaping ([Order]) -> ()) {
         guard let menus = user.foodCart?.cart else {
             print(#function + ": fail to optional bind")
             return
         }
-        let newOrder = Order(id: UUID().uuidString, orderer: user.username, restaurant: restaurant, orderedMenu: menus)
+        let newOrder = Order(id: "\(user.username).\(user.orderHistory.count)", orderer: user.username, restaurant: restaurant, orderedMenu: menus)
         fireManager.read(type: Seller.self, id: restaurant.id) { result in
             self.fireManager.appendValue(data: result, value: \.orders, to: newOrder) {
-                self.fireManager.appendValue(data: user, value: \.orderHistory, to: newOrder) {
-                    self.fireManager.addSnapshot(data: user, value: \.orderHistory) { result in
-                        self.user.orderHistory = result
+                self.fireManager.appendValue(data: self.user, value: \.orderHistory, to: newOrder) { orderID in
+                    self.fireManager.create(data: newOrder) {
+                        self.user.orderHistory.append(newOrder)
+                        self.user.foodCart = nil
+                        self.fireManager.addSnapshot(data: newOrder, value: \.orderStatus) { resultStatus in
+                            guard let index = self.user.orderHistory.firstIndex(where: { $0.id == newOrder.id }) else {
+                                print(#function + ": fail to optional bind - index")
+                                return
+                            }
+                            self.user.orderHistory[index].orderStatus = resultStatus
+                        }
                     }
                 }
             }
         }
-        
     }
     
     func fetchUser() {

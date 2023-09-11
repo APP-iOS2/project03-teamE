@@ -88,8 +88,12 @@ final class CEatsFBManager {
                         print(#function + ": fail to optional bind - Any")
                         return
                     }
-                    guard let uType = fbAny as? U else {
-                        print(#function + ": fail to optional bind - [Order]")
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: fbAny) else {
+                        print(#function + ": fail to optional bind - jsonData")
+                        return
+                    }
+                    guard let uType = try? JSONDecoder().decode(U.self, from: jsonData) else {
+                        print(#function + ": fail to optional bind - U")
                         return
                     }
                     DispatchQueue.main.async {
@@ -153,7 +157,7 @@ final class CEatsFBManager {
         }
     }
     
-    func create<T: CEatsIdentifiable>(data: T, completion: () -> ()) where T: Encodable {
+    func create<T: CEatsIdentifiable>(data: T, completion: @escaping () -> ()) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
         DispatchQueue.global().async {
@@ -164,6 +168,7 @@ final class CEatsFBManager {
                         return
                     }
                 }
+                completion()
             } catch {
                 print(#function + ": fail to .setData()")
             }
@@ -276,7 +281,7 @@ final class CEatsFBManager {
         }
     }
     
-    func appendValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping () -> Void) {
+    func appendValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping () -> Void) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
         data.getPropertyName(keyPath) { propertyName in
@@ -286,22 +291,45 @@ final class CEatsFBManager {
                         self.printError(error: error!)
                         return
                     }
-                    guard let fbdic = snapshot?.data() else {
-                        print(#function + ": fail to optional bind - [String: Any]")
-                        return
-                    }
-                    guard let uArray = fbdic[propertyName] as? [U] else {
-                        print(#function + ": fail to optional bind - [U]")
-                        return
-                    }
-                    var newArray = uArray
-                    newArray.append(to)
-                    collectionRef.document(data.id).updateData([propertyName: newArray]) { error in
-                        guard error == nil else {
-                            self.printError(error: error!)
-                            return
+                    var newData = data
+                    newData[keyPath: keyPath].append(to)
+                    do {
+                        try collectionRef.document(data.id).setData(from: newData) { error in
+                            guard error == nil else {
+                                self.printError(error: error!)
+                                return
+                            }
+                            completion()
                         }
-                        completion()
+                    } catch {
+                        print(#function + ": Error - setData(from: newData)")
+                    }
+                }
+            }
+        }
+    }
+    func appendValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (String) -> Void) where T: Encodable, U: CEatsIdentifiable {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        
+        data.getPropertyName(keyPath) { propertyName in
+            DispatchQueue.global().async {
+                collectionRef.document(data.id).getDocument { snapshot, error in
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
+                    var newData = data
+                    newData[keyPath: keyPath].append(to)
+                    do {
+                        try collectionRef.document(data.id).setData(from: newData) { error in
+                            guard error == nil else {
+                                self.printError(error: error!)
+                                return
+                            }
+                            completion(to.id)
+                        }
+                    } catch {
+                        print(#function + ": Error - setData(from: newData)")
                     }
                 }
             }

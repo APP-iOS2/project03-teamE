@@ -33,6 +33,11 @@ struct CartPayButtonView: View {
             .padding()
             .background(.blue)
         }
+        .onTapGesture {
+            userViewModel.newOrder(restaurant: Restaurant.sampleData) { result in
+                print("Update\n \(result)")
+            }
+        }
     }
 }
 

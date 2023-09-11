@@ -57,13 +57,15 @@ struct ContentView: View {
 //            restaurantViewModel.fireManager.create(data: Seller.sampleData)
 //            restaurantViewModel.fetchAllRestaurant()
         }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                Button("테스트") {
-//
-//                }
-//            }
-//        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("테스트") {
+                    userViewModel.newOrder(restaurant: Restaurant.sampleData) { result in
+                        print("Update\n \(result)")
+                    }
+                }
+            }
+        }
     }
 }
 

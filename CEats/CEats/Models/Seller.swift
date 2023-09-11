@@ -13,6 +13,9 @@ struct Seller: Identifiable, CEatsIdentifiable, Codable { //레스토랑 안에 
     var orders: [Order]
     var orderAcceptanceRate: Double
     var averageAcceptanceTime: Double
+}
+
+extension Seller {
     var id: String {
         restaurant.id
     }
@@ -23,7 +26,6 @@ struct Seller: Identifiable, CEatsIdentifiable, Codable { //레스토랑 안에 
         restaurant.score ?? 0
     }
 }
-
 extension Seller {
     static let sampleData: Self = .init(restaurant: .sampleData, orders: [], orderAcceptanceRate: 0, averageAcceptanceTime: 0)
 }
