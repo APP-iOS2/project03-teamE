@@ -9,11 +9,12 @@ import SwiftUI
 
 struct CartView: View {
     @Binding var isOpenMapSheet: Bool
+    @Binding var order: Order
     
     var body: some View {
         NavigationStack{
             ScrollView {
-                CartDeliveryView(isOpenMapSheet: $isOpenMapSheet)
+//                CartDeliveryView(order: $order, isOpenMapSheet: $isOpenMapSheet)
                 //            CartMenuView()
                 Text("여기는 메뉴 보여질 뷰 들어갈 자리")
                 CartPayView()
@@ -25,7 +26,7 @@ struct CartView: View {
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CartView(isOpenMapSheet: .constant(false))
+            CartView(isOpenMapSheet: .constant(false), order: .constant(.sampleData))
         }
     }
 }
