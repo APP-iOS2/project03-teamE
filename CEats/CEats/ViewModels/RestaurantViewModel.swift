@@ -8,9 +8,25 @@
 import Foundation
 
 final class RestaurantViewModel: ObservableObject {
+    let fireManager = CEatsFBManager.shared
     @Published var restaurants: [Restaurant] = Restaurant.sampleArray
     
     @Published var selectedFoodType: FoodType? = nil
+    
+    func updateFee(restaurant: Restaurant, to: Int) {
+        fireManager.update(data: restaurant, value: \.deliveryFee, to: to) { result in
+            
+        }
+    }
+    
+    func appendMenu(restaurant: Restaurant, to: Restaurant.Food) {
+        var newRest = restaurant
+        newRest.menus.append(to)
+        fireManager.update(data: newRest, value: \.menus, to: newRest.menus) { result in
+            guard let index = try? self.restaurants.firstIndex(where: { $0.id == result.id }) else { return }
+            self.restaurants[index] = newRest
+        }
+    }
     
     func filterFoodTypes(_ data: FoodType?) -> [Restaurant] {
         return restaurants.filter { store in
@@ -43,21 +59,4 @@ final class RestaurantViewModel: ObservableObject {
         
         return foodNames
     }
-    
-//    func removeRestaurant(restaurant: Restaurant) {
-//        guard let index = user.favoriteRestaurant.firstIndex(where: { $0.id == restaurant.id }) else { return }
-//        user.favoriteRestaurant.remove(at: index)
-//    }
-    
-//    func removeRTR(store: Restaurant) {
-//        var index: Int = 0
-//
-//        for tempStore in user.favoriteRestaurant {
-//            if tempStore.id == store.id {
-//                user.favoriteRestaurant.remove(at: index)
-//                break
-//            }
-//            index += 1
-//        }
-//    }
 }

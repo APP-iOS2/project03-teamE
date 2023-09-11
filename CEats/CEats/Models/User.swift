@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id: String
     var username: String
     var email: String
@@ -20,7 +24,7 @@ struct User: Identifiable {
     var latitude: Double//위도
     var longitude: Double //경도
     
-    struct Cart {
+    struct Cart: Codable {
         var restaurant: Restaurant
         var restaurantName: String {
             return restaurant.name
@@ -33,8 +37,25 @@ struct User: Identifiable {
     }
 }
 
+//MARK: User에 Review배열 저장 프로퍼티 필요 / 화면표시위해서 연산프로퍼티로 임시구현
+extension User {
+    var reviews: [Review] {
+        return .sampleData
+    }
+}
+
+//MARK: User에 Coupon배열 저장 프로퍼티 필요 / 화면표시위해서 연산프로퍼티로 임시구현
+extension User {
+    var coupons: [Coupon] {
+        return [
+            .sampleData
+        ]
+    }
+}
+
+
 #if DEBUG
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [], latitude: 0, longitude: 0)
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0)
 }
 #endif

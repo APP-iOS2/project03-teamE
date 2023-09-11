@@ -15,7 +15,7 @@ struct HomeSearchView: View {
         NavigationStack{
             ZStack{
                 Rectangle()
-                    .frame(width: 350,height: 45) //뷰 바운드로 수정
+                    .frame(width: .screenWidth * 0.8,height: 45) //뷰 바운드로 수정
                     .foregroundColor(.white)
                     .cornerRadius(30)
                     .shadow(radius: 2)

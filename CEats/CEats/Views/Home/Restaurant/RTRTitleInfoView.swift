@@ -15,7 +15,7 @@ struct RTRTitleInfoView: View {
             Text(restaurant.name)
                 .font(.system(size: 25, weight: .medium))
             NavigationLink {
-                ReviewInfoView()
+                ReviewInfoView(restaurant: restaurant)
             } label: {
                 HStack {
                     Image(systemName: "star.fill")

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CartDeliveryView: View {
-    var order: Order = .sampleData
+  
+    @EnvironmentObject var userViewModel: UserViewModel
+    @Binding var order: Order
     @Binding var isOpenMapSheet: Bool
     // 불값이 아닌 ?-? 
     
@@ -21,10 +23,10 @@ struct CartDeliveryView: View {
             HStack {
                 VStack(alignment: .leading) {
                     HStack{
-                        Text("\(order.orderer.userAddress)")
+                        Text("\(userViewModel.user.userAddress)") //edit
                         Text("(으)로 배달")
                     }
-                    Text("\(order.orderer.userAddress)")
+                    Text("\(userViewModel.user.userAddress)")// edit
                         .font(.system(size: 21, weight: .bold))
                 }
                 Spacer()

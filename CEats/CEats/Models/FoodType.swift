@@ -7,7 +7,16 @@
 
 import Foundation
 
-enum FoodType: String, CaseIterable, Identifiable {
+enum FoodType: String, CaseIterable, Identifiable, Codable {
+    var id: String {
+        get {
+            self.rawValue
+        }
+        set {
+            print(newValue)
+        }
+    }
+    
 
    case korean = "한식"
    case chicken = "치킨"
@@ -22,5 +31,5 @@ enum FoodType: String, CaseIterable, Identifiable {
    case dessert = "디저트"
    case fastFood = "패스트푸드"
    
-   var id: String { self.rawValue }
+//   var id: String { self.rawValue }
 }

@@ -7,13 +7,17 @@
 
 import SwiftUI
 
+
 struct MyView: View {
+    @Binding var tabIndex: Int
+    @EnvironmentObject private var userViewModel: UserViewModel
+    
     var body: some View {
-        VStack {
-            Text("홍길동")// 내 이름
+        NavigationStack {
+            Text("\(userViewModel.user.username)")// 내 이름
                 .font(.largeTitle)
                 .padding(5)
-            Text("010-xxxx-xxxx")// 내 전화번호
+            Text("\(userViewModel.user.phoneNumber)")// 내 전화번호
             
             HStack(alignment: .center ,spacing: 10) {
                 VStack {
@@ -22,29 +26,28 @@ struct MyView: View {
                         .bold()
                     Text("내가 남긴리뷰")
                         .font(.footnote)
-                } .padding()
-                
+                }
+                .padding()
                 VStack(alignment: .center) {
                     Text("0")
                         .font(.largeTitle)
                         .bold()
                     Text("도움이 됐어요")
                         .font(.footnote)
-                } .padding()
-
+                }
+                .padding()
                 VStack {
-                    Text("0")
+                    Text("\(userViewModel.user.favoriteRestaurant.count)")
                         .font(.largeTitle)
                         .bold()
                     Text("즐겨찾기")
                         .font(.footnote)
-                } .padding()
-            } .padding(.trailing, 25)
-            
-            
+                }
+                .padding()
+            }
             // 자세히보기 버튼
-            Button {
-                
+            NavigationLink {
+                MyInfoView()
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -56,56 +59,65 @@ struct MyView: View {
                         .foregroundColor(.white)
                         .padding(2)
                     Text("자세히 보기")
+                        .bold()
                 }
             }
             Image("advertisement")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            List {
-                Button {
-                    // 주소 관리 뷰로 이동
+            VStack {
+                NavigationLink {
+                    MapHomeView(isOpenMapSheet: .constant(true))
                 } label: {
                     HStack {
                         Image(systemName: "list.bullet.rectangle.portrait")
-                            .foregroundColor(.black)
                             .imageScale(.large)
+                            .padding()
                         Text("주소 관리")
                             .frame(height: 60)
-                            .foregroundColor(.black)
+                        Spacer()
                     }
                 }
-                Button {
-                    // 즐겨찾기 뷰로 이동
+                NavigationLink {
+                    FavoriteView(tabIndex: $tabIndex)
                 } label: {
                     HStack {
                         Image(systemName: "heart")
-                            .foregroundColor(.black)
                             .imageScale(.large)
+                            .padding()
                         Text("즐겨찾기")
                             .frame(height: 60)
-                            .foregroundColor(.black)
+                        Spacer()
                     }
                 }
-                Button {
-                    // 할인 쿠폰 뷰로 이동
+                NavigationLink {
+                    CouponView(coupons: userViewModel.user.coupons)
                 } label: {
                     HStack {
                         Image(systemName: "tag")
-                            .foregroundColor(.black)
                             .imageScale(.large)
+                            .padding()
                         Text("할인 쿠폰")
                             .frame(height: 60)
-                            .foregroundColor(.black)
+                        if userViewModel.user.coupons.count > 0 {
+                            Image(systemName: "\(userViewModel.user.coupons.count).circle.fill")
+                                .foregroundColor(.blue)
+                        }
+                        Spacer()
                     }
                 }
             }
+            .foregroundColor(.primary)
             .listStyle(.plain)
         }
     }
 }
 
+
 struct MyView_Previews: PreviewProvider {
+    @State private static var tabIndex: Int = 4
     static var previews: some View {
-        MyView()
+        MyView(tabIndex: $tabIndex)
+            .environmentObject(UserViewModel())
     }
 }
