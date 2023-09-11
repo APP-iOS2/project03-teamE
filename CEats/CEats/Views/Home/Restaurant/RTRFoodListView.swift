@@ -22,7 +22,7 @@ struct RTRFoodListView: View {
                     .foregroundColor(.secondary)
                 ForEach(restaurant.menus, id: \.name) { food in
                     NavigationLink {
-                        AddCartView(food: food)
+                        AddCartView(restaurant: restaurant, food: food, name: restaurant.name)
                     } label: {
                         RTRFoodCellView(food: food)
                     }
