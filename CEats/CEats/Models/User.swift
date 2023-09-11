@@ -19,7 +19,7 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
     var userAddress: String
     var favoriteRestaurant: [Restaurant] // 즐겨찾기
     var orderHistory: [Order] //
-    var foodCart: Cart? //장바구니
+    var cart: Cart? //장바구니
     var cEatsMoney: Int = 100000
     var latitude: Double//위도
     var longitude: Double //경도

@@ -31,29 +31,38 @@ struct CartAppealView: View {
                 Button {
                     ischeckmark.toggle()
                 } label: {
-                    Image(systemName: ischeckmark ? "checkmark.square" : "checkmark.square.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.black)
-                        .padding([.leading, .trailing])
-                }
-                VStack(alignment: .leading) {
-                    if ischeckmark {
-                        Text("일화용 수저/포크받기")
-                            .font(.system(size: 15))
-                            .foregroundColor(.gray)
-                        Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
-                            .font(.system(size: 12))
-                            .foregroundColor(.lightgray)
-                    }else {
-                        Text("일화용 수저/포크받기")
-                            .font(.system(size: 15))
-                        Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
-                            .font(.system(size: 12))
-                            .foregroundColor(.lightgray)
+                        if ischeckmark {
+                            Image(systemName: ischeckmark ? "checkmark.square" : "checkmark.square.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.gray)
+                                .padding([.leading, .trailing])
+                            VStack(alignment: .leading) {
+                                Text("일화용 수저/포크받기")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.gray)
+                                Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.lightgray)
+                            }
+                        }else {
+                            Image(systemName: ischeckmark ? "checkmark.square" : "checkmark.square.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.black)
+                                .padding([.leading, .trailing])
+                            VStack(alignment: .leading) {
+                                Text("일화용 수저/포크받기")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.black)
+                                Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.lightgray)
+                            }
+                        }
                     }
-                }
                 Spacer()
             }
             HStack {
