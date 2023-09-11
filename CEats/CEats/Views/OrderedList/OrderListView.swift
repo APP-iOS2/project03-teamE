@@ -66,15 +66,16 @@ struct OrderListView: View {
                             Text("영수증 보기")
                                 .padding(5)
                                 .foregroundColor(.white)
-                                .background(Rectangle()
-                                    .frame(width:.screenWidth * 2)
-                                    .foregroundColor(.lightgray))
+                                .background(RoundedRectangle(cornerRadius: 10)
+                                    .foregroundColor(.gray)
+                                    .frame(width: .screenWidth))
+                            
                         }
                         Spacer()
                     }
                 }
             }
-            .padding(30)
+            .padding([.top,.leading,.trailing],20)
             .background(
                 Group {
                     if !userViewModel.filteredOrderList.isEmpty {
