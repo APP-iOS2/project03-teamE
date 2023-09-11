@@ -11,7 +11,7 @@ struct HomeView: View {
 
     @State private var isOpenMapSheet: Bool = false
     @State var searchText: String = ""
-    @State var order: Order = Order.sampleData
+    @State var user: User = User.sampleData
     @State private var isOpenCartSheet: Bool = false
     
     var body: some View {
@@ -36,8 +36,9 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.hidden)
 
-                if order.orderedMenu.count > 0 {
-                    HomeCartView(order: $order, isOpenMapSheet: $isOpenCartSheet)
+                if user.foodCart?.cart.count ?? 0 > 0 {
+                    HomeCartView(user: $user, isOpenMapSheet: $isOpenCartSheet)
+                        .padding(.top, -10)
                 }
             }
         }

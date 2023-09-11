@@ -8,6 +8,7 @@
 import Foundation
 
 final class UserViewModel: ObservableObject {
+    @Published var deliveryFee: Int = 0
     @Published var user: User = User.sampleData
     @Published var selectedButton: OrderState = .과거주문내역
     

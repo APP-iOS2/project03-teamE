@@ -10,11 +10,11 @@ import SwiftUI
 struct CartDeliveryView: View {
     //MARK: - Properties
     @EnvironmentObject var userViewModel: UserViewModel
-    @Binding var order: Order
     @Binding var isOpenMapSheet: Bool
     
     @State var isSelected1: Bool = true
     @State var isSelected2: Bool = false
+    @Binding var fee: Int
     
     @Environment(\.dismiss) private var dismiss
     
@@ -47,21 +47,35 @@ struct CartDeliveryView: View {
                 }
                 
                 // 일단 되게 !!!!! + 간단한걸 만들기 + 많이 만들기 !!!!!! 1일1기능 만들기 !! 많이 물어보기 !!!!!!!!!
-                let deliveryTypeButton1 = DeliveryTypeButton(isSelected: $isSelected1, titleLabel: "한집배달", deliveryTimeString: "29 ~ 39", deliveryFee: 3000)
-                let deliveryTypeButton2 = DeliveryTypeButton(isSelected: $isSelected2, titleLabel: "세이브배달", deliveryTimeString: "34 ~ 43", deliveryFee: 3000, discountedFee: 1000)
+                let deliveryTypeButton1 = DeliveryTypeButton(isSelected: $isSelected1, titleLabel: "한집배달", deliveryTimeString: "29 ~ 39", deliveryFee: UInt(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0))
+                let deliveryTypeButton2 = DeliveryTypeButton(isSelected: $isSelected2, titleLabel: "세이브배달", deliveryTimeString: "34 ~ 43", deliveryFee: UInt(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0), discountedFee: 1000)
                 
                 let deliveryButtonArray: [DeliveryTypeButton] = [deliveryTypeButton1, deliveryTypeButton2]
                 
                 // ⭐️ Refactoring 해서 검사맡기 !!!!! 숙제임!!
                 deliveryTypeButton1
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         disableAllBtn(deliveryButtonArray: deliveryButtonArray)
                         isSelected1 = true
+                        
+                        // [추가되어야함] 값 전달 !
+                        if isSelected1 {
+                            fee = Int(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0)
+                            print("\(String(describing: fee)) 우ㄹㅣ집만 와요")
+                        }
                     }
                 deliveryTypeButton2
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         disableAllBtn(deliveryButtonArray: deliveryButtonArray)
                         isSelected2 = true
+                        
+                        // [추가되어야함] 값 전달 !
+                        if isSelected2 {
+                            fee = Int(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0) - Int(deliveryTypeButton2.discountedFee)
+                            print("\(String(describing: fee)) 세이브 배달임")
+                        }
                     }
                 Spacer()
             }
@@ -106,7 +120,7 @@ struct DeliveryTypeButton: View, Identifiable {
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading) {
-            HStack{
+            HStack {
                 Image(systemName: isSelected ? "o.circle.fill" : "o.circle")
                     .foregroundColor(isSelected ? .accentColor : .black)
                 VStack(alignment: .leading) {
@@ -118,6 +132,8 @@ struct DeliveryTypeButton: View, Identifiable {
                 Spacer()
                 
                 if discountedFee > 0 {
+                    let discountDelivery: UInt = deliveryFee - discountedFee
+                    
                     VStack(alignment: .trailing) {
                         ZStack{
                             Rectangle()
@@ -125,7 +141,7 @@ struct DeliveryTypeButton: View, Identifiable {
                                 .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
                             Text("배달비 \(deliveryFee)원")
                         }
-                        Text("\(discountedFee)원")
+                        Text("\(discountDelivery)원")
                             .bold()
                             .foregroundColor(.red)
                             .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))
@@ -147,7 +163,7 @@ struct DeliveryTypeButton: View, Identifiable {
 
 struct CartDeliveryView_Previews: PreviewProvider {
     static var previews: some View {
-        CartDeliveryView(order: .constant(.sampleData), isOpenMapSheet: .constant(false))
+        CartDeliveryView(isOpenMapSheet: .constant(false), fee: .constant(1000))
             .environmentObject(UserViewModel())
     }
 }
