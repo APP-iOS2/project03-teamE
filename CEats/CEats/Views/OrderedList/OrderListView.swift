@@ -57,7 +57,8 @@ struct OrderListView: View {
                             .bold()
                     }
                     .padding(.bottom,10)
-                    HStack{
+                    Spacer()
+                    HStack{ //위치가 아래로 바뀌어야함
                         Spacer()
                         Button {
                             isShowingSheet = true
