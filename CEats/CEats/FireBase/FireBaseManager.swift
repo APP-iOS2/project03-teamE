@@ -38,13 +38,48 @@ final class CEatsFBManager {
     
     private init() { }
     
+    func updateAndaddSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (U) -> ()) {
+        let collectionRef = db.collection("\(type(of: data))")
+        
+        update(data: data, value: keyPath, to: to) { result in
+            data.getPropertyName(keyPath) { propertyName in
+                DispatchQueue.global().async {
+                    collectionRef.document(data.id).addSnapshotListener { snapshot, error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
+                        guard let fbDic = snapshot?.data() else {
+                            print(#function + ": fail to optional bind - [String: Any]")
+                            return
+                        }
+                        guard let fbAny = fbDic[propertyName] else {
+                            print(#function + ": fail to optional bind - Any")
+                            return
+                        }
+                        guard let uType = fbAny as? U else {
+                            print(#function + ": fail to optional bind - [Order]")
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            completion(uType)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func addSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (U) -> ()) {
-        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        let collectionRef = db.collection("\(type(of: data))")
         
         data.getPropertyName(keyPath) { propertyName in
             DispatchQueue.global().async {
                 collectionRef.document(data.id).addSnapshotListener { snapshot, error in
-                    self.printError(error: error)
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
                     guard let fbDic = snapshot?.data() else {
                         print(#function + ": fail to optional bind - [String: Any]")
                         return
@@ -71,7 +106,10 @@ final class CEatsFBManager {
         data.getPropertyName(keyPath) { propertyName in
             DispatchQueue.global().async {
                 collectionRef.document(data.id).addSnapshotListener { snapshot, error in
-                    self.printError(error: error)
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
                     guard let fbDic = snapshot?.data() else {
                         print(#function + ": fail to optional bind - [String: Any]")
                         return
@@ -104,7 +142,27 @@ final class CEatsFBManager {
         DispatchQueue.global().async {
             do {
                 try collectionRef.document(data.id).setData(from: data) { error in
-                    self.printError(error: error)
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
+                }
+            } catch {
+                print(#function + ": fail to .setData()")
+            }
+        }
+    }
+    
+    func create<T: CEatsIdentifiable>(data: T, completion: () -> ()) where T: Encodable {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        
+        DispatchQueue.global().async {
+            do {
+                try collectionRef.document(data.id).setData(from: data) { error in
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
                 }
             } catch {
                 print(#function + ": fail to .setData()")
@@ -129,7 +187,7 @@ final class CEatsFBManager {
         
         let documentRef = db.collection("\(type)").document(id)
         
-        DispatchQueue.global().async {
+        DispatchQueue.global().sync {
             documentRef.getDocument(as: T.self) { result in
                 switch result {
                 case .success(let success):
@@ -138,6 +196,54 @@ final class CEatsFBManager {
                     }
                 case .failure(let error):
                     self.printError(error: error)
+                }
+            }
+        }
+    }
+    
+    func readProperty<T: CEatsIdentifiable, U>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (U) -> ()) {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        data.getPropertyName(keyPath) { propertyName in
+            collectionRef.document(data.id).getDocument { snapshot, error in
+                guard error == nil else {
+                    self.printError(error: error!)
+                    return
+                }
+                guard let fbdic = snapshot?.data() else {
+                    print(#function + ": fail to optional bind - [String: Any]")
+                    return
+                }
+                guard let uType = fbdic[propertyName] as? U else {
+                    print(#function + ": fail to optional bind - [U]")
+                    return
+                }
+                completion(uType)
+            }
+        }
+    }
+    
+    func readAllDocument<T: CEatsIdentifiable>(type: T.Type, completion: @escaping (T) -> ()) where T: Decodable {
+        let collectionRef = db.collection("\(type)")
+        
+        var idArray: [String] = []
+        
+        DispatchQueue.global().sync {
+            collectionRef.getDocuments { snapshot, error in
+                guard error == nil else {
+                    self.printError(error: error!)
+                    return
+                }
+                guard let allDocs = snapshot?.documents else {
+                    print(#function + ": fail to optional bind - snapshot?.documents")
+                    return
+                }
+                allDocs.forEach {
+                    idArray.append($0.documentID)
+                }
+                idArray.forEach { id in
+                    self.read(type: type, id: id) { result in
+                        completion(result)
+                    }
                 }
             }
         }
@@ -158,12 +264,44 @@ final class CEatsFBManager {
         data.getPropertyName(keyPath) { propertyName in
             DispatchQueue.global().async {
                 collectionRef.document(data.id).updateData([propertyName: to]) { error in
-                    self.printError(error: error) {
+                    self.checkError(error: error) {
                         var result = data
                         result[keyPath: keyPath] = to
                         DispatchQueue.main.async {
                             completion(result)
                         }
+                    }
+                }
+            }
+        }
+    }
+    
+    func appendValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping () -> Void) {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        
+        data.getPropertyName(keyPath) { propertyName in
+            DispatchQueue.global().async {
+                collectionRef.document(data.id).getDocument { snapshot, error in
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
+                    guard let fbdic = snapshot?.data() else {
+                        print(#function + ": fail to optional bind - [String: Any]")
+                        return
+                    }
+                    guard let uArray = fbdic[propertyName] as? [U] else {
+                        print(#function + ": fail to optional bind - [U]")
+                        return
+                    }
+                    var newArray = uArray
+                    newArray.append(to)
+                    collectionRef.document(data.id).updateData([propertyName: newArray]) { error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
+                        completion()
                     }
                 }
             }
@@ -193,19 +331,17 @@ final class CEatsFBManager {
         let documentRef = db.document("\(type(of: data))/\(documentID)")
         
         documentRef.delete() { error in
-            self.printError(error: error) {
+            self.checkError(error: error) {
                 completion(data)
             }
         }
     }
     
-    private func printError(error: Error?) {
-        if let error {
-            print(#function + ": \(error.localizedDescription)")
-        }
+    private func printError(error: Error) {
+        print(#function + ": \(error.localizedDescription)")
     }
     
-    private func printError(error: Error?, completion: () -> ()) {
+    private func checkError(error: Error?, completion: () -> ()) {
         if let error {
             print(#function + ": \(error.localizedDescription)")
         } else {
@@ -213,180 +349,3 @@ final class CEatsFBManager {
         }
     }
 }
-
-/*
- func fetchAll<T: Codable>( collection col: ServiceType.ColName,
-                            whereField condition: String? = nil,
-                            whereType type: ServiceType.Where? = nil,
-                            whereData: Any? = nil,
-                            orderField orderby: String? = nil,
-                            orderType: ServiceType.Sort = .asc,
-                            limitCount: Int = 0,
-                            completion: @escaping ([T]) -> Void ) {
-
-     var colRef: Query
-
-     if let condition {
-         if let whereData, let type {
-             switch type {
-             case .equal:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isEqualTo: whereData)
-             case .lessThan:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isLessThan: whereData)
-             case .overThan:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isGreaterThan: whereData)
-             case .lessOrEqual:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isLessThanOrEqualTo: whereData)
-             case .overOrEqual:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isGreaterThanOrEqualTo: whereData)
-             case .notEqual:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isNotEqualTo: whereData)
-             }
-         } else {
-             print("Err: 매개변수 whereData에 값을 입력하지 않았습니다.")
-             return
-         }
-
-     } else {
-         colRef = db.collection("\(col.rawValue)")
-     }
-
-
-     //정렬
-     if let orderby {
-         switch orderType {
-         case .asc:
-             colRef = colRef.order(by: orderby)
-         case .desc:
-             colRef = colRef.order(by: orderby, descending: true)
-         }
-
-     }
-
-
-     if limitCount != 0 {
-         colRef = colRef.limit(to: limitCount)
-     }
-
-
-     colRef.getDocuments() { [self] snapShot, error in
-         if let error {
-             print("문서번호 못가져옴 : \(error)")
-             completion([])
-
-         } else {
-             var fetchedDatas: [T] = []   //초기화
-
-             if let snapShot {
-                 for document in snapShot.documents {
-
-                     let docID = document.documentID
-
-//                        print("문서ID :  \(document)")
-
-                     db.collection("\(col.rawValue)").document(docID).getDocument(as: T.self) { result in
-                         switch result {
-                         case .success(let success):
-//                                print("Fetch 성공 : \(success)")
-                             fetchedDatas.append(success)
-
-                             completion(fetchedDatas)
-
-                         case .failure(let error):
-                             print("Fetch중 에러 : \(error.localizedDescription)")
-
-                         }
-                     }
-
-                 }
-
-             }
-
-         }
-
-     }
-
- }
- func fetchAll( collection col: ServiceType.ColName,
-                whereField condition: String? = nil,
-                whereType type: ServiceType.Where? = nil,
-                whereData: Any? = nil,
-                orderField orderby: String? = nil,
-                orderType: ServiceType.Sort = .asc,
-                limitCount: Int = 0,
-                completion: @escaping ([[String : Any]]) -> Void ) async {
-
-
-     var colRef: Query
-
-
-     if let condition {
-         if let whereData, let type {
-             switch type {
-             case .equal:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isEqualTo: whereData)
-             case .lessThan:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isLessThan: whereData)
-             case .overThan:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isGreaterThan: whereData)
-             case .lessOrEqual:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isLessThanOrEqualTo: whereData)
-             case .overOrEqual:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isGreaterThanOrEqualTo: whereData)
-             case .notEqual:
-                 colRef = db.collection("\(col.rawValue)").whereField("\(condition)", isNotEqualTo: whereData)
-             }
-         } else {
-             print("Err: 매개변수 whereData에 값을 입력하지 않았습니다.")
-             return
-         }
-
-     } else {
-         colRef = db.collection("\(col.rawValue)")
-     }
-
-     //정렬
-     if let orderby {
-         switch orderType {
-         case .asc:
-             colRef = colRef.order(by: orderby)
-         case .desc:
-             colRef = colRef.order(by: orderby, descending: true)
-         }
-
-     }
-
-     //데이터 갯수제한
-     if limitCount != 0 {
-         colRef = colRef.limit(to: limitCount)
-     }
-
-     //문서의 변화가 생기면 감지.
-     colRef.addSnapshotListener { snapShot, error in
-         if let error {
-             print("문서번호 못가져옴 : \(error.localizedDescription)")
-             completion([[:]])
-
-         } else {
-             var fetchedDatas = [[String : Any]]()   //초기화
-
-             if let snapShot {
-
-                 for document in snapShot.documents {
-
-                     let documentData = document.data()
-
-                     fetchedDatas.append(documentData)
-
-
-                 }
-                 print("데이터 개수 \(fetchedDatas.count)")
-                 completion(fetchedDatas)
-
-             }
-
-         }
-     }
-
- }
- */

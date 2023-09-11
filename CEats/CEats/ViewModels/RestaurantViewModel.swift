@@ -13,6 +13,12 @@ final class RestaurantViewModel: ObservableObject {
     
     @Published var selectedFoodType: FoodType? = nil
     
+    func fetchAllRestaurant() {
+        fireManager.readAllDocument(type: Restaurant.self) { result in
+            self.restaurants.append(result)
+        }
+    }
+    
     func updateFee(restaurant: Restaurant, to: Int) {
         fireManager.update(data: restaurant, value: \.deliveryFee, to: to) { result in
             
@@ -67,6 +73,7 @@ final class RestaurantViewModel: ObservableObject {
         }
         return restaurants[index]
     }
+    
     func findRestaurant(review: Review) -> Restaurant {
         guard let index = restaurants.firstIndex(where: {
             $0.reviews.contains { $0.id == review.id }

@@ -30,7 +30,7 @@ struct OrderedListView: View {
                         }
                     }
                 }
-                    OrderListView()
+                OrderListView()
                     .padding(16)
             }
         }

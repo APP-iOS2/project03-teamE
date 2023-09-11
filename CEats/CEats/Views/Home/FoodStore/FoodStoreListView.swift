@@ -41,5 +41,6 @@ struct FoodStoreListView_Previews: PreviewProvider {
     static var previews: some View {
         FoodStoreListView(selectedFoodType: .korean)
             .environmentObject(RestaurantViewModel())
+            .environmentObject(UserViewModel())
     }
 }

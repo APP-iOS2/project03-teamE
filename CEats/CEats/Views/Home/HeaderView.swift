@@ -27,3 +27,10 @@ struct HeaderView: View {
         .padding(20)
     }
 }
+
+struct HeaderView_Preview: PreviewProvider {
+    static var previews: some View {
+        HeaderView(isOpenMapSheet: .constant(true))
+            .environmentObject(UserViewModel())
+    }
+}

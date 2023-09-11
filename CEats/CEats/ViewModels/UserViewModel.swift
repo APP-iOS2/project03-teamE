@@ -5,9 +5,10 @@
 //  Created by 박범수 on 2023/09/07.
 //
 
-import Foundation
+import SwiftUI
 
 final class UserViewModel: ObservableObject {
+    @AppStorage("userID") var userID = "1234"
     @Published var user: User = User.sampleData
     @Published var selectedButton: OrderState = .과거주문내역
     
@@ -23,6 +24,30 @@ final class UserViewModel: ObservableObject {
             return user.orderHistory.filter { $0.orderStatus != .waiting }
         } else {
             return user.orderHistory.filter { $0.orderStatus == .waiting }
+        }
+    }
+    
+    func newOrder(user: User, restaurant: Restaurant, completion: (Order) -> ()) {
+        guard let menus = user.foodCart?.cart else {
+            print(#function + ": fail to optional bind")
+            return
+        }
+        let newOrder = Order(id: UUID().uuidString, orderer: user.username, restaurant: restaurant, orderedMenu: menus)
+        fireManager.read(type: Seller.self, id: restaurant.id) { result in
+            self.fireManager.appendValue(data: result, value: \.orders, to: newOrder) {
+                self.fireManager.appendValue(data: user, value: \.orderHistory, to: newOrder) {
+                    self.fireManager.addSnapshot(data: user, value: \.orderHistory) { result in
+                        self.user.orderHistory = result
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func fetchUser() {
+        fireManager.read(type: User.self, id: userID) { result in
+            self.user = result
         }
     }
     
