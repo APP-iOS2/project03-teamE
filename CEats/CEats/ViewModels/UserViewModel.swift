@@ -18,6 +18,18 @@ final class UserViewModel: ObservableObject {
         case 준비중
     }
     
+    func addCount(food: Restaurant.Food){
+        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            self.user.foodCart?.cart[index].foodCount += 1
+        }
+    }
+    
+    func subtractCount(food: Restaurant.Food){
+        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            self.user.foodCart?.cart[index].foodCount -= 1
+        }
+    }
+    
     var filteredOrderList: [Order] {
         if selectedButton == .과거주문내역 {
             return user.orderHistory.filter { $0.orderStatus != .waiting }

@@ -52,7 +52,7 @@ struct Order: Identifiable, Codable {
 
 #if DEBUG
 extension Order {
-    static let sampleData: Self = .init(id: UUID().uuidString, orderer: "김민지", restaurant: .sampleData, orderedMenu: [Restaurant.Food(name: "김치찌개", price: 10000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴"), Restaurant.Food(name: "공기밥", price: 1500, isRecommend: false, foodCategory: "밥", description: "")], orderStatus: .canceled)
+    static var sampleData: Self = .init(id: UUID().uuidString, orderer: "김민지", restaurant: .sampleData, orderedMenu: [Restaurant.Food(name: "김치찌개", price: 10000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴"), Restaurant.Food(name: "공기밥", price: 1500, isRecommend: false, foodCategory: "밥", description: "")], orderStatus: .canceled)
 }
 #endif
 
