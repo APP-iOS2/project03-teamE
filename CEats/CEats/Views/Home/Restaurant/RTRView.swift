@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RTRView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @State private var selected = ""
     
     let restaurant: Restaurant

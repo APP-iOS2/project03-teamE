@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MyInfoView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
-    private let categories: [MyInfoCategory] = MyInfoCategory.allCases
-    @State private var selected: MyInfoCategory = .review
+    @State private var selected: MyInfoCategory = .favorite
     
     var body: some View {
         ScrollView {
@@ -49,7 +48,7 @@ struct MyInfoView: View {
                 Spacer()
                 .frame(maxWidth: .infinity, minHeight: 5)
                 .background(Color.veryLightGray)
-                MyInfoCategoryView(categories: categories, selected: $selected)
+                MyInfoCategoryView(selected: $selected)
                 MyInfoCategoryDetailView(selected: $selected)
             }
         }

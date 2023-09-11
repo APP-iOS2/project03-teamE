@@ -53,8 +53,7 @@ struct CouponCardView: View {
             .cornerRadius(10)
         }
         .clipped()
-        .shadow(color: .lightgray, radius: 10)
-        .frame(maxWidth: .infinity)
+        .shadow(color: .lightgray, radius: 3)
     }
 }
 
