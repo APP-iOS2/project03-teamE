@@ -21,6 +21,10 @@ struct AfterSearchView: View {
     var body: some View {
         NavigationStack {
             // FoodType으로 먼저 분류 -> 분류된 목록에서 ForEach로 반복
+            if restaurantsStore.filterFoodName(data).isEmpty {
+                Text("검색결과가 없습니다")
+                    .padding(50)
+            }
             ScrollView {
                 ForEach(restaurantsStore.filterFoodName(data)){ store in
                     NavigationLink {
