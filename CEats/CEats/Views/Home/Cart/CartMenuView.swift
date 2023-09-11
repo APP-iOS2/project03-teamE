@@ -20,7 +20,7 @@ struct CartMenuView: View {
                 Text("홍콩반점 서울시청점")
                     .font(.title3)
                     .bold()
-                ForEach(userViewModel.user.foodCart?.foodCart ?? [], id: \.name) { cart in
+                ForEach(userViewModel.user.foodCart?.cart ?? [], id: \.name) { cart in
                     VStack {
                         Divider()
                         HStack {
@@ -85,7 +85,7 @@ struct CartMenuView: View {
                 }
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(userViewModel.user.foodCart?.foodCart ?? [], id: \.name) { cart in
+                        ForEach(userViewModel.user.foodCart?.cart ?? [], id: \.name) { cart in
                             
                             Button {
                                 

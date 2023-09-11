@@ -15,7 +15,7 @@ struct ReciptView: View {
         VStack(alignment: .center){
             ForEach(userViewModel.filteredOrderList) { order in
                     VStack{
-                        Text(order.restaurantName.name)
+                        Text(order.restaurant.name)
                             .font(.system(size:22))
                             .bold()
                             .padding(.bottom,10)
@@ -43,7 +43,7 @@ struct ReciptView: View {
                 HStack{
                     Text("배달비:")
                     Spacer()
-                    Text("\(order.restaurantName.deliveryFee)원")
+                    Text("\(order.restaurant.deliveryFee)원")
                 }
                 HStack{
                     Text("주문금액:")

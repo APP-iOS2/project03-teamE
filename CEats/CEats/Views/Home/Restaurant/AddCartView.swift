@@ -110,7 +110,7 @@ struct AddCartView: View {
                     }
                 }
                 else{
-                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, cart: [])
                     userViewModel.updateUserCart(restaurant: restaurant, food: food)
                     print(userViewModel.user.foodCart)
                     dismiss()
@@ -132,8 +132,8 @@ struct AddCartView: View {
                 dismiss()
             },
                   secondaryButton: .default(Text("새로담기")) {
-                userViewModel.user.foodCart?.foodCart.removeAll()
-                userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                userViewModel.user.foodCart?.cart.removeAll()
+                userViewModel.user.foodCart = User.Cart(restaurant: restaurant, cart: [])
                 userViewModel.updateUserCart(restaurant: restaurant, food: food)
                 dismiss()
             }

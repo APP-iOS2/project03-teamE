@@ -65,7 +65,7 @@ struct CartDeliveryView: View {
                                     .font(.footnote)
                             }
                             Spacer()
-                            Text("배달비 \(order.restaurantName.deliveryFee)원")
+                            Text("배달비 \(order.restaurant.deliveryFee)원")
                         }
                     }
                     .foregroundColor(.black)
@@ -101,9 +101,9 @@ struct CartDeliveryView: View {
                                     Rectangle()
                                         .frame(width: 60, height: 2)
                                         .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
-                                    Text("배달비 \(order.restaurantName.deliveryFee)원")
+                                    Text("배달비 \(order.restaurant.deliveryFee)원")
                                 }
-                                Text("\(order.restaurantName.deliveryFee - 1000)원")
+                                Text("\(order.restaurant.deliveryFee - 1000)원")
                                     .bold()
                                     .foregroundColor(.red)
                                     .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))

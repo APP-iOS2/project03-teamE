@@ -62,6 +62,6 @@ struct MyPageRestaurantView: View {
 
 struct MyPageRestaurantView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPageRestaurantView()
+        MyPageRestaurantView(restaurant: .sampleData)
     }
 }

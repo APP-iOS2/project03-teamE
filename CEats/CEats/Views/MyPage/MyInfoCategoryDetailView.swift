@@ -37,7 +37,7 @@ struct MyInfoCategoryDetailView: View {
                 ForEach(userViewModel.user.orderHistory) { order in
                     ForEach(order.orderedMenu, id: \.name) { menu in
                         NavigationLink {
-                            RTRView(restaurant: restaurantViewModel.findRestaurant(restaurant: order.restaurantName))
+                            RTRView(restaurant: restaurantViewModel.findRestaurant(restaurant: order.restaurant))
                         } label: {
                             Image(menu.image ?? "photo")
                                 .resizable()

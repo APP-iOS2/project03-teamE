@@ -17,7 +17,7 @@ struct OrderListView: View {
                 ForEach(userViewModel.filteredOrderList) { order in
                     HStack{
                         VStack(alignment: .leading){
-                            Text(order.restaurantName.name)
+                            Text(order.restaurant.name)
                                 .font(.system(size:22))
                                 .bold()
                             Text("2023-09-07 오전 11:29")
@@ -32,7 +32,7 @@ struct OrderListView: View {
                             }
                         }
                         Spacer()
-                        Image(order.restaurantName.mainImage[0])
+                        Image(order.restaurant.mainImage[0])
                             .resizable()
                             .scaledToFit()
                             .frame(width: .screenWidth * 0.30)

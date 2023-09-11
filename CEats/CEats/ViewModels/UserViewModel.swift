@@ -39,7 +39,7 @@ final class UserViewModel: ObservableObject {
     }
     
     func updateUserCart(restaurant: Restaurant, food: Restaurant.Food) {
-        user.foodCart?.foodCart.append(food)
+        user.foodCart?.cart.append(food)
         fireManager.create(data: user)
     }
     
