@@ -43,6 +43,6 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
 
 #if DEBUG
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0, reviews: .sampleData, coupons: [.sampleData])
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: Restaurant.sampleArray, orderHistory: [Order.sampleData], latitude: 0, longitude: 0, reviews: .sampleData, coupons: [.sampleData])
 }
 #endif

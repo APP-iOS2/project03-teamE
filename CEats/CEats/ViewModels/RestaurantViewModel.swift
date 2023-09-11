@@ -59,4 +59,21 @@ final class RestaurantViewModel: ObservableObject {
         
         return foodNames
     }
+    
+    func findRestaurant(restaurant: Restaurant) -> Restaurant {
+        guard let index = restaurants.firstIndex(where: { $0.id == restaurant.id }) else {
+            print(#function + ": fail to optional bind")
+            return .sampleData
+        }
+        return restaurants[index]
+    }
+    func findRestaurant(review: Review) -> Restaurant {
+        guard let index = restaurants.firstIndex(where: {
+            $0.reviews.contains { $0.id == review.id }
+        }) else {
+            print(#function + ": fail to optional bind")
+            return .sampleData
+        }
+        return restaurants[index]
+    }
 }
