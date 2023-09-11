@@ -38,8 +38,11 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-    func updateUserCart(user: User, userCart: User.Cart){
-        fireManager.update(data: user, value: \.foodCart, to: userCart) { result in
+    func updateUserCart(user: User, userCart: User.Cart?, restaurant: Restaurant, food: Restaurant.Food){
+        guard let userCart = user.foodCart else { return }
+        var cart = userCart
+        cart.foodCart.append(food)
+        fireManager.update(data: user, value: \.foodCart, to: cart) { result in
             self.user = result
         }
     }

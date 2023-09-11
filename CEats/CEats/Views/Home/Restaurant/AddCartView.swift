@@ -97,21 +97,23 @@ struct AddCartView: View {
             Spacer()
             
             Button {
-                if userViewModel.user.foodCart?.restaurant.name != restaurant.name {
-                    showAlert.toggle()
-                }
-                else {
-                    if let userCart = userViewModel.user.foodCart{
-                        userViewModel.user.foodCart?.foodCart.append(food)
-                        //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userCart)
-                        dismiss()
-                        print(userViewModel.user.foodCart?.foodCart)
+                print(userViewModel.user.foodCart?.restaurant.name)
+                print(restaurant.name)
+                print("------------")
+                if let userCart = userViewModel.user.foodCart {
+                    if userViewModel.user.foodCart?.restaurant.name != restaurant.name {
+                        showAlert.toggle()
                     }
                     else {
-                        userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
-                        //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userViewModel.user.foodCart!)
+                        userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
                         dismiss()
                     }
+                }
+                else{
+                    userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
+                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
+                    print(userViewModel.user.foodCart)
+                    dismiss()
                 }
             } label: {
                 Text("배달 카트에 담기")
@@ -133,7 +135,7 @@ struct AddCartView: View {
                 userViewModel.user.foodCart?.restaurant = restaurant
                 userViewModel.user.foodCart?.foodCart.removeAll()
                 userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
-                //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userViewModel.user.foodCart!)
+                userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
                 dismiss()
             }
             )
