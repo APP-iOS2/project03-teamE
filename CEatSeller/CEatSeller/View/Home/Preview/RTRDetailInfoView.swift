@@ -4,10 +4,10 @@
 //
 //  Created by gnksbm on 2023/09/05.
 //
-
-import SwiftUI
-import MapKit
-import SwiftProtobuf
+//
+//import SwiftUI
+//import MapKit
+//import SwiftProtobuf
 
 //struct RTRDetailInfoView: View {
 //    let restaurant: Restaurant

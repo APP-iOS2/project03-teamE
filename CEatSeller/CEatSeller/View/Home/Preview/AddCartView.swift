@@ -104,7 +104,7 @@ struct AddCartView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 60)
-                    .background(Color.blue)
+                    .foregroundColor(.gray)
             }.disabled(true)
         }
     }
