@@ -2,86 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CEats">
+      location = "group:CEatSeller/CEatSeller.xcodeproj">
    </FileRef>
-   <Group
-      location = "group:CEatSeller"
-      name = "CEatSeller">
-      <Group
-         location = "group:CEatSeller"
-         name = "CEatSeller">
-         <Group
-            location = "group:Order"
-            name = "Order">
-            <FileRef
-               location = "group:OrderedHistoryView.swift">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:ViewModel"
-            name = "ViewModel">
-            <FileRef
-               location = "group:FoodStore.swift">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:Home"
-            name = "Home">
-            <FileRef
-               location = "group:HomeView.swift">
-            </FileRef>
-            <FileRef
-               location = "group:HomeViewDetail.swift">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:CEatSellerApp.swift">
-         </FileRef>
-         <Group
-            location = "group:Assets.xcassets"
-            name = "Assets.xcassets">
-            <Group
-               location = "group:AppIcon.appiconset"
-               name = "AppIcon.appiconset">
-               <FileRef
-                  location = "group:Contents.json">
-               </FileRef>
-            </Group>
-            <Group
-               location = "group:AccentColor.colorset"
-               name = "AccentColor.colorset">
-               <FileRef
-                  location = "group:Contents.json">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:Contents.json">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:Preview Content"
-            name = "Preview Content">
-            <Group
-               location = "group:Preview Assets.xcassets"
-               name = "Preview Assets.xcassets">
-               <FileRef
-                  location = "group:Contents.json">
-               </FileRef>
-            </Group>
-         </Group>
-         <Group
-            location = "group:Work"
-            name = "Work">
-            <FileRef
-               location = "group:WorkingViewDetail.swift">
-            </FileRef>
-            <FileRef
-               location = "group:WorkingView.swift">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:ContentView.swift">
-         </FileRef>
-      </Group>
-   </Group>
+   <FileRef
+      location = "group:CEats/CEats.xcodeproj">
+   </FileRef>
 </Workspace>
