@@ -26,6 +26,30 @@ final class UserViewModel: ObservableObject {
         }
     }
     
+    func updateUserLocation(user: User, lat: Double, long: Double, adress: String) {
+        fireManager.update(data: user, value: \.latitude, to: lat) { result in
+            self.user = result
+        }
+        fireManager.update(data: user, value: \.longitude, to: long) { result in
+            self.user = result
+        }
+        fireManager.update(data: user, value: \.userAddress, to: adress) { result in
+            self.user = result
+        }
+    }
+    
+    func updateUserCart(user: User, foodCart: User.Cart){
+        fireManager.update(data: user, value: \.foodCart, to: foodCart) { result in
+            self.user = result
+        }
+    }
+    
+    func updateUserOrder(user: User, order: [Order]){
+        fireManager.update(data: user, value: \.orderHistory, to: order) { result in
+            self.user = result
+        }
+    }
+    
     func getLikeImageName(restaurant: Restaurant) -> String {
         return user.favoriteRestaurant.contains(where: { $0.id == restaurant.id }) ? "heart.fill" : "heart"
     }
