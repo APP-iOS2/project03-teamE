@@ -11,8 +11,7 @@ struct CartPayView: View {
     var food: Restaurant.Food = .sampleData
     var restaurant: Restaurant = Restaurant.sampleData
     var order: Order = Order.sampleData
-    
-    //    @EnvironmentObject var user: User = User
+    var user: User = User.sampleData
     
     @State private var isappeal: Bool = true
     @State private var ispayment: Bool = false
