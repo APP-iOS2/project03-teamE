@@ -8,7 +8,6 @@
 import Foundation
 
 struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
-    
     var id: String
     var password: String
     var restaurantInfo: RestaurantInfo
@@ -45,6 +44,7 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
         var foodCategory: String
         var description: String // 메뉴설명
         var image: String?
+        var foodCount: Int = 1
         // var option: 추가옵션
         var priceToString: String {
             let formatter = NumberFormatter()

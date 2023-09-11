@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct AddCartView: View {
-    let food: Restaurant.Food
-    
+    @EnvironmentObject var userViewModel: UserViewModel
     @Environment(\.dismiss) private var dismiss
+    
     @State private var numberOfFoods: Int = 1
-    //
+    @State var showAlert: Bool = false
+    
+    let restaurant: Restaurant
+    let food: Restaurant.Food
+    let name: String
+    
     var body: some View {
         VStack {
             Image(food.image ?? "")
@@ -92,8 +97,24 @@ struct AddCartView: View {
             Spacer()
             
             Button {
-//                UserViewModel().user.updateCart(cart: )
-                dismiss()
+                print(userViewModel.user.foodCart?.restaurant.name)
+                print(restaurant.name)
+                print("------------")
+                if let userCart = userViewModel.user.foodCart {
+                    if userCart.restaurant.name != restaurant.name {
+                        showAlert = true
+                    }
+                    else {
+                        userViewModel.updateUserCart(restaurant: restaurant, food: food)
+                        dismiss()
+                    }
+                }
+                else{
+                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                    userViewModel.updateUserCart(restaurant: restaurant, food: food)
+                    print(userViewModel.user.foodCart)
+                    dismiss()
+                }
             } label: {
                 Text("배달 카트에 담기")
                     .font(.title3)
@@ -104,11 +125,29 @@ struct AddCartView: View {
                     .background(Color.blue)
             }
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("같은 가게의 메뉴만 담을 수 있습니다"),
+                  message: Text("주문할 가게를 변경하실 경우 이전에 담은 메뉴가 삭제됩니다.."),
+                  primaryButton: .cancel(Text("취소")) {
+                dismiss()
+            },
+                  secondaryButton: .default(Text("새로담기")) {
+                userViewModel.user.foodCart?.foodCart.removeAll()
+                userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                userViewModel.updateUserCart(restaurant: restaurant, food: food)
+                dismiss()
+            }
+            )
+            
+        }
+        
     }
 }
 
+
 struct AddCartView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCartView(food: Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"))
+        AddCartView(restaurant: Restaurant.sampleData, food: Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"), name: "멋쟁이 김치찌개")
+            .environmentObject(RestaurantViewModel())
     }
 }

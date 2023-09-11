@@ -9,12 +9,23 @@ import SwiftUI
 
 struct OrderedHistoryView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                ForEach(0..<5) { _ in
+                    WorkingViewDetail()
+                }
+            }
+        }
+        .listStyle(.plain)
+        
+        .navigationTitle("주문 내역")
     }
 }
 
 struct OrderListed_Previews: PreviewProvider {
     static var previews: some View {
-        OrderedHistoryView()
+        NavigationStack {
+            OrderedHistoryView()
+        }
     }
 }
