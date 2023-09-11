@@ -42,7 +42,6 @@
 		D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14F18472AA802E6008665F4 /* SearchViewImage.swift */; };
 		D16010502AAEE5430093E1D2 /* MyPageRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160104F2AAEE5430093E1D2 /* MyPageRestaurantView.swift */; };
 		D16010522AAEE6D20093E1D2 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16010512AAEE6D20093E1D2 /* FullScreenImageView.swift */; };
-		D16010562AAEE8D50093E1D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D16010552AAEE8D50093E1D2 /* GoogleService-Info.plist */; };
 		D166C8902AA96D4800BEE09B /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */; };
 		D166C8922AA98A7700BEE09B /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8912AA98A7700BEE09B /* Seller.swift */; };
 		D166C8952AA98B0100BEE09B /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8942AA98B0100BEE09B /* CartView.swift */; };
@@ -137,7 +136,6 @@
 		D14F18472AA802E6008665F4 /* SearchViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewImage.swift; sourceTree = "<group>"; };
 		D160104F2AAEE5430093E1D2 /* MyPageRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRestaurantView.swift; sourceTree = "<group>"; };
 		D16010512AAEE6D20093E1D2 /* FullScreenImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FullScreenImageView.swift; path = ../../../../../../../../../Desktop/FullScreenImageView.swift; sourceTree = "<group>"; };
-		D16010552AAEE8D50093E1D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		D166C8912AA98A7700BEE09B /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
 		D166C8942AA98B0100BEE09B /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 			children = (
 				D18E9B212AA5A14C009231E4 /* CEatsApp.swift */,
 				D18E9B232AA5A14C009231E4 /* ContentView.swift */,
-				D16010552AAEE8D50093E1D2 /* GoogleService-Info.plist */,
 				D1D3E28C2AA9CE7900A60B65 /* FireBase */,
 				D18E9B312AA5A353009231E4 /* Views */,
 				D18E9B302AA5A345009231E4 /* Models */,
@@ -530,7 +527,6 @@
 			files = (
 				D18E9B2A2AA5A14E009231E4 /* Preview Assets.xcassets in Resources */,
 				D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */,
-				D16010562AAEE8D50093E1D2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
