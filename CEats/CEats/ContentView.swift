@@ -20,44 +20,50 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $tabIndex) {
-            
             HomeView()
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("홈")
                 }
-                .tag(1)
-            
+                .tag(0)
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("검색")
                 }
-                .tag(2)
-            
+                .tag(1)
             FavoriteView(tabIndex: $tabIndex)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("즐겨찾기")
                 }
-                .tag(3)
-            
+                .tag(2)
             OrderedListView()
                 .tabItem {
                     Image(systemName: "doc.plaintext")
                     Text("주문내역")
                 }
-                .tag(4)
-            
+                .tag(3) 
             MyView(tabIndex: $tabIndex)
                 .tabItem {
                     Image(systemName: "person")
                     Text("마이페이지")
                 }
-                .tag(5)
+                .tag(4)
         }
         .environmentObject(restaurantViewModel)
         .environmentObject(userViewModel)
+        .onAppear {
+//            restaurantViewModel.fireManager.create(data: Seller.sampleData)
+//            restaurantViewModel.fetchAllRestaurant()
+        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                Button("테스트") {
+//
+//                }
+//            }
+//        }
     }
 }
 

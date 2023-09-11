@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FoodTypeGridView: View {
+    private let layout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
+    
     var body: some View {
         LazyVGrid(columns: layout, alignment: .center) {
             ForEach(FoodType.allCases, id: \.self) { content in
@@ -31,6 +33,4 @@ struct FoodTypeGridView: View {
         }
         .padding([.trailing, .leading], 20)
     }
-    
-    private let layout: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
 }

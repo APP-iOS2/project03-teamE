@@ -8,10 +8,22 @@
 import Foundation
 
 
-//struct Seller { //레스토랑 안에 넣고
-//    let id: String
-//    var name: String
-//    var score: Double
-//    var orderAcceptanceRate: Double
-//    var averageAcceptanceTime: Double
-//}
+struct Seller: Identifiable, CEatsIdentifiable, Codable { //레스토랑 안에 넣고
+    var restaurant: Restaurant
+    var orders: [Order]
+    var orderAcceptanceRate: Double
+    var averageAcceptanceTime: Double
+    var id: String {
+        restaurant.id
+    }
+    var name: String {
+        restaurant.name
+    }
+    var score: Double {
+        restaurant.score ?? 0
+    }
+}
+
+extension Seller {
+    static let sampleData: Self = .init(restaurant: .sampleData, orders: [], orderAcceptanceRate: 0, averageAcceptanceTime: 0)
+}

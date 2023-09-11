@@ -31,3 +31,9 @@ struct FullScreenImageView: View {
         })
     }
 }
+
+struct FullScreenImageView_Previews: PreviewProvider {
+    static var previews: some View {
+        FullScreenImageView(imageName: ["chicken"])
+    }
+}
