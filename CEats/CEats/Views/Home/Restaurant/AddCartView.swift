@@ -101,9 +101,17 @@ struct AddCartView: View {
                     showAlert.toggle()
                 }
                 else {
-                    userViewModel.user.foodCart?.foodCart.append(food)
-                    dismiss()
-                    print(userViewModel.user.foodCart?.foodCart)
+                    if let userCart = userViewModel.user.foodCart{
+                        userViewModel.user.foodCart?.foodCart.append(food)
+                        //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userCart)
+                        dismiss()
+                        print(userViewModel.user.foodCart?.foodCart)
+                    }
+                    else {
+                        userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
+                        //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userViewModel.user.foodCart!)
+                        dismiss()
+                    }
                 }
             } label: {
                 Text("배달 카트에 담기")
@@ -125,6 +133,7 @@ struct AddCartView: View {
                 userViewModel.user.foodCart?.restaurant = restaurant
                 userViewModel.user.foodCart?.foodCart.removeAll()
                 userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
+                //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userViewModel.user.foodCart!)
                 dismiss()
             }
             )
