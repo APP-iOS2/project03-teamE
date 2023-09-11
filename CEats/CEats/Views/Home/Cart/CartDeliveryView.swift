@@ -53,14 +53,20 @@ struct CartDeliveryView: View {
                 
                 // ⭐️ Refactoring 해서 검사맡기 !!!!! 숙제임!!
                 deliveryTypeButton1
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         disableAllBtn(deliveryButtonArray: deliveryButtonArray)
                         isSelected1 = true
+                        
+                        // [추가되어야함] 값 전달 !
                     }
                 deliveryTypeButton2
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         disableAllBtn(deliveryButtonArray: deliveryButtonArray)
                         isSelected2 = true
+                        
+                        // [추가되어야함] 값 전달 !
                     }
                 Spacer()
             }
@@ -105,7 +111,7 @@ struct DeliveryTypeButton: View, Identifiable {
     // MARK: - View
     var body: some View {
         VStack(alignment: .leading) {
-            HStack{
+            HStack {
                 Image(systemName: isSelected ? "o.circle.fill" : "o.circle")
                     .foregroundColor(isSelected ? .accentColor : .black)
                 VStack(alignment: .leading) {
@@ -124,7 +130,7 @@ struct DeliveryTypeButton: View, Identifiable {
                                 .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
                             Text("배달비 \(deliveryFee)원")
                         }
-                        Text("\(discountedFee)원")
+                        Text("\(deliveryFee - discountedFee)원")
                             .bold()
                             .foregroundColor(.red)
                             .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))

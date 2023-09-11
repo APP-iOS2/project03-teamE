@@ -12,7 +12,7 @@ struct HomeCartView: View {
     @Binding var isOpenMapSheet: Bool
     
     var body: some View {
-        VStack(spacing:0){
+        VStack {
             NavigationLink {
                 CartView(isOpenMapSheet: $isOpenMapSheet)
             } label: {
@@ -43,6 +43,15 @@ struct HomeCartView: View {
                 .padding()
                 .background(.blue)
             }
+        }
+    }
+}
+
+struct HomeCartView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            HomeCartView(user: .constant(.sampleData), isOpenMapSheet: .constant(false))
+                .environmentObject(RestaurantViewModel())
         }
     }
 }

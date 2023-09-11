@@ -38,6 +38,7 @@ struct HomeView: View {
 
                 if user.cart?.foodCart.count ?? 0 > 0 {
                     HomeCartView(user: $user, isOpenMapSheet: $isOpenCartSheet)
+                        .padding(.top, -10)
                 }
             }
         }
