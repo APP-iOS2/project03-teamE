@@ -13,26 +13,27 @@ struct CartMenuView: View {
 //    @EnvironmentObject var userViewModel: UserViewModel
 //    @EnvironmentObject var cartStore: RestaurantViewModel
     @State private var count = 1
-    var order: Order = .sampleData
+//    var order: Order = .sampleData
+    var user: User
     var colorSet: UIColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                Text(order.restaurantName.name)
+                Text(user.cart?.restaurantName ?? "몰라")
                     .font(.title3)
                     .bold()
-                ForEach(order.orderedMenu, id: \.name) { cart in
+                ForEach(user.cart?.foodCart ?? [], id: \.self) { carts in
                     VStack {
                         Divider()
                         HStack {
                             VStack(alignment: .leading) {
-                                Text(cart.name)
-                                Text(cart.description)
+                                Text(carts.name)
+                                Text(carts.description)
                                     .font(.caption)
                                     .foregroundColor(.gray)
 
-                                Text("\(cart.price)원")
+                                Text("\(carts.price)원")
                                     .bold()
                             }
                             Spacer()
@@ -42,9 +43,9 @@ struct CartMenuView: View {
                                     .frame(width: 100, height: 30)
                                 HStack {
                                     Button {
-                                        self.count -= 1
+                                        carts.foodCartCount -= 1
                                     } label: {
-                                        if self.count == 1 {
+                                        if carts.foodCartCount == 1 {
                                             Image(systemName: "trash")
                                                 .font(.caption)
 
@@ -54,10 +55,10 @@ struct CartMenuView: View {
                                         }
                                     }
                                     .padding()
-                                    Text("\(self.count)")
+                                    Text("\(carts.foodCartCount)")
 
                                     Button {
-                                        self.count += 1
+                                        carts.foodCartCount += 1
                                     } label: {
                                         Image(systemName: "plus")
                                             .font(.caption)
@@ -87,30 +88,30 @@ struct CartMenuView: View {
                 }
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(order.orderedMenu, id: \.name) { cart in
-                            
-                            Button {
-                                
-                            } label: {
-                                HStack {
-                                    VStack {
-                                        Text(cart.name)
-                                            .foregroundColor(.black)
-                                        Text("\(cart.price)")
-                                    }
-                                    Button {
-                                        
-                                    } label: {
-                                        Image(systemName: "plus.circle")
-                                            .font(.title)
-                                    }
-                                }
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.gray, lineWidth: 2)
-                                    )
-                            }
-                        }
+//                        ForEach(order.orderedMenu, id: \.name) { cart in
+//
+//                            Button {
+//
+//                            } label: {
+//                                HStack {
+//                                    VStack {
+//                                        Text(cart.name)
+//                                            .foregroundColor(.black)
+//                                        Text("\(cart.price)")
+//                                    }
+//                                    Button {
+//
+//                                    } label: {
+//                                        Image(systemName: "plus.circle")
+//                                            .font(.title)
+//                                    }
+//                                }
+//                                .overlay(
+//                                    RoundedRectangle(cornerRadius: 5)
+//                                        .stroke(Color.gray, lineWidth: 2)
+//                                    )
+//                            }
+//                        }
                     }
                 }
                 .padding()
@@ -121,7 +122,7 @@ struct CartMenuView: View {
 
 struct CartMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        CartMenuView()
+        CartMenuView(user: User.sampleData)
             .environmentObject(RestaurantViewModel())
             .environmentObject(UserViewModel())
     }

@@ -17,7 +17,7 @@ struct CartView: View {
         NavigationStack{
             ScrollView {
                 CartDeliveryView(order: $order, isOpenMapSheet: $isOpenMapSheet)
-                CartMenuView()
+                CartMenuView(user: User.sampleData)
                 CartPayView()
             }
         }

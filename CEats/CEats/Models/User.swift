@@ -19,7 +19,7 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
     var userAddress: String
     var favoriteRestaurant: [Restaurant] // 즐겨찾기
     var orderHistory: [Order] //
-    var foodCart: Cart? //장바구니
+    var cart: Cart? //장바구니
     var cEatsMoney: Int = 100000
     var latitude: Double//위도
     var longitude: Double //경도
@@ -43,6 +43,6 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
 
 #if DEBUG
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0, reviews: .sampleData, coupons: [.sampleData])
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], cart: Cart(restaurant: Restaurant.sampleData, foodCart: [Restaurant.Food.sampleData]) , latitude: 0 ,longitude: 0, reviews: .sampleData, coupons: [.sampleData])
 }
 #endif

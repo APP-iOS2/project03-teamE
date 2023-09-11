@@ -45,6 +45,7 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
         var foodCategory: String
         var description: String // 메뉴설명
         var image: String?
+        var foodCartCount: Int = 1 // 메뉴 수량 변수
         // var option: 추가옵션
         var priceToString: String {
             let formatter = NumberFormatter()
@@ -57,7 +58,7 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
 
 #if DEBUG
 extension Restaurant.Food {
-    static let sampleData = Restaurant.Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza")
+    static var sampleData = Restaurant.Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza", foodCartCount: 1)
 }
 
 extension Restaurant {

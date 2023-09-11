@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddCartView: View {
-    let food: Restaurant.Food
+    @State var food: Restaurant.Food
     
     @Environment(\.dismiss) private var dismiss
     @State private var numberOfFoods: Int = 1
@@ -42,7 +42,7 @@ struct AddCartView: View {
                     
                     Spacer()
                     
-                    Text("\(food.price * numberOfFoods)")
+                    Text("\(food.price * food.foodCartCount)")
                 }
                 .padding(.horizontal, 30)
                 .padding(.bottom, 20)
@@ -56,26 +56,26 @@ struct AddCartView: View {
                     Spacer()
                     
                     Button {
-                        if numberOfFoods > 1 {
-                            numberOfFoods -= 1
+                        if food.foodCartCount > 1 {
+                            food.foodCartCount -= 1
                         }
                     } label: {
                         Circle()
-                            .stroke(numberOfFoods <= 1 ? Color.lightgray : Color.gray)
+                            .stroke(food.foodCartCount <= 1 ? Color.lightgray : Color.gray)
                             .foregroundColor(.clear)
                             .frame(width: 40, height: 40)
                             .overlay(
                                 Text("-")
-                                    .foregroundColor(numberOfFoods <= 1 ? .lightgray : .gray)
+                                    .foregroundColor(food.foodCartCount <= 1 ? .lightgray : .gray)
                             )
                     }
-                    .disabled(numberOfFoods <= 1)
+                    .disabled(food.foodCartCount <= 1)
                     
-                    Text("\(numberOfFoods)")
+                    Text("\(food.foodCartCount)")
                         .padding(.horizontal, 5)
                     
                     Button {
-                        numberOfFoods += 1
+                        food.foodCartCount += 1
                     } label: {
                         Circle()
                             .stroke(Color.gray)
