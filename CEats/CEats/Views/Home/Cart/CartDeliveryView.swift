@@ -7,27 +7,78 @@
 
 import SwiftUI
 
-struct CartDeliveryView: View {
-  
-    @EnvironmentObject var userViewModel: UserViewModel
-//    @Binding var order: Order
-    @Binding var isOpenMapSheet: Bool
-    var order: Order = .sampleData
-    // 불값이 아닌 ?-? 
+struct DeliveryTypeButton: View, Identifiable {
+    // MARK: - Properties
+    @Binding var isSelected: Bool
+    var titleLabel: String
+    var deliveryTimeString: String
+    var deliveryFee: UInt = 0
+    var discountedFee: UInt = 0
+    var id: UUID = UUID()
     
-    @State var onlyMyHome: Bool = false
-    @State var severalHome: Bool = true
+    // MARK: - View
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack{
+                Image(systemName: isSelected ? "o.circle.fill" : "o.circle")
+                    .foregroundColor(isSelected ? .accentColor : .black)
+                VStack(alignment: .leading) {
+                    Text("\(titleLabel)")
+                        .font(.system(size: 18, weight: isSelected ? .bold : .regular))
+                    Text("\(deliveryTimeString)분")
+                        .font(.footnote)
+                }
+                Spacer()
+                
+                if discountedFee > 0 {
+                    VStack(alignment: .trailing) {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 60, height: 2)
+                                .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
+                            Text("배달비 \(deliveryFee)원")
+                        }
+                        Text("\(discountedFee)원")
+                            .bold()
+                            .foregroundColor(.red)
+                            .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))
+                    }
+                } else {
+                    Text("배달비 \(deliveryFee)원")
+                }
+            }
+        }
+        .foregroundColor(.black)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 7)
+                .stroke(isSelected ?  Color.accentColor : Color.black, lineWidth: 1.6)
+                .shadow(color: .gray, radius: 1.3)
+        )
+    }
+}
+
+struct CartDeliveryView: View {
+    //MARK: - Properties
+    @EnvironmentObject var userViewModel: UserViewModel
+    @Binding var order: Order
+    @Binding var isOpenMapSheet: Bool
+    
+    @State var isSelected1: Bool = true
+    @State var isSelected2: Bool = false
+    
     @Environment(\.dismiss) private var dismiss
     
+    //MARK: - View
     var body: some View {
         NavigationStack {
             HStack {
                 VStack(alignment: .leading) {
                     HStack{
-                        Text("\(userViewModel.user.userAddress)") //edit
+                        Text("\(userViewModel.user.userAddress)") // edit
                         Text("(으)로 배달")
                     }
-                    Text("\(userViewModel.user.userAddress)")// edit
+                    Text("\(userViewModel.user.userAddress)") // edit
                         .font(.system(size: 21, weight: .bold))
                 }
                 Spacer()
@@ -46,79 +97,23 @@ struct CartDeliveryView: View {
                     Spacer()
                 }
                 
-                Button {
-                    onlyMyHome.toggle()
-                    if onlyMyHome {
-                        severalHome = !onlyMyHome
-                    } else {
-                        severalHome = !onlyMyHome
-                    }
-                } label: {
-                    VStack(alignment: .leading) {
-                        HStack{
-                            Image(systemName: onlyMyHome ? "o.circle" : "o.circle.fill")
-                                .foregroundColor(onlyMyHome ? .black : .accentColor)
-                            VStack(alignment: .leading) {
-                                Text("한집배달")
-                                    .font(.system(size: 18, weight: onlyMyHome ? .regular : .bold))
-                                Text("29 ~ 39 분")
-                                    .font(.footnote)
-                            }
-                            Spacer()
-                            Text("배달비 \(order.restaurantName.deliveryFee)원")
-                        }
-                    }
-                    .foregroundColor(.black)
-                    .padding()
-                }
-                .background(
-                    RoundedRectangle(cornerRadius: 7)
-                        .stroke(onlyMyHome ?  Color.black : Color.accentColor, lineWidth: 1.6)
-                        .shadow(color: .gray, radius: 1.3)
-                )
+                // 일단 되게 !!!!! + 간단한걸 만들기 + 많이 만들기 !!!!!! 1일1기능 만들기 !! 많이 물어보기 !!!!!!!!!
+                let deliveryTypeButton1 = DeliveryTypeButton(isSelected: $isSelected1, titleLabel: "한집배달", deliveryTimeString: "29 ~ 39", deliveryFee: 3000)
+                let deliveryTypeButton2 = DeliveryTypeButton(isSelected: $isSelected2, titleLabel: "세이브배달", deliveryTimeString: "34 ~ 43", deliveryFee: 3000, discountedFee: 1000)
                 
-                Button {
-                    severalHome.toggle()
-                    if severalHome {
-                        onlyMyHome = !severalHome
-                    } else {
-                        onlyMyHome = !severalHome
-                    }
-                } label: {
-                    VStack(alignment: .leading) {
-                        HStack{
-                            Image(systemName: severalHome ? "o.circle" : "o.circle.fill")
-                                .foregroundColor(severalHome ? .black : .accentColor)
-                            VStack(alignment: .leading) {
-                                Text("세이브배달")
-                                    .font(.system(size: 18, weight: severalHome ? .regular : .bold))
-                                Text("34 ~ 49 분")
-                                    .font(.footnote)
-                            }
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                ZStack{
-                                    Rectangle()
-                                        .frame(width: 60, height: 2)
-                                        .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
-                                    Text("배달비 \(order.restaurantName.deliveryFee)원")
-                                }
-                                Text("\(order.restaurantName.deliveryFee - 1000)원")
-                                    .bold()
-                                    .foregroundColor(.red)
-                                    .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))
-                            }
-                        }
-                    }
-                    .foregroundColor(.black)
-                    .padding()
-                }
-                .background(
-                    RoundedRectangle(cornerRadius: 7)
-                        .stroke(severalHome ? Color.black : Color.accentColor, lineWidth: 1.6)
-                        .shadow(color: .gray, radius: 1.3)
-                )
+                let deliveryButtonArray: [DeliveryTypeButton] = [deliveryTypeButton1, deliveryTypeButton2]
                 
+                // ⭐️ Refactoring 해서 검사맡기 !!!!! 숙제임!!
+                deliveryTypeButton1
+                    .onTapGesture {
+                        disableAllBtn(deliveryButtonArray: deliveryButtonArray)
+                        isSelected1 = true
+                    }
+                deliveryTypeButton2
+                    .onTapGesture {
+                        disableAllBtn(deliveryButtonArray: deliveryButtonArray)
+                        isSelected2 = true
+                    }
                 Spacer()
             }
             
@@ -135,7 +130,6 @@ struct CartDeliveryView: View {
     }
     
     var backButton: some View {
-        
         Button {
             dismiss()
         } label: {
@@ -144,13 +138,18 @@ struct CartDeliveryView: View {
                 .foregroundColor(Color.black)
         }
     }
+    func disableAllBtn(deliveryButtonArray: [DeliveryTypeButton]) {
+        isSelected1 = false
+        isSelected2 = false
+    }
+    
 }
 
 
 
 struct CartDeliveryView_Previews: PreviewProvider {
     static var previews: some View {
-        CartDeliveryView(isOpenMapSheet: .constant(false))
+        CartDeliveryView(order: .constant(.sampleData), isOpenMapSheet: .constant(false))
             .environmentObject(UserViewModel())
     }
 }

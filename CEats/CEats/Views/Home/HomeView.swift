@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var isOpenMapSheet: Bool = false
     @State var searchText: String = ""
     @State var order: Order = Order.sampleData
-//    @State private var isOpenCartSheet: Bool = false
+    @State private var isOpenCartSheet: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -37,7 +37,7 @@ struct HomeView: View {
                 .scrollIndicators(.hidden)
 
                 if order.orderedMenu.count > 0 {
-                    HomeCartView(order: $order)
+                    HomeCartView(order: $order, isOpenMapSheet: $isOpenCartSheet)
                 }
             }
         }

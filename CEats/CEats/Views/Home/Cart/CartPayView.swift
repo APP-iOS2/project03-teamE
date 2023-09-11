@@ -10,12 +10,15 @@ import SwiftUI
 struct CartPayView: View {
     var food: Restaurant.Food = .sampleData
     var restaurant: Restaurant = Restaurant.sampleData
+    var order: Order = Order.sampleData
     
-    @State var isappeal: Bool = false
-    @State var ispayment: Bool = false
+    //    @EnvironmentObject var user: User = User
+    
+    @State private var isappeal: Bool = true
+    @State private var ispayment: Bool = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 HStack {
                     Text("주문금액")
@@ -28,19 +31,19 @@ struct CartPayView: View {
                     Text("배달비")
                         .padding([.top, .leading, .bottom])
                     Spacer()
-                    Text("\(restaurant.deliveryFee)원")
+                    Text("\(order.restaurantName.deliveryFee)원")
                         .padding(.trailing)
                 }
                 Divider()
                 HStack {
                     Text("총 결제금액")
                     Spacer()
-                    Text("\(food.price + restaurant.deliveryFee)원")
+                    Text("\(order.totalFee)원")
                 }
                 .font(.title3)
                 .bold()
                 .padding()
-                Divider()
+//                Divider()
                 
                 HStack {
                     Text("요청사항")
@@ -76,13 +79,8 @@ struct CartPayView: View {
                         .padding()
                     Spacer()
                     Button {
-                        //눌리면 꺾새 내려가게 해야함.
-                        // CartpaymentVIew 가 보임
-//                        if ispayment {
-//                            // CartappealView 가 보임.
-//                                CartpaymentView()
-//
-//                        }
+                        // 눌리면 꺾새 내려가게 해야함.
+                        // CartPaymentView 가 보임
                         ispayment.toggle()
                     } label: {
                         Image(systemName: ispayment ? "chevron.down" : "control")
@@ -94,13 +92,24 @@ struct CartPayView: View {
                     }
                 }
                 Divider()
-                
+                // isPayment가 토글이 되면 CartPaymentView() 가 요청사항과 같이 내려오게 됨.
+                // Extra argument in call 오류가 떴었음. divider를 남발해서 화면 프레임에서 벗어났기 때문이였습니다.
+                if ispayment {
+                    VStack {
+                        CartPaymentView()
+                    }
+                }
+//
+//                Button {
+//
+//                } label: {
+//                    Text("결제하기")
+//                }
+
             }
-            .padding()
         }
     }
 }
-
 
 struct CartPayView_Previews: PreviewProvider {
     static var previews: some View {
