@@ -36,7 +36,7 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.hidden)
 
-                if user.cart?.foodCart.count ?? 0 > 0 {
+                if user.foodCart?.cart.count ?? 0 > 0 {
                     HomeCartView(user: $user, isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }

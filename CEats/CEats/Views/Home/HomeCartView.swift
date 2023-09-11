@@ -16,12 +16,12 @@ struct HomeCartView: View {
             NavigationLink {
                 CartView(isOpenMapSheet: $isOpenMapSheet)
             } label: {
-                VStack(spacing:0) {
+                VStack {
                     HStack{
                         ZStack{
                             Circle()
                                 .frame(width: 30)
-                            Text("\(user.cart?.foodCart.count ?? 0)")
+                            Text("\(user.foodCart?.cart.count ?? 0)")
                                 .foregroundColor(.blue)
                         }
                         Text("카트보기")
@@ -29,11 +29,11 @@ struct HomeCartView: View {
                         ZStack{
                             Rectangle()
                                 .frame(width: 80, height: 1)
-                            Text("\(user.cart?.fee ?? 0) 원")
+                            Text("\(user.foodCart?.fee ?? 0) 원")
                         }
                         .foregroundColor(.lightgray)
                         
-                        Text("\(user.cart?.fee ?? 0) 원")
+                        Text("\(user.foodCart?.fee ?? 0) 원")
                             .font(.system(size: 18, weight: .bold))
                         
                     }

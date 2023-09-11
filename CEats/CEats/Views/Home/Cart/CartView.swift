@@ -18,6 +18,7 @@ struct CartView: View {
                 CartDeliveryView(isOpenMapSheet: $isOpenMapSheet)
                 CartMenuView()
                 CartPayView()
+                CartPayButtonView()
             }
         }
     }

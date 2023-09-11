@@ -19,7 +19,7 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
     var userAddress: String
     var favoriteRestaurant: [Restaurant] // 즐겨찾기
     var orderHistory: [Order] //
-    var cart: Cart? //장바구니
+    var foodCart: Cart? //장바구니
     var cEatsMoney: Int = 100000
     var latitude: Double//위도
     var longitude: Double //경도
@@ -31,9 +31,9 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
         var restaurantName: String {
             return restaurant.name
         }
-        var foodCart: [Restaurant.Food] // [filter] 푸드의 이름이 같은 것 count 해서 숫자 사용
+        var cart: [Restaurant.Food] // [filter] 푸드의 이름이 같은 것 count 해서 숫자 사용
         var fee: Int {
-            let totalFoodFee = foodCart.map({ $0.price }).reduce(0) { $0 + $1 }
+            let totalFoodFee = cart.map({ $0.price }).reduce(0) { $0 + $1 }
             return totalFoodFee + restaurant.deliveryFee
         }
     }
@@ -43,6 +43,6 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
 
 #if DEBUG
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], cart: Cart(restaurant: Restaurant.sampleData, foodCart: [Restaurant.Food.sampleData]) , latitude: 0 ,longitude: 0, reviews: .sampleData, coupons: [.sampleData])
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], foodCart: Cart(restaurant: Restaurant.sampleData, cart: [Restaurant.Food.sampleData]) , latitude: 0 ,longitude: 0, reviews: .sampleData, coupons: [.sampleData])
 }
 #endif
