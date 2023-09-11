@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CartPayView: View {
-    var food: Restaurant.Food = .sampleData
-    var restaurant: Restaurant = Restaurant.sampleData
-    var order: Order = Order.sampleData
+    var food: Restaurant.Food = Restaurant.Food.sampleData
+    var restaurant: Restaurant = .sampleData
+//    var order: Order = .sampleData
+    
     var user: User = User.sampleData
     
     @State private var isappeal: Bool = true
@@ -23,21 +24,21 @@ struct CartPayView: View {
                     Text("주문금액")
                         .padding(.leading)
                     Spacer()
-                    Text("\(food.price)원")
+//                    Text("\(user.cart?.restaurant.)원")
                         .padding(.trailing)
                 }
                 HStack {
                     Text("배달비")
                         .padding([.top, .leading, .bottom])
                     Spacer()
-                    Text("\(order.restaurantName.deliveryFee)원")
+                    Text("\(user.cart?.restaurant.deliveryFee ?? 0)원")
                         .padding(.trailing)
                 }
                 Divider()
                 HStack {
                     Text("총 결제금액")
                     Spacer()
-                    Text("\(order.totalFee)원")
+                    Text("\(user.cart?.fee ?? 0)원")
                 }
                 .font(.title3)
                 .bold()

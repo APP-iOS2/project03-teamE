@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0179F4032AAEECD100F015D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0179F4022AAEECD100F015D5 /* GoogleService-Info.plist */; };
+		0179F4072AAEFA6B00F015D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0179F4062AAEFA6B00F015D5 /* GoogleService-Info.plist */; };
 		121D94752AA71114005177E0 /* HomeSearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94742AA71114005177E0 /* HomeSearchDetailView.swift */; };
 		121D94782AA71AB1005177E0 /* RecentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94772AA71AB1005177E0 /* RecentSearchView.swift */; };
 		121D947A2AA71AD2005177E0 /* PopularSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94792AA71AD2005177E0 /* PopularSearchesView.swift */; };
@@ -101,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		0179F4022AAEECD100F015D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0179F4062AAEFA6B00F015D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		121D94742AA71114005177E0 /* HomeSearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchDetailView.swift; sourceTree = "<group>"; };
 		121D94772AA71AB1005177E0 /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
 		121D94792AA71AD2005177E0 /* PopularSearchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSearchesView.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				D18E9B212AA5A14C009231E4 /* CEatsApp.swift */,
 				D18E9B232AA5A14C009231E4 /* ContentView.swift */,
 				0179F4022AAEECD100F015D5 /* GoogleService-Info.plist */,
+				0179F4062AAEFA6B00F015D5 /* GoogleService-Info.plist */,
 				D1D3E28C2AA9CE7900A60B65 /* FireBase */,
 				D18E9B312AA5A353009231E4 /* Views */,
 				D18E9B302AA5A345009231E4 /* Models */,
@@ -532,6 +535,7 @@
 				D18E9B2A2AA5A14E009231E4 /* Preview Assets.xcassets in Resources */,
 				D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */,
 				0179F4032AAEECD100F015D5 /* GoogleService-Info.plist in Resources */,
+				0179F4072AAEFA6B00F015D5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
