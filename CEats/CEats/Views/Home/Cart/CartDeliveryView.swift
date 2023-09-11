@@ -151,5 +151,6 @@ struct CartDeliveryView: View {
 struct CartDeliveryView_Previews: PreviewProvider {
     static var previews: some View {
         CartDeliveryView(isOpenMapSheet: .constant(false))
+            .environmentObject(UserViewModel())
     }
 }

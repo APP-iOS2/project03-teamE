@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
+    @EnvironmentObject var userModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
     
     var body: some View {
@@ -26,6 +27,7 @@ struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             CartView(isOpenMapSheet: .constant(false))
+                .environmentObject(UserViewModel())
         }
     }
 }
