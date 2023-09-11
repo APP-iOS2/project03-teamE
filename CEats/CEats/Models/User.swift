@@ -23,6 +23,8 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
     var cEatsMoney: Int = 100000
     var latitude: Double//위도
     var longitude: Double //경도
+    var reviews: [Review]
+    var coupons: [Coupon]
     
     struct Cart: Codable {
         var restaurant: Restaurant
@@ -37,25 +39,10 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
     }
 }
 
-//MARK: User에 Review배열 저장 프로퍼티 필요 / 화면표시위해서 연산프로퍼티로 임시구현
-extension User {
-    var reviews: [Review] {
-        return .sampleData
-    }
-}
-
-//MARK: User에 Coupon배열 저장 프로퍼티 필요 / 화면표시위해서 연산프로퍼티로 임시구현
-extension User {
-    var coupons: [Coupon] {
-        return [
-            .sampleData
-        ]
-    }
-}
 
 
 #if DEBUG
 extension User {
-    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0)
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], latitude: 0, longitude: 0, reviews: .sampleData, coupons: [.sampleData])
 }
 #endif

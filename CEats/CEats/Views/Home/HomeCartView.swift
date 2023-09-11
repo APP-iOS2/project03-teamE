@@ -14,7 +14,7 @@ struct HomeCartView: View {
         VStack(spacing:0){
             NavigationLink {
                 // 바인딩 어케 사용하죠?
-                CartView()
+//                CartView()
             } label: {
                 VStack(spacing:0) {
                     HStack{

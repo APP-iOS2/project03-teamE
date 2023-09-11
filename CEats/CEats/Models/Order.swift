@@ -22,6 +22,16 @@ struct Order: Identifiable, Codable {
         let totalFoodFee = orderedMenu.map({ $0.price }).reduce(0) { $0 + $1 }
         return totalFoodFee + restaurantName.deliveryFee
     }
+    var orderedAt: Double = Date().timeIntervalSince1970
+    var orderDate: String {
+        let dateOrderedAt: Date = Date(timeIntervalSince1970: orderedAt)
+        
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.dateFormat = "MM월dd일 HH:mm"
+        return dateFormatter.string(from: dateOrderedAt)
+    }
     
     enum OrderStatus: Codable {
             case waiting, canceled, accepted
@@ -38,6 +48,7 @@ struct Order: Identifiable, Codable {
             }
         }
 }
+
 
 #if DEBUG
 extension Order {

@@ -10,8 +10,9 @@ import SwiftUI
 struct CartDeliveryView: View {
   
     @EnvironmentObject var userViewModel: UserViewModel
-    @Binding var order: Order
+//    @Binding var order: Order
     @Binding var isOpenMapSheet: Bool
+    var order: Order = .sampleData
     // 불값이 아닌 ?-? 
     
     @State var onlyMyHome: Bool = false

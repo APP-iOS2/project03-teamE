@@ -72,6 +72,7 @@
 		D179852B2AACC57B000ABA97 /* FoodTypeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179852A2AACC57B000ABA97 /* FoodTypeGridView.swift */; };
 		D179852D2AACC598000ABA97 /* RecommendedRestaurantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179852C2AACC598000ABA97 /* RecommendedRestaurantsView.swift */; };
 		D179852F2AACC5DE000ABA97 /* HomeCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179852E2AACC5DE000ABA97 /* HomeCartView.swift */; };
+		D17985312AAE9968000ABA97 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D17985302AAE9968000ABA97 /* GoogleService-Info.plist */; };
 		D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B212AA5A14C009231E4 /* CEatsApp.swift */; };
 		D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B232AA5A14C009231E4 /* ContentView.swift */; };
 		D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D18E9B252AA5A14E009231E4 /* Assets.xcassets */; };
@@ -154,6 +155,7 @@
 		D179852A2AACC57B000ABA97 /* FoodTypeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTypeGridView.swift; sourceTree = "<group>"; };
 		D179852C2AACC598000ABA97 /* RecommendedRestaurantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurantsView.swift; sourceTree = "<group>"; };
 		D179852E2AACC5DE000ABA97 /* HomeCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCartView.swift; sourceTree = "<group>"; };
+		D17985302AAE9968000ABA97 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
 		D18E9B232AA5A14C009231E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				D18E9B212AA5A14C009231E4 /* CEatsApp.swift */,
 				D18E9B232AA5A14C009231E4 /* ContentView.swift */,
+				D17985302AAE9968000ABA97 /* GoogleService-Info.plist */,
 				D1D3E28C2AA9CE7900A60B65 /* FireBase */,
 				D18E9B312AA5A353009231E4 /* Views */,
 				D18E9B302AA5A345009231E4 /* Models */,
@@ -518,6 +521,7 @@
 			files = (
 				D18E9B2A2AA5A14E009231E4 /* Preview Assets.xcassets in Resources */,
 				D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */,
+				D17985312AAE9968000ABA97 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

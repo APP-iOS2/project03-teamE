@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var isOpenMapSheet: Bool = false
     @State var searchText: String = ""
     @State var order: Order = Order.sampleData
-  
+//    @State private var isOpenCartSheet: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -44,9 +44,9 @@ struct HomeView: View {
         .fullScreenCover(isPresented: $isOpenMapSheet, content: {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         })
-        .fullScreenCover(isPresented: $isOpenCartSheet, content: {
-            CartView(isOpenMapSheet: $isOpenMapSheet)
-        })
+//        .fullScreenCover(isPresented: $isOpenCartSheet, content: {
+//            CartView(isOpenMapSheet: $isOpenMapSheet)
+//        })
         
     }
 }
