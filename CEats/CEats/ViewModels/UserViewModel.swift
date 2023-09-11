@@ -18,19 +18,19 @@ final class UserViewModel: ObservableObject {
         case 준비중
     }
     
-    func recommendFoods(food: [Restaurant.Food], restaurant: Restaurant ) -> [Restaurant.Food] {
-        var menus = restaurant.menus
-        
-        if menus.count < 3 {
-            return restaurant.menus
-        }
-        
-        for selectedFood in food {
-            menus.removeAll { $0.name == selectedFood.name }
-        }
-        
-        return menus
-    }
+//    func recommendFoods(food: [Restaurant.Food]?, restaurant: Restaurant?) -> [Restaurant.Food] {
+//        var menus = restaurant!.menus
+//        
+//        if menus.count < 3 {
+//            return restaurant!.menus
+//        }
+//        
+//        for selectedFood in food {
+//            menus.removeAll { $0.name == selectedFood.name }
+//        }
+//        
+//        return menus
+//    }
     
     func addCount(food: Restaurant.Food){
         if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {

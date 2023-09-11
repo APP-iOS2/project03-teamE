@@ -11,6 +11,7 @@ import SwiftUI
 // 유저1의 장바구니 -> 선택한 식당 이름, 선택한 음식, 수량, 선택한 식당의 추천 음식(무작위)
 struct CartMenuView: View {
     @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var restaurant: RestaurantViewModel
     var colorSet: UIColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     
     var body: some View {
@@ -66,43 +67,43 @@ struct CartMenuView: View {
             Text("+ 메뉴 추가")
         }
         .font(.caption)
-        VStack {
-            HStack {
-                Text("함께 주문하면 좋을 메뉴")
-                    .bold()
-                    .padding()
-                Spacer()
-            }
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    //                        ForEach(order.orderedMenu, id: \.name) { cart in
-                    //
-                    //                            Button {
-                    //
-                    //                            } label: {
-                    //                                HStack {
-                    //                                    VStack {
-                    //                                        Text(cart.name)
-                    //                                            .foregroundColor(.black)
-                    //                                        Text("\(cart.price)")
-                    //                                    }
-                    //                                    Button {
-                    //
-                    //                                    } label: {
-                    //                                        Image(systemName: "plus.circle")
-                    //                                            .font(.title)
-                    //                                    }
-                    //                                }
-                    //                                .overlay(
-                    //                                    RoundedRectangle(cornerRadius: 5)
-                    //                                        .stroke(Color.gray, lineWidth: 2)
-                    //                                    )
-                    //                            }
-                    //                        }
-                }
-            }
-            .padding()
-        }
+//        VStack {
+//            HStack {
+//                Text("함께 주문하면 좋을 메뉴")
+//                    .bold()
+//                    .padding()
+//                Spacer()
+//            }
+//            ScrollView(.horizontal, showsIndicators: false) {
+//                HStack {
+//                    ForEach(userViewModel.recommendFoods(food: userViewModel.user.foodCart?.cart ?? [], restaurant: userViewModel.user.foodCart?.restaurant ?? [Restaurant.sampleData])) { store in
+//
+//                        Button {
+//
+//                        } label: {
+//                            HStack {
+//                                VStack {
+//                                    Text(store.name)
+//                                        .foregroundColor(.black)
+//                                    Text("\(store.price)")
+//                                }
+//                                Button {
+//
+//                                } label: {
+//                                    Image(systemName: "plus.circle")
+//                                        .font(.title)
+//                                }
+//                            }
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 5)
+//                                    .stroke(Color.gray, lineWidth: 2)
+//                            )
+//                        }
+//                    }
+//                }
+//            }
+//            .padding()
+//        }
     }
 }
 

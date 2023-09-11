@@ -38,7 +38,7 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
         return "20 ~ 30 분"
     }
     
-    struct Food: Codable {
+    struct Food: Codable, Identifiable {
         var id: UUID = UUID()
         var name: String //메뉴이름
         var price: Int //메뉴 가격
