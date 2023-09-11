@@ -12,7 +12,7 @@ struct CartAppealView: View {
     var delivery = ["문 앞에 두고 사진을 보내주세요", "직접 받을게요", "도착하면 전화 주세요"]
     
     @State private var toorder: String = ""
-    @State var ischeckmark: Bool = false
+    @State var ischeckmark: Bool = true
     
     var body: some View {
         VStack {
@@ -39,11 +39,20 @@ struct CartAppealView: View {
                         .padding([.leading, .trailing])
                 }
                 VStack(alignment: .leading) {
-                    Text("일화용 수저/포크받기")
-                        .font(.system(size: 15))
-                    Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
-                        .font(.system(size: 12))
-                        .foregroundColor(.lightgray)
+                    if ischeckmark {
+                        Text("일화용 수저/포크받기")
+                            .font(.system(size: 15))
+                            .foregroundColor(.gray)
+                        Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
+                            .font(.system(size: 12))
+                            .foregroundColor(.lightgray)
+                    }else {
+                        Text("일화용 수저/포크받기")
+                            .font(.system(size: 15))
+                        Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
+                            .font(.system(size: 12))
+                            .foregroundColor(.lightgray)
+                    }
                 }
                 Spacer()
             }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0179F3F42AAE9BCD00F015D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0179F3F32AAE9BCD00F015D5 /* GoogleService-Info.plist */; };
 		121D94752AA71114005177E0 /* HomeSearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94742AA71114005177E0 /* HomeSearchDetailView.swift */; };
 		121D94782AA71AB1005177E0 /* RecentSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94772AA71AB1005177E0 /* RecentSearchView.swift */; };
 		121D947A2AA71AD2005177E0 /* PopularSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94792AA71AD2005177E0 /* PopularSearchesView.swift */; };
@@ -100,6 +101,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0179F3F32AAE9BCD00F015D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		121D94742AA71114005177E0 /* HomeSearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchDetailView.swift; sourceTree = "<group>"; };
 		121D94772AA71AB1005177E0 /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
 		121D94792AA71AD2005177E0 /* PopularSearchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSearchesView.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				D18E9B2A2AA5A14E009231E4 /* Preview Assets.xcassets in Resources */,
 				C92BD8E02AAE9F9300F68E8A /* GoogleService-Info.plist in Resources */,
 				D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */,
+				0179F3F42AAE9BCD00F015D5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,7 +738,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CEats/Preview Content\"";
-				DEVELOPMENT_TEAM = ASU4PNB5MG;
+				DEVELOPMENT_TEAM = 2SCPX9N75F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
