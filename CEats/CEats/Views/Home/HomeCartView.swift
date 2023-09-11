@@ -35,7 +35,6 @@ struct HomeCartView: View {
                         
                         Text("\(order.orderedMenu[0].price)원")
                             .font(.system(size: 18, weight: .bold))
-                        
                     }
                 }
                 .foregroundStyle(.white)
