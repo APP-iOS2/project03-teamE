@@ -10,7 +10,6 @@ import SwiftUI
 struct CartDeliveryView: View {
     //MARK: - Properties
     @EnvironmentObject var userViewModel: UserViewModel
-    @Binding var order: Order
     @Binding var isOpenMapSheet: Bool
     
     @State var isSelected1: Bool = true
@@ -147,7 +146,7 @@ struct DeliveryTypeButton: View, Identifiable {
 
 struct CartDeliveryView_Previews: PreviewProvider {
     static var previews: some View {
-        CartDeliveryView(order: .constant(.sampleData), isOpenMapSheet: .constant(false))
+        CartDeliveryView(isOpenMapSheet: .constant(false))
             .environmentObject(UserViewModel())
     }
 }
