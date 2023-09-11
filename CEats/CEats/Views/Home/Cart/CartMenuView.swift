@@ -21,14 +21,17 @@ struct CartMenuView: View {
                 Text(userViewModel.user.foodCart?.restaurantName ?? "없습니다")
                     .font(.title3)
                     .bold()
+                Divider()
                 ForEach(userViewModel.user.foodCart?.cart ?? []){ food in //함수의 파라미터로 들어온 애는 상수로 들어온다. ~?~??~?~?~??~?~?~?~?? 뷰모델에서 바꾸는 함수를 만등러줘야하ㅏㅏㅏㅏㅏ
-                    VStack{
                         HStack{
+                            Text(food.name)
+                                .font(.system(size: 20))
+                            Spacer()
                             Button {
                                 userViewModel.subtractCount(food: food)
                             } label: {
                                 Image(systemName: "minus.circle.fill")
-                            }
+                            }.disabled(food.foodCount == 0)
                             Text("\(food.foodCount)")
                             Button {
                                 userViewModel.addCount(food: food)
@@ -36,8 +39,9 @@ struct CartMenuView: View {
                                 Image(systemName: "plus.circle.fill")
                             }
                         }
-                        Text(food.description)
-                    }
+                        Text(food.priceToString)
+                        .bold()
+                    Divider()
                 }
             }
             .padding()
