@@ -101,17 +101,17 @@ struct AddCartView: View {
                 print(restaurant.name)
                 print("------------")
                 if let userCart = userViewModel.user.foodCart {
-                    if userViewModel.user.foodCart?.restaurant.name != restaurant.name {
-                        showAlert.toggle()
+                    if userCart.restaurant.name != restaurant.name {
+                        showAlert = true
                     }
                     else {
-                        userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
+                        userViewModel.updateUserCart(restaurant: restaurant, food: food)
                         dismiss()
                     }
                 }
                 else{
-                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
-                    userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
+                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                    userViewModel.updateUserCart(restaurant: restaurant, food: food)
                     print(userViewModel.user.foodCart)
                     dismiss()
                 }
@@ -132,10 +132,9 @@ struct AddCartView: View {
                 dismiss()
             },
                   secondaryButton: .default(Text("새로담기")) {
-                userViewModel.user.foodCart?.restaurant = restaurant
                 userViewModel.user.foodCart?.foodCart.removeAll()
-                userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
-                userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
+                userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                userViewModel.updateUserCart(restaurant: restaurant, food: food)
                 dismiss()
             }
             )
