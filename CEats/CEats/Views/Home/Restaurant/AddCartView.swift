@@ -97,21 +97,23 @@ struct AddCartView: View {
             Spacer()
             
             Button {
-                if userViewModel.user.foodCart?.restaurant.name != restaurant.name {
-                    showAlert.toggle()
-                }
-                else {
-                    if let userCart = userViewModel.user.foodCart{
-                        userViewModel.user.foodCart?.foodCart.append(food)
-                        //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userCart)
-                        dismiss()
-                        print(userViewModel.user.foodCart?.foodCart)
+                print(userViewModel.user.foodCart?.restaurant.name)
+                print(restaurant.name)
+                print("------------")
+                if let userCart = userViewModel.user.foodCart {
+                    if userCart.restaurant.name != restaurant.name {
+                        showAlert = true
                     }
                     else {
-                        userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
-                        //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userViewModel.user.foodCart!)
+                        userViewModel.updateUserCart(restaurant: restaurant, food: food)
                         dismiss()
                     }
+                }
+                else{
+                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                    userViewModel.updateUserCart(restaurant: restaurant, food: food)
+                    print(userViewModel.user.foodCart)
+                    dismiss()
                 }
             } label: {
                 Text("배달 카트에 담기")
@@ -130,10 +132,9 @@ struct AddCartView: View {
                 dismiss()
             },
                   secondaryButton: .default(Text("새로담기")) {
-                userViewModel.user.foodCart?.restaurant = restaurant
                 userViewModel.user.foodCart?.foodCart.removeAll()
-                userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
-                //userViewModel.updateUserCart(user: userViewModel.user, foodCart: userViewModel.user.foodCart!)
+                userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [])
+                userViewModel.updateUserCart(restaurant: restaurant, food: food)
                 dismiss()
             }
             )
