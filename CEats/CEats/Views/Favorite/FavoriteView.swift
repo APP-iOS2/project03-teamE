@@ -16,10 +16,10 @@ struct FavoriteView: View {
     @State private var progress: CGFloat = 0.0
     @State private var isAnimating = false
     
-    
     private var isFavoriteEmpty: Bool {
         userViewModel.user.favoriteRestaurant.isEmpty
     }
+    
     // MARK: - Views
     var body: some View {
         VStack(alignment: .leading){
@@ -38,7 +38,8 @@ struct FavoriteView: View {
                     VStack {
                         Image("isFavorite")
                             .resizable()
-                            .frame(width: 350, height: 400)
+                            .scaledToFit()
+//                            .frame(width: 350, height: 400)
                             .cornerRadius(10)
                             .padding()
                         

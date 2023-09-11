@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    var fireManager = CEatsFBManager()
     @State var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()

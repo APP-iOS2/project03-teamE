@@ -8,6 +8,7 @@
 import Foundation
 
 struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
+    
     var id: String
     var password: String
     var restaurantInfo: RestaurantInfo
