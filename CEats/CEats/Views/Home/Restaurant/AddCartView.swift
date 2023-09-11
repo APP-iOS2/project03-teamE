@@ -110,8 +110,8 @@ struct AddCartView: View {
                     }
                 }
                 else{
-                    userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
                     userViewModel.user.foodCart = User.Cart(restaurant: restaurant, foodCart: [food])
+                    userViewModel.updateUserCart(user: userViewModel.user, userCart: userViewModel.user.foodCart, restaurant: restaurant, food: food)
                     print(userViewModel.user.foodCart)
                     dismiss()
                 }
