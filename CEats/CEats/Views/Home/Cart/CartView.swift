@@ -8,25 +8,34 @@
 import SwiftUI
 
 struct CartView: View {
+    // MARK: - Properties
+    @EnvironmentObject var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
+    @State var fee: Int
     
+    init(userViewModel: UserViewModel, isOpenMapSheet: Binding<Bool>) {
+        self._isOpenMapSheet = isOpenMapSheet
+        self.fee = userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0
+    }
+    
+    // MARK: - View
     var body: some View {
         NavigationStack{
             ScrollView {
-                CartDeliveryView(isOpenMapSheet: $isOpenMapSheet)
-                //            CartMenuView()
-                Text("여기는 메뉴 보여질 뷰 들어갈 자리")
-                CartPayView()
+                CartDeliveryView(isOpenMapSheet: $isOpenMapSheet, fee: $fee)
+                CartMenuView()
+                CartPayView(fee: $fee)
+                CartPayButtonView()
             }
+            
         }
     }
 }
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            CartView(isOpenMapSheet: .constant(false))
-                .environmentObject(UserViewModel())
-        }
+        CartView(userViewModel: UserViewModel(), isOpenMapSheet: .constant(false))
+            .environmentObject(UserViewModel())
+            .environmentObject(RestaurantViewModel())
     }
 }

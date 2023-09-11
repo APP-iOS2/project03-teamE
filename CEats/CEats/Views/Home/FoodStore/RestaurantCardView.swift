@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RestaurantCardView: View {
     // MARK: - properties
-    @EnvironmentObject var userViewModel: UserViewModel
     @EnvironmentObject var restaurantsStore: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @Binding var selectedFoodType: FoodType?
 
     

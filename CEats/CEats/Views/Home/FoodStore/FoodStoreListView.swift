@@ -11,6 +11,7 @@ import ScalingHeaderScrollView
 struct FoodStoreListView: View {
     // MARK: - properties
     @EnvironmentObject var restaurantsStore: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @State var selectedFoodType: FoodType?
     
     //MARK: - View
