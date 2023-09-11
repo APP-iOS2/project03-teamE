@@ -12,7 +12,6 @@
 		121D947A2AA71AD2005177E0 /* PopularSearchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D94792AA71AD2005177E0 /* PopularSearchesView.swift */; };
 		121D947E2AA74008005177E0 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121D947D2AA74008005177E0 /* Extension+View.swift */; };
 		121E711D2AAE94D000F4F4C3 /* ReciptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121E711C2AAE94D000F4F4C3 /* ReciptView.swift */; };
-		121E711F2AAEAB7100F4F4C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 121E711E2AAEAB7100F4F4C3 /* GoogleService-Info.plist */; };
 		121FCCC92AA6C1F800A59B7D /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */; };
 		121FCCCB2AA6C22000A59B7D /* MapHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */; };
 		121FCCCD2AA6C7FC00A59B7D /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */; };
@@ -41,6 +40,8 @@
 		BED6DADD2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */; };
 		C99358EF2AA8BA9F00D631B8 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */; };
 		D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14F18472AA802E6008665F4 /* SearchViewImage.swift */; };
+		D160104C2AAED3F00093E1D2 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160104B2AAED3F00093E1D2 /* FullScreenImageView.swift */; };
+		D160104E2AAEDA9A0093E1D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D160104D2AAEDA9A0093E1D2 /* GoogleService-Info.plist */; };
 		D166C8902AA96D4800BEE09B /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */; };
 		D166C8922AA98A7700BEE09B /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8912AA98A7700BEE09B /* Seller.swift */; };
 		D166C8952AA98B0100BEE09B /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D166C8942AA98B0100BEE09B /* CartView.swift */; };
@@ -106,7 +107,6 @@
 		121D94792AA71AD2005177E0 /* PopularSearchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSearchesView.swift; sourceTree = "<group>"; };
 		121D947D2AA74008005177E0 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		121E711C2AAE94D000F4F4C3 /* ReciptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptView.swift; sourceTree = "<group>"; };
-		121E711E2AAEAB7100F4F4C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		121FCCC82AA6C1F800A59B7D /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchView.swift; sourceTree = "<group>"; };
 		121FCCCA2AA6C22000A59B7D /* MapHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomeView.swift; sourceTree = "<group>"; };
 		121FCCCC2AA6C7FC00A59B7D /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
@@ -134,6 +134,8 @@
 		BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRDetailInfoMenuView.swift; sourceTree = "<group>"; };
 		C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		D14F18472AA802E6008665F4 /* SearchViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewImage.swift; sourceTree = "<group>"; };
+		D160104B2AAED3F00093E1D2 /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FullScreenImageView.swift; path = "../../../../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/CEats/CEats/Views/Home/Restaurant/FullScreenImageView.swift"; sourceTree = "<group>"; };
+		D160104D2AAEDA9A0093E1D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D166C88F2AA96D4800BEE09B /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		D166C8912AA98A7700BEE09B /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
 		D166C8942AA98B0100BEE09B /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -262,9 +264,9 @@
 		D18E9B202AA5A14C009231E4 /* CEats */ = {
 			isa = PBXGroup;
 			children = (
+				D160104D2AAEDA9A0093E1D2 /* GoogleService-Info.plist */,
 				D18E9B212AA5A14C009231E4 /* CEatsApp.swift */,
 				D18E9B232AA5A14C009231E4 /* ContentView.swift */,
-				121E711E2AAEAB7100F4F4C3 /* GoogleService-Info.plist */,
 				D1D3E28C2AA9CE7900A60B65 /* FireBase */,
 				D18E9B312AA5A353009231E4 /* Views */,
 				D18E9B302AA5A345009231E4 /* Models */,
@@ -413,6 +415,7 @@
 				128321172AA6F34000EAB4BD /* RTRFoodCellView.swift */,
 				BED6DADA2AA6F58A00EB8F0B /* RTRDetailInfoView.swift */,
 				BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */,
+				D160104B2AAED3F00093E1D2 /* FullScreenImageView.swift */,
 				D1DB3B5C2AA6B19200212573 /* ReviewInfoView.swift */,
 				3C918EDD2AA6B6710043111A /* AddCartView.swift */,
 			);
@@ -523,8 +526,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D18E9B2A2AA5A14E009231E4 /* Preview Assets.xcassets in Resources */,
-				121E711F2AAEAB7100F4F4C3 /* GoogleService-Info.plist in Resources */,
 				D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */,
+				D160104E2AAEDA9A0093E1D2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +577,7 @@
 				D1DB3B542AA6B17300212573 /* AdvertisementView.swift in Sources */,
 				D166C8A32AA9BF9400BEE09B /* CartPaymentView.swift in Sources */,
 				D17985292AACC562000ABA97 /* HomeSearchBarView.swift in Sources */,
+				D160104C2AAED3F00093E1D2 /* FullScreenImageView.swift in Sources */,
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
 				D1DB3B402AA6B07E00212573 /* FoodStoreListDetailView.swift in Sources */,
 				121D947E2AA74008005177E0 /* Extension+View.swift in Sources */,
