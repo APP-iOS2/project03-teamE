@@ -9,6 +9,7 @@ import Foundation
 
 struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
     var id: String
+    var isOpen: Bool = true
     var password: String
     var restaurantInfo: RestaurantInfo
     var name: String //음식점 이름
@@ -19,7 +20,6 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
     var mainImage: [String] //가게 메인 이미지
     var foodType: [FoodType]
     var foodCategory: [String]
-//    var seller: Seller
     var latitude: Double//위도
     var longitude: Double //경도
     var score: Double? {
@@ -38,7 +38,7 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
     }
     
     struct Food: Codable, Identifiable {
-        var id: UUID = UUID()
+        var id: String = UUID().uuidString
         var name: String //메뉴이름
         var price: Int //메뉴 가격
         var isRecommend: Bool //추천여부 추천이면 가게 클릭시 상단에 뜸

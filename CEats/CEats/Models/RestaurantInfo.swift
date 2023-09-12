@@ -12,6 +12,5 @@ struct RestaurantInfo: Codable {
     var phoneNumber: Int = 0103920313
     var name: String = "멋쟁이 xxxx"
     var timeTable: String = "12:00 ~ 23:00"
-    var introduce: String = "대한민국 최고의 xxx 집입니다"
-    
+    var introduce: String = "대한민국 최고의 xxx 집입니다"   
 }

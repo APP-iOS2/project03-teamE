@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Order: Identifiable, Codable {
+struct Order: Identifiable, CEatsIdentifiable, Codable {
     var id: String
     var orderer: String //이거 문제있음
     var restaurant : Restaurant //
@@ -34,19 +34,19 @@ struct Order: Identifiable, Codable {
     }
     
     enum OrderStatus: Codable {
-            case waiting, canceled, accepted
-            
-            var toString: String {
-                switch self {
-                case .waiting:
-                    return "준비중"
-                case .canceled:
-                    return "주문 취소됨"
-                case .accepted:
-                    return "주문 완료됨"
-                }
+        case waiting, canceled, accepted
+        
+        var toString: String {
+            switch self {
+            case .waiting:
+                return "준비중"
+            case .canceled:
+                return "주문 취소됨"
+            case .accepted:
+                return "주문 완료됨"
             }
         }
+    }
 }
 
 

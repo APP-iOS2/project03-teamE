@@ -7,13 +7,23 @@
 
 import Foundation
 
-struct Seller: Encodable, CEatsIdentifiable {
-    let id: String
-    var name: String
-    var score: Double
+struct Seller: Identifiable, CEatsIdentifiable, Codable { //레스토랑 안에 넣고
+    var restaurant: Restaurant
+    var orders: [Order]
     var orderAcceptanceRate: Double
     var averageAcceptanceTime: Double
-    
+}
+
+extension Seller {
+    var id: String {
+        restaurant.id
+    }
+    var name: String {
+        restaurant.name
+    }
+    var score: Double {
+        restaurant.score ?? 0
+    }
     var scoreToString: String {
         String(format: "%.1f", score)
     }
@@ -23,12 +33,8 @@ struct Seller: Encodable, CEatsIdentifiable {
     var timeToString: String {
         String(format: "%.0f", averageAcceptanceTime)
     }
-    
-    var restaurant: Restaurant
-    var order: [Order]
 }
 
-
 extension Seller {
-    static let sampleData: Self = .init(id: "Test123", name: "멋쟁이 김치처럼", score: 4.5, orderAcceptanceRate: 99, averageAcceptanceTime: 10, restaurant: Restaurant.sampleData, order: [Order.sampleData])
+    static let sampleData: Self = .init(restaurant: Restaurant.sampleData, orders: [Order.sampleData], orderAcceptanceRate: 99, averageAcceptanceTime: 10)
 }
