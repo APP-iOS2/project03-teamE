@@ -39,9 +39,10 @@ struct ReviewDetail: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.black, lineWidth: 1)
                         )
+                        .padding(.bottom, 30)
                 }
             }
-            .padding()
+            .padding(20)
             .navigationTitle("\(restaurant.name)")
         }
     }

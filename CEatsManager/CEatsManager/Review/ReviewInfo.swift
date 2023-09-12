@@ -16,11 +16,11 @@ struct ReviewInfo: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("작성자 : \(review.writer)")
-                        .font(.system(size: 35, weight: .semibold))
+                        .font(.system(size: 25, weight: .semibold))
                         .bold()
                     
                     review.score.doubleToStarView
-                        .font(.system(size: 35, weight: .semibold))
+                        .font(.system(size: 25, weight: .semibold))
                         .padding(.bottom)
                     
                 }
@@ -39,6 +39,7 @@ struct ReviewInfo: View {
             .padding(.bottom, -40)
             
             HStack {
+                // Image("\(review.image)") 이미지 없는게 많아서 일단 Asset에 추가한 이미지 올렸습니다.
                 Image("review")
                     .resizable()
                     .frame(width: 400, height: 400)
@@ -54,7 +55,7 @@ struct ReviewInfo: View {
                     
                 }
                 .frame(height: 550)
-                .font(.system(size: 30, weight: .regular))
+                .font(.system(size: 25, weight: .regular))
             }
         }
     }
