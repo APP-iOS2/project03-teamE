@@ -107,9 +107,23 @@ struct MyView: View {
                         Spacer()
                     }
                 }
+                /*
+                HStack {
+                    Image(systemName: "tag")
+                        .imageScale(.large)
+                        .padding()
+                    Text("CEats 머니")
+                        .frame(height: 60)
+                    Spacer()
+                    Spacer()
+                    Text("\(userViewModel.user.cEatsMoney)원")
+                    Spacer()
+                }
+                 */
             }
             .foregroundColor(.primary)
             .listStyle(.plain)
+            
         }
     }
 }

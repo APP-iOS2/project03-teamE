@@ -11,8 +11,8 @@ struct HomeView: View {
 
     @State private var isOpenMapSheet: Bool = false
     @State var searchText: String = ""
-    @State var user: User = User.sampleData
     @State private var isOpenCartSheet: Bool = false
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         NavigationStack {
@@ -36,8 +36,8 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.hidden)
 
-                if user.foodCart?.cart.count ?? 0 > 0 {
-                    HomeCartView(user: $user, isOpenMapSheet: $isOpenCartSheet)
+                if userViewModel.user.foodCart?.cart.count ?? 0 > 0 {
+                    HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }
             }

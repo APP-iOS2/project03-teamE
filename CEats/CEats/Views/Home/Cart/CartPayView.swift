@@ -8,42 +8,52 @@
 import SwiftUI
 
 struct CartPayView: View {
-    var food: Restaurant.Food = Restaurant.Food.sampleData
-    var restaurant: Restaurant = .sampleData
-    var user: User = User.sampleData
+    // MARK: - Properties
+    @EnvironmentObject var userViewModel : UserViewModel
+    @State private var isappeal: Bool = true
+    @State private var ispayment: Bool = true
+    @Binding var fee: Int
     
     var foodCost: Int {
-        let totalFoodFee = user.foodCart?.cart.map({ $0.price }).reduce(0) { $0 + $1 } ?? 0
+        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 } ?? 0
         return totalFoodFee
     }
-    
-    @State private var isappeal: Bool = true
-    @State private var ispayment: Bool = false
-    @Binding var fee: Int
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                HStack {
-                    Text("주문금액")
-                        .padding(.leading)
-                    Spacer()
-                    Text("\(foodCost)원")
-                        .padding(.trailing)
+                Button {
+                    print("\(userViewModel.user.foodCart?.cart[0].foodCount)")
+                } label: {
+                    HStack {
+                        Text("주문금액")
+                            .padding(.leading)
+                        Spacer()
+                        Text("\(foodCost)원")
+                            .padding(.trailing)
+                    }
                 }
+
+//                HStack {
+//                    Text("주문금액")
+//                        .padding(.leading)
+//                    Spacer()
+//                    Text("\(foodCost)원")
+//                        .padding(.trailing)
+//                }
                 HStack {
                     Text("배달비")
                         .padding([.top, .leading, .bottom])
                     Spacer()
                     // 일반 값을 가져다 쓸 때는 $ 사인 없이 가져다 쓰는 것.
-                    Text("\(fee)")
+                    Text("\(fee)원")
                         .padding(.trailing)
                 }
                 Divider()
                 HStack {
                     Text("총 결제금액")
                     Spacer()
-                    Text("\( foodCost + fee)원")
+                    Text("\(foodCost + fee)원")
                 }
                 .font(.title3)
                 .bold()
