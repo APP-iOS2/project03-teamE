@@ -53,6 +53,7 @@ struct ContentView: View {
         }
         .environmentObject(restaurantViewModel)
         .environmentObject(userViewModel)
+        .navigationBarBackButtonHidden()
         .onAppear {
 //            restaurantViewModel.fireManager.create(data: Seller.sampleData)
 //            restaurantViewModel.fetchAllRestaurant()

@@ -18,7 +18,7 @@ struct CartPayView: View {
     }
     
     @State private var isappeal: Bool = true
-    @State private var ispayment: Bool = false
+    @State private var ispayment: Bool = true
     @Binding var fee: Int
     
     var body: some View {
@@ -36,7 +36,7 @@ struct CartPayView: View {
                         .padding([.top, .leading, .bottom])
                     Spacer()
                     // 일반 값을 가져다 쓸 때는 $ 사인 없이 가져다 쓰는 것.
-                    Text("\(fee)")
+                    Text("\(fee)원")
                         .padding(.trailing)
                 }
                 Divider()

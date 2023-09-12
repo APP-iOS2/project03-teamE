@@ -8,37 +8,76 @@
 import SwiftUI
 
 struct CartPayButtonView: View {
+    // MARK: - Properties
     @EnvironmentObject var userViewModel: UserViewModel
+    @Binding var fee: Int
+    @State var showingAlert: Bool = false
+    @State var isOpenOrderedSheet: Bool = false
     
+    var foodCost: Int {
+        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price }).reduce(0) { $0 + $1 } ?? 0
+        return totalFoodFee
+    }
+    
+    // MARK: - View
     var body: some View {
-        VStack {
-            HStack {
-                ZStack{
-                    Rectangle()
-                        .frame(width: 65, height: 1)
-                    // 할인 전 금액
-                    Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
-                        .font(.system(size: 16, weight: .regular))
+        NavigationStack {
+            Button {
+                showingAlert = true
+            } label: {
+                HStack {
+                    if userViewModel.user.foodCart?.fee ?? 0 == foodCost + fee {
+                        Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
+                            .font(.system(size: 18, weight: .bold))
+                        Text("결제하기")
+                            .font(.system(size: 18, weight: .bold))
+                    }else if userViewModel.user.foodCart?.fee ?? 0 >= foodCost + fee {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 65, height: 1)
+                            // 할인 전 금액
+                            Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
+                                .font(.system(size: 16, weight: .regular))
+                        }
+                        .foregroundColor(.lightgray)
+                        
+                        // Total fee 로 !
+                        Text("\(foodCost + fee)원")
+                            .font(.system(size: 18, weight: .bold))
+                        Text("결제하기")
+                            .font(.system(size: 18, weight: .bold))
+                    }
                 }
-                .foregroundColor(.lightgray)
-                
-                // Total fee 로 !
-                Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
-                    .font(.system(size: 18, weight: .bold))
-                Text("결제하기")
-                    .font(.system(size: 18, weight: .bold))
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.blue)
             }
-            .foregroundStyle(.white)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(.blue)
+            .fullScreenCover(isPresented: $isOpenOrderedSheet, content: {
+                RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet)
+            })
+            .alert("결제가 됩니다.", isPresented: $showingAlert) {
+                Button("뒤로가기") {
+                    showingAlert = false
+                    isOpenOrderedSheet = false
+                }
+                Button {
+                    isOpenOrderedSheet = true
+                } label: {
+                    Text("결제하기")
+                }
+            } message: {
+                Text("This is alert dialog sample")
+            }
+            
+            
         }
     }
 }
 
 struct CartPayButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CartPayButtonView()
+        CartPayButtonView(fee: .constant(1000))
             .environmentObject(UserViewModel())
     }
 }
