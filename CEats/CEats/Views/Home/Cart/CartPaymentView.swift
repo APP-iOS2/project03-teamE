@@ -38,9 +38,9 @@ struct CartPaymentView: View {
                         .padding()
                 }
             }
-            .onAppear {
-                userViewModel.user.cEatsMoney = userViewModel.user.cEatsMoney - userViewModel.user.foodCart!.fee
-            }
+//            .onAppear {
+//                userViewModel.user.cEatsMoney = userViewModel.user.cEatsMoney - userViewModel.user.foodCart!.fee
+//            }
             Spacer()
         }
         .padding()

@@ -15,7 +15,7 @@ struct CartPayButtonView: View {
     @State var isOpenOrderedSheet: Bool = false
     
     var foodCost: Int {
-        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price }).reduce(0) { $0 + $1 } ?? 0
+        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 } ?? 0
         return totalFoodFee
     }
     
@@ -65,7 +65,9 @@ struct CartPayButtonView: View {
                     isOpenOrderedSheet = true
                     
                     // 결제하기 눌렀을때 값 차감
-                    
+                    userViewModel.user.cEatsMoney = userViewModel.user.cEatsMoney - (foodCost + fee)
+                    print(userViewModel.user.cEatsMoney)
+                    print(" 111 ")
                 } label: {
                     Text("결제하기")
                 }

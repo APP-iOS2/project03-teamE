@@ -15,20 +15,32 @@ struct CartPayView: View {
     @Binding var fee: Int
     
     var foodCost: Int {
-        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price }).reduce(0) { $0 + $1 } ?? 0
+        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 } ?? 0
         return totalFoodFee
     }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                HStack {
-                    Text("주문금액")
-                        .padding(.leading)
-                    Spacer()
-                    Text("\(foodCost)원")
-                        .padding(.trailing)
+                Button {
+                    print("\(userViewModel.user.foodCart?.cart[0].foodCount)")
+                } label: {
+                    HStack {
+                        Text("주문금액")
+                            .padding(.leading)
+                        Spacer()
+                        Text("\(foodCost)원")
+                            .padding(.trailing)
+                    }
                 }
+
+//                HStack {
+//                    Text("주문금액")
+//                        .padding(.leading)
+//                    Spacer()
+//                    Text("\(foodCost)원")
+//                        .padding(.trailing)
+//                }
                 HStack {
                     Text("배달비")
                         .padding([.top, .leading, .bottom])

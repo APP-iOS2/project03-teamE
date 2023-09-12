@@ -58,7 +58,7 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
 
 #if DEBUG
 extension Restaurant.Food {
-    static var sampleData = Restaurant.Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza")
+    static var sampleData = Restaurant.Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza", foodCount: 1)
 }
 
 extension Restaurant {
