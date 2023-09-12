@@ -13,6 +13,9 @@ struct Seller: Identifiable, CEatsIdentifiable, Codable { //레스토랑 안에 
     var orders: [Order]
     var orderAcceptanceRate: Double
     var averageAcceptanceTime: Double
+}
+
+extension Seller {
     var id: String {
         restaurant.id
     }
