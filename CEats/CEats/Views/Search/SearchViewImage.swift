@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SearchViewImage: View {
-    var columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
-    let imageSize: CGFloat = 99
+    private var columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
     
     var body: some View {
         LazyVGrid(columns: columns, spacing: 30) {

@@ -14,11 +14,6 @@ struct CartPayButtonView: View {
     @State private var showingAlert: Bool = false
     @State private var isOpenOrderedSheet: Bool = false
     
-    var foodCost: Int {
-        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 } ?? 0
-        return totalFoodFee
-    }
-    
     // MARK: - View
     var body: some View {
         Button {

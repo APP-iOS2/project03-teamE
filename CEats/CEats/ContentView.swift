@@ -12,11 +12,6 @@ struct ContentView: View {
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()
     
-    init() {
-        UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBar.appearance().backgroundImage = UIImage()
-    }
-    
     var body: some View {
         TabView(selection: $tabIndex) {
             HomeView()
@@ -42,7 +37,7 @@ struct ContentView: View {
                     Image(systemName: "doc.plaintext")
                     Text("주문내역")
                 }
-                .tag(3) 
+                .tag(3)
             MyView(tabIndex: $tabIndex)
                 .tabItem {
                     Image(systemName: "person")

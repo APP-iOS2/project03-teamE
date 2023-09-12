@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CartDeliveryView: View {
-    
-    //MARK: - Properties
     @EnvironmentObject private var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
     

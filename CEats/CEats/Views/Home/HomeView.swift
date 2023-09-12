@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
-
     @State private var isOpenMapSheet: Bool = false
-    @State var searchText: String = ""
+    @State private var searchText: String = ""
     @State private var isOpenCartSheet: Bool = false
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView{
+                ScrollView(showsIndicators: false) {
                     HeaderView(isOpenMapSheet: $isOpenMapSheet)
                     //헤더뷰, 위치 정해주는 뷰
                     NavigationLink {
@@ -34,13 +33,12 @@ struct HomeView: View {
                     RecommendedRestaurantsView()
                     //추천맛집뷰
                 }
-                .scrollIndicators(.hidden)
-
                 if userViewModel.user.foodCart != nil {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }
             }
+            .padding(.top, 1)
         }
         .fullScreenCover(isPresented: $isOpenMapSheet) {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
