@@ -9,7 +9,16 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            GeometryReader { geometry in
+                Image("coupang")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.2)
+                    .foregroundColor(.blue)
+                    .offset(y:geometry.size.height * 0.38)
+            }
+        }
     }
 }
 
