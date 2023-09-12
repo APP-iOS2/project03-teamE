@@ -23,17 +23,17 @@ struct CartView: View {
     // MARK: - View
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 CartDeliveryView(isOpenMapSheet: $isOpenMapSheet, fee: $fee)
                 CartMenuView()
                 CartPayView(fee: $fee)
                 // 결제 버튼 눌렸을 때 alert 뜨게 하기 ! (완)
-                // 결제 버튼 눌렀을 때 cEatsMoney 차감되게 만들기
+                // 결제 버튼 눌렀을 때 cEatsMoney 차감되게 만들기 (완)
                 // 멋쟁이 김치찌개 -> 수량 변경하면 그에 맞춰서 값 변동될 수 있게 만들기 (완 ~!1)
                 // 멋쟁이 김치찌개 -> 메뉴 추가 -> 맞는 가게 뷰 연동
                 // [CartMenuView] user.foodCart.restaurant을 통해서 뷰를 호출해야함
                 // 값이 변경될 요소들 뷰모델 사용하기 !!!! (완)
-                // 결제 금액 > CEats 머니 : 버튼 막기
+                // 결제 금액 > CEats 머니 : 버튼 막기 (완)
                 CartPayButtonView(fee: $fee)
             }
         }

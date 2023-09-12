@@ -42,6 +42,7 @@
 		D13CF95E2AB004CF00965F5E /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D13CF95D2AB004CF00965F5E /* FirebaseFirestoreCombine-Community */; };
 		D13CF9602AB004CF00965F5E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D13CF95F2AB004CF00965F5E /* FirebaseStorage */; };
 		D13CF9622AB004CF00965F5E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D13CF9612AB004CF00965F5E /* FirebaseStorageCombine-Community */; };
+		D13CF9642AB025CC00965F5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D13CF9632AB025CC00965F5E /* GoogleService-Info.plist */; };
 		D16DDBDC2AA862890009C29F /* CEatSellerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBDB2AA862890009C29F /* CEatSellerApp.swift */; };
 		D16DDBDE2AA862890009C29F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBDD2AA862890009C29F /* ContentView.swift */; };
 		D16DDBE02AA8628C0009C29F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16DDBDF2AA8628C0009C29F /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		D13CF94D2AAFF8BC00965F5E /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		D13CF9502AAFF8E500965F5E /* ManagingReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagingReview.swift; sourceTree = "<group>"; };
 		D13CF9522AAFF91900965F5E /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		D13CF9632AB025CC00965F5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D16DDBD82AA862890009C29F /* CEatSeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEatSeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16DDBDB2AA862890009C29F /* CEatSellerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatSellerApp.swift; sourceTree = "<group>"; };
 		D16DDBDD2AA862890009C29F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,7 +202,7 @@
 		D16DDBDA2AA862890009C29F /* CEatSeller */ = {
 			isa = PBXGroup;
 			children = (
-				120BFA352AB022F0005456EE /* GoogleService-Info.plist */,
+				D13CF9632AB025CC00965F5E /* GoogleService-Info.plist */,
 				D16DDBDB2AA862890009C29F /* CEatSellerApp.swift */,
 				D16DDBDD2AA862890009C29F /* ContentView.swift */,
 				D13CF9522AAFF91900965F5E /* FireBaseManager.swift */,
@@ -331,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D16DDBE32AA8628C0009C29F /* Preview Assets.xcassets in Resources */,
+				D13CF9642AB025CC00965F5E /* GoogleService-Info.plist in Resources */,
 				D16DDBE02AA8628C0009C29F /* Assets.xcassets in Resources */,
 				120BFA362AB022F0005456EE /* GoogleService-Info.plist in Resources */,
 			);

@@ -18,7 +18,7 @@ struct HomeView: View {
                     Text("\(sellerviewModel.seller.name)")
                         .font(.system(size: 28, weight: .medium))
                     NavigationLink {
-//                        RTRDetailInfoView(restaurant: sellerviewModel.seller.restaurant)
+                        RTRDetailInfoView(restaurant: sellerviewModel.seller.restaurant)
                     } label: {
                         HStack {
                             Text("매장정보 확인")
