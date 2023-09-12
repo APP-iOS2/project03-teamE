@@ -41,7 +41,7 @@ struct MapSearchView: View {
             
             List(searchResults, id: \.self) { mapItem in
                 NavigationLink {
-                    MapDetailView(isOpenMapSheet: $isOpenMapSheet, selectedPlace: .constant(mapItem.placemark.title ?? "Unknown Place"), selectedPlaceLat: .constant(mapItem.placemark.coordinate.latitude), selectedPlaceLong: .constant(mapItem.placemark.coordinate.longitude))
+                    MapSearchDetailView(isOpenMapSheet: $isOpenMapSheet, selectedPlace: mapItem.placemark.title ?? "Unknown Place", selectedPlaceLat: mapItem.placemark.coordinate.latitude, selectedPlaceLong: mapItem.placemark.coordinate.longitude)
                 } label: {
                     Text(mapItem.placemark.title ?? "Unknown Place")
                 }
