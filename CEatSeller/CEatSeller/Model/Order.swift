@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Order: Identifiable, Codable {
+struct Order: Identifiable, Codable, CEatsIdentifiable {
     var id: String
     var orderer: String //이거 문제있음
     var restaurant : Restaurant //

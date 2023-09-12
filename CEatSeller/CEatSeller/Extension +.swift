@@ -12,6 +12,7 @@ extension Color {
     static let lightgray = Color("lightgray")
 }
 
+
 extension Double {
     @ViewBuilder
     var doubleToStarView: some View {

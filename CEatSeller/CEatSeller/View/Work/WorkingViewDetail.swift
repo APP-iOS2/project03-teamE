@@ -8,27 +8,24 @@
 import SwiftUI
 
 struct WorkingViewDetail: View {
-    
-    @State private var orderNumber = "B9103A"
-    @State private var customerName = "홍길동"
-    @State private var orderTime = "오후 12:25"
-    @State private var menuCount: Int = 2
-    @State private var menuPrice = "31,000원"
-    @State private var menuDetail = "하와이안 피자(올리브 토핑 추가, 치즈 토핑 추가)"
+    let order: Order
     
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    Text("\(orderNumber)")
+                    HStack{
+                        Text("주문번호")
+                        Text(order.id.prefix(6))
+                    }
                         .font(.title3)
                         .bold()
                         .padding(.bottom, 1)
-                    Text("\(customerName)")
+                    Text("\(order.orderer)")
                 }
                 Spacer()
                 
-                Text("\(orderTime)")
+                Text("\(order.orderDate)")
                     .foregroundColor(.gray)
                     .font(.footnote)
             }
@@ -36,13 +33,16 @@ struct WorkingViewDetail: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("[메뉴 \(menuCount)개] \(menuPrice)")
+                    Text("[메뉴 \(order.orderedMenu.count)개] \(order.totalFee)")
                         .bold()
                         .font(.headline)
                         .padding(.bottom, 0.5)
                     
-                    Text("\(menuDetail)")
-                        .lineLimit(1)
+                    ForEach(order.orderedMenu, id: \.name) { menu in
+                        Text("\(menu.name)")
+                            .lineLimit(1)
+                    }
+                    
                 }
                 .padding(.horizontal, 5)
                 .padding(.bottom, 10)
@@ -59,7 +59,7 @@ struct WorkingViewDetail: View {
                         .foregroundColor(.gray)
                     
                     HStack(alignment: .bottom) {
-                        Text("13")
+                        Text("0")
                             .font(.largeTitle)
                             .bold()
                         Text("분")
@@ -75,7 +75,7 @@ struct WorkingViewDetail: View {
                         .font(.footnote)
                         .foregroundColor(.gray)
                     HStack(alignment: .bottom) {
-                        Text("11")
+                        Text("20")
                             .font(.largeTitle)
                             .bold()
                         Text("분")
@@ -91,7 +91,7 @@ struct WorkingViewDetail: View {
                 Button {
                     print("준비 완료")
                 } label: {
-                    Text("준비 완료")
+                    Text("배달 시작")
                         .font(.footnote)
                         .foregroundColor(.green)
                         .bold()
@@ -106,6 +106,6 @@ struct WorkingViewDetail: View {
 
 struct WorkingViewDetail_Previews: PreviewProvider {
     static var previews: some View {
-        WorkingViewDetail()
+        WorkingViewDetail(order: Order.sampleData)
     }
 }

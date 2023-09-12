@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Seller: Encodable, CEatsIdentifiable {
+struct Seller: Encodable, CEatsIdentifiable { //seller쪽에 CEatsIdentifiable이 있어야함.
     let id: String
     var name: String
     var score: Double
