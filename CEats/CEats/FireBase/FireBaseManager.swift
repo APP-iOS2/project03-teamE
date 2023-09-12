@@ -27,7 +27,7 @@ extension CEatsIdentifiable {
 }
 
 ///CEatsFBManager의 메서드는 CEatsIdentifiable을 따르는 객체들만 사용할 수 있습니다.
-///**CEatsIdentifiable 프로토콜을 채택한 Struct: User, Restaurant**
+///**CEatsIdentifiable 프로토콜을 채택한 Struct: User, Seller, Restaurant, Order**
 /// ```
 /// let fbManager = CEatsFBManager()
 /// ```
@@ -37,7 +37,7 @@ final class CEatsFBManager {
     private let db = Firestore.firestore()
     
     private init() { }
-    
+    ///동작하지 않음
     func updateAndaddSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (U) -> ()) {
         let collectionRef = db.collection("\(type(of: data))")
         
@@ -80,10 +80,6 @@ final class CEatsFBManager {
                     return
                 }
                 guard let docs = snapshot?.documents else {
-                    print(#function + ": fail to optional bind - docs")
-                    return
-                }
-                guard let docsChange = snapshot?.documentChanges else {
                     print(#function + ": fail to optional bind - docs")
                     return
                 }
@@ -181,6 +177,11 @@ final class CEatsFBManager {
     /// let user = User()
     ///
     /// fbManager.create(data: user)
+    ///
+    /// fbManager.create(data: user) {
+    ///     db작업이 끝난 후 실행할 코드블럭
+    ///     error 발생 시 블럭을 실행하지 않고 error를 print합니다.
+    /// }
     /// ```
     func create<T: CEatsIdentifiable>(data: T) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
@@ -222,7 +223,7 @@ final class CEatsFBManager {
     /// let user: User
     /// let id: String = "SomeString" // login정보를 UserDefaults나 CoreData
     ///
-    /// fbManager.read(type: User.self, id: "") { result in
+    /// fbManager.read(type: User.self, id: "id값") { result in
     ///     user = result
     /// }
     /// ```
@@ -350,6 +351,7 @@ final class CEatsFBManager {
             }
         }
     }
+    
     func appendValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (String) -> Void) where T: Encodable, U: CEatsIdentifiable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         

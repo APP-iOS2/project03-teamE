@@ -26,6 +26,7 @@ extension Seller {
         restaurant.score ?? 0
     }
 }
+
 extension Seller {
     static let sampleData: Self = .init(restaurant: .sampleData, orders: [], orderAcceptanceRate: 0, averageAcceptanceTime: 0)
 }
