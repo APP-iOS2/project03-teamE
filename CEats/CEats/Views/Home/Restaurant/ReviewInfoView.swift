@@ -159,7 +159,7 @@ struct ReviewCardView: View {
                 }
             }
             .padding(.top, 30)
-            Image(systemName: review.image ?? .defaultImgName)
+            Image(review.image ?? "kimchiSoup")
                 .resizable()
                 .scaledToFit()
                 .frame(height: 300)

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OrderCellView: View {
-    @State var isShowingSheet: Bool = false
-    @EnvironmentObject var userViewModel: UserViewModel
+    @State private var isShowingSheet: Bool = false
+    @EnvironmentObject private var userViewModel: UserViewModel
 
     let order: Order
     

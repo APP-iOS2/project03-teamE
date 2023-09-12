@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReciptView: View {
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @Environment(\.dismiss) private var dismiss
     
     let order: Order

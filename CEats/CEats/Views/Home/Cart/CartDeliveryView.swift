@@ -12,8 +12,8 @@ struct CartDeliveryView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
     
-    @State var isSelected1: Bool = true
-    @State var isSelected2: Bool = false
+    @State private var isSelected1: Bool = true
+    @State private var isSelected2: Bool = false
     @Binding var fee: Int
     
     @Environment(\.dismiss) private var dismiss

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartPaymentView: View {
     @EnvironmentObject var userViewModel: UserViewModel
-    @State var ispayMoneyMethod: Bool = false
+    @State private var ispayMoneyMethod: Bool = false
     
     var body: some View {
         VStack {

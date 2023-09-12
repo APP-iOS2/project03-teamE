@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var tabIndex: Int = 0
+    @State private var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()
-    @State var orders = [Order]()
+    @State private var orders = [Order]()
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
@@ -56,7 +56,6 @@ struct ContentView: View {
         .navigationBarBackButtonHidden()
         .onAppear {
             userViewModel.login()
-//            userViewModel.fireManager.create(data: userViewModel.user)
         }
     }
 }

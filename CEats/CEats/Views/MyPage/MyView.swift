@@ -125,7 +125,7 @@ struct MyView: View {
             .foregroundColor(.primary)
             .listStyle(.plain)
         }
-        .task {
+        .onAppear {
             userViewModel.fetchUser {
                 print("잘가져와짐")
                 print(userViewModel.user.favoriteRestaurant.count)

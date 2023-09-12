@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecommendRestaurantView: View {
-    var restaurant: Restaurant
+    let restaurant: Restaurant
     
     var body: some View {
         VStack(alignment: .leading){

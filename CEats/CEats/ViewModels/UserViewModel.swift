@@ -13,7 +13,20 @@ final class UserViewModel: ObservableObject {
     @Published var selectedButton: OrderState = .과거주문내역
     
     let fireManager = CEatsFBManager.shared
+    let currentDate = Date() // 현재 시간
+
+    // Date 객체 간의 차이를 계산합니다.
     
+    func calculateDateDifference(previous: Date) -> (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?) {
+        let day = Calendar.current.dateComponents([.day], from: previous, to: currentDate).day
+        let month = Calendar.current.dateComponents([.month], from: previous, to: currentDate).month
+        let hour = Calendar.current.dateComponents([.hour], from: previous, to: currentDate).hour
+        let minute = Calendar.current.dateComponents([.minute], from: previous, to: currentDate).minute
+        let second = Calendar.current.dateComponents([.second], from: previous, to: currentDate).second
+        
+        return (month: month, day: day, hour: hour, minute: minute, second: second)
+    }
+        
     enum OrderState: String, CaseIterable {
         case 과거주문내역
         case 준비중
@@ -124,6 +137,7 @@ final class UserViewModel: ObservableObject {
         return userReview
     }
     
+   
     
     func updateUserLocation(user: User, lat: Double, long: Double, adress: String) async {
         fireManager.update(data: user, value: \.latitude, to: lat) { result in

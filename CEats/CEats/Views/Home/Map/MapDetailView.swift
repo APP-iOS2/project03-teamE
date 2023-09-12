@@ -82,7 +82,6 @@ struct MapDetailView: View {
                         isOKSheet = true
                     }
                 }
-                
             } label: {
                 Text("완료")
                     .font(.title3)

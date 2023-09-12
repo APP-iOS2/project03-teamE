@@ -11,8 +11,8 @@ struct CartPayButtonView: View {
     // MARK: - Properties
     @EnvironmentObject var userViewModel: UserViewModel
     @Binding var fee: Int
-    @State var showingAlert: Bool = false
-    @State var isOpenOrderedSheet: Bool = false
+    @State private var showingAlert: Bool = false
+    @State private var isOpenOrderedSheet: Bool = false
     
     var foodCost: Int {
         let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 } ?? 0

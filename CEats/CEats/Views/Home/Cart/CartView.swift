@@ -13,7 +13,7 @@ struct CartView: View {
     @Binding var isOpenMapSheet: Bool
 //    @State var isOpenOrderedSheet: Bool = false
     
-    @State var fee: Int
+    @State private var fee: Int
     
     init(userViewModel: UserViewModel, isOpenMapSheet: Binding<Bool>) {
         self._isOpenMapSheet = isOpenMapSheet

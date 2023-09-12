@@ -64,8 +64,8 @@ extension Restaurant.Food {
 
 extension Restaurant {
     static let sampleData = Restaurant(id: "ceoId", password: "1234", restaurantInfo: RestaurantInfo(phoneNumber: 01065483210, name: "멋쟁이 김치찌개", timeTable: "12:00~ 23:00", introduce: "대한민국 최고의 멋쟁이 김치찌개 집입니다."), name: "멋쟁이 김치찌개", reviews: [
-        Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "맛있긴 함"),
-        Review(writer: "아이유", score: 5.0, image: "soju", contents: "최고의 맛이었어요 ㅠㅠ")
+        Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "이 집 김치찌개는 정말 인정합니다. 계란말이가 더 맛있긴 하지만요~"),
+        Review(writer: "김민지", score: 5.0, image: "soju", contents: "지친 인생에서,,, 최고의 맛이었어요 ㅠㅠ")
     ], deliveryFee: 3000, minimumPrice: 14000, menus: [Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchijjigae"),Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼",image: "soju"),Food(name: "계란말이", price: 8000, isRecommend: false, foodCategory: "사이드", description: "완전 인기메뉴",image: "egg")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22)
     
     static let sampleArray = [

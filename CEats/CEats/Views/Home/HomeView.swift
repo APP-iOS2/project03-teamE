@@ -8,56 +8,51 @@
 import SwiftUI
 
 struct HomeView: View {
-
+    
     @State private var isOpenMapSheet: Bool = false
-    @State var searchText: String = ""
+    @State private var searchText: String = ""
     @State private var isOpenCartSheet: Bool = false
     @EnvironmentObject var userViewModel: UserViewModel
+    
+    public let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    @State private var selection = 0
+    let images = ["advertisement","advertisement2","advertisement3"]
     
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView{
                     HeaderView(isOpenMapSheet: $isOpenMapSheet)
-                    //헤더뷰, 위치 정해주는 뷰
                     NavigationLink {
                         HomeSearchDetailView()
                     } label: {
                         HomeSearchBarView(searchText: $searchText)
                     }
-                    //서치뷰
                     FoodTypeGridView()
-                    //푸드 타입 정하는 뷰
-                    AdvertisementView()
-                        .padding(18)
-                    //광고
+                    //                    AdvertisementView()
+                    SliderView()
                     RecommendedRestaurantsView()
-                    //추천맛집뷰
                 }
+                .padding(.top,1)
                 .scrollIndicators(.hidden)
-
+                
                 if userViewModel.user.foodCart?.cart.count ?? 0 > 0 {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }
             }
-        }
-        .padding(.top,1)
-        .refreshable {
-            userViewModel.fetchUser {
+            
+            .onAppear{
+                userViewModel.fetchUser {
+                    print("온어피어적용됨~")
+                }
             }
+            .fullScreenCover(isPresented: $isOpenMapSheet, content: {
+                MapHomeView(isOpenMapSheet: $isOpenMapSheet)
+            })
         }
-        .task {
-            userViewModel.fetchUser {
-            }
-            //isOpenMapSheet = false
-        }
-        .fullScreenCover(isPresented: $isOpenMapSheet, content: {
-            MapHomeView(isOpenMapSheet: $isOpenMapSheet)
-        })
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
