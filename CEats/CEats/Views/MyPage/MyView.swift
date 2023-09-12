@@ -107,7 +107,7 @@ struct MyView: View {
                         Spacer()
                     }
                 }
-                /*
+                
                 HStack {
                     Image(systemName: "tag")
                         .imageScale(.large)
@@ -119,12 +119,11 @@ struct MyView: View {
                     Text("\(userViewModel.user.cEatsMoney)원")
                     Spacer()
                 }
-                 */
             }
             .foregroundColor(.primary)
             .listStyle(.plain)
-            
         }
+        .onAppear()
     }
 }
 
