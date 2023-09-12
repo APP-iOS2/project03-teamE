@@ -14,6 +14,15 @@
 		D13CF9802AB0332100965F5E /* ReviewHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF97F2AB0332100965F5E /* ReviewHome.swift */; };
 		D13CF9822AB0332D00965F5E /* ReviewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9812AB0332D00965F5E /* ReviewDetail.swift */; };
 		D13CF9842AB0334300965F5E /* ReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9832AB0334300965F5E /* ReviewInfo.swift */; };
+		D13CF98D2AB0449D00965F5E /* FoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF98C2AB0449D00965F5E /* FoodType.swift */; };
+		D13CF98F2AB044B700965F5E /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF98E2AB044B700965F5E /* Order.swift */; };
+		D13CF9912AB044E200965F5E /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9902AB044E200965F5E /* Review.swift */; };
+		D13CF9932AB0451B00965F5E /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9922AB0451B00965F5E /* Restaurant.swift */; };
+		D13CF9952AB0452600965F5E /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9942AB0452600965F5E /* Seller.swift */; };
+		D13CF9972AB0453B00965F5E /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9962AB0453B00965F5E /* RestaurantInfo.swift */; };
+		D13CF9992AB0455300965F5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9982AB0455300965F5E /* User.swift */; };
+		D13CF99B2AB0455B00965F5E /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF99A2AB0455B00965F5E /* Coupon.swift */; };
+		D13CF99E2AB045AD00965F5E /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF99D2AB045AD00965F5E /* FireBaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +34,15 @@
 		D13CF97F2AB0332100965F5E /* ReviewHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHome.swift; sourceTree = "<group>"; };
 		D13CF9812AB0332D00965F5E /* ReviewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetail.swift; sourceTree = "<group>"; };
 		D13CF9832AB0334300965F5E /* ReviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInfo.swift; sourceTree = "<group>"; };
+		D13CF98C2AB0449D00965F5E /* FoodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodType.swift; sourceTree = "<group>"; };
+		D13CF98E2AB044B700965F5E /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		D13CF9902AB044E200965F5E /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		D13CF9922AB0451B00965F5E /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		D13CF9942AB0452600965F5E /* Seller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
+		D13CF9962AB0453B00965F5E /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
+		D13CF9982AB0455300965F5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D13CF99A2AB0455B00965F5E /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
+		D13CF99D2AB045AD00965F5E /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +77,8 @@
 			children = (
 				D13CF9712AB032C900965F5E /* CEatsManagerApp.swift */,
 				D13CF9732AB032C900965F5E /* ContentView.swift */,
+				D13CF99C2AB0458300965F5E /* FireBase */,
+				D13CF98B2AB0448200965F5E /* Models */,
 				D13CF9852AB0334900965F5E /* Review */,
 				D13CF9752AB032CB00965F5E /* Assets.xcassets */,
 				D13CF9772AB032CB00965F5E /* Preview Content */,
@@ -82,6 +102,29 @@
 				D13CF9832AB0334300965F5E /* ReviewInfo.swift */,
 			);
 			path = Review;
+			sourceTree = "<group>";
+		};
+		D13CF98B2AB0448200965F5E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D13CF98C2AB0449D00965F5E /* FoodType.swift */,
+				D13CF98E2AB044B700965F5E /* Order.swift */,
+				D13CF9902AB044E200965F5E /* Review.swift */,
+				D13CF9922AB0451B00965F5E /* Restaurant.swift */,
+				D13CF9942AB0452600965F5E /* Seller.swift */,
+				D13CF9962AB0453B00965F5E /* RestaurantInfo.swift */,
+				D13CF9982AB0455300965F5E /* User.swift */,
+				D13CF99A2AB0455B00965F5E /* Coupon.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D13CF99C2AB0458300965F5E /* FireBase */ = {
+			isa = PBXGroup;
+			children = (
+				D13CF99D2AB045AD00965F5E /* FireBaseManager.swift */,
+			);
+			path = FireBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +197,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D13CF99E2AB045AD00965F5E /* FireBaseManager.swift in Sources */,
 				D13CF9742AB032C900965F5E /* ContentView.swift in Sources */,
+				D13CF9912AB044E200965F5E /* Review.swift in Sources */,
+				D13CF99B2AB0455B00965F5E /* Coupon.swift in Sources */,
+				D13CF98D2AB0449D00965F5E /* FoodType.swift in Sources */,
+				D13CF9972AB0453B00965F5E /* RestaurantInfo.swift in Sources */,
 				D13CF9722AB032C900965F5E /* CEatsManagerApp.swift in Sources */,
 				D13CF9842AB0334300965F5E /* ReviewInfo.swift in Sources */,
 				D13CF9822AB0332D00965F5E /* ReviewDetail.swift in Sources */,
+				D13CF9952AB0452600965F5E /* Seller.swift in Sources */,
+				D13CF9992AB0455300965F5E /* User.swift in Sources */,
 				D13CF9802AB0332100965F5E /* ReviewHome.swift in Sources */,
+				D13CF98F2AB044B700965F5E /* Order.swift in Sources */,
+				D13CF9932AB0451B00965F5E /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
