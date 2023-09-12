@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct BusinessHourView: View {
     @EnvironmentObject var sellerViewModel: SellerViewModel
