@@ -16,7 +16,7 @@ struct ContentView: View {
         } detail: {
             ReviewDetail()
         }
-
+        .navigationSplitViewStyle(.balanced)
     }
 }
 

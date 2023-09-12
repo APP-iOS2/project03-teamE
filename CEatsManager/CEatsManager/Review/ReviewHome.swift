@@ -8,14 +8,33 @@
 import SwiftUI
 
 struct ReviewHome: View {
+    
+    @State private var restaurantList: [Restaurant] = []
+    
     var body: some View {
-        Text("상우님 뷰")
-
+        VStack {
+            List(restaurantList) { restaurant in
+                NavigationLink {
+                    ReviewDetail() // restaurant 파라미터로 넘겨주면 됩니다.
+                } label: {
+                    Text("\(restaurant.name)")
+                }
+            }
+        }
+        .navigationTitle("전체 가게")
+        
+        .onAppear {
+            restaurantList = []
+            
+            restaurantList.append(Restaurant.sampleData)
+        }
     }
 }
 
 struct ReviewHome_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewHome()
+        NavigationStack {
+            ReviewHome()
+        }
     }
 }
