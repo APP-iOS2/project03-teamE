@@ -37,6 +37,26 @@ final class CEatsFBManager {
     private let db = Firestore.firestore()
     
     private init() { }
+    
+    func uploadDummyData<T: CEatsIdentifiable>(datas: T...) where T: Encodable {
+        datas.forEach { data in
+            let collectionRef = db.collection("\(type(of: data))")
+            
+            DispatchQueue.global().async {
+                do {
+                    try collectionRef.document(data.id).setData(from: data) { error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
+                    }
+                } catch {
+                    print(#function + ": fail to .setData(from:)")
+                }
+            }
+        }
+    }
+    
     ///동작하지 않음
     func updateAndaddSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (U) -> ()) {
         let collectionRef = db.collection("\(type(of: data))")
@@ -195,7 +215,7 @@ final class CEatsFBManager {
                     }
                 }
             } catch {
-                print(#function + ": fail to .setData()")
+                print(#function + ": fail to .setData(from:)")
             }
         }
     }

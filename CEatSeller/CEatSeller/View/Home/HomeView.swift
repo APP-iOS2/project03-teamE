@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var sellerviewModel: SellerViewModel = SellerViewModel()
+    @EnvironmentObject private var sellerviewModel: SellerViewModel
     
     var body: some View {
         NavigationStack {
@@ -141,5 +141,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
             HomeView()
+            .environmentObject(SellerViewModel())
     }
 }
