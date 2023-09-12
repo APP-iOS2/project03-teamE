@@ -8,20 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     @State private var isOpenMapSheet: Bool = false
     @State private var searchText: String = ""
     @State private var isOpenCartSheet: Bool = false
-    @EnvironmentObject var userViewModel: UserViewModel
-    
-    public let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
-    @State private var selection = 0
-    let images = ["advertisement","advertisement2","advertisement3"]
+    @EnvironmentObject private var userViewModel: UserViewModel
     
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView{
+                ScrollView(showsIndicators: false) {
                     HeaderView(isOpenMapSheet: $isOpenMapSheet)
                     NavigationLink {
                         HomeSearchDetailView()
@@ -33,23 +28,20 @@ struct HomeView: View {
                     SliderView()
                     RecommendedRestaurantsView()
                 }
-                .padding(.top,1)
-                .scrollIndicators(.hidden)
-                
-                if userViewModel.user.foodCart?.cart.count ?? 0 > 0 {
+                if userViewModel.user.foodCart != nil {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }
             }
-            
-            .onAppear{
-                userViewModel.fetchUser {
-                    print("온어피어적용됨~")
-                }
+            .padding(.top, 1)
+        }
+        .onAppear{
+            userViewModel.fetchUser {
+                print("온어피어적용됨~")
             }
-            .fullScreenCover(isPresented: $isOpenMapSheet, content: {
-                MapHomeView(isOpenMapSheet: $isOpenMapSheet)
-            })
+        }
+        .fullScreenCover(isPresented: $isOpenMapSheet) {
+            MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         }
     }
 }

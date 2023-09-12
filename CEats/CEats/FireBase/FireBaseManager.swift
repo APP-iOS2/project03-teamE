@@ -38,6 +38,59 @@ final class CEatsFBManager {
     
     private init() { }
     
+    func updateValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (T) -> Void) where T: Codable {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        
+        read(type: T.self, id: data.id) { result in
+            DispatchQueue.global().async {
+                do {
+                    var updateData = result
+                    updateData[keyPath: keyPath] = to
+                    try collectionRef.document(data.id).setData(from: updateData) { error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            completion(updateData)
+                        }
+                    }
+                } catch {
+                    print(#function + ": fail to .setData()")
+                }
+            }
+        }
+    }
+    
+    func updateValueInArray<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (T) -> Void) where T: Codable, U: CEatsIdentifiable {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        
+        read(type: T.self, id: data.id) { result in
+            DispatchQueue.global().async {
+                do {
+                    var updateData = result
+                    let values = updateData[keyPath: keyPath]
+                    guard let index = values.firstIndex(where: { $0.id == to.id }) else {
+                        print(#function + ": fail to optional bind - index")
+                        return
+                    }
+                    updateData[keyPath: keyPath][index] = to
+                    try collectionRef.document(data.id).setData(from: updateData) { error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            completion(updateData)
+                        }
+                    }
+                } catch {
+                    print(#function + ": fail to .setData()")
+                }
+            }
+        }
+    }
+    
     func uploadDummyData<T: CEatsIdentifiable>(datas: T...) where T: Encodable {
         datas.forEach { data in
             let collectionRef = db.collection("\(type(of: data))")
@@ -391,6 +444,71 @@ final class CEatsFBManager {
                                 return
                             }
                             completion(to.id)
+                        }
+                    } catch {
+                        print(#function + ": Error - setData(from: newData)")
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func addSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, resultCompletion: @escaping (U) -> (), completion: @escaping (ListenerRegistration?) -> ()) {
+        let collectionRef = db.collection("\(type(of: data))")
+        var listener: ListenerRegistration?
+        
+        data.getPropertyName(keyPath) { propertyName in
+            DispatchQueue.global().async {
+                listener = collectionRef.document(data.id).addSnapshotListener { snapshot, error in
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
+                    guard let fbDic = snapshot?.data() else {
+                        print(#function + ": fail to optional bind - [String: Any]")
+                        return
+                    }
+                    guard let fbAny = fbDic[propertyName] else {
+                        print(#function + ": fail to optional bind - Any")
+                        return
+                    }
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: fbAny) else {
+                        print(#function + ": fail to optional bind - jsonData")
+                        return
+                    }
+                    guard let uType = try? JSONDecoder().decode(U.self, from: jsonData) else {
+                        print(#function + ": fail to optional bind - U")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        resultCompletion(uType)
+                        completion(listener)
+                    }
+                }
+            }
+        }
+    }
+    
+    func appendValueResult<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (_ success : U) -> Void) where T: Encodable {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        
+        data.getPropertyName(keyPath) { propertyName in
+            DispatchQueue.global().async {
+                collectionRef.document(data.id).getDocument { snapshot, error in
+                    guard error == nil else {
+                        self.printError(error: error!)
+                        return
+                    }
+                    var newData = data
+                    newData[keyPath: keyPath].append(to)
+                    do {
+                        try collectionRef.document(data.id).setData(from: newData) { error in
+                            guard error == nil else {
+                                self.printError(error: error!)
+                                return
+                            }
+                            completion(to)
                         }
                     } catch {
                         print(#function + ": Error - setData(from: newData)")

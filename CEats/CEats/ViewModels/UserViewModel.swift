@@ -6,32 +6,25 @@
 //
 
 import SwiftUI
+import Firebase
 
 final class UserViewModel: ObservableObject {
-    @AppStorage("userID") var userID = "1234"
-    @Published var user: User = User.sampleData
-    @Published var selectedButton: OrderState = .과거주문내역
-    
-    let fireManager = CEatsFBManager.shared
-    let currentDate = Date() // 현재 시간
-
-    // Date 객체 간의 차이를 계산합니다.
-    
-    func calculateDateDifference(previous: Date) -> (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?) {
-        let day = Calendar.current.dateComponents([.day], from: previous, to: currentDate).day
-        let month = Calendar.current.dateComponents([.month], from: previous, to: currentDate).month
-        let hour = Calendar.current.dateComponents([.hour], from: previous, to: currentDate).hour
-        let minute = Calendar.current.dateComponents([.minute], from: previous, to: currentDate).minute
-        let second = Calendar.current.dateComponents([.second], from: previous, to: currentDate).second
-        
-        return (month: month, day: day, hour: hour, minute: minute, second: second)
-    }
-        
     enum OrderState: String, CaseIterable {
         case 과거주문내역
         case 준비중
     }
+    @AppStorage("userID") var userID = "1234"
+    @Published var user: User = User.sampleData
+    @Published var selectedButton: OrderState = .과거주문내역
+    @Published var deliveryOpt: DeliveryKind = .onlyOne
+    let fireManager = CEatsFBManager.shared
+    var orderListener: ListenerRegistration?
+    let currentDate = Date()
     
+    var cartFee: Int {
+        guard let foodCart = user.foodCart else { return 0 }
+        return foodCart.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 }
+    }
     var filteredOrderList: [Order] {
         if selectedButton == .과거주문내역 {
             return user.orderHistory.filter { $0.orderStatus != .waiting }
@@ -53,6 +46,17 @@ final class UserViewModel: ObservableObject {
     //
     //        return menus
     //    }
+      
+    func calculateDateDifference(previous: Date) -> (month: Int?, day: Int?, hour: Int?, minute: Int?, second: Int?) {
+        let day = Calendar.current.dateComponents([.day], from: previous, to: currentDate).day
+        let month = Calendar.current.dateComponents([.month], from: previous, to: currentDate).month
+        let hour = Calendar.current.dateComponents([.hour], from: previous, to: currentDate).hour
+        let minute = Calendar.current.dateComponents([.minute], from: previous, to: currentDate).minute
+        let second = Calendar.current.dateComponents([.second], from: previous, to: currentDate).second
+        
+        return (month: month, day: day, hour: hour, minute: minute, second: second)
+    }
+  
     func login() {
         fetchUser {
             self.orderHistoryHasWaiting()
@@ -92,24 +96,44 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-    func newOrder(restaurant: Restaurant, completion: @escaping ([Order]) -> ()) {
+    func newOrder(completion: @escaping (Order) -> ()) {
         guard let menus = user.foodCart?.cart else {
-            print(#function + ": fail to optional bind")
+            print(#function + ": fail to optional bind - menus")
             return
         }
+        guard let restaurant = user.foodCart?.restaurant else {
+            print(#function + ": fail to optional bind - restaurant")
+            return
+        }
+        
         let newOrder = Order(id: "\(user.username).\(user.orderHistory.count)", orderer: user.username, restaurant: restaurant, orderedMenu: menus)
-        fireManager.read(type: Seller.self, id: restaurant.id) { result in
-            self.fireManager.appendValue(data: result, value: \.orders, to: newOrder) {
-                self.fireManager.appendValue(data: self.user, value: \.orderHistory, to: newOrder) { orderID in
-                    self.fireManager.create(data: newOrder) {
-                        self.user.orderHistory.append(newOrder)
-                        self.user.foodCart = nil
-                        self.fireManager.addCollectionSnapshot(data: newOrder, value: \.orderStatus) { changeStatus in
-                            guard let index = self.user.orderHistory.firstIndex(where: { $0.id == newOrder.id }) else {
+        fireManager.read(type: Seller.self, id: restaurant.id) { seller in
+            self.fireManager.appendValue(data: seller, value: \.orders, to: newOrder) {
+                self.fireManager.appendValueResult(data: self.user, value: \.orderHistory, to: newOrder) { success in
+                    self.user.orderHistory.append(success)
+                    self.fireManager.updateValue(data: self.user, value: \.foodCart, to: nil) { user in
+                        self.user = user
+                        self.fireManager.addSnapshot(data: seller, value: \.orders) { orders in
+                            let sellersWaitings = self.user.orderHistory.filter { $0.orderStatus == .waiting }
+                            guard !sellersWaitings.isEmpty else { return }
+                            guard let myWaiting = sellersWaitings.first else {
+                                print(#function + ": fail to optional bind - myWaiting")
+                                return
+                            }
+                            let resultArr = orders.filter { $0.id == myWaiting.id }
+                            guard !resultArr.isEmpty else { return }
+                            guard let myWaitingOrder = resultArr.first else {
+                                print(#function + ": fail to optional bind - myWaitingOrder")
+                                return
+                            }
+                            guard let index = self.user.orderHistory.firstIndex(where: { $0.id == myWaitingOrder.id }) else {
                                 print(#function + ": fail to optional bind - index")
                                 return
                             }
-                            self.user.orderHistory[index].orderStatus = changeStatus
+                            completion(myWaiting)
+                            self.user.orderHistory[index] = myWaitingOrder
+                        } completion: { listener in
+                            self.orderListener = listener
                         }
                     }
                 }
@@ -173,6 +197,39 @@ final class UserViewModel: ObservableObject {
             user.favoriteRestaurant.remove(at: index)
         } else {
             user.favoriteRestaurant.append(restaurant)
+        }
+    }
+}
+
+extension UserViewModel {
+    enum DeliveryKind: CaseIterable {
+        case onlyOne, save
+        
+        var toString: String {
+            switch self {
+            case .onlyOne:
+                return "한집배달"
+            case .save:
+                return "세이브배달"
+            }
+        }
+        
+        var deliveryTime: String {
+            switch self {
+            case .onlyOne:
+                return "29 ~ 39"
+            case .save:
+                return "34 ~ 43"
+            }
+        }
+        
+        var fee: Int {
+            switch self {
+            case .onlyOne:
+                return 3000
+            case .save:
+                return 2000
+            }
         }
     }
 }

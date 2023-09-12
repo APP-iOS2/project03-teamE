@@ -14,7 +14,7 @@ struct CartAnnotation: Identifiable {
 }
 
 struct RealTimeOrderInfoView: View {
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @Environment(\.dismiss) private var dismiss
     @Binding var isOpenOrderedSheet: Bool
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5718, longitude: 126.9769), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -89,7 +89,7 @@ struct RealTimeOrderInfoView: View {
                 }
             }
             .onAppear{
-                print(" \(userViewModel.user.cEatsMoney - (userViewModel.user.foodCart?.fee ?? 0))")
+                print(" \(userViewModel.user.cEatsMoney - (userViewModel.cartFee))")
             }
         }
     }
