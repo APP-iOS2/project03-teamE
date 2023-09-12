@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var columnVisibility = NavigationSplitViewVisibility.doubleColumn
+    
     var body: some View {
-        NavigationSplitView {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             ReviewHome()
         } detail: {
             ReviewDetail()
