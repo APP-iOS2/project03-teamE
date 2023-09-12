@@ -55,13 +55,14 @@ struct ContentView: View {
         .environmentObject(userViewModel)
         .navigationBarBackButtonHidden()
         .onAppear {
-//            restaurantViewModel.fireManager.create(data: Seller.sampleData)
-//            restaurantViewModel.fetchAllRestaurant()
+            userViewModel.login()
         }
 //        .toolbar {
 //            ToolbarItem(placement: .navigationBarTrailing) {
 //                Button("테스트") {
-//
+//                    userViewModel.newOrder(restaurant: Restaurant.sampleData) { result in
+//                        print("Update\n \(result)")
+//                    }
 //                }
 //            }
 //        }

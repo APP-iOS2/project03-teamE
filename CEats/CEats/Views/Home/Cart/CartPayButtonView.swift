@@ -109,6 +109,11 @@ struct CartPayButtonView: View {
                 
             }
         }
+        .onTapGesture {
+            userViewModel.newOrder(restaurant: Restaurant.sampleData) { result in
+                print("Update\n \(result)")
+            }
+        }
     }
 }
 

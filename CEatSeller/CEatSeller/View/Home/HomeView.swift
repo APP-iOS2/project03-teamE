@@ -7,53 +7,18 @@
 
 import SwiftUI
 
-struct Seller {
-    let id: String
-    var name: String
-    var score: Double
-    var orderAcceptanceRate: Double
-    var averageAcceptanceTime: Double
-    
-    var scoreToString: String {
-        String(format: "%.1f", score)
-    }
-    var rateToString: String {
-        String(format: "%.0f", orderAcceptanceRate)
-    }
-    var timeToString: String {
-        String(format: "%.0f", averageAcceptanceTime)
-    }
-}
-
-extension Seller {
-    static let sampleData: Self = .init(id: "Test123", name: "멋쟁이 김치처럼", score: 4.5, orderAcceptanceRate: 99, averageAcceptanceTime: 10)
-}
-
-final class HomeViewModel: ObservableObject {
-    @Published var isOpen = false
-    @Published var seller: Seller
-    
-    var titleMessage: String {
-        isOpen ? "신규 주문 받는중" : "쉬는중"
-    }
-    
-    init(store: Seller) {
-        self.seller = store
-    }
-}
-
 struct HomeView: View {
-    @StateObject private var viewModel: HomeViewModel = .init(store: .sampleData)
+    @StateObject private var sellerviewModel: SellerViewModel = SellerViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 10) {
-                    Text("스토어 아이디(\(viewModel.seller.id))")
-                    Text("\(viewModel.seller.name)")
+                    Text("스토어 아이디(\(sellerviewModel.seller.id))")
+                    Text("\(sellerviewModel.seller.name)")
                         .font(.system(size: 28, weight: .medium))
                     NavigationLink {
-                        
+//                        RTRDetailInfoView(restaurant: sellerviewModel.seller.restaurant)
                     } label: {
                         HStack {
                             Text("매장정보 확인")
@@ -77,7 +42,7 @@ struct HomeView: View {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.red)
                             .padding(.top)
-                        Text(viewModel.seller.scoreToString)
+                        Text(sellerviewModel.seller.scoreToString)
                             .font(.system(size: 30, weight: .semibold))
                     }
                     .padding()
@@ -87,7 +52,7 @@ struct HomeView: View {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.yellow)
                             .padding(.top)
-                        Text("\(viewModel.seller.rateToString)%")
+                        Text("\(sellerviewModel.seller.rateToString)%")
                             .font(.system(size: 30, weight: .semibold))
                     }
                     .padding()
@@ -97,7 +62,7 @@ struct HomeView: View {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.green)
                             .padding(.top)
-                        Text("\(viewModel.seller.timeToString)초")
+                        Text("\(sellerviewModel.seller.timeToString)초")
                             .font(.system(size: 30, weight: .semibold))
                     }
                     .padding()
@@ -112,7 +77,7 @@ struct HomeView: View {
                     .padding()
                 VStack(alignment: .leading) {
                     NavigationLink {
-                        
+                        ManagingMenu()
                     } label: {
                         HStack {
                             Image(systemName: "list.clipboard.fill")
@@ -124,7 +89,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     NavigationLink {
-                        
+                        RTRView(restaurant: sellerviewModel.seller.restaurant)
                     } label: {
                         HStack {
                             Image(systemName: "eye")
@@ -136,7 +101,7 @@ struct HomeView: View {
                         Spacer()
                     }
                     NavigationLink {
-                        
+                        BusinessHourView()
                     } label: {
                         HStack {
                             Image(systemName: "calendar")
@@ -148,12 +113,12 @@ struct HomeView: View {
                         Spacer()
                     }
                     NavigationLink {
-                        
+                        ReviewInfoView(restaurant: sellerviewModel.seller.restaurant)
                     } label: {
                         HStack {
-                            Image(systemName: "gearshape")
+                            Image(systemName: "list.clipboard")
                                 .padding(.horizontal)
-                            Text("설정")
+                            Text("리뷰 관리")
                         }
                         .padding()
                         .foregroundColor(.primary)
@@ -162,11 +127,11 @@ struct HomeView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Toggle("", isOn: $viewModel.isOpen)
+                        Toggle("", isOn: $sellerviewModel.isOpen)
                             .toggleStyle(.switch)
                     }
                 }
-                .navigationTitle(viewModel.titleMessage)
+                .navigationTitle(sellerviewModel.titleMessage)
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
@@ -175,6 +140,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+            HomeView()
     }
 }
