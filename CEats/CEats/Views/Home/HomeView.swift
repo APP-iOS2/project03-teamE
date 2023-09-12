@@ -24,9 +24,9 @@ struct HomeView: View {
                         HomeSearchBarView(searchText: $searchText)
                     }
                     FoodTypeGridView()
-                    //                    AdvertisementView()
                     SliderView()
                     RecommendedRestaurantsView()
+                        .offset(y: -40)
                 }
                 if userViewModel.user.foodCart != nil {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)

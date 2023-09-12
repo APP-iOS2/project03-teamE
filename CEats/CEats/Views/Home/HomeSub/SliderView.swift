@@ -11,10 +11,10 @@ struct SliderView: View {
     public let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var selection = 0
     
-    let images = ["advertisement","advertisement2","advertisement3"]
+    let images = ["advertisement","advertisement2"]
     var body: some View {
         TabView(selection: $selection) {
-            ForEach(0..<3) { i in
+            ForEach(0..<2) { i in
                 Image("\(images[i])")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -27,7 +27,7 @@ struct SliderView: View {
                 }
             })
         }
-            .border(.red)
+        .frame(width: .screenWidth, height: .screenHeight * 0.2)
     }
 }
 
