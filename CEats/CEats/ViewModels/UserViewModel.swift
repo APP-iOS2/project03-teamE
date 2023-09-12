@@ -27,22 +27,27 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-//    func recommendFoods(food: [Restaurant.Food]?, restaurant: Restaurant?) -> [Restaurant.Food] {
-//        var menus = restaurant!.menus
-//        
-//        if menus.count < 3 {
-//            return restaurant!.menus
-//        }
-//        
-//        for selectedFood in food {
-//            menus.removeAll { $0.name == selectedFood.name }
-//        }
-//        
-//        return menus
-//    }
+    //    func recommendFoods(food: [Restaurant.Food]?, restaurant: Restaurant?) -> [Restaurant.Food] {
+    //        var menus = restaurant!.menus
+    //
+    //        if menus.count < 3 {
+    //            return restaurant!.menus
+    //        }
+    //
+    //        for selectedFood in food {
+    //            menus.removeAll { $0.name == selectedFood.name }
+    //        }
+    //
+    //        return menus
+    //    }
     func login() {
         fetchUser {
             self.orderHistoryHasWaiting()
+        }
+    }
+    
+    func createUser() {
+        fireManager.create(data: user) {
         }
     }
     
@@ -106,7 +111,21 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-    func updateUserLocation(user: User, lat: Double, long: Double, adress: String) {
+    
+    func getMyReview()->[Review]{
+        var userReview: [Review] = []
+        fireManager.readAllDocument(type: Restaurant.self) { data in
+            for index in 0..<data.reviews.count {
+                if data.reviews[index].writer == self.user.username {
+                    userReview.append(data.reviews[index])
+                }
+            }
+        }
+        return userReview
+    }
+    
+    
+    func updateUserLocation(user: User, lat: Double, long: Double, adress: String) async {
         fireManager.update(data: user, value: \.latitude, to: lat) { result in
             self.user = result
         }

@@ -10,7 +10,8 @@ import SwiftUI
 struct MapDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var userViewModel: UserViewModel
+
     @Binding var isOpenMapSheet: Bool
     
     @Binding var selectedPlace: String
@@ -21,6 +22,10 @@ struct MapDetailView: View {
     @State private var moreInformation = ""
     
     @State private var isOKSheet: Bool = false
+    
+    var fullAddress: String {
+        return "\(selectedPlace) \(detailAddress)"
+    }
     
     var body: some View {
         VStack {
@@ -69,11 +74,15 @@ struct MapDetailView: View {
             Spacer()
             
             Button {
-                if detailAddress != "" {
-                    isOpenMapSheet = false
-                } else {
-                    isOKSheet = true
+                Task{
+                    await userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: fullAddress)
+                    if detailAddress != "" {
+                        isOpenMapSheet = false
+                    } else {
+                        isOKSheet = true
+                    }
                 }
+                
             } label: {
                 Text("완료")
                     .font(.title3)
@@ -114,6 +123,7 @@ struct MapDetailView: View {
                 }
                 
                 Button {
+                    
                     isOKSheet = false
                 } label: {
                     Text("상세 주소 입력")
@@ -124,8 +134,11 @@ struct MapDetailView: View {
                 }
                 
                 Button {
-                    isOKSheet = false
-                    isOpenMapSheet = false
+                    Task{
+                        await userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: selectedPlace)
+                        isOKSheet = false
+                        isOpenMapSheet = false
+                    }
                 } label: {
                     Text("무시하기")
                         .bold()
@@ -155,6 +168,7 @@ struct MapDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             MapDetailView(isOpenMapSheet: .constant(true), selectedPlace: .constant("5호선 광화문역"), selectedPlaceLat: .constant(0.0), selectedPlaceLong: .constant(0.0))
+                .environmentObject(UserViewModel())
         }
     }
 }

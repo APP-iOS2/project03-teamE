@@ -21,7 +21,7 @@ struct MyInfoView: View {
                 
                 HStack(alignment: .center ,spacing: 10) {
                     VStack {
-                        Text("0")
+                        Text("\(userViewModel.user.reviews.count)")
                             .font(.largeTitle)
                             .bold()
                         Text("내가 남긴리뷰")
@@ -51,6 +51,7 @@ struct MyInfoView: View {
                 MyInfoCategoryView(selected: $selected)
                 MyInfoCategoryDetailView(selected: $selected)
             }
+            
         }
     }
 }

@@ -45,7 +45,7 @@ final class SellerViewModel: ObservableObject {
     func getMyRestaurantOrder(){
         fireManager.readAllDocument(type: Order.self) { data in
             if data.restaurant.name == self.seller.restaurant.name {
-                self.seller.order.append(data)
+                self.seller.orders.append(data)
             }
         }
     }

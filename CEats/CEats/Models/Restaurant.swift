@@ -58,19 +58,20 @@ struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
 
 #if DEBUG
 extension Restaurant.Food {
-    static var sampleData = Restaurant.Food(name: "피자", price: 16000, isRecommend: false, foodCategory: "양식", description: "많이 매우니 참고해주세요", image: "pizza", foodCount: 1)
+    static let sampleData = Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchijjigae", foodCount: 1)
+    static let sampleData2 = Restaurant.Food(name: "계란말이", price: 8000, isRecommend: false, foodCategory: "사이드", description: "완전 인기메뉴",image: "egg", foodCount: 2)
 }
 
 extension Restaurant {
     static let sampleData = Restaurant(id: "ceoId", password: "1234", restaurantInfo: RestaurantInfo(phoneNumber: 01065483210, name: "멋쟁이 김치찌개", timeTable: "12:00~ 23:00", introduce: "대한민국 최고의 멋쟁이 김치찌개 집입니다."), name: "멋쟁이 김치찌개", reviews: [
-        Review(writer: "김멋사", score: 4.0, image: "kimchi2", contents: "맛있긴 함"),
+        Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "맛있긴 함"),
         Review(writer: "아이유", score: 5.0, image: "soju", contents: "최고의 맛이었어요 ㅠㅠ")
     ], deliveryFee: 3000, minimumPrice: 14000, menus: [Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchijjigae"),Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼",image: "soju"),Food(name: "계란말이", price: 8000, isRecommend: false, foodCategory: "사이드", description: "완전 인기메뉴",image: "egg")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22)
     
     static let sampleArray = [
         Restaurant(id: "ceoId", password: "1234", restaurantInfo: .init(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, image: "korean", contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3001, minimumPrice: 14000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼", image: "soju")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22),
         
-        Restaurant(id: "ceoId2", password: "1234", restaurantInfo: .init(), name: "엽기떡볶이", reviews: [Review(writer: "유하은", score: 3.0,image:"koreanSnack", contents: "다른 엽떡 지점에 비해 별로예요"),Review(writer: "함지수", score: 5.0,image: "korean", contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 2000, minimumPrice: 16000, menus: [Restaurant.Food(name: "동대문 엽기 떡볶이", price: 14000, isRecommend: true, foodCategory: "떡볶이", description: "엽떡 인기메뉴", image: "koreanSnack"),Restaurant.Food(name: "동대문 엽기 오뎅", price: 14000, isRecommend: false, foodCategory: "떡볶이", description: "떡볶이 30% 오뎅 70%")], mainImage: ["yupddeock"], foodType: [.koreanSnack], foodCategory: ["떡볶이","사이드","주류"], latitude: 34.44, longitude: 129.22),
+        Restaurant(id: "ceoId2", password: "1234", restaurantInfo: .init(), name: "엽기떡볶이", reviews: [Review(writer: "유하은", score: 3.0,image:"koreanSnack", contents: "다른 엽떡 지점에 비해 별로예요"),Review(writer: "김민지", score: 5.0,image: "korean", contents: "여기 엽떡이 진짜임")], deliveryFee: 2000, minimumPrice: 16000, menus: [Restaurant.Food(name: "동대문 엽기 떡볶이", price: 14000, isRecommend: true, foodCategory: "떡볶이", description: "엽떡 인기메뉴", image: "koreanSnack"),Restaurant.Food(name: "동대문 엽기 오뎅", price: 14000, isRecommend: false, foodCategory: "떡볶이", description: "떡볶이 30% 오뎅 70%")], mainImage: ["yupddeock"], foodType: [.koreanSnack], foodCategory: ["떡볶이","사이드","주류"], latitude: 34.44, longitude: 129.22),
         
         Restaurant(id: "ceoId3", password: "1234", restaurantInfo: .init(), name: "굴다리김치찌개", reviews: [Review(writer: "함지수", score: 5.0,image: "korean", contents: "맛있어요"), Review(writer: "봉주헌", score: 3.0, contents: "존맛탱"), Review(writer: "장여훈", score: 5.0, contents: "굿")], deliveryFee: 2400, minimumPrice: 13000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼", image: "soju")], mainImage: ["kimchi2"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 44.32, longitude: 22.222),
         

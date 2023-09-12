@@ -42,13 +42,18 @@ struct HomeView: View {
                 }
             }
         }
+        .refreshable {
+            userViewModel.fetchUser {
+            }
+        }
+        .task {
+            userViewModel.fetchUser {
+            }
+            //isOpenMapSheet = false
+        }
         .fullScreenCover(isPresented: $isOpenMapSheet, content: {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         })
-//        .fullScreenCover(isPresented: $isOpenCartSheet, content: {
-//            CartView(isOpenMapSheet: $isOpenMapSheet)
-//        })
-        
     }
 }
 
