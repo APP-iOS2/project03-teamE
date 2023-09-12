@@ -12,8 +12,6 @@ struct ContentView: View {
     @EnvironmentObject private var sellerviewModel: SellerViewModel
     @State var tabIndex: Int = 0
     
-    @State private var isOrderComing: Bool = false
-    
     var body: some View {
         TabView(selection: $tabIndex) {
             
@@ -38,12 +36,16 @@ struct ContentView: View {
                 }
                 .tag(3)
         }
-        .sheet(isPresented: $isOrderComing) {
+        .onAppear {
+            sellerviewModel.login()
+//            sellerviewModel.fireManager.create(data: sellerviewModel.seller)
+        }
+        .sheet(isPresented: $sellerviewModel.hasNewOrder) {
             ScrollView {
                 VStack {
                     HStack {
                         Button {
-                            isOrderComing = false
+                            sellerviewModel.isOpen = false
                         } label: {
                             Image(systemName: "xmark")
                                 .resizable()
