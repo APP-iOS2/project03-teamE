@@ -19,6 +19,8 @@ struct ContentView: View {
             
         }
         .navigationSplitViewStyle(.balanced)
+        .environmentObject(RestaurantViewModel())
+        .environmentObject(UserViewModel())
     }
 }
 

@@ -20,7 +20,7 @@ struct Restaurant: Identifiable, Codable {
     var mainImage: [String] //가게 메인 이미지
     var foodType: [FoodType]
     var foodCategory: [String]
-    var latitude: Double//위도
+    var latitude: Double //위도
     var longitude: Double //경도
     var score: Double? {
         guard !reviews.isEmpty else { return nil }

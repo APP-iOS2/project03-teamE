@@ -11,8 +11,6 @@ struct ReviewHome: View {
     @EnvironmentObject var restaurantViewModel: RestaurantViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     
-//    @State private var restaurantList: [Restaurant] = []
-    
     
     var body: some View {
         VStack {
