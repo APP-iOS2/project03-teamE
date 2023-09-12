@@ -6,8 +6,8 @@
 //
 
 import Foundation
-
-struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
+// 파베 연결 , CEatsIdentifiable
+struct User: Identifiable, Codable, Equatable {
     static func == (lhs: User, rhs: User) -> Bool {
         lhs.id == rhs.id
     }
