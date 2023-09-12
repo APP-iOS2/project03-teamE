@@ -13,7 +13,7 @@ struct WorkingView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(sellerViewModel.seller.order) { order in
+                ForEach(sellerViewModel.seller.orders) { order in
                     WorkingViewDetail(order: order)
                 }
             }

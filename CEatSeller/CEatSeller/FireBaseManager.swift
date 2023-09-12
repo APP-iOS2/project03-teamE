@@ -54,7 +54,7 @@ final class CEatsFBManager {
                 }
                 let myChange = docs.filter {
                     do {
-                       return try $0.data(as: Order.self).id == data.id
+                        return try $0.data(as: Order.self).id == data.id
                     } catch {
                         return false
                     }
@@ -96,7 +96,7 @@ final class CEatsFBManager {
     func updateAndaddSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (U) -> ()) {
         let collectionRef = db.collection("\(type(of: data))")
         
-        update(data: data, value: keyPath, to: to) { result in
+//        update(data: data, value: keyPath, to: to) { result in
             data.getPropertyName(keyPath) { propertyName in
                 DispatchQueue.global().async {
                     collectionRef.document(data.id).addSnapshotListener { snapshot, error in
@@ -122,7 +122,7 @@ final class CEatsFBManager {
                     }
                 }
             }
-        }
+//        }
     }
     
     func addCollectionSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (U) -> ()) where T: Decodable {
@@ -140,7 +140,7 @@ final class CEatsFBManager {
                 }
                 let myChange = docs.filter {
                     do {
-                       return try $0.data(as: T.self).id == data.id
+                        return try $0.data(as: T.self).id == data.id
                     } catch {
                         return false
                     }
@@ -397,19 +397,48 @@ final class CEatsFBManager {
     /// }
     /// ```
     ///
-    func update<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (T) -> Void) {
+//    func update<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (T) -> Void) {
+//        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+//        
+//        data.getPropertyName(keyPath) { propertyName in
+//            DispatchQueue.global().async {
+//                collectionRef.document(data.id).updateData([propertyName: to]) { error in
+//                    self.checkError(error: error) {
+//                        var result = data
+//                        result[keyPath: keyPath] = to
+//                        DispatchQueue.main.async {
+//                            completion(result)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    func updateValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (T) -> Void) where T: Codable, U: CEatsIdentifiable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
-        data.getPropertyName(keyPath) { propertyName in
+        read(type: T.self, id: data.id) { result in
             DispatchQueue.global().async {
-                collectionRef.document(data.id).updateData([propertyName: to]) { error in
-                    self.checkError(error: error) {
-                        var result = data
-                        result[keyPath: keyPath] = to
+                do {
+                    var updateData = result
+                    let values = updateData[keyPath: keyPath]
+                    guard let index = values.firstIndex(where: { $0.id == to.id }) else {
+                        print(#function + ": fail to optional bind - index")
+                        return
+                    }
+                    updateData[keyPath: keyPath][index] = to
+                    try collectionRef.document(data.id).setData(from: updateData) { error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
                         DispatchQueue.main.async {
-                            completion(result)
+                            completion(updateData)
                         }
                     }
+                } catch {
+                    print(#function + ": fail to .setData()")
                 }
             }
         }

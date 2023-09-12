@@ -112,6 +112,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E02209F2AB03B92004C6207 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		D13CF91A2AAFF4C000965F5E /* View */ = {
 			isa = PBXGroup;
 			children = (
