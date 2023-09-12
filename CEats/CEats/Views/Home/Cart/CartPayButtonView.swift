@@ -113,8 +113,8 @@ struct CartPayButtonView: View {
                 .fullScreenCover(isPresented: $isOpenOrderedSheet, content: {
                     RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet)
                 })
-                .alert("결제가 됩니다.", isPresented: $showingAlert) {
-                    Button("뒤로가기") {
+                .alert("결제 완료", isPresented: $showingAlert) {
+                    Button("취소") {
                         showingAlert = false
                         isOpenOrderedSheet = false
                     }
@@ -126,10 +126,10 @@ struct CartPayButtonView: View {
                         print(userViewModel.user.cEatsMoney)
                         print(" 111 ")
                     } label: {
-                        Text("결제하기")
+                        Text("확인")
                     }
                 } message: {
-                    Text("This is alert dialog sample")
+                    Text("주문이 성공적으로 완료되었습니다.")
                 }
                 
             }
