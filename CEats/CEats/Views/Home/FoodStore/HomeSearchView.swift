@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeSearchView: View {
-    @State var searchText: String = ""
-    @State var isShowingSheet: Bool = false
+    @State private var searchText: String = ""
+    @State private var isShowingSheet: Bool = false
     
     var body: some View {
         NavigationStack{

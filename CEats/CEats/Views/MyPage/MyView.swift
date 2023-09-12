@@ -11,6 +11,8 @@ import SwiftUI
 struct MyView: View {
     @Binding var tabIndex: Int
     @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
+    
     @State private var isOpenMapSheet: Bool = false
     
     var body: some View {
@@ -22,7 +24,7 @@ struct MyView: View {
             
             HStack(alignment: .center ,spacing: 10) {
                 VStack {
-                    Text("0")
+                    Text("\(userViewModel.user.reviews.count)")
                         .font(.largeTitle)
                         .bold()
                     Text("내가 남긴리뷰")
@@ -123,7 +125,13 @@ struct MyView: View {
             .foregroundColor(.primary)
             .listStyle(.plain)
         }
-        .onAppear()
+        .onAppear {
+            userViewModel.fetchUser {
+                print("잘가져와짐")
+                print(userViewModel.user.favoriteRestaurant.count)
+            }
+            restaurantViewModel.fetchAllRestaurant()
+        }
     }
 }
 
@@ -133,5 +141,6 @@ struct MyView_Previews: PreviewProvider {
     static var previews: some View {
         MyView(tabIndex: $tabIndex)
             .environmentObject(UserViewModel())
+            .environmentObject(RestaurantViewModel())
     }
 }

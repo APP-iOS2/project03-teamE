@@ -7,8 +7,8 @@
 
 import Foundation
 
-
-struct Order: Identifiable, CEatsIdentifiable, Codable {
+// 파베 연결 , CEatsIdentifiable
+struct Order: Identifiable,Codable {
     var id: String
     var orderer: String //이거 문제있음
     var restaurant : Restaurant //

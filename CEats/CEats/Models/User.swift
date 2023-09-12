@@ -41,6 +41,6 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
 
 #if DEBUG
 extension User {
-    static var sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [], orderHistory: [Order.sampleData], foodCart: Cart(restaurant: Restaurant.sampleData, cart: [Restaurant.Food.sampleData]) , latitude: 0 ,longitude: 0, reviews: .sampleData, coupons: [.sampleData])
+    static let sampleData: Self = User(id: "1234", username: "김민지", email: "newJean@naver.com", phoneNumber: "010-0000-0000", userAddress: "노원구 공롱동 12-34", favoriteRestaurant: [Restaurant.sampleData, Restaurant.sampleArray[1]], orderHistory: [Order.sampleData], foodCart: Cart(restaurant: Restaurant.sampleData, cart: [Restaurant.Food.sampleData]) , latitude: 0 ,longitude: 0, reviews: [Review(writer: "김민지", score: 4.0, image: "egg", contents: "김치찌개보다 계란말이가 맛있어요"),Review(writer: "김민지", score: 5.0, image: "chicken2", contents: "어떻게 이렇게 맛있을 수가 있어요 정말 믿을 수 없는 간장치킨의 향연임")], coupons: [.sampleData])
 }
 #endif

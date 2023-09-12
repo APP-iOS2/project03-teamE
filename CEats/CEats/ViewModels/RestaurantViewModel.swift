@@ -26,6 +26,7 @@ final class RestaurantViewModel: ObservableObject {
         }
     }
     
+    
     func appendMenu(restaurant: Restaurant, to: Restaurant.Food) {
         var newRest = restaurant
         newRest.menus.append(to)

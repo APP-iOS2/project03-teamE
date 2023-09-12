@@ -39,7 +39,6 @@ struct FavoriteView: View {
                         Image("isFavorite")
                             .resizable()
                             .scaledToFit()
-//                            .frame(width: 350, height: 400)
                             .cornerRadius(10)
                             .padding()
                         
@@ -79,17 +78,13 @@ struct FavoriteView: View {
                                 } label: {
                                     VStack{
                                         HStack {
-                                            // 로고 - 프레임 크기가 비슷한 이미지를 가져와야함
-                                            AsyncImage(url: URL(string: "https://is2-ssl.mzstatic.com/image/thumb/Purple115/v4/a1/ab/24/a1ab2400-647c-53f1-629d-1000f10e8e6e/source/512x512bb.jpg")) { image in
-                                                image
+                                            Image(store.mainImage.first ?? "kimchiSoup")
                                                     .resizable()
                                                     .scaledToFill()
                                                     .aspectRatio(contentMode: .fit)
                                                     .frame(width: .screenWidth * 0.44, height: .screenHeight * 0.17)
                                                 
-                                            }placeholder: {
-                                                ProgressView()
-                                            }
+                                            
                                             .frame(width: .screenWidth * 0.35, height: .screenHeight * 0.13)
                                             .clipShape(RoundedRectangle(cornerRadius: 10))
                                             //라운드 된건지 확인하기 위함
@@ -162,6 +157,10 @@ struct FavoriteView: View {
                         }
                     }
                 }
+            }
+        }
+        .onAppear{
+            userViewModel.fetchUser {
             }
         }
     }

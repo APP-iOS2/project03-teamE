@@ -22,7 +22,7 @@ struct MyPageRestaurantView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
-                .frame(maxWidth: .screenWidth * 0.3)
+                .frame(maxWidth: .screenWidth * 0.3, minHeight: .screenHeight * 0.1)
                 .cornerRadius(10)
                 .padding()
                 VStack(alignment: .leading, spacing: 8) {
@@ -34,21 +34,19 @@ struct MyPageRestaurantView: View {
                         Text("\(restaurant.scoreMessage)(\(restaurant.reviews.count))")
                     }
                     Text("\(restaurant.deliveryTime) · \(restaurant.deliveryFee)")
-                    HStack {
-                        Image(systemName: "tag.fill")
-                            .foregroundColor(.blue)
-                            .opacity(0.6)
-                        // 레스토랑에 쿠폰필요함
-                        Text("1,000원 쿠폰")
-                        //                        Text("\(restaurant.coupons)")
-                    }
-                    .bold()
-                    .padding(3)
-                    .padding(.horizontal, 3)
-                    .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .opacity(0.6)
-                    )
+//                    HStack {
+//                        Image(systemName: "tag.fill")
+//                            .foregroundColor(.blue)
+//                            .opacity(0.6)
+//                        Text("1,000원 쿠폰")
+//                    }
+//                    .bold()
+//                    .padding(3)
+//                    .padding(.horizontal, 3)
+//                    .background(
+//                        RoundedRectangle(cornerRadius: 5)
+//                            .opacity(0.6)
+//                    )
                 }
                 .foregroundColor(.primary)
                 Spacer()
@@ -57,6 +55,7 @@ struct MyPageRestaurantView: View {
                 .padding(.horizontal, 15)
         }
         .padding(.horizontal)
+
     }
 }
 

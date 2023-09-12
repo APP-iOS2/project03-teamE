@@ -20,7 +20,7 @@ struct DetailToMapView: View {
     @Binding var selectedPlaceLat: Double
     @Binding var selectedPlaceLong: Double
     
-    @State var isChangingPlace: Bool = false
+    @State private var isChangingPlace: Bool = false
     @State private var showMessage = true
     
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5718, longitude: 126.9769), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -66,8 +66,6 @@ struct DetailToMapView: View {
                 print("=======맵뷰 닫음======")
                 
                 
-                userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: isSelectedPlace)
-                dismiss()
             } label: {
                 Text("설정하기")
                     .foregroundColor(.white)

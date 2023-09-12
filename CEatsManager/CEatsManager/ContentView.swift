@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var columnVisibility = NavigationSplitViewVisibility.doubleColumn
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationSplitView(columnVisibility: $columnVisibility) {
+            ReviewHome()
+        } detail: {
+            ReviewDetail()
         }
-        .padding()
+        .navigationSplitViewStyle(.balanced)
     }
 }
 

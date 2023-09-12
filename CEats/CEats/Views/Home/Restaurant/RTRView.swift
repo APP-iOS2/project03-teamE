@@ -34,12 +34,6 @@ struct RTRView: View {
     }
     
     var body: some View {
-        /*
-         // TODO: 멋쟁이 김치찌개 cornerRadius : 8정도 // 6적용
-         식사, 사이드, 주류 어제 피드백 바탕으로 변경
-         @Binding 제거 // end
-         AddCartView 연결 // end
-         */
         ScrollViewReader { proxy in
             ScrollView(showsIndicators: false) {
                 GeometryReader { geo in

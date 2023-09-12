@@ -8,26 +8,28 @@
 import SwiftUI
 
 struct ReciptView: View {
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @Environment(\.dismiss) private var dismiss
-
+    
+    let order: Order
+    
     var body: some View {
-        VStack(alignment: .center){
-            ForEach(userViewModel.filteredOrderList) { order in
-                    VStack{
-                        Text(order.restaurant.name)
-                            .font(.system(size:22))
-                            .bold()
-                            .padding(.bottom,10)
-                        HStack{
-                            Text("주문번호:")
-                                .foregroundColor(.black)
-                            Text(order.id.prefix(5))
-                                .font(.system(size:15))
-                        }
-                        //배달시간
-                    }.padding(.bottom,10)
-
+        NavigationStack{
+            VStack(alignment: .center){
+                VStack{
+                    Text(order.restaurant.name)
+                        .font(.system(size:22))
+                        .bold()
+                        .padding(.bottom,10)
+                    HStack{
+                        Text("주문번호:")
+                            .foregroundColor(.black)
+                        Text(order.id.prefix(5))
+                            .font(.system(size:15))
+                    }
+                    //배달시간
+                }.padding(.bottom,10)
+                
                 ForEach(order.orderedMenu, id: \.name) { food in
                     HStack{
                         Text(food.name)
@@ -39,7 +41,7 @@ struct ReciptView: View {
                 Divider()
                     .padding(20)
                 
-                .foregroundColor(.gray)
+                    .foregroundColor(.gray)
                 HStack{
                     Text("배달비:")
                     Spacer()
@@ -88,7 +90,7 @@ struct ReciptView: View {
 
 struct ReciptView_Previews: PreviewProvider {
     static var previews: some View {
-        ReciptView()
+        ReciptView(order: Order.sampleData)
             .environmentObject(UserViewModel())
     }
 }

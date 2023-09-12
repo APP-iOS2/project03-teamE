@@ -20,10 +20,23 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct CEatsApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @State private var showMainView = false
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                if showMainView {
+                    ContentView()
+                } else {
+                    SplashView()
+                        .onAppear{
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                withAnimation {
+                                    showMainView = true
+                                }
+                            }
+                        }
+                }
+            }
         }
     }
 }

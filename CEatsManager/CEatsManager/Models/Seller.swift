@@ -6,8 +6,8 @@
 //
 
 import Foundation
-
-struct Seller: Identifiable, CEatsIdentifiable, Codable { //레스토랑 안에 넣고
+// 파베 연결 , CEatsIdentifiable
+struct Seller: Identifiable, Codable { //레스토랑 안에 넣고
     var restaurant: Restaurant
     var orders: [Order]
     var orderAcceptanceRate: Double

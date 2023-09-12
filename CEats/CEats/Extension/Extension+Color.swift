@@ -9,4 +9,5 @@ import SwiftUI
 
 extension Color {
     static let veryLightGray = Color(red: 0.9, green: 0.9, blue: 0.9)
+    static let lightgray = Color("lightgray")
 }

@@ -24,7 +24,7 @@ struct MyInfoCategoryDetailView: View {
             LazyVGrid(columns: grids) {
                 ForEach(userViewModel.user.reviews) { review in
                     NavigationLink {
-                        ReviewInfoView(restaurant: restaurantViewModel.findRestaurant(review: review), scrollID: review.id)
+                        MyReviewView(review: review)
                     } label: {
                         Image(review.image ?? "")
                             .resizable()
@@ -57,6 +57,7 @@ struct MyInfoCategoryDetailView: View {
                 }
             }
         }
+            
     }
 }
 
