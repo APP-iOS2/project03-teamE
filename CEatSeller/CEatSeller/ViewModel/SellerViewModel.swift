@@ -81,9 +81,7 @@ final class SellerViewModel: ObservableObject {
     }
     
     func startBusiness() {
-        self.fireManager.addSnapshot(data: self.seller, value: \.orders) { listener in
-            self.orderListener = listener
-        } resultCompletion: { result in
+        self.fireManager.addSnapshot(data: self.seller, value: \.orders) { result in
             self.seller.orders = result
             let waitings = result.filter { $0.orderStatus == .waiting }
             if !waitings.isEmpty {
@@ -91,6 +89,9 @@ final class SellerViewModel: ObservableObject {
             } else {
                 self.newOrder = nil
             }
+        } completion: {
+            listener in
+            self.orderListener = listener
         }
     }
 }

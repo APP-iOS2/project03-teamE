@@ -159,7 +159,7 @@ final class CEatsFBManager {
         }
     }
     
-    func addSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (ListenerRegistration?) -> (), resultCompletion: @escaping (U) -> ()) {
+    func addSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, resultCompletion: @escaping (U) -> (), completion: @escaping (ListenerRegistration?) -> ()) {
         let collectionRef = db.collection("\(type(of: data))")
         var listener: ListenerRegistration?
         

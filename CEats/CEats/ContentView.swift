@@ -56,16 +56,6 @@ struct ContentView: View {
         .navigationBarBackButtonHidden()
         .onAppear {
             userViewModel.login()
-//            userViewModel.fireManager.create(data: userViewModel.user)
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("테스트") {
-                    userViewModel.newOrder(restaurant: Restaurant.sampleData) { result in
-                        print("Update\n \(result)")
-                    }
-                }
-            }
         }
     }
 }

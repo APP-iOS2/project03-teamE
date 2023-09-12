@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 final class UserViewModel: ObservableObject {
     @AppStorage("userID") var userID = "1234"
@@ -13,7 +14,7 @@ final class UserViewModel: ObservableObject {
     @Published var selectedButton: OrderState = .과거주문내역
     
     let fireManager = CEatsFBManager.shared
-    
+    var orderListener: ListenerRegistration?
     enum OrderState: String, CaseIterable {
         case 과거주문내역
         case 준비중
@@ -76,25 +77,55 @@ final class UserViewModel: ObservableObject {
     
     func newOrder(restaurant: Restaurant, completion: @escaping ([Order]) -> ()) {
         guard let menus = user.foodCart?.cart else {
-            print(#function + ": fail to optional bind")
+            print(#function + ": fail to optional bind - menus")
             return
         }
         let newOrder = Order(id: "\(user.username).\(user.orderHistory.count)", orderer: user.username, restaurant: restaurant, orderedMenu: menus)
-        fireManager.read(type: Seller.self, id: restaurant.id) { result in
-            self.fireManager.appendValue(data: result, value: \.orders, to: newOrder) {
-                self.fireManager.appendValue(data: self.user, value: \.orderHistory, to: newOrder) { orderID in
-                    self.fireManager.create(data: newOrder) {
-                        self.user.orderHistory.append(newOrder)
-                        self.user.foodCart = nil
-                        self.fireManager.addCollectionSnapshot(data: newOrder, value: \.orderStatus) { changeStatus in
-                            guard let index = self.user.orderHistory.firstIndex(where: { $0.id == newOrder.id }) else {
+        fireManager.read(type: Seller.self, id: restaurant.id) { seller in
+            self.fireManager.appendValue(data: seller, value: \.orders, to: newOrder) {
+                self.fireManager.appendValueResult(data: self.user, value: \.orderHistory, to: newOrder) { success in
+                    self.user.orderHistory.append(success)
+                    self.fireManager.updateValue(data: self.user, value: \.foodCart, to: nil) { user in
+                        self.user = user
+                        self.fireManager.addSnapshot(data: seller, value: \.orders) { orders in
+                            let sellersWaitings = self.user.orderHistory.filter { $0.orderStatus == .waiting }
+                            guard !sellersWaitings.isEmpty else { return }
+                            guard let myWaiting = sellersWaitings.first else {
+                                print(#function + ": fail to optional bind - myWaiting")
+                                return
+                            }
+                            let resultArr = orders.filter { $0.id == myWaiting.id }
+                            guard !resultArr.isEmpty else { return }
+                            guard let myWaitingOrder = resultArr.first else {
+                                print(#function + ": fail to optional bind - myWaitingOrder")
+                                return
+                            }
+                            guard let index = self.user.orderHistory.firstIndex(where: { $0.id == myWaitingOrder.id }) else {
                                 print(#function + ": fail to optional bind - index")
                                 return
                             }
-                            self.user.orderHistory[index].orderStatus = changeStatus
+                            self.user.orderHistory[index] = myWaitingOrder
+                        } completion: { listener in
+                            self.orderListener = listener
                         }
                     }
                 }
+//                self.fireManager.appendValue(data: self.user, value: \.orderHistory, to: newOrder) { orderID in
+//                    self.user.foodCart = nil
+//                    self.fireManager.create(data: self.user) {
+//                    }
+//                    self.fireManager.create(data: newOrder) {
+//                        self.user.orderHistory.append(newOrder)
+//                        self.user.foodCart = nil
+//                        self.fireManager.addCollectionSnapshot(data: newOrder, value: \.orderStatus) { changeStatus in
+//                            guard let index = self.user.orderHistory.firstIndex(where: { $0.id == newOrder.id }) else {
+//                                print(#function + ": fail to optional bind - index")
+//                                return
+//                            }
+//                            self.user.orderHistory[index].orderStatus = changeStatus
+//                        }
+//                    }
+//                }
             }
         }
     }

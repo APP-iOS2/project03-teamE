@@ -11,7 +11,6 @@ struct CartView: View {
     // MARK: - Properties
     @EnvironmentObject var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
-//    @State var isOpenOrderedSheet: Bool = false
     
     @State var fee: Int
     

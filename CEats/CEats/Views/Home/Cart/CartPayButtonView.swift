@@ -135,8 +135,12 @@ struct CartPayButtonView: View {
             }
         }
         .onTapGesture {
-            userViewModel.newOrder(restaurant: Restaurant.sampleData) { result in
-                print("Update\n \(result)")
+            guard let restaurant = userViewModel.user.foodCart?.restaurant else {
+                print(#function + ": fail to optional bind")
+                return
+            }
+            userViewModel.newOrder(restaurant: restaurant) { result in
+                
             }
         }
     }
