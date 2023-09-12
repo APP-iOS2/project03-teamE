@@ -65,9 +65,11 @@ struct CartMenuView: View {
         .padding()
         NavigationLink {
             // userViewModel.user.foodCart.restaurant을 통해서 뷰를 호출해야함.
+            // if let으로 ! -> 아닐 경우 넘어가지 않게 !
+            if let restaurant = userViewModel.user.foodCart?.restaurant {
+                RTRView(restaurant: restaurant)
+            }
             
-//            RTRView(restaurant: Restaurant(id: "ceoId", password: "1234", restaurantInfo: RestaurantInfo(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3000, minimumPrice: 14000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: " "),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22))
-            RTRView(restaurant: userViewModel.user.foodCart?.restaurant ?? Restaurant.sampleData)
             
         } label: {
             Text("+ 메뉴 추가")

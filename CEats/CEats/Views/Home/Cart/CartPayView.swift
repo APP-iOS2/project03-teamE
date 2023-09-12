@@ -22,25 +22,13 @@ struct CartPayView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                Button {
-                    print("\(userViewModel.user.foodCart?.cart[0].foodCount)")
-                } label: {
-                    HStack {
-                        Text("주문금액")
-                            .padding(.leading)
-                        Spacer()
-                        Text("\(foodCost)원")
-                            .padding(.trailing)
-                    }
+                HStack {
+                    Text("주문금액")
+                        .padding(.leading)
+                    Spacer()
+                    Text("\(foodCost)원")
+                        .padding(.trailing)
                 }
-
-//                HStack {
-//                    Text("주문금액")
-//                        .padding(.leading)
-//                    Spacer()
-//                    Text("\(foodCost)원")
-//                        .padding(.trailing)
-//                }
                 HStack {
                     Text("배달비")
                         .padding([.top, .leading, .bottom])

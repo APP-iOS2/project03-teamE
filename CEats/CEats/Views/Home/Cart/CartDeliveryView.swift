@@ -48,8 +48,8 @@ struct CartDeliveryView: View {
                 
 
                 // 일단 되게 !!!!! + 간단한걸 만들기 + 많이 만들기 !!!!!! 1일1기능 만들기 !! 많이 물어보기 !!!!!!!!!
-                let deliveryTypeButton1 = DeliveryTypeButton(isSelected: $isSelected1, titleLabel: "한집배달", deliveryTimeString: "29 ~ 39", deliveryFee: UInt(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0))
-                let deliveryTypeButton2 = DeliveryTypeButton(isSelected: $isSelected2, titleLabel: "세이브배달", deliveryTimeString: "34 ~ 43", deliveryFee: UInt(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0), discountedFee: 1000)
+                let deliveryTypeButton1 = DeliveryTypeButton(isSelected: $isSelected1, titleLabel: "한집배달", deliveryTimeString: "29 ~ 39", deliveryFee: userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0)
+                let deliveryTypeButton2 = DeliveryTypeButton(isSelected: $isSelected2, titleLabel: "세이브배달", deliveryTimeString: "34 ~ 43", deliveryFee: userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0, discountedFee: 1000)
                 let deliveryButtonArray: [DeliveryTypeButton] = [deliveryTypeButton1, deliveryTypeButton2]
                 
                 // ⭐️ Refactoring 해서 검사맡기 !!!!! 숙제임!!
@@ -114,8 +114,8 @@ struct DeliveryTypeButton: View, Identifiable {
     @Binding var isSelected: Bool
     var titleLabel: String
     var deliveryTimeString: String
-    var deliveryFee: UInt = 0
-    var discountedFee: UInt = 0
+    var deliveryFee: Int = 0
+    var discountedFee: Int = 0
     var id: UUID = UUID()
     
     // MARK: - View
@@ -131,9 +131,9 @@ struct DeliveryTypeButton: View, Identifiable {
                         .font(.footnote)
                 }
                 Spacer()
-                
+                // 여기 확인하기
                 if discountedFee > 0 {
-                    let discountDelivery: UInt = deliveryFee - discountedFee
+                    let discountDelivery: Int = deliveryFee - discountedFee
                     
                     VStack(alignment: .trailing) {
                         ZStack{
