@@ -36,19 +36,15 @@ struct HomeView: View {
                 }
                 .scrollIndicators(.hidden)
 
-                if userViewModel.user.foodCart?.cart.count ?? 0 > 0 {
+                if userViewModel.user.foodCart != nil {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }
             }
         }
-        .fullScreenCover(isPresented: $isOpenMapSheet, content: {
+        .fullScreenCover(isPresented: $isOpenMapSheet) {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
-        })
-//        .fullScreenCover(isPresented: $isOpenCartSheet, content: {
-//            CartView(isOpenMapSheet: $isOpenMapSheet)
-//        })
-        
+        }
     }
 }
 

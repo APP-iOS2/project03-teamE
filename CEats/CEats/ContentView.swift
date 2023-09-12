@@ -11,7 +11,6 @@ struct ContentView: View {
     @State var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()
-    @State var orders = [Order]()
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white

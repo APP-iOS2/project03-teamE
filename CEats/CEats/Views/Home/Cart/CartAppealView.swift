@@ -12,7 +12,7 @@ struct CartAppealView: View {
     var delivery = ["문 앞에 두고 사진을 보내주세요", "직접 받을게요", "도착하면 전화 주세요"]
     
     @State private var toorder: String = ""
-    @State var ischeckmark: Bool = true
+    @State private var ischeckmark: Bool = true
     
     var body: some View {
         VStack {
@@ -31,38 +31,38 @@ struct CartAppealView: View {
                 Button {
                     ischeckmark.toggle()
                 } label: {
-                        if ischeckmark {
-                            Image(systemName: ischeckmark ? "checkmark.square" : "checkmark.square.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 30, height: 30)
+                    if ischeckmark {
+                        Image(systemName: ischeckmark ? "checkmark.square" : "checkmark.square.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.gray)
+                            .padding([.leading, .trailing])
+                        VStack(alignment: .leading) {
+                            Text("일화용 수저/포크받기")
+                                .font(.system(size: 15))
                                 .foregroundColor(.gray)
-                                .padding([.leading, .trailing])
-                            VStack(alignment: .leading) {
-                                Text("일화용 수저/포크받기")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(.gray)
-                                Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.lightgray)
-                            }
-                        }else {
-                            Image(systemName: ischeckmark ? "checkmark.square" : "checkmark.square.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 30, height: 30)
+                            Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
+                                .font(.system(size: 12))
+                                .foregroundColor(.lightgray)
+                        }
+                    } else {
+                        Image(systemName: ischeckmark ? "checkmark.square" : "checkmark.square.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.black)
+                            .padding([.leading, .trailing])
+                        VStack(alignment: .leading) {
+                            Text("일화용 수저/포크받기")
+                                .font(.system(size: 15))
                                 .foregroundColor(.black)
-                                .padding([.leading, .trailing])
-                            VStack(alignment: .leading) {
-                                Text("일화용 수저/포크받기")
-                                    .font(.system(size: 15))
-                                    .foregroundColor(.black)
-                                Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.lightgray)
-                            }
+                            Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
+                                .font(.system(size: 12))
+                                .foregroundColor(.lightgray)
                         }
                     }
+                }
                 Spacer()
             }
             HStack {

@@ -9,15 +9,9 @@ import SwiftUI
 
 struct CartPayView: View {
     // MARK: - Properties
-    @EnvironmentObject var userViewModel : UserViewModel
+    @EnvironmentObject private var userViewModel : UserViewModel
     @State private var isappeal: Bool = true
     @State private var ispayment: Bool = true
-    @Binding var fee: Int
-    
-    var foodCost: Int {
-        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 } ?? 0
-        return totalFoodFee
-    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -26,7 +20,7 @@ struct CartPayView: View {
                     Text("주문금액")
                         .padding(.leading)
                     Spacer()
-                    Text("\(foodCost)원")
+                    Text("\(userViewModel.cartFee)원")
                         .padding(.trailing)
                 }
                 HStack {
@@ -34,19 +28,19 @@ struct CartPayView: View {
                         .padding([.top, .leading, .bottom])
                     Spacer()
                     // 일반 값을 가져다 쓸 때는 $ 사인 없이 가져다 쓰는 것.
-                    Text("\(fee)원")
+                    Text("\(userViewModel.deliveryOpt.fee)원")
                         .padding(.trailing)
                 }
                 Divider()
                 HStack {
                     Text("총 결제금액")
                     Spacer()
-                    Text("\(foodCost + fee)원")
+                    Text("\(userViewModel.cartFee + userViewModel.deliveryOpt.fee)원")
                 }
                 .font(.title3)
                 .bold()
                 .padding()
-//                Divider()
+                //                Divider()
                 
                 HStack {
                     Text("요청사항")
@@ -71,9 +65,7 @@ struct CartPayView: View {
                 Divider()
                 if isappeal {
                     // CartappealView 가 보임.
-                    VStack {
-                        CartAppealView()
-                    }
+                    CartAppealView()
                 }
                 HStack {
                     Text("결제수단")
@@ -98,9 +90,7 @@ struct CartPayView: View {
                 // isPayment가 토글이 되면 CartPaymentView() 가 요청사항과 같이 내려오게 됨.
                 // Extra argument in call 오류가 떴었음. divider를 남발해서 화면 프레임에서 벗어났기 때문이였습니다.
                 if ispayment {
-                    VStack {
-                        CartPaymentView()
-                    }
+                    CartPaymentView()
                 }
             }
         }
@@ -109,7 +99,7 @@ struct CartPayView: View {
 
 struct CartPayView_Previews: PreviewProvider {
     static var previews: some View {
-        CartPayView(fee: .constant(2000))
+        CartPayView()
             .environmentObject(UserViewModel())
     }
 }

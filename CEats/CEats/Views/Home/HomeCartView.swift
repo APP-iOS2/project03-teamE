@@ -14,7 +14,7 @@ struct HomeCartView: View {
     var body: some View {
         VStack {
             NavigationLink {
-                CartView(userViewModel: UserViewModel(), isOpenMapSheet: $isOpenMapSheet)
+                CartView(isOpenMapSheet: $isOpenMapSheet)
             } label: {
                 VStack {
                     HStack {
@@ -33,7 +33,7 @@ struct HomeCartView: View {
 //                        }
 //                        .foregroundColor(.lightgray)
                         
-                        Text("\(userViewModel.user.foodCart?.fee ?? 0) 원")
+                        Text("\(userViewModel.cartFee + userViewModel.deliveryOpt.fee) 원")
                             .font(.system(size: 18, weight: .bold))
                             .padding(.trailing, 10)
                     }

@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct CartDeliveryView: View {
+    
     //MARK: - Properties
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
     
-    @State var isSelected1: Bool = true
-    @State var isSelected2: Bool = false
-    @Binding var fee: Int
+    @State private var isSelected1: Bool = true
+    @State private var isSelected2: Bool = false
     
     @Environment(\.dismiss) private var dismiss
     
     //MARK: - View
     var body: some View {
-        NavigationStack {
+        VStack {
             HStack {
                 VStack(alignment: .leading) {
                     HStack{
@@ -38,49 +38,57 @@ struct CartDeliveryView: View {
                 }
             }
             .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 10))
-            
             VStack(alignment: .leading) {
                 HStack {
                     Text("배달 방법")
                         .font(.system(size: 23, weight: .bold))
                     Spacer()
                 }
-                
-
-                // 일단 되게 !!!!! + 간단한걸 만들기 + 많이 만들기 !!!!!! 1일1기능 만들기 !! 많이 물어보기 !!!!!!!!!
-                let deliveryTypeButton1 = DeliveryTypeButton(isSelected: $isSelected1, titleLabel: "한집배달", deliveryTimeString: "29 ~ 39", deliveryFee: userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0)
-                let deliveryTypeButton2 = DeliveryTypeButton(isSelected: $isSelected2, titleLabel: "세이브배달", deliveryTimeString: "34 ~ 43", deliveryFee: userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0, discountedFee: 1000)
-                let deliveryButtonArray: [DeliveryTypeButton] = [deliveryTypeButton1, deliveryTypeButton2]
-                
-                // ⭐️ Refactoring 해서 검사맡기 !!!!! 숙제임!!
-                deliveryTypeButton1
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        disableAllBtn(deliveryButtonArray: deliveryButtonArray)
-                        isSelected1 = true
-                        
-                        // [추가되어야함] 값 전달 !
-                        if isSelected1 {
-                            fee = Int(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0)
-                            print("\(String(describing: fee)) 우ㄹㅣ집만 와요")
+                ForEach(UserViewModel.DeliveryKind.allCases, id: \.self) { kind in
+                    Button {
+                        userViewModel.deliveryOpt = kind
+                    } label: {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Image(systemName: userViewModel.deliveryOpt == kind ? "o.circle.fill" : "o.circle")
+                                    .foregroundColor(userViewModel.deliveryOpt == kind ? .accentColor : .black)
+                                VStack(alignment: .leading) {
+                                    Text(kind.toString)
+                                        .font(.system(size: 18, weight: userViewModel.deliveryOpt == kind ? .bold : .regular))
+                                    Text("\(kind.deliveryTime)분")
+                                        .font(.footnote)
+                                }
+                                Spacer()
+                                switch kind {
+                                case .onlyOne:
+                                    Text("배달비 \(kind.fee)원")
+                                case .save:
+                                    VStack(alignment: .trailing) {
+                                        ZStack{
+                                            Rectangle()
+                                                .frame(width: 60, height: 2)
+                                                .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
+                                            Text("배달비 \(kind.fee)원")
+                                        }
+                                        Text("\(kind.fee)원")
+                                            .bold()
+                                            .foregroundColor(.red)
+                                            .padding(.init(top: -10, leading: 0, bottom: 0, trailing: 3))
+                                    }
+                                }
+                            }
                         }
+                        .foregroundColor(.black)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 7)
+                                .stroke(userViewModel.deliveryOpt == kind ?  Color.accentColor : Color.black, lineWidth: 1.6)
+                                .shadow(color: .gray, radius: 1.3)
+                        )
                     }
-
-                deliveryTypeButton2
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        disableAllBtn(deliveryButtonArray: deliveryButtonArray)
-                        isSelected2 = true
-                        
-                        // [추가되어야함] 값 전달 !
-                        if isSelected2 {
-                            fee = Int(userViewModel.user.foodCart?.restaurant.deliveryFee ?? 0) - Int(deliveryTypeButton2.discountedFee)
-                            print("\(String(describing: fee)) 세이브 배달임")
-                        }
-                    }
+                }
                 Spacer()
             }
-            
             .padding()
             .fullScreenCover(isPresented: $isOpenMapSheet, content: {
                 MapHomeView(isOpenMapSheet: $isOpenMapSheet)
@@ -106,7 +114,6 @@ struct CartDeliveryView: View {
         isSelected1 = false
         isSelected2 = false
     }
-    
 }
 
 struct DeliveryTypeButton: View, Identifiable {
@@ -164,7 +171,7 @@ struct DeliveryTypeButton: View, Identifiable {
 
 struct CartDeliveryView_Previews: PreviewProvider {
     static var previews: some View {
-        CartDeliveryView(isOpenMapSheet: .constant(false), fee: .constant(1000))
+        CartDeliveryView(isOpenMapSheet: .constant(false))
             .environmentObject(UserViewModel())
     }
 }

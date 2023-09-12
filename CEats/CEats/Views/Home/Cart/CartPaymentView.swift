@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CartPaymentView: View {
-    @EnvironmentObject var userViewModel: UserViewModel
-    @State var ispayMoneyMethod: Bool = false
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @State private var ispayMoneyMethod: Bool = false
     
     var body: some View {
         VStack {
@@ -26,7 +26,7 @@ struct CartPaymentView: View {
                         .font(.system(size: 20))
                         .foregroundColor(.black)
                         .padding()
-                }else {
+                } else {
                     Image(systemName: ispayMoneyMethod ? "circle" : "smallcircle.filled.circle")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
