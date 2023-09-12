@@ -45,8 +45,20 @@ final class SellerViewModel: ObservableObject {
     func getMyRestaurantOrder(){
         fireManager.readAllDocument(type: Order.self) { data in
             if data.restaurant.name == self.seller.restaurant.name {
-                self.seller.order.append(data)
+                self.seller.orders.append(data)
             }
+        }
+    }
+    
+    func StatusButtonTapped(kind: Order.OrderStatus) {
+        guard let newOrder else {
+            print(#function + ": fail to optional bind")
+            return
+        }
+        var updateOrder = newOrder
+        updateOrder.orderStatus = kind
+        fireManager.updateValue(data: seller, value: \.orders, to: updateOrder) { result in
+            self.hasNewOrder = false
         }
     }
     
@@ -76,6 +88,8 @@ final class SellerViewModel: ObservableObject {
             let waitings = result.filter { $0.orderStatus == .waiting }
             if !waitings.isEmpty {
                 self.newOrder = waitings.first
+            } else {
+                self.newOrder = nil
             }
         }
     }

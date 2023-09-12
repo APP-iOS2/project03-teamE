@@ -41,136 +41,142 @@ struct ContentView: View {
 //            sellerviewModel.fireManager.create(data: sellerviewModel.seller)
         }
         .sheet(isPresented: $sellerviewModel.hasNewOrder) {
-            ScrollView {
-                VStack {
-                    HStack {
-                        Button {
-                            sellerviewModel.isOpen = false
-                        } label: {
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 15)
-                                .foregroundColor(.black)
-                        }
-                        
-                        Spacer()
-                    }
-                    
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading) {
-                            Text("B9103A")
-                                .font(.title2)
-                                .bold()
-                            
-                            Text("홍길동")
-                                .padding(.top, 1)
-                        }
-                        Spacer()
-                        Text("오후 12:00")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
-                    .padding(.top, 30)
-                    
-                    HStack(alignment: .center) {
-                        Text("새우 뺴주세요!")
-                            .padding(15)
-                        Spacer()
-                    }
-                    .background(Color.pink)
-                    
-                    VStack {
-                        Divider()
-                            .frame(height: 2)
-                            .overlay(Color.black)
-                            .padding(.top, 10)
-                        
-                        HStack(alignment: .center) {
-                            Spacer()
-                            Text("메뉴")
-                            Spacer()
-                            Spacer()
-                            Spacer()
-                            Text("수량")
-                            Spacer()
-                            Spacer()
-                            Text("금액")
-                            Spacer()
-                        }
-                        .padding(.vertical, 5)
-                        
-                        Divider()
-                            .frame(height: 1)
-                            .overlay(Color.black)
-                        
-                        HStack(alignment: .top) {
-                            VStack(alignment: .leading, spacing: 20) {
-                                Text("하와이안 피자")
-                                Text("오렌지 주스")
-                            }
-                            .frame(width: .screenWidth * 0.28)
-                            
-                            Spacer()
-                            
-                            VStack(alignment: .leading, spacing: 20) {
-                                Text("1")
-                                Text("1")
-                            }
+            NewOrderView()
+        }
+    }
+}
+
+struct NewOrderView: View {
+    @EnvironmentObject private var sellerviewModel: SellerViewModel
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+//                HStack {
+//                    Button {
+//                        sellerviewModel.isOpen = false
+//                    } label: {
+//                        Image(systemName: "xmark")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 15)
+//                            .foregroundColor(.black)
+//                    }
+//                    Spacer()
+//                }
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text(sellerviewModel.newOrder?.id ?? "")
+                            .font(.title2)
                             .bold()
-                            
-                            Spacer()
-                            VStack(alignment: .trailing, spacing: 20) {
-                                Text("28,000원")
-                                Text("3,000원")
-                            }
-                            .bold()
-                        }
-                        .padding(.top, 20)
-                        
-                        Divider()
-                            .frame(height: 3)
-                            .overlay(Color.black)
-                            .padding(.vertical, 20)
-                        
-                        HStack {
-                            Text("주문금액")
-                            Spacer()
-                            Text("31,000원")
-                        }
-                        .bold()
-                        .font(.title2)
+                        Text(sellerviewModel.newOrder?.orderer ?? "")
+                            .padding(.top, 1)
                     }
-                    
+                    Spacer()
+                    Text(sellerviewModel.newOrder?.orderDate ?? "")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+                .padding(.top, 30)
+                
+                HStack(alignment: .center) {
+                    Text("새우 뺴주세요!")
+                        .padding(15)
                     Spacer()
                 }
-                .padding()
+                .background(Color.pink)
+                VStack {
+                    Divider()
+                        .frame(height: 2)
+                        .overlay(Color.black)
+                        .padding(.top, 10)
+                    HStack(alignment: .center) {
+                        Spacer()
+                        Text("메뉴")
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Text("수량")
+                        Spacer()
+                        Spacer()
+                        Text("금액")
+                        Spacer()
+                    }
+                    .padding(.vertical, 5)
+                    Divider()
+                        .frame(height: 1)
+                        .overlay(Color.black)
+                    
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading, spacing: 20) {
+                            ForEach(sellerviewModel.newOrder?.orderedMenu ?? []) { food in
+                                Text(food.name)
+                            }
+//                            Text("하와이안 피자")
+//                            Text("오렌지 주스")
+                        }
+                        .frame(width: .screenWidth * 0.28)
+                        Spacer()
+                        VStack(alignment: .leading, spacing: 20) {
+                            ForEach(sellerviewModel.newOrder?.orderedMenu ?? []) { food in
+                                Text("\(food.foodCount)")
+                            }
+//                            Text("1")
+//                            Text("1")
+                        }
+                        .bold()
+                        Spacer()
+                        VStack(alignment: .trailing, spacing: 20) {
+                            ForEach(sellerviewModel.newOrder?.orderedMenu ?? []) { food in
+                                Text(food.priceToString)
+                            }
+//                            Text("28,000원")
+//                            Text("3,000원")
+                        }
+                        .bold()
+                    }
+                    .padding(.top, 20)
+                    
+                    Divider()
+                        .frame(height: 3)
+                        .overlay(Color.black)
+                        .padding(.vertical, 20)
+                    
+                    HStack {
+                        Text("주문금액")
+                        Spacer()
+                        Text("\(sellerviewModel.newOrder?.totalFee ?? 0)원")
+                    }
+                    .bold()
+                    .font(.title2)
+                }
                 
-                HStack(spacing: 0) {
-                    Button {
-                        print("거절")
-                    } label: {
-                        Text("거절")
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(width: .screenWidth * 0.4, height: 60)
-                            .background(Color.cyan)
-                    }
-
-                    Button {
-                        print("수락")
-                    } label: {
-                        Text("수락")
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(width: .screenWidth * 0.6, height: 60)
-                            .background(Color.green)
-                    }
+                Spacer()
+            }
+            .padding()
+            HStack(spacing: 0) {
+                Button {
+                    sellerviewModel.StatusButtonTapped(kind: .canceled)
+                } label: {
+                    Text("거절")
+                        .foregroundColor(.white)
+                        .bold()
+                        .frame(width: .screenWidth * 0.4, height: 60)
+                        .background(Color.cyan)
+                }
+                Button {
+                    sellerviewModel.StatusButtonTapped(kind: .accepted)
+                } label: {
+                    Text("수락")
+                        .foregroundColor(.white)
+                        .bold()
+                        .frame(width: .screenWidth * 0.6, height: 60)
+                        .background(Color.green)
                 }
             }
         }
     }
-}   
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
