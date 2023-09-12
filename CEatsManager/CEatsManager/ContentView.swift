@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var columnVisibility = NavigationSplitViewVisibility.doubleColumn
+    @State private var columnVisibility = NavigationSplitViewVisibility.doubleColumn
+    @StateObject var restaurantViewModel: RestaurantViewModel = RestaurantViewModel()
+    @StateObject var userViewModel: UserViewModel = UserViewModel()
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             ReviewHome()
         } detail: {
-            ReviewDetail()
+            
         }
         .navigationSplitViewStyle(.balanced)
     }
@@ -23,5 +25,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(RestaurantViewModel())
+            .environmentObject(UserViewModel())
     }
 }

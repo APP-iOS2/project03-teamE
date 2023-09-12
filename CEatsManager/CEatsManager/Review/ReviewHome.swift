@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ReviewHome: View {
+    @EnvironmentObject var restaurantViewModel: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     
-    @State private var restaurantList: [Restaurant] = []
+//    @State private var restaurantList: [Restaurant] = []
+    
     
     var body: some View {
         VStack {
-            List(restaurantList) { restaurant in
+            List(restaurantViewModel.restaurants) { restaurant in
                 NavigationLink {
-                    ReviewDetail() // restaurant 파라미터로 넘겨주면 됩니다.
+                    ReviewDetail(restaurant: restaurant) // restaurant 파라미터로 넘겨주면 됩니다.
                 } label: {
                     Text("\(restaurant.name)")
                 }
@@ -23,11 +26,6 @@ struct ReviewHome: View {
         }
         .navigationTitle("전체 가게")
         
-        .onAppear {
-            restaurantList = []
-            
-            restaurantList.append(Restaurant.sampleData)
-        }
     }
 }
 
@@ -35,6 +33,8 @@ struct ReviewHome_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             ReviewHome()
+                .environmentObject(RestaurantViewModel())
+                .environmentObject(UserViewModel())
         }
     }
 }
