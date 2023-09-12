@@ -23,7 +23,7 @@ struct YourApp: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
   @StateObject private var sellerViewModel = SellerViewModel()
-
+    //여기에 추가
   var body: some Scene {
     WindowGroup {
       NavigationView {
