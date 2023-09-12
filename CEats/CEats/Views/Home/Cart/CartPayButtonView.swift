@@ -63,6 +63,9 @@ struct CartPayButtonView: View {
                 }
                 Button {
                     isOpenOrderedSheet = true
+                    
+                    // 결제하기 눌렀을때 값 차감
+                    
                 } label: {
                     Text("결제하기")
                 }

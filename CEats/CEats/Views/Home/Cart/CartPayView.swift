@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct CartPayView: View {
-    var food: Restaurant.Food = Restaurant.Food.sampleData
-    var restaurant: Restaurant = .sampleData
-    var user: User = User.sampleData
-    
-    var foodCost: Int {
-        let totalFoodFee = user.foodCart?.cart.map({ $0.price }).reduce(0) { $0 + $1 } ?? 0
-        return totalFoodFee
-    }
-    
+    // MARK: - Properties
+    @EnvironmentObject var userViewModel : UserViewModel
     @State private var isappeal: Bool = true
     @State private var ispayment: Bool = true
     @Binding var fee: Int
+    
+    var foodCost: Int {
+        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price }).reduce(0) { $0 + $1 } ?? 0
+        return totalFoodFee
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -43,7 +41,7 @@ struct CartPayView: View {
                 HStack {
                     Text("총 결제금액")
                     Spacer()
-                    Text("\( foodCost + fee)원")
+                    Text("\(foodCost + fee)원")
                 }
                 .font(.title3)
                 .bold()

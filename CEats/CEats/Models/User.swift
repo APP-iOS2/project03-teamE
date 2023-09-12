@@ -36,6 +36,7 @@ struct User: Identifiable, Codable, CEatsIdentifiable, Equatable {
             let totalFoodFee = cart.map({ $0.price }).reduce(0) { $0 + $1 }
             return totalFoodFee + restaurant.deliveryFee
         }
+        
     }
 }
 
