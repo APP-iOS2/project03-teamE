@@ -23,7 +23,7 @@ struct RTRFoodCellView: View {
                     .padding(.vertical, 5)
             }
             Spacer()
-            Image(food.image ?? "")
+            Image(food.image ?? "김치찌개")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 130, height: 130)

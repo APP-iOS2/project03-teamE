@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct Order: Identifiable, CEatsIdentifiable, Codable {
     var id: String
     var orderer: String //이거 문제있음

@@ -25,12 +25,6 @@ struct RTRView: View {
     }
     
     var body: some View {
-        /*
-        // TODO: 멋쟁이 김치찌개 cornerRadius : 8정도 // 6적용
-         식사, 사이드, 주류 어제 피드백 바탕으로 변경
-         @Binding 제거 // end
-         AddCartView 연결 // end
-         */
         ScrollViewReader { proxy in
             ScrollView(showsIndicators: false) {
                 GeometryReader { geo in
@@ -62,7 +56,7 @@ struct RTRView: View {
                                     .padding()
                                     .background(
                                         RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.lightgray)
+                                            .stroke(Color.gray)
                                     )
                                     .frame(height: .screenHeight / 10)
                                     .padding(.trailing, 10)
@@ -114,7 +108,7 @@ struct RTRView: View {
 struct RTRView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            RTRView(restaurant: Restaurant(id: "ceoId", password: "1234", restaurantInfo: RestaurantInfo(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3000, minimumPrice: 14000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: " "),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22))
+            RTRView(restaurant: Restaurant(id: "ceoId", password: "1234", restaurantInfo: RestaurantInfo(), name: "멋쟁이 김치찌개", reviews: [Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")], deliveryFee: 3000, minimumPrice: 14000, menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼")], mainImage: ["kimchijjigae"], foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 32.44, longitude: 55.22))
         }
     }
 }

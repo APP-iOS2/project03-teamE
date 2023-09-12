@@ -18,7 +18,7 @@ struct HomeView: View {
                     Text("\(sellerviewModel.seller.name)")
                         .font(.system(size: 28, weight: .medium))
                     NavigationLink {
-//                        RTRDetailInfoView(restaurant: sellerviewModel.seller.restaurant)
+                        RTRDetailInfoView(restaurant: sellerviewModel.seller.restaurant)
                     } label: {
                         HStack {
                             Text("매장정보 확인")
@@ -76,18 +76,20 @@ struct HomeView: View {
                 Divider()
                     .padding()
                 VStack(alignment: .leading) {
-                    NavigationLink {
-                        ManagingMenu()
-                    } label: {
-                        HStack {
-                            Image(systemName: "list.clipboard.fill")
-                                .padding(.horizontal)
-                            Text("메뉴 관리")
-                        }
-                        .padding()
-                        .foregroundColor(.primary)
-                        Spacer()
-                    }
+                    ///기능 구현 일단 중단.
+//                    NavigationLink {
+//                        ManagingMenu()
+//                    } label: {
+//                        HStack {
+//                            Image(systemName: "list.clipboard.fill")
+//                                .padding(.horizontal)
+//                            Text("메뉴 관리")
+//                        }
+//                        .padding()
+//                        .foregroundColor(.primary)
+//                        Spacer()
+//                    }
+                    
                     NavigationLink {
                         RTRView(restaurant: sellerviewModel.seller.restaurant)
                     } label: {
@@ -112,18 +114,25 @@ struct HomeView: View {
                         .foregroundColor(.primary)
                         Spacer()
                     }
-                    NavigationLink {
-                        ReviewInfoView(restaurant: sellerviewModel.seller.restaurant)
-                    } label: {
-                        HStack {
-                            Image(systemName: "list.clipboard")
-                                .padding(.horizontal)
-                            Text("리뷰 관리")
-                        }
-                        .padding()
-                        .foregroundColor(.primary)
-                        Spacer()
-                    }
+                    
+                    Image("advertisement2")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.top,30)
+                    
+                    ///기능 구현 일단 중단.
+//                    NavigationLink {
+//                        ReviewInfoView(restaurant: sellerviewModel.seller.restaurant)
+//                    } label: {
+//                        HStack {
+//                            Image(systemName: "list.clipboard")
+//                                .padding(.horizontal)
+//                            Text("리뷰 관리")
+//                        }
+//                        .padding()
+//                        .foregroundColor(.primary)
+//                        Spacer()
+//                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
