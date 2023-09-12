@@ -12,9 +12,17 @@ final class SellerViewModel: ObservableObject {
     @Published var seller: Seller = Seller.sampleData
     
     let fireManager = CEatsFBManager.shared
-
+    
     var titleMessage: String {
         isOpen ? "신규 주문 받는중" : "쉬는중"
+    }
+    
+    func getMyRestaurantOrder(){
+        fireManager.readAllDocument(type: Order.self) { data in
+            if data.restaurant.name == self.seller.restaurant.name {
+                self.seller.order.append(data)
+            }
+        }
     }
     
     func updateTimeTable(data: Seller, to: String){
@@ -22,3 +30,4 @@ final class SellerViewModel: ObservableObject {
         fireManager.create(data: data)
     }
 }
+

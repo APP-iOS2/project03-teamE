@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120BFA362AB022F0005456EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 120BFA352AB022F0005456EE /* GoogleService-Info.plist */; };
 		D13CF9192AAFF4B000965F5E /* Extension +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9182AAFF4B000965F5E /* Extension +.swift */; };
 		D13CF91E2AAFF54600965F5E /* ManagingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF91D2AAFF54600965F5E /* ManagingMenu.swift */; };
 		D13CF92E2AAFF64800965F5E /* ReviewInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9202AAFF64400965F5E /* ReviewInfoView.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		120BFA352AB022F0005456EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D13CF9182AAFF4B000965F5E /* Extension +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension +.swift"; sourceTree = "<group>"; };
 		D13CF91D2AAFF54600965F5E /* ManagingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagingMenu.swift; sourceTree = "<group>"; };
 		D13CF9202AAFF64400965F5E /* ReviewInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewInfoView.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				D16DDBE32AA8628C0009C29F /* Preview Assets.xcassets in Resources */,
 				D13CF9642AB025CC00965F5E /* GoogleService-Info.plist in Resources */,
 				D16DDBE02AA8628C0009C29F /* Assets.xcassets in Resources */,
+				120BFA362AB022F0005456EE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

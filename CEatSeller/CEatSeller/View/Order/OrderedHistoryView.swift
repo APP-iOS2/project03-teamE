@@ -10,11 +10,7 @@ import SwiftUI
 struct OrderedHistoryView: View {
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(0..<5) { _ in
-                    WorkingViewDetail()
-                }
-            }
+            Text("빈뷰")
         }
         .listStyle(.plain)
         
