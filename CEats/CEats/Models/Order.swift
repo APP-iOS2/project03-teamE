@@ -46,6 +46,17 @@ struct Order: Identifiable, CEatsIdentifiable, Codable {
                 return "주문 완료됨"
             }
         }
+        
+        var message: String {
+            switch self {
+            case .waiting:
+                return "매장에서 주문을 확인하고 있습니다."
+            case .canceled:
+                return "주문이 취소되었습니다."
+            case .accepted:
+                return "배달이 시작되었습니다."
+            }
+        }
     }
 }
 

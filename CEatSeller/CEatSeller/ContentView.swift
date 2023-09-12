@@ -37,8 +37,8 @@ struct ContentView: View {
                 .tag(3)
         }
         .onAppear {
-            sellerviewModel.login()
-//            sellerviewModel.fireManager.create(data: sellerviewModel.seller)
+//            sellerviewModel.login()
+            sellerviewModel.fireManager.create(data: sellerviewModel.seller)
         }
         .sheet(isPresented: $sellerviewModel.hasNewOrder) {
             NewOrderView()
@@ -174,6 +174,9 @@ struct NewOrderView: View {
                         .background(Color.green)
                 }
             }
+        }
+        .onAppear {
+            sellerviewModel.fireManager.create(data: sellerviewModel.seller)
         }
     }
 }

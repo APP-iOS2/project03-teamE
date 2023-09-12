@@ -11,13 +11,11 @@ struct CartPayButtonView: View {
     // MARK: - Properties
     @EnvironmentObject private var userViewModel: UserViewModel
 
-    @State private var showingAlert: Bool = false
-    @State private var isOpenOrderedSheet: Bool = false
-    
+    @Binding var showingAlert: Bool
     // MARK: - View
     var body: some View {
         Button {
-            showingAlert = false
+            showingAlert = true
         } label: {
             switch userViewModel.deliveryOpt{
             case .onlyOne:
@@ -48,33 +46,12 @@ struct CartPayButtonView: View {
         .frame(maxWidth: .infinity)
         .padding()
         .background(userViewModel.user.cEatsMoney < userViewModel.cartFee + userViewModel.deliveryOpt.fee ? .gray : .blue)
-        .alert("결제가 됩니다.", isPresented: $showingAlert) {
-            Button("뒤로가기") {
-                showingAlert = false
-            }
-            Button {
-                userViewModel.newOrder { result in
-                    isOpenOrderedSheet = true
-                }
-                // 결제하기 눌렀을때 값 차감
-                userViewModel.user.cEatsMoney -= userViewModel.cartFee + userViewModel.deliveryOpt.fee
-                print(userViewModel.user.cEatsMoney)
-                print(" 111 ")
-            } label: {
-                Text("결제하기")
-            }
-        } message: {
-            Text("주문이 성공적으로 완료되었습니다.")
-        }
-        .fullScreenCover(isPresented: $isOpenOrderedSheet) {
-            RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet)
-        }
     }
 }
 
 struct CartPayButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CartPayButtonView()
+        CartPayButtonView(showingAlert: .constant(false))
             .environmentObject(UserViewModel())
     }
 }

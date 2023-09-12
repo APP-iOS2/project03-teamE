@@ -130,7 +130,7 @@ struct MyView: View {
                 print("잘가져와짐")
                 print(userViewModel.user.favoriteRestaurant.count)
             }
-            restaurantViewModel.fetchAllRestaurant()
+//            restaurantViewModel.fetchAllRestaurant()
         }
     }
 }
