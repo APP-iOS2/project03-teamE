@@ -54,8 +54,7 @@ struct ContentView: View {
         .environmentObject(restaurantViewModel)
         .environmentObject(userViewModel)
         .onAppear {
-//            restaurantViewModel.fireManager.create(data: Seller.sampleData)
-//            restaurantViewModel.fetchAllRestaurant()
+            userViewModel.login()
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

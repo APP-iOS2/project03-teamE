@@ -70,6 +70,44 @@ final class CEatsFBManager {
         }
     }
     
+    func addCollectionSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (U) -> ()) where T: Decodable {
+        let collectionRef = db.collection("\(type(of: data))")
+        var listener: ListenerRegistration?
+        DispatchQueue.global().async {
+            listener = collectionRef.addSnapshotListener { snapshot, error in
+                guard error == nil else {
+                    self.printError(error: error!)
+                    return
+                }
+                guard let docs = snapshot?.documents else {
+                    print(#function + ": fail to optional bind - docs")
+                    return
+                }
+                guard let docsChange = snapshot?.documentChanges else {
+                    print(#function + ": fail to optional bind - docs")
+                    return
+                }
+                let myChange = docs.filter {
+                    do {
+                       return try $0.data(as: T.self).id == data.id
+                    } catch {
+                        return false
+                    }
+                }
+                if !myChange.isEmpty {
+                    guard let result = try? myChange[0].data(as: T.self) else {
+                        print(#function + ": fail to optional bind")
+                        return
+                    }
+                    completion(result[keyPath: keyPath])
+                } else {
+                    listener?.remove()
+                    print("listener is removed")
+                }
+            }
+        }
+    }
+    
     func addSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (U) -> ()) {
         let collectionRef = db.collection("\(type(of: data))")
         
@@ -122,8 +160,12 @@ final class CEatsFBManager {
                         print(#function + ": fail to optional bind - Any")
                         return
                     }
-                    guard let uType = fbAny as? [U] else {
-                        print(#function + ": fail to optional bind - [Order]")
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: fbAny) else {
+                        print(#function + ": fail to optional bind - jsonData")
+                        return
+                    }
+                    guard let uType = try? JSONDecoder().decode([U].self, from: jsonData) else {
+                        print(#function + ": fail to optional bind - [U]")
                         return
                     }
                     DispatchQueue.main.async {

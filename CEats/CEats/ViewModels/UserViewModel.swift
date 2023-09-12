@@ -8,7 +8,6 @@
 import SwiftUI
 
 final class UserViewModel: ObservableObject {
-
     @AppStorage("userID") var userID = "1234"
     @Published var user: User = User.sampleData
     @Published var selectedButton: OrderState = .과거주문내역
@@ -18,6 +17,14 @@ final class UserViewModel: ObservableObject {
     enum OrderState: String, CaseIterable {
         case 과거주문내역
         case 준비중
+    }
+    
+    var filteredOrderList: [Order] {
+        if selectedButton == .과거주문내역 {
+            return user.orderHistory.filter { $0.orderStatus != .waiting }
+        } else {
+            return user.orderHistory.filter { $0.orderStatus == .waiting }
+        }
     }
     
 //    func recommendFoods(food: [Restaurant.Food]?, restaurant: Restaurant?) -> [Restaurant.Food] {
@@ -33,6 +40,11 @@ final class UserViewModel: ObservableObject {
 //        
 //        return menus
 //    }
+    func login() {
+        fetchUser {
+            self.orderHistoryHasWaiting()
+        }
+    }
     
     func addCount(food: Restaurant.Food){
         if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
@@ -46,11 +58,19 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-    var filteredOrderList: [Order] {
-        if selectedButton == .과거주문내역 {
-            return user.orderHistory.filter { $0.orderStatus != .waiting }
+    func orderHistoryHasWaiting() {
+        let waitings = user.orderHistory.filter { $0.orderStatus == .waiting }
+        if !waitings.isEmpty {
+            let watingOrder = waitings[0]
+            self.fireManager.addCollectionSnapshot(data: watingOrder, value: \.orderStatus) { changeStatus in
+                guard let index = self.user.orderHistory.firstIndex(where: { $0.id == watingOrder.id }) else {
+                    print(#function + ": fail to optional bind - index")
+                    return
+                }
+                self.user.orderHistory[index].orderStatus = changeStatus
+            }
         } else {
-            return user.orderHistory.filter { $0.orderStatus == .waiting }
+            print("waiting order 없음")
         }
     }
     
@@ -66,12 +86,12 @@ final class UserViewModel: ObservableObject {
                     self.fireManager.create(data: newOrder) {
                         self.user.orderHistory.append(newOrder)
                         self.user.foodCart = nil
-                        self.fireManager.addSnapshot(data: newOrder, value: \.orderStatus) { resultStatus in
+                        self.fireManager.addCollectionSnapshot(data: newOrder, value: \.orderStatus) { changeStatus in
                             guard let index = self.user.orderHistory.firstIndex(where: { $0.id == newOrder.id }) else {
                                 print(#function + ": fail to optional bind - index")
                                 return
                             }
-                            self.user.orderHistory[index].orderStatus = resultStatus
+                            self.user.orderHistory[index].orderStatus = changeStatus
                         }
                     }
                 }
@@ -79,9 +99,10 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-    func fetchUser() {
+    func fetchUser(completion: @escaping () -> ()) {
         fireManager.read(type: User.self, id: userID) { result in
             self.user = result
+            completion()
         }
     }
     

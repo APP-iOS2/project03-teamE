@@ -14,6 +14,7 @@ final class RestaurantViewModel: ObservableObject {
     @Published var selectedFoodType: FoodType? = nil
     
     func fetchAllRestaurant() {
+        restaurants = []
         fireManager.readAllDocument(type: Restaurant.self) { result in
             self.restaurants.append(result)
         }
