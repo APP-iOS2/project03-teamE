@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var sellerviewModel: SellerViewModel = SellerViewModel()
-    
+    @EnvironmentObject private var sellerviewModel: SellerViewModel
+
     var body: some View {
         NavigationStack {
             ScrollView {

@@ -64,6 +64,6 @@ struct BusinessHourView: View {
 struct BusinessHourView_Previews: PreviewProvider {
     static var previews: some View {
         BusinessHourView()
-            .environmentObject(SellerViewModel())
+            .environmentObject(SellerViewModel()) 
     }
 }
