@@ -11,6 +11,7 @@ struct CartView: View {
     // MARK: - Properties
     @Binding var isOpenMapSheet: Bool
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var tabViewModel: TabViewModel
     @EnvironmentObject private var userViewModel: UserViewModel
     @State private var showingAlert: Bool = false
     @State private var isOpenOrderedSheet: Bool = false
@@ -46,6 +47,10 @@ struct CartView: View {
         .fullScreenCover(isPresented: $isOpenOrderedSheet) {
             RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet, completion: { dismiss() })
         }
+        .onChange(of: tabViewModel.tabIndex) { _ in
+            print("tab Change")
+            dismiss()
+        }
     }
 }
 
@@ -55,6 +60,7 @@ struct CartView_Previews: PreviewProvider {
             CartView(isOpenMapSheet: .constant(false))
                 .environmentObject(UserViewModel())
                 .environmentObject(RestaurantViewModel())
+                .environmentObject(TabViewModel())
         }
     }
 }

@@ -7,9 +7,14 @@
 
 import SwiftUI
 
+class TabViewModel: ObservableObject {
+    @Published var tabIndex = 0
+}
+
 struct ContentView: View {
     @State private var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
+    @StateObject var tabViewModel = TabViewModel()
     @StateObject var userViewModel = UserViewModel()
     @Environment(\.colorScheme) private var colorScheme
     
@@ -20,7 +25,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        TabView(selection: $tabIndex) {
+        TabView(selection: $tabViewModel.tabIndex) {
             HomeView()
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -54,6 +59,7 @@ struct ContentView: View {
         }
         .environmentObject(restaurantViewModel)
         .environmentObject(userViewModel)
+        .environmentObject(tabViewModel)
         .navigationBarBackButtonHidden()
         .onAppear {
             userViewModel.login()
