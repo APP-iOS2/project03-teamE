@@ -11,7 +11,7 @@ import SwiftUI
 // 유저1의 장바구니 -> 선택한 식당 이름, 선택한 음식, 수량, 선택한 식당의 추천 음식(무작위)
 struct CartMenuView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
-    
+    @State private var showingAlert: Bool = false
     var colorSet: UIColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     
     var body: some View {
@@ -42,9 +42,18 @@ struct CartMenuView: View {
                                     
                                     if food.foodCount == 1 {
                                         Button {
+                                            print("alert")
+                                            showingAlert = true
                                             userViewModel.removeFood(food: food)
                                         } label: {
                                             Image(systemName: "trash.fill")
+                                        }
+                                        .alert(isPresented: $showingAlert) {
+                                            Alert(
+                                                title: Text("hi"),
+                                                message: Text("alert"),
+                                                dismissButton: .default(Text("ok"))
+                                            )
                                         }
                                     } else {
                                         Button {

@@ -24,7 +24,6 @@ struct CartView: View {
         if userViewModel.user.foodCart?.cart.isEmpty ?? true {
             VStack(spacing: 50) {
                 VStack {
-                    
                     Image(systemName: "cart")
                         .resizable()
                         .frame(width: 100, height: 100)
