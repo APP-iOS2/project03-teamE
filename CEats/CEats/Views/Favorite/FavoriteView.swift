@@ -22,10 +22,8 @@ struct FavoriteView: View {
     
     // MARK: - Views
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             NavigationStack {
-                // 유저.Favorite배열.count 해서 값 받아올 예정
-                // 왼쪽에 붙었으면 좋겠는데 안붙.. 왜?
                 HStack {
                     Text("총 \(userViewModel.user.favoriteRestaurant.count)개")
                         .font(.title3)
@@ -34,21 +32,24 @@ struct FavoriteView: View {
                     
                     Spacer()
                 }
+                .padding(.bottom)
                 if isFavoriteEmpty {
-                    VStack {
-                        Image("isFavorite")
+                    VStack(spacing: 50) {
+                        VStack {
+                            Text("즐겨찾는 맛집이 없습니다.")
+                            Text("좋아하는 맛집에 \u{2665}를 눌러주세요.")
+                        }
+                        Image("FavoriteEx")
                             .resizable()
-                            .scaledToFit()
-                            .cornerRadius(10)
+                            .aspectRatio(contentMode: .fit)
                             .padding()
                         
                         Button {
                             do { withAnimation(.easeOut(duration: 0.1)) {
-                                    self.isAnimating.toggle()
-                                    self.progress = self.isAnimating ? 1 : 0
-                                }
+                                self.isAnimating.toggle()
+                                self.progress = self.isAnimating ? 1 : 0
+                            }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    // 버튼 누른 이벤트 발생
                                     tabIndex = 0
                                     self.isAnimating.toggle()
                                     self.progress = 0
@@ -79,16 +80,14 @@ struct FavoriteView: View {
                                     VStack{
                                         HStack {
                                             Image(store.mainImage.first ?? "kimchiSoup")
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: .screenWidth * 0.44, height: .screenHeight * 0.17)
-                                                
+                                                .resizable()
+                                                .scaledToFill()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: .screenWidth * 0.44, height: .screenHeight * 0.17)
                                             
-                                            .frame(width: .screenWidth * 0.35, height: .screenHeight * 0.13)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                            //라운드 된건지 확인하기 위함
-                                            .padding(.bottom, 20)
+                                                .frame(width: .screenWidth * 0.35, height: .screenHeight * 0.13)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .padding(.bottom, 20)
                                             
                                             VStack(alignment: .leading, spacing: 10) {
                                                 Spacer()
@@ -137,13 +136,11 @@ struct FavoriteView: View {
                                         Divider()
                                             .padding(.bottom,20)
                                     }
-                                    
                                     .foregroundColor(.black)
                                 }
                             }
                         }
                     }
-                    
                     .navigationTitle("즐겨찾기")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
@@ -159,6 +156,7 @@ struct FavoriteView: View {
                 }
             }
         }
+        .padding(.bottom, 50)
         .onAppear{
             userViewModel.fetchUser {
             }

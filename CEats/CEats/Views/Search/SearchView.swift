@@ -17,7 +17,6 @@ struct SearchView: View {
                 HStack {
                     Spacer()
                     NavigationLink {
-//                        ResentSearchView()
                         HomeSearchDetailView()
                     } label: {
                         SearchBarView(text: $searchTerm)
@@ -29,15 +28,13 @@ struct SearchView: View {
                 }
             }
         }
-//        .onTapGesture {
-//            hideKeyboard() //추가
-//        }
     }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
+            .environmentObject(UserViewModel())
     }
 }
 
