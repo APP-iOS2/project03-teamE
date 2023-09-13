@@ -81,6 +81,12 @@ final class UserViewModel: ObservableObject {
             fireManager.create(data: user)
         }
     }
+    
+    func removeFood(food: Restaurant.Food){
+        if let index = user.foodCart?.cart.firstIndex(where: { $0.id == food.id }) {
+            user.foodCart?.cart.remove(at: index)
+        }
+    }
 //    func updateFavoriteRTR(isFavorite: [Restaurant]) {
 //        fireManager.update(data: user, value: \.favoriteRestaurant, to: isFavorite) { _ in
 //        }

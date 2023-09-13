@@ -49,8 +49,6 @@
 		D16DDBEC2AA8636E0009C29F /* HomeViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBEB2AA8636E0009C29F /* HomeViewDetail.swift */; };
 		D16DDBEE2AA863900009C29F /* WorkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBED2AA863900009C29F /* WorkingView.swift */; };
 		D16DDBF02AA8639D0009C29F /* WorkingViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBEF2AA8639D0009C29F /* WorkingViewDetail.swift */; };
-		D16DDBF22AA863B10009C29F /* OrderedHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16DDBF12AA863B10009C29F /* OrderedHistoryView.swift */; };
-		D18807F12AB183AB006DBD2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D18807F02AB183AB006DBD2E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,8 +88,6 @@
 		D16DDBEB2AA8636E0009C29F /* HomeViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDetail.swift; sourceTree = "<group>"; };
 		D16DDBED2AA863900009C29F /* WorkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingView.swift; sourceTree = "<group>"; };
 		D16DDBEF2AA8639D0009C29F /* WorkingViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingViewDetail.swift; sourceTree = "<group>"; };
-		D16DDBF12AA863B10009C29F /* OrderedHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedHistoryView.swift; sourceTree = "<group>"; };
-		D18807F02AB183AB006DBD2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				D16DDBF52AA864310009C29F /* Home */,
-				D16DDBF72AA8644B0009C29F /* Order */,
 				D16DDBF62AA864410009C29F /* Work */,
 			);
 			path = View;
@@ -184,7 +179,6 @@
 		D13CF9872AB03BA300965F5E /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				D18807F02AB183AB006DBD2E /* GoogleService-Info.plist */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -250,14 +244,6 @@
 				D16DDBEF2AA8639D0009C29F /* WorkingViewDetail.swift */,
 			);
 			path = Work;
-			sourceTree = "<group>";
-		};
-		D16DDBF72AA8644B0009C29F /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				D16DDBF12AA863B10009C29F /* OrderedHistoryView.swift */,
-			);
-			path = Order;
 			sourceTree = "<group>";
 		};
 		D16DDBF82AA864620009C29F /* ViewModel */ = {
@@ -340,7 +326,6 @@
 			files = (
 				D16DDBE32AA8628C0009C29F /* Preview Assets.xcassets in Resources */,
 				D16DDBE02AA8628C0009C29F /* Assets.xcassets in Resources */,
-				D18807F12AB183AB006DBD2E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +351,6 @@
 				D13CF9342AAFF64800965F5E /* RTRFoodListView.swift in Sources */,
 				D16DDBF02AA8639D0009C29F /* WorkingViewDetail.swift in Sources */,
 				D13CF91E2AAFF54600965F5E /* ManagingMenu.swift in Sources */,
-				D16DDBF22AA863B10009C29F /* OrderedHistoryView.swift in Sources */,
 				D13CF9192AAFF4B000965F5E /* Extension +.swift in Sources */,
 				D13CF9372AAFF64800965F5E /* FullScreenImageView.swift in Sources */,
 				D13CF9532AAFF91900965F5E /* FireBaseManager.swift in Sources */,

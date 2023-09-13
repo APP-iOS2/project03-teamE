@@ -312,3 +312,100 @@ let restaurant15 = Restaurant(
     longitude: 129.22
 )
 
+let restaurant16 =
+Restaurant(
+    id: "ceoId16",
+    password: "1234",
+    restaurantInfo: RestaurantInfo(phoneNumber: 01012341234, name: "네네치킨", timeTable: "16:00~ 24:00", introduce: "네네 치킨입니다."),
+    name: "네네치킨 광화문점",
+    reviews: [
+    Review(writer: "이영지", score: 4.0, image: "chicken", contents: "인생 치킨 만수무강하세요 사장님"),
+    Review(writer: "김민지", score: 5.0, image: "soju", contents: "지친 인생에서,,,\n 최고의 맛이었어요 ㅠㅠ")
+],
+    deliveryFee: 3000,
+    minimumPrice: 18000,
+    menus: [
+        Restaurant.Food(name: "후라이드(뼈)", price: 18000, isRecommend: true, foodCategory: "오리지널 치킨", description: "멋쟁이 김치찌개 인기메뉴", image: "chicken"),
+        Restaurant.Food(name: "핫후라이드(뼈)", price: 19000, isRecommend: true, foodCategory: "오리지널 치킨", description: "멋쟁이 김치찌개 인기메뉴", image: "hotchicken"),
+        Restaurant.Food(name: "치킨무", price: 2000, isRecommend: false, foodCategory: "사이드", description: "느끼할 때 먹는",image: "chickenmoo"),
+        Restaurant.Food(name: "웨지감자", price: 8000, isRecommend: false, foodCategory: "사이드", description: "완전 인기메뉴",image: "potato"),
+        Restaurant.Food(name: "생맥주", price: 5000, isRecommend: false, foodCategory: "음료", description: "완전 시원해요",image: "maekzoo"),
+        Restaurant.Food(name: "소주", price: 6000, isRecommend: false, foodCategory: "음료", description: "완전 시원해요",image: "soju"),
+        Restaurant.Food(name: "콜라", price: 2000, isRecommend: false, foodCategory: "음료", description: "완전 시원해요",image: "cola"),
+       ],
+    mainImage: ["nene"],
+    foodType: [.chicken],
+    foodCategory: ["오리지널 치킨","사이드","음료"],
+    latitude: 32.44, longitude: 55.22)
+
+
+let restaurant17 = Restaurant(
+    id: "ceoId17",
+    password: "1234",
+    restaurantInfo: RestaurantInfo(phoneNumber: 01012341235, name: "스윗한 핫도그", timeTable: "11:00~21:00", introduce: "핫도그 드세요"),
+    name: "스윗한 핫도그",
+    reviews: [
+        Review(writer: "유하은", score: 2.0, contents: "다른 지점에 비해 별로예요"),
+        Review(writer: "함지수", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")
+    ],
+    deliveryFee: 3000,
+    minimumPrice: 16000,
+    menus: [
+        Restaurant.Food(name: "감자핫도그", price: 3500, isRecommend: true, foodCategory: "핫도그", description: "감자맛", image: "potatohotdog"),
+        Restaurant.Food(name: "통못자핫도그", price: 4000, isRecommend: false, foodCategory: "핫도그", description: "통못자 맛", image: "tongmotzahotdog"),
+        Restaurant.Food(name: "핫도그 3개 세트", price: 13000, isRecommend: true, foodCategory: "핫도그", description: "통못자 맛", image: "triplehotdog"),
+        Restaurant.Food(name: "콜라", price: 2000, isRecommend: false, foodCategory: "음료", description: "완전 시원해요",image: "cola"),
+    ],
+    mainImage: ["hotdog"],
+    foodType: [.koreanSnack],
+    foodCategory: ["핫도그", "음료"],
+    latitude: 34.44,
+    longitude: 129.22)
+
+let restaurant18 =
+Restaurant(
+    id: "ceoId18",
+    password: "1234",
+    restaurantInfo: RestaurantInfo(phoneNumber: 01012341234, name: "네네치킨", timeTable: "16:00~ 24:00", introduce: "네네 치킨입니다."),
+    name: "네네치킨 광화문점",
+    reviews: [
+    Review(writer: "이영지", score: 4.0, image: "chicken", contents: "인생 치킨 만수무강하세요 사장님"),
+    Review(writer: "김민지", score: 5.0, image: "soju", contents: "지친 인생에서,,,\n 최고의 맛이었어요 ㅠㅠ")
+],
+    deliveryFee: 3000,
+    minimumPrice: 18000,
+    menus: [
+        Restaurant.Food(name: "후라이드(뼈)", price: 18000, isRecommend: true, foodCategory: "오리지널 치킨", description: "멋쟁이 김치찌개 인기메뉴", image: "chicken"),
+        Restaurant.Food(name: "핫후라이드(뼈)", price: 19000, isRecommend: true, foodCategory: "오리지널 치킨", description: "멋쟁이 김치찌개 인기메뉴", image: "hotchicken"),
+        Restaurant.Food(name: "치킨무", price: 2000, isRecommend: false, foodCategory: "사이드", description: "느끼할 때 먹는",image: "chickenmoo"),
+        Restaurant.Food(name: "웨지감자", price: 8000, isRecommend: false, foodCategory: "사이드", description: "완전 인기메뉴",image: "potato"),
+        Restaurant.Food(name: "생맥주", price: 5000, isRecommend: false, foodCategory: "음료", description: "완전 시원해요",image: "maekzoo"),
+        Restaurant.Food(name: "소주", price: 6000, isRecommend: false, foodCategory: "음료", description: "완전 시원해요",image: "soju"),
+        Restaurant.Food(name: "콜라", price: 2000, isRecommend: false, foodCategory: "음료", description: "완전 시원해요",image: "cola"),
+       ],
+    mainImage: ["nene"],
+    foodType: [.chicken],
+    foodCategory: ["오리지널 치킨","사이드","음료"],
+    latitude: 32.44, longitude: 55.22)
+
+let restaurant19 = Restaurant(
+    id: "ceoId19",
+    password: "1234",
+    restaurantInfo: RestaurantInfo(phoneNumber: 01012341239, name: "디저트 카페", timeTable: "11:00~21:00", introduce: "다양한 디저트와 커피를 즐기세요."),
+    name: "메가 기가 커피",
+    reviews: [
+        Review(writer: "유하은", score: 4.0, contents: "디저트가 맛있어요"),
+        Review(writer: "함지수", score: 5.0, contents: "아늑한 분위기와 맛있는 커피")
+    ],
+    deliveryFee: 4000,
+    minimumPrice: 8000,
+    menus: [
+        Restaurant.Food(name: "초콜릿 케이크", price: 7000, isRecommend: true, foodCategory: "디저트", description: "달콤한 초콜릿 케이크"),
+        Restaurant.Food(name: "아메리카노", price: 4000, isRecommend: false, foodCategory: "음료", description: "부드러운 아메리카노")
+    ],
+    mainImage: ["megacoffee"],
+    foodType: [.dessert],
+    foodCategory: ["디저트", "음료"],
+    latitude: 34.44,
+    longitude: 129.22
+)

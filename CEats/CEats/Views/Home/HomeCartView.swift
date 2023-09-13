@@ -14,7 +14,7 @@ struct HomeCartView: View {
     var body: some View {
         VStack {
             NavigationLink {
-                CartView(isOpenMapSheet: $isOpenMapSheet)
+                CartView(isOpenMapSheet: $isOpenMapSheet, tabIndex: .constant(2))
             } label: {
                 VStack {
                     HStack {

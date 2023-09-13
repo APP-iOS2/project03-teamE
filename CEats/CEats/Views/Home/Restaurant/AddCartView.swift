@@ -197,7 +197,7 @@ struct AddCartView: View {
                         .background(Color.blue)
                 }
             } else {
-                Text("오늘 오후 12:00 오픈")
+                Text("지금은 준비 중이예요")
                     .font(.title3)
                     .bold()
                     .foregroundColor(.white)

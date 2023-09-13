@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var columnVisibility = NavigationSplitViewVisibility.doubleColumn
+    @State private var columnVisibility = NavigationSplitViewVisibility.all
     @StateObject var restaurantViewModel: RestaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel: UserViewModel = UserViewModel()
     
@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             ReviewHome()
         } detail: {
-            
+            Text(" select Restaurants")
         }
         .navigationSplitViewStyle(.balanced)
         .environmentObject(RestaurantViewModel())
