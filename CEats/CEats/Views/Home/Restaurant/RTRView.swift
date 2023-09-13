@@ -20,6 +20,7 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
 
 struct RTRView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var userViewModel: UserViewModel
     
     @State private var isOpenCartSheet: Bool = false
@@ -43,7 +44,8 @@ struct RTRView: View {
                 ScrollView(showsIndicators: false) {
                     GeometryReader { geo in
                         let offset = geo.frame(in: .global).minY
-                        let colorY = geo.frame(in: .global).origin.y > 0 ? 1 : (95 + geo.frame(in: .global).minY) / 100
+                        let btnColor = geo.frame(in: .global).origin.y > 0 ? 1 : (95 + geo.frame(in: .global).minY) / 100
+                        let colorY = colorScheme == .dark ? -btnColor : btnColor
                         NavigationLink(destination: FullScreenImageView(imageName: restaurant.mainImage)) {
                             RTRTitleImageView(imageNamss: restaurant.mainImage)
                                 .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
@@ -52,11 +54,13 @@ struct RTRView: View {
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 navigationBackButton
+                                    .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 HStack {
                                     ShareLink(item: "") {
                                         Image(systemName: "square.and.arrow.up")
+                                            .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
                                     }
                                     .padding(.trailing, 10)
                                     Button {
@@ -64,6 +68,7 @@ struct RTRView: View {
                                         userViewModel.updateFavoriteRTR(user: userViewModel.user)
                                     } label: {
                                         Image(systemName: userViewModel.user.favoriteRestaurant.contains(where: { $0.id == restaurant.id }) ? "heart.fill" : "heart")
+                                            .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
                                     }
                                 }
                             }
@@ -126,7 +131,6 @@ struct RTRView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-
     }
 }
 

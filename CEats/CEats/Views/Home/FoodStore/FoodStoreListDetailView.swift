@@ -32,19 +32,18 @@ struct FoodStoreListDetailView: View {
                                     .background(
                                         Circle()
                                             .stroke(lineWidth: 3)
-                                            .foregroundColor(selectedFoodType == food ? .blue : .clear)
+                                            .foregroundColor(selectedFoodType == food ? .cEatsBlue : .clear)
                                     )
                                 Text("\(food.rawValue)")
                                     .font(.system(size: 16, weight: selectedFoodType == food ? .bold : .regular))
-                                    .foregroundColor(selectedFoodType == food ? .blue : .black)
-                                
+                                    .foregroundColor(selectedFoodType == food ? .cEatsBlue : .primary)
                             }
                         }
                         .id(food)
                         .overlay {
                             RoundedRectangle(cornerRadius: 5)
                                 .frame(width: 80, height: 4)
-                                .foregroundColor(selectedFoodType == food ? .blue : .clear)
+                                .foregroundColor(selectedFoodType == food ? .cEatsBlue : .clear)
                                 .offset(y: .screenWidth * 0.16 )
                         }
                     }
@@ -52,7 +51,7 @@ struct FoodStoreListDetailView: View {
                 .frame(height: 120)
                 .padding()
             }
-            .background(.white)
+            .background(.background)
             .onAppear {
                 withAnimation {
                     proxy.scrollTo(selectedFoodType, anchor: .center)

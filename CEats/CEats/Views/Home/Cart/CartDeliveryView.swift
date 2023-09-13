@@ -103,9 +103,11 @@ struct CartDeliveryView: View {
         Button {
             dismiss()
         } label: {
-            Image(systemName: "xmark")
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(Color.black)
+//            Image(systemName: "xmark")
+            Image(systemName: "arrow.left")
+                .bold()
+//                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(.foreground)
         }
     }
     func disableAllBtn(deliveryButtonArray: [DeliveryTypeButton]) {

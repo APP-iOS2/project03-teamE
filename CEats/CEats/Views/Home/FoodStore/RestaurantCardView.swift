@@ -58,6 +58,7 @@ struct RestaurantCardView: View {
                                 Text("\(store.name)")
                                     .bold()
                                     .padding(.bottom,0.1)
+                                    .foregroundColor(.primary)
                                 Spacer()
                                 Text("35~45 분") //배달시간 프로퍼티가 업서요~ 필요할거 같아요 이게 오더에 있어요.
                                     .foregroundColor(.gray)

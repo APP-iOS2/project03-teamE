@@ -27,7 +27,7 @@ struct HomeView: View {
                     FoodTypeGridView()
                     SliderView()
                     RecommendedRestaurantsView()
-                        .offset(y: -40)
+//                        .offset(y: -40)
                 }
                 if userViewModel.user.foodCart != nil {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)

@@ -24,7 +24,7 @@ struct SearchViewImage: View {
                             .padding(.top,10)
                         Text("\(content.rawValue)")
                             .font(.system(size:15))
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .offset(y:0)
                     }
                 }

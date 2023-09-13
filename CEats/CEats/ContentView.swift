@@ -11,9 +11,11 @@ struct ContentView: View {
     @State private var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()
+    @Environment(\.colorScheme) private var colorScheme
     
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().backgroundColor = .systemBackground
+        UITabBar.appearance().tintColor = .systemGroupedBackground
         UITabBar.appearance().backgroundImage = UIImage()
     }
     
@@ -56,6 +58,10 @@ struct ContentView: View {
         .onAppear {
             userViewModel.login()
             restaurantViewModel.fetchAllRestaurant()
+        }
+        .onChange(of: colorScheme) { newValue in
+            UITabBar.appearance().backgroundColor = colorScheme == .dark ? .black : .white
+            UITabBar.appearance().tintColor = colorScheme == .dark ? .white : .black
         }
     }
 }

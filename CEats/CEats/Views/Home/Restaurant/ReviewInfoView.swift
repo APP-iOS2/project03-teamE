@@ -57,7 +57,7 @@ struct ReviewInfoView: View {
                                 Text("\(currentSortOption.rawValue)")
                                 Image(systemName: "chevron.down")
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                         }
                     }
                     .padding(.top, 10)

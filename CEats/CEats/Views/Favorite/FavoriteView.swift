@@ -65,7 +65,7 @@ struct FavoriteView: View {
                                     .frame(width: 180 * progress, height: 50)
                                     .animation(.linear(duration: 0.3), value: isAnimating)
                                 Text("쿠팡이츠 맛집 구경가기")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                     .frame(width: 180, height: 50)
                             }
                         }
@@ -105,7 +105,7 @@ struct FavoriteView: View {
                                                                 .font(.system(size: 12))
                                                                 .padding([.all], 5)
                                                                 .background(Color.red)
-                                                                .foregroundColor(.white)
+                                                                .foregroundStyle(.background)
                                                                 .cornerRadius(5)
                                                             
                                                         }
@@ -136,7 +136,7 @@ struct FavoriteView: View {
                                         Divider()
                                             .padding(.bottom,20)
                                     }
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                 }
                             }
                         }
