@@ -20,7 +20,7 @@ struct RTRFoodListView: View {
                 Text("메뉴 사진은 연출된 이미지로 실제 조리된 음식과 다를 수 있습니다.")
                     .font(.footnote)
                     .foregroundColor(.secondary)
-                ForEach(restaurant.menus, id: \.name) { food in
+                ForEach(restaurant.menus.filter { $0.foodCategory == category }, id: \.name) { food in
                     NavigationLink {
                         AddCartView(restaurant: restaurant, food: food)
                     } label: {
