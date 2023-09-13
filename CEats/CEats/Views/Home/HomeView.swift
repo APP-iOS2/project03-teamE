@@ -44,6 +44,7 @@ struct HomeView: View {
             userViewModel.fetchUser {
                 print("온어피어적용됨~")
             }
+            
         }
         .fullScreenCover(isPresented: $isOpenMapSheet) {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
