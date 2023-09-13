@@ -17,6 +17,12 @@ struct RecommendRestaurantView: View {
                 .frame(width: 300, height: 180)
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(10)
+                .overlay {
+                    if !restaurant.isOpen {
+                        Color.black
+                            .opacity(0.5)
+                    }
+                }
             
             Text(restaurant.name)
                 .padding(.top,10)
