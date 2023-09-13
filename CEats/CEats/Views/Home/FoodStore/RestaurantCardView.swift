@@ -19,7 +19,7 @@ struct RestaurantCardView: View {
         NavigationStack {
             // FoodType으로 먼저 분류 -> 분류된 목록에서 ForEach로 반복
             ForEach(restaurantsStore.filterFoodTypes(selectedFoodType)){ store in
-                NavigationLink {
+                NavigationLink { //
                     RTRView(restaurant: store)
                 } label: {
                     VStack {
