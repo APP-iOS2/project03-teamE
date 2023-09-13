@@ -35,6 +35,11 @@ struct HomeView: View {
             }
             .padding(.top, 1)
         }
+        .refreshable {
+            userViewModel.fetchUser {
+                print("리프레셔블 적용됨~")
+            }
+        }
         .onAppear{
             userViewModel.fetchUser {
                 print("온어피어적용됨~")

@@ -77,6 +77,14 @@ final class UserViewModel: ObservableObject {
             fireManager.create(data: user)
         }
     }
+//    func updateFavoriteRTR(isFavorite: [Restaurant]) {
+//        fireManager.update(data: user, value: \.favoriteRestaurant, to: isFavorite) { _ in
+//        }
+//    }
+    
+    func updateFavoriteRTR(user: User) {
+        fireManager.create(data: user)
+    }
     
     func orderHistoryHasWaiting() {
         let waitings = user.orderHistory.filter { $0.orderStatus == .waiting }
