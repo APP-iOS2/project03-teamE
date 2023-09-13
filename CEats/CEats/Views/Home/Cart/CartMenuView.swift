@@ -29,7 +29,6 @@ struct CartMenuView: View {
                                 Text(food.description)
                                     .font(.caption)
                                     .foregroundColor(.gray)
-                                
                                 Text("\(food.price * food.foodCount)원")
                                     .bold()
                             }
@@ -39,17 +38,14 @@ struct CartMenuView: View {
                                     .fill(Color(colorSet))
                                     .frame(width: 100, height: 30)
                                 HStack {
-                                    
                                     if food.foodCount == 1 {
                                         Button {
-                                            print("alert")
                                             showingAlert = true
-                                            
                                         } label: {
                                             Image(systemName: "trash.fill")
                                         }
                                         .alert("선택하신 메뉴를 삭제하시겠습니까?", isPresented: $showingAlert) {
-                                            Button("뒤로가기") {
+                                            Button("취소") {
                                                 showingAlert = false
                                             }
                                             Button {
@@ -65,15 +61,12 @@ struct CartMenuView: View {
                                             Image(systemName: "minus.circle.fill")
                                         }.disabled(food.foodCount == 0)
                                     }
-                                    
                                     Text("\(food.foodCount)")
-                                    
                                     Button {
                                         userViewModel.addCount(food: food)
                                     } label: {
                                         Image(systemName: "plus.circle.fill")
                                     }
-                                    
                                 }
                                 .padding()
                             }
