@@ -414,8 +414,30 @@ final class CEatsFBManager {
 //            }
 //        }
 //    }
-    
-    func updateValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (T) -> Void) where T: Codable, U: CEatsIdentifiable {
+    func updateValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (T) -> Void) where T: Codable {
+        let collectionRef: CollectionReference = db.collection("\(type(of: data))")
+        
+        read(type: T.self, id: data.id) { result in
+            DispatchQueue.global().async {
+                do {
+                    var updateData = result
+                    updateData[keyPath: keyPath] = to
+                    try collectionRef.document(data.id).setData(from: updateData) { error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            completion(updateData)
+                        }
+                    }
+                } catch {
+                    print(#function + ": fail to .setData()")
+                }
+            }
+        }
+    }
+    func updateValueForArray<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (T) -> Void) where T: Codable, U: CEatsIdentifiable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
         read(type: T.self, id: data.id) { result in

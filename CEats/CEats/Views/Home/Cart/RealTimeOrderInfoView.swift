@@ -26,11 +26,15 @@ struct RealTimeOrderInfoView: View {
     
     var body: some View {
         VStack {
-            Button {
-                isOpenOrderedSheet = false
-                completion()
-            } label: {
-                Text("확인")
+            HStack {
+                Spacer()
+                Button {
+                    isOpenOrderedSheet = false
+                    completion()
+                } label: {
+                    Text("확인")
+                        .padding()
+                }
             }
             Map(coordinateRegion: $region, userTrackingMode: .constant(.follow), annotationItems: markers) { location in
                 MapAnnotation(coordinate: location.coordinate) {
