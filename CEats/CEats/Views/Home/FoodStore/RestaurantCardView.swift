@@ -19,12 +19,14 @@ struct RestaurantCardView: View {
         NavigationStack {
             // FoodType으로 먼저 분류 -> 분류된 목록에서 ForEach로 반복
             ForEach(restaurantsStore.filterFoodTypes(selectedFoodType)){ store in
-                NavigationLink {
+                NavigationLink { //
                     RTRView(restaurant: store)
                 } label: {
                     VStack {
                         ZStack {
-                            AsyncImage(url: URL(string: "https://www.jungle.co.kr/image/90e4ffc149968a50c80cac37"))
+                            Image(store.mainImage.first ?? "restaurant3")
+                                .resizable()
+                                .scaledToFill()
                                 .frame(width: .screenWidth * 0.92, height: .screenHeight * 0.23)
                                 .cornerRadius(10)
                             
