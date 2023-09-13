@@ -45,6 +45,7 @@
 		BED6DADB2AA6F58A00EB8F0B /* RTRDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6DADA2AA6F58A00EB8F0B /* RTRDetailInfoView.swift */; };
 		BED6DADD2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */; };
 		C99358EF2AA8BA9F00D631B8 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */; };
+		C9DAAA452AB1A67D00C3EB6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9DAAA442AB1A67D00C3EB6E /* GoogleService-Info.plist */; };
 		D14F18482AA802E6008665F4 /* SearchViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14F18472AA802E6008665F4 /* SearchViewImage.swift */; };
 		D16010502AAEE5430093E1D2 /* MyPageRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160104F2AAEE5430093E1D2 /* MyPageRestaurantView.swift */; };
 		D16010582AAEEB510093E1D2 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16010572AAEEB510093E1D2 /* FullScreenImageView.swift */; };
@@ -82,7 +83,6 @@
 		D179852B2AACC57B000ABA97 /* FoodTypeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179852A2AACC57B000ABA97 /* FoodTypeGridView.swift */; };
 		D179852D2AACC598000ABA97 /* RecommendedRestaurantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179852C2AACC598000ABA97 /* RecommendedRestaurantsView.swift */; };
 		D179852F2AACC5DE000ABA97 /* HomeCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179852E2AACC5DE000ABA97 /* HomeCartView.swift */; };
-		D18807F92AB19B15006DBD2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D18807F82AB19B15006DBD2E /* GoogleService-Info.plist */; };
 		D18E9B222AA5A14C009231E4 /* CEatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B212AA5A14C009231E4 /* CEatsApp.swift */; };
 		D18E9B242AA5A14C009231E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18E9B232AA5A14C009231E4 /* ContentView.swift */; };
 		D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D18E9B252AA5A14E009231E4 /* Assets.xcassets */; };
@@ -147,6 +147,7 @@
 		BED6DADA2AA6F58A00EB8F0B /* RTRDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRDetailInfoView.swift; sourceTree = "<group>"; };
 		BED6DADC2AA6FD8E00EB8F0B /* RTRDetailInfoMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTRDetailInfoMenuView.swift; sourceTree = "<group>"; };
 		C99358EE2AA8BA9F00D631B8 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
+		C9DAAA442AB1A67D00C3EB6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D14F18472AA802E6008665F4 /* SearchViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewImage.swift; sourceTree = "<group>"; };
 		D160104F2AAEE5430093E1D2 /* MyPageRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRestaurantView.swift; sourceTree = "<group>"; };
 		D16010572AAEEB510093E1D2 /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		D179852A2AACC57B000ABA97 /* FoodTypeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTypeGridView.swift; sourceTree = "<group>"; };
 		D179852C2AACC598000ABA97 /* RecommendedRestaurantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedRestaurantsView.swift; sourceTree = "<group>"; };
 		D179852E2AACC5DE000ABA97 /* HomeCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCartView.swift; sourceTree = "<group>"; };
-		D18807F82AB19B15006DBD2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D18E9B1E2AA5A14C009231E4 /* CEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D18E9B212AA5A14C009231E4 /* CEatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CEatsApp.swift; sourceTree = "<group>"; };
 		D18E9B232AA5A14C009231E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 		C9EE24F12AAECB700061EF95 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				D18807F82AB19B15006DBD2E /* GoogleService-Info.plist */,
+				C9DAAA442AB1A67D00C3EB6E /* GoogleService-Info.plist */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -559,7 +559,7 @@
 			files = (
 				D18E9B2A2AA5A14E009231E4 /* Preview Assets.xcassets in Resources */,
 				D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */,
-				D18807F92AB19B15006DBD2E /* GoogleService-Info.plist in Resources */,
+				C9DAAA452AB1A67D00C3EB6E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
