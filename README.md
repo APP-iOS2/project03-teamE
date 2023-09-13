@@ -26,7 +26,7 @@
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |[@Time5607](https://github.com/Time5607)|[@gnksbm](https://github.com/gnksbm)|[@boogios](https://github.com/boogios)|[@Bongjooheon](https://github.com/Bongjooheon)|[@yuhaeun-la](https://github.com/yuhaeun-la)|[@jangyeohoon](https://github.com/jangyeohoon)|[@isakatty](https://github.com/isakatty)|
 
-## 코딩 컨벤션
+## Git 컨벤션
 ```
 - [Feat] 새로운 기능 구현
 - [Add] Feat 이외의 부수적인 코드 추가, 라이브러리 추가, 애셋(사진, 컬러) 추가
