@@ -7,18 +7,25 @@
 
 import SwiftUI
 
+class TabViewModel: ObservableObject {
+    @Published var tabIndex = 0
+}
+
 struct ContentView: View {
     @State private var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
+    @StateObject var tabViewModel = TabViewModel()
     @StateObject var userViewModel = UserViewModel()
+    @Environment(\.colorScheme) private var colorScheme
     
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().backgroundColor = .systemBackground
+        UITabBar.appearance().tintColor = .systemGroupedBackground
         UITabBar.appearance().backgroundImage = UIImage()
     }
     
     var body: some View {
-        TabView(selection: $tabIndex) {
+        TabView(selection: $tabViewModel.tabIndex) {
             HomeView()
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -52,10 +59,15 @@ struct ContentView: View {
         }
         .environmentObject(restaurantViewModel)
         .environmentObject(userViewModel)
+        .environmentObject(tabViewModel)
         .navigationBarBackButtonHidden()
         .onAppear {
             userViewModel.login()
             restaurantViewModel.fetchAllRestaurant()
+        }
+        .onChange(of: colorScheme) { newValue in
+            UITabBar.appearance().backgroundColor = colorScheme == .dark ? .black : .white
+            UITabBar.appearance().tintColor = colorScheme == .dark ? .white : .black
         }
     }
 }

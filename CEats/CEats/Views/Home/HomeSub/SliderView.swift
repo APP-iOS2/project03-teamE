@@ -11,23 +11,35 @@ struct SliderView: View {
     public let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var selection = 0
     
-    let images = ["advertisement","advertisement2"]
+    private let images = ["advertisement" ,"advertisement2" ,"advertisement3"]
+    @State private var selected = "advertisement"
     var body: some View {
-        TabView(selection: $selection) {
-            ForEach(0..<2) { i in
-                Image("\(images[i])")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
-            .tabViewStyle(PageTabViewStyle())
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+        Image("\(selected)")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
             .onReceive(timer, perform:  { _ in
+                print(selected)
                 withAnimation {
                     selection = selection < 2 ? selection + 1 : 0
+                    selected = images[selection]
                 }
             })
-        }
-        .frame(width: .screenWidth, height: .screenHeight * 0.2)
+            .frame(width: .screenWidth, height: .screenHeight * 0.2)
+//        TabView(selection: $selection) {
+//            ForEach(0..<2) { i in
+//                Image("\(images[i])")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//            }
+//            .tabViewStyle(PageTabViewStyle())
+//            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+//            .onReceive(timer, perform:  { _ in
+//                withAnimation {
+//                    selection = selection < 2 ? selection + 1 : 0
+//                }
+//            })
+//        }
+//        .frame(width: .screenWidth, height: .screenHeight * 0.2)
     }
 }
 

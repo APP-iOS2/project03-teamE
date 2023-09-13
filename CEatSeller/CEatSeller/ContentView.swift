@@ -71,9 +71,16 @@ struct NewOrderView: View {
                         .foregroundColor(.gray)
                 }
                 .padding(.top, 30)
-                
+                if sellerviewModel.newOrder?.rtrRequest != nil {
+                    HStack(alignment: .center) {
+                        Text("\(sellerviewModel.newOrder!.rtrRequest!)")
+                            .padding(15)
+                        Spacer()
+                    }
+                    .background(Color.pink)
+                }
                 HStack(alignment: .center) {
-                    Text("새우 뺴주세요!")
+                    Text("\(sellerviewModel.newOrder?.deliveryRequest ?? "")")
                         .padding(15)
                     Spacer()
                 }

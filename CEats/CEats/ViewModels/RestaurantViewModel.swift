@@ -26,12 +26,17 @@ final class RestaurantViewModel: ObservableObject {
         }
     }
     
-    func updateRestaurant(data: Restaurant){
+    func updateRestaurant(data: Restaurant) {
         for i in 0..<restaurants.count {
             fireManager.create(data: restaurants[i])
         }
     }
     
+    func isOpen(restaurant: Restaurant?) -> Bool {
+        guard let restaurant else { return false }
+        guard let index = restaurants.firstIndex(where: { $0.id == restaurant.id}) else { return false }
+        return restaurants[index].isOpen
+    }
     func appendMenu(restaurant: Restaurant, to: Restaurant.Food) {
         var newRest = restaurant
         newRest.menus.append(to)

@@ -42,7 +42,7 @@ struct MapHomeView: View {
                     Label("현재 위치로 주소찾기", systemImage: "location.north")
                         .frame(width: .screenWidth * 0.8, height: 60)
                         .background(.clear)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .border(Color.gray, width: 1.5)
                         .cornerRadius(3)
                 }
@@ -63,7 +63,7 @@ struct MapHomeView: View {
         } label: {
             Image(systemName: "xmark")
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(Color.black)
+                .foregroundColor(.primary)
         }
     }
 }

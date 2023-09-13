@@ -13,10 +13,14 @@ final class UserViewModel: ObservableObject {
     @Published var user: User = User.sampleData
     @Published var selectedButton: OrderState = .과거주문내역
     @Published var deliveryOpt: DeliveryKind = .onlyOne
+    @Published var newOrderID: String = ""
+    @Published var rtrReq: String = ""
+    @Published var isCheckmark: Bool = false
+    @Published var deliReq: DeliveryRequest = .direct
     let fireManager = CEatsFBManager.shared
     private var orderListener: ListenerRegistration?
     let currentDate = Date()
-    @Published var newOrderID: String = ""
+    
     var statusMessage: String {
         guard let index = user.orderHistory.firstIndex(where: { $0.id == newOrderID }) else { return "Error" }
         return user.orderHistory[index].orderStatus.message
@@ -117,8 +121,21 @@ final class UserViewModel: ObservableObject {
             print(#function + ": fail to optional bind - restaurant")
             return
         }
+        var rtrReqMsg: String? = nil
+        if isCheckmark {
+            rtrReqMsg = "수저/포크 요청"
+            if rtrReq != "" {
+                rtrReqMsg! += "\n" + rtrReq
+                rtrReq = ""
+            }
+        } else {
+            if rtrReq != "" {
+                rtrReqMsg = rtrReq
+                rtrReq = ""
+            }
+        }
         
-        let newOrder = Order(id: "\(user.username).\(user.orderHistory.count)", orderer: user.username, restaurant: restaurant, orderedMenu: menus)
+        let newOrder = Order(id: "\(user.username).\(user.orderHistory.count)", orderer: user.username, restaurant: restaurant, orderedMenu: menus, rtrRequest: rtrReqMsg, deliveryRequest: deliReq.toString)
         fireManager.read(type: Seller.self, id: restaurant.id) { seller in
             self.fireManager.appendValue(data: seller, value: \.orders, to: newOrder) {
                 self.fireManager.appendValueResult(data: self.user, value: \.orderHistory, to: newOrder) { success in
@@ -210,6 +227,23 @@ final class UserViewModel: ObservableObject {
 }
 
 extension UserViewModel {
+    enum DeliveryRequest: CaseIterable, Identifiable {
+        case door, direct, call
+        
+        var id: Self { self }
+        
+        var toString: String {
+            switch self {
+            case .door:
+                return "문 앞에 두고 사진을 보내주세요"
+            case .direct:
+                return "직접 받을게요"
+            case .call:
+                return "도착하면 전화 주세요"
+            }
+        }
+    }
+    
     enum OrderState: String, CaseIterable {
         case 과거주문내역
         case 준비중

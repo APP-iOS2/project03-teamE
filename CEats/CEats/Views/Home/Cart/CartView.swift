@@ -11,7 +11,8 @@ struct CartView: View {
     // MARK: - Properties
     @Binding var isOpenMapSheet: Bool
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject var tabViewModel: TabViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @State private var showingAlert: Bool = false
     @State private var isOpenOrderedSheet: Bool = false
     @Binding var tabIndex: Int
@@ -92,6 +93,10 @@ struct CartView: View {
                 RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet, completion: { dismiss() })
             }
         }
+        .onChange(of: tabViewModel.tabIndex) { _ in
+            print("tab Change")
+            dismiss()
+        }
     }
 }
 
@@ -101,6 +106,7 @@ struct CartView_Previews: PreviewProvider {
             CartView(isOpenMapSheet: .constant(false), tabIndex: .constant(2))
                 .environmentObject(UserViewModel())
                 .environmentObject(RestaurantViewModel())
+                .environmentObject(TabViewModel())
         }
     }
 }
