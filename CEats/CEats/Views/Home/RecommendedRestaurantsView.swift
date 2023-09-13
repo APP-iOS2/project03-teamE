@@ -22,9 +22,8 @@ struct RecommendedRestaurantsView: View {
                         } else {
                             ZStack {
                                 RecommendRestaurantView(restaurant: restaurant)
-                                    .opacity(0.8)
-                                
-                                Text("오늘 오후 12:00 오픈")
+                                   
+                                Text("영업 준비중")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(.white)
                                     .padding(.bottom, 50)
