@@ -10,6 +10,7 @@ import SwiftUI
 struct CartPayButtonView: View {
     // MARK: - Properties
     @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
 
     @Binding var showingAlert: Bool
     // MARK: - View
@@ -46,12 +47,18 @@ struct CartPayButtonView: View {
         .frame(maxWidth: .infinity)
         .padding()
         .background(
-            userViewModel.user.cEatsMoney < userViewModel.cartFee + userViewModel.deliveryOpt.fee ? .gray : .blue)
-        .background(
-            !(userViewModel.user.foodCart?.restaurant.isOpen ?? false) ? .gray : .blue
-        )
-        .disabled(userViewModel.user.cEatsMoney < userViewModel.cartFee + userViewModel.deliveryOpt.fee)
-        .disabled(!(userViewModel.user.foodCart?.restaurant.isOpen ?? false))
+            userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
+            restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant) ? .blue : .gray)
+//        .background(
+//            restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant) ? .gray : .blue
+//        )
+        .disabled(!(userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
+                  restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant)))
+//        .disabled(!restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant))
+        .onAppear {
+            print(userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
+                  restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant))
+        }
     }
 }
 
