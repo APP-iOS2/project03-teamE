@@ -14,10 +14,9 @@ final class SellerViewModel: ObservableObject {
     @AppStorage("sellerID") var sellerID = "ceoId"
     @Published var isOpen = false {
         didSet {
-            self.fireManager.updateValue(data: self.seller.restaurant, value: \.isOpen, to: self.seller.restaurant.isOpen) { result in
-                self.seller.restaurant.isOpen = result.isOpen
-            }
+            self.seller.restaurant.isOpen = isOpen
             fireManager.create(data: seller) {
+                self.fireManager.create(data: self.seller.restaurant)
                 if self.isOpen {
                     self.startBusiness()
                 } else {
