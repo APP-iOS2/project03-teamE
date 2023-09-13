@@ -44,16 +44,19 @@ struct CartMenuView: View {
                                         Button {
                                             print("alert")
                                             showingAlert = true
-                                            userViewModel.removeFood(food: food)
+                                            
                                         } label: {
                                             Image(systemName: "trash.fill")
                                         }
-                                        .alert(isPresented: $showingAlert) {
-                                            Alert(
-                                                title: Text("hi"),
-                                                message: Text("alert"),
-                                                dismissButton: .default(Text("ok"))
-                                            )
+                                        .alert("선택하신 메뉴를 삭제하시겠습니까?", isPresented: $showingAlert) {
+                                            Button("뒤로가기") {
+                                                showingAlert = false
+                                            }
+                                            Button {
+                                                userViewModel.removeFood(food: food)
+                                            } label: {
+                                                Text("삭제")
+                                            }
                                         }
                                     } else {
                                         Button {
