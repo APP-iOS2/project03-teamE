@@ -17,7 +17,7 @@ struct RecommendRestaurantView: View {
                 .frame(width: 300, height: 180)
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(10)
-                
+            
             Text(restaurant.name)
                 .padding(.top,10)
                 .padding(.bottom,2)
@@ -29,8 +29,7 @@ struct RecommendRestaurantView: View {
                 Text("(\(restaurant.reviews.count))")
                 Text("1.5km")
                 Text("-")
-                Text("배달비: 2000") //이거 가게도 가지고 있는 정보여야겠다..
-                
+                Text("배달비: \(restaurant.deliveryFee)")
             }
             .font(.footnote)
             .foregroundColor(.secondary)

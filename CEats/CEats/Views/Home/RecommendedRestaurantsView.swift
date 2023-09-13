@@ -17,7 +17,19 @@ struct RecommendedRestaurantsView: View {
                     NavigationLink {
                         RTRView(restaurant: restaurant)
                     } label: {
-                        RecommendRestaurantView(restaurant: restaurant)
+                        if restaurant.isOpen {
+                            RecommendRestaurantView(restaurant: restaurant)
+                        } else {
+                            ZStack {
+                                RecommendRestaurantView(restaurant: restaurant)
+                                    .opacity(0.8)
+                                
+                                Text("오늘 오후 12:00 오픈")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(.white)
+                                    .padding(.bottom, 50)
+                            }
+                        }
                     }
                 }
             }
