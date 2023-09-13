@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AdvertisementView: View {
     var body: some View {
+        
         Image("advertisement")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .cornerRadius(5)
+        
     }
 }
 

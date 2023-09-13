@@ -12,7 +12,7 @@ struct AddCartView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var numberOfFoods: Int = 1
-    @State var showAlert: Bool = false
+    @State private var showAlert: Bool = false
     
     let restaurant: Restaurant
     let food: Restaurant.Food

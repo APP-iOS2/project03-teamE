@@ -36,8 +36,8 @@ extension Review {
 #if DEBUG
 extension [Review] {
     static let sampleData: Self = [
-        Review(writer: "김멋사", score: 4.0, contents: "맛있긴 함"),
-        Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")
+        Review(writer: "김민지", score: 4.0, image: "soju", contents: "맛있긴 함"),
+        Review(writer: "김민지", score: 5.0, image: "chicken2",contents: "최고의 맛이었어요 ㅠㅠ")
     ]
 
 }

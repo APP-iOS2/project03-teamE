@@ -23,20 +23,18 @@ struct CEatsApp: App {
     @State private var showMainView = false
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ZStack {
-                    if showMainView {
-                        ContentView()
-                    } else {
-                        SplashView()
-                            .onAppear{
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    withAnimation {
-                                        showMainView = true
-                                    }
+            ZStack {
+                if showMainView {
+                    ContentView()
+                } else {
+                    SplashView()
+                        .onAppear{
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                withAnimation {
+                                    showMainView = true
                                 }
                             }
-                    }
+                        }
                 }
             }
         }

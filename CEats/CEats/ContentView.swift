@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var tabIndex: Int = 0
+    @State private var tabIndex: Int = 0
     @StateObject var restaurantViewModel = RestaurantViewModel()
     @StateObject var userViewModel = UserViewModel()
-    @State var orders = [Order]()
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
@@ -43,7 +42,7 @@ struct ContentView: View {
                     Image(systemName: "doc.plaintext")
                     Text("주문내역")
                 }
-                .tag(3) 
+                .tag(3)
             MyView(tabIndex: $tabIndex)
                 .tabItem {
                     Image(systemName: "person")
@@ -55,7 +54,7 @@ struct ContentView: View {
         .environmentObject(userViewModel)
         .navigationBarBackButtonHidden()
         .onAppear {
-            userViewModel.login()
+//            userViewModel.login()
 //            userViewModel.fireManager.create(data: userViewModel.user)
         }
     }

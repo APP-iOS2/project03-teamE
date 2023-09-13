@@ -9,142 +9,49 @@ import SwiftUI
 
 struct CartPayButtonView: View {
     // MARK: - Properties
-    @EnvironmentObject var userViewModel: UserViewModel
-    @Binding var fee: Int
-    @State var showingAlert: Bool = false
-    @State var isOpenOrderedSheet: Bool = false
-    
-    var foodCost: Int {
-        let totalFoodFee = userViewModel.user.foodCart?.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 } ?? 0
-        return totalFoodFee
-    }
-    
-    
-    
+    @EnvironmentObject private var userViewModel: UserViewModel
+
+    @Binding var showingAlert: Bool
     // MARK: - View
     var body: some View {
-        NavigationStack {
-            // CEats 머니가 결제 금액보다 적으면 잠기게 
-            if userViewModel.user.cEatsMoney < foodCost + fee {
-                Button {
-                    showingAlert = false
-                } label: {
-                    HStack {
-                        if userViewModel.user.foodCart?.fee ?? 0 == foodCost + fee {
-                            Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
-                                .font(.system(size: 18, weight: .bold))
-                            Text("결제하기")
-                                .font(.system(size: 18, weight: .bold))
-                        }else if userViewModel.user.foodCart?.fee ?? 0 > foodCost + fee {
-                            ZStack{
-                                Rectangle()
-                                    .frame(width: 65, height: 1)
-                                // 할인 전 금액
-                                Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
-                                    .font(.system(size: 16, weight: .regular))
-                            }
+        Button {
+            showingAlert = true
+        } label: {
+            switch userViewModel.deliveryOpt{
+            case .onlyOne:
+                HStack {
+                    Text("\(userViewModel.cartFee + userViewModel.deliveryOpt.fee)원")
+                        .font(.system(size: 18, weight: .bold))
+                    Text("결제하기")
+                        .font(.system(size: 18, weight: .bold))
+                }
+            case .save:
+                HStack {
+                    ZStack{
+                        Rectangle()
+                            .frame(width: 65, height: 1)
+                        // 할인 전 금액
+                        Text("\(userViewModel.cartFee + userViewModel.deliveryOpt.fee + 1000)원")
+                            .font(.system(size: 16, weight: .regular))
                             .foregroundColor(.lightgray)
-                            
-                            // Total fee 로 !
-                            Text("\(foodCost + fee)원")
-                                .font(.system(size: 18, weight: .bold))
-                            Text("결제하기")
-                                .font(.system(size: 18, weight: .bold))
-                        }
                     }
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.gray)
+                    Text("\(userViewModel.cartFee + userViewModel.deliveryOpt.fee)원")
+                        .font(.system(size: 18, weight: .bold))
+                    Text("결제하기")
+                        .font(.system(size: 18, weight: .bold))
                 }
-                .fullScreenCover(isPresented: $isOpenOrderedSheet, content: {
-                    RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet)
-                })
-                .alert("결제가 됩니다.", isPresented: $showingAlert) {
-                    Button("뒤로가기") {
-                        showingAlert = false
-                        isOpenOrderedSheet = false
-                    }
-                    Button {
-                        isOpenOrderedSheet = true
-                        
-                        // 결제하기 눌렀을때 값 차감
-                        userViewModel.user.cEatsMoney = userViewModel.user.cEatsMoney - (foodCost + fee)
-                        print(userViewModel.user.cEatsMoney)
-                        print(" 111 ")
-                    } label: {
-                        Text("결제하기")
-                    }
-                } message: {
-                    Text("This is alert dialog sample")
-                }
-            } else {
-                Button {
-                    showingAlert = true
-                } label: {
-                    HStack {
-                        if userViewModel.user.foodCart?.fee ?? 0 == foodCost + fee {
-                            Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
-                                .font(.system(size: 18, weight: .bold))
-                            Text("결제하기")
-                                .font(.system(size: 18, weight: .bold))
-                        }else if userViewModel.user.foodCart?.fee ?? 0 > foodCost + fee {
-                            ZStack{
-                                Rectangle()
-                                    .frame(width: 65, height: 1)
-                                // 할인 전 금액
-                                Text("\(userViewModel.user.foodCart?.fee ?? 0)원")
-                                    .font(.system(size: 16, weight: .regular))
-                            }
-                            .foregroundColor(.lightgray)
-                            
-                            // Total fee 로 !
-                            Text("\(foodCost + fee)원")
-                                .font(.system(size: 18, weight: .bold))
-                            Text("결제하기")
-                                .font(.system(size: 18, weight: .bold))
-                        }
-                    }
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(.blue)
-                }
-                .fullScreenCover(isPresented: $isOpenOrderedSheet, content: {
-                    RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet)
-                })
-                .alert("결제 완료", isPresented: $showingAlert) {
-                    Button("취소") {
-                        showingAlert = false
-                        isOpenOrderedSheet = false
-                    }
-                    Button {
-                        isOpenOrderedSheet = true
-                        
-                        // 결제하기 눌렀을때 값 차감
-                        userViewModel.user.cEatsMoney = userViewModel.user.cEatsMoney - (foodCost + fee)
-                        print(userViewModel.user.cEatsMoney)
-                        print(" 111 ")
-                    } label: {
-                        Text("확인")
-                    }
-                } message: {
-                    Text("주문이 성공적으로 완료되었습니다.")
-                }
-                
             }
         }
-        .onTapGesture {
-            userViewModel.newOrder(restaurant: Restaurant.sampleData) { result in
-                print("Update\n \(result)")
-            }
-        }
+        .foregroundStyle(.white)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(userViewModel.user.cEatsMoney < userViewModel.cartFee + userViewModel.deliveryOpt.fee ? .gray : .blue)
     }
 }
 
 struct CartPayButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CartPayButtonView(fee: .constant(1000))
+        CartPayButtonView(showingAlert: .constant(false))
             .environmentObject(UserViewModel())
     }
 }

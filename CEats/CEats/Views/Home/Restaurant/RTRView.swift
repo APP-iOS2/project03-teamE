@@ -7,13 +7,23 @@
 
 import SwiftUI
 
+extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
+
 struct RTRView: View {
+    let restaurant: Restaurant
+    
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userViewModel: UserViewModel
     @State private var selected = ""
-    
-    let restaurant: Restaurant
-    private let offsetY: CGFloat = .screenHeight / 12
     
     var navigationBackButton: some View {
         Button {
@@ -21,26 +31,43 @@ struct RTRView: View {
         } label: {
             Image(systemName: "arrow.left")
         }
-        .foregroundColor(.white)
-        .bold()
     }
     
     var body: some View {
-        /*
-        // TODO: 멋쟁이 김치찌개 cornerRadius : 8정도 // 6적용
-         식사, 사이드, 주류 어제 피드백 바탕으로 변경
-         @Binding 제거 // end
-         AddCartView 연결 // end
-         */
         ScrollViewReader { proxy in
             ScrollView(showsIndicators: false) {
                 GeometryReader { geo in
                     let offset = geo.frame(in: .global).minY
+                    let colorY = geo.frame(in: .global).origin.y > 0 ? 1 : (95 + geo.frame(in: .global).minY) / 100
                     NavigationLink(destination: FullScreenImageView(imageName: restaurant.mainImage)) {
                         RTRTitleImageView(imageNamss: restaurant.mainImage)
                             .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
                             .offset(y: offset > 0 ? -offset : 0)
                     }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            navigationBackButton
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            HStack {
+                                ShareLink(item: "") {
+                                    Image(systemName: "square.and.arrow.up")
+                                }
+                                .padding(.trailing, 10)
+                                Button {
+                                    userViewModel.likeButtonTapped(restaurant: restaurant)
+                                } label: {
+                                    Image(systemName: userViewModel.user.favoriteRestaurant.contains(where: { $0.id == restaurant.id }) ? "heart.fill" : "heart")
+                                }
+                            }
+                        }
+                    }
+                    .toolbarBackground(
+                        geo.frame(in: .global).minY > -.screenHeight / 4 ? .hidden : .automatic,
+                        for: .navigationBar
+                    )
+                    .foregroundColor(Color(red: colorY, green: colorY, blue: colorY))
+                    .bold()
                 }
                 .frame(width: .screenWidth, height: .screenHeight / 4)
                 RTRTitleInfoView(restaurant: restaurant)
@@ -49,7 +76,7 @@ struct RTRView: View {
                     .cornerRadius(3)
                     .clipped()
                     .shadow(color: .secondary, radius: 2)
-                    .padding(.top, -offsetY)
+                    .padding(.top, -.screenHeight / 12)
                 RTRSubInfoView(restaurant: restaurant)
                     .padding(.top, 30)
                     .padding(.horizontal)
@@ -76,6 +103,7 @@ struct RTRView: View {
                 RTRFoodCategoryView(categories: restaurant.foodCategory, selected: $selected)
                     .frame(width: .screenWidth)
                 RTRFoodListView(restaurant: restaurant)
+                
             }
             .onChange(of: selected) { newValue in
                 print("onchangh: \(newValue)")
@@ -86,35 +114,7 @@ struct RTRView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: navigationBackButton)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                HStack {
-                    ShareLink(item: "") {
-                        Image(systemName: "square.and.arrow.up")
-                    }
-                    .padding(.trailing, 10)
-                    Button {
-                        userViewModel.likeButtonTapped(restaurant: restaurant)
-                    } label: {
-                        Image(systemName: userViewModel.user.favoriteRestaurant.contains(where: { $0.id == restaurant.id }) ? "heart.fill" : "heart")
-                    }
-                }
-                .foregroundColor(.white)
-                .bold()
-            }
-        }
     }
-    
-//    var backButton: some View {
-//        Button {
-//            dismiss()
-//        } label: {
-//            Image(systemName: "chevron.left")
-//                .aspectRatio(contentMode: .fit)
-//                .foregroundColor(.white)
-//        }
-//    }
 }
 
 struct RTRView_Previews: PreviewProvider {

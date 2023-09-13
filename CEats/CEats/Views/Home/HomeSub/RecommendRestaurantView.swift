@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecommendRestaurantView: View {
-    var restaurant: Restaurant
+    let restaurant: Restaurant
     
     var body: some View {
         VStack(alignment: .leading){
@@ -21,7 +21,7 @@ struct RecommendRestaurantView: View {
             Text(restaurant.name)
                 .padding(.top,10)
                 .padding(.bottom,2)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
             HStack{
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)

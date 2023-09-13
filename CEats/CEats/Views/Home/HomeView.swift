@@ -8,56 +8,43 @@
 import SwiftUI
 
 struct HomeView: View {
-
     @State private var isOpenMapSheet: Bool = false
-    @State var searchText: String = ""
+    @State private var searchText: String = ""
     @State private var isOpenCartSheet: Bool = false
-    @EnvironmentObject var userViewModel: UserViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView{
+                ScrollView(showsIndicators: false) {
                     HeaderView(isOpenMapSheet: $isOpenMapSheet)
-                    //헤더뷰, 위치 정해주는 뷰
                     NavigationLink {
                         HomeSearchDetailView()
                     } label: {
                         HomeSearchBarView(searchText: $searchText)
                     }
-                    //서치뷰
                     FoodTypeGridView()
-                    //푸드 타입 정하는 뷰
-                    AdvertisementView()
-                        .padding(18)
-                    //광고
+                    //                    AdvertisementView()
+                    SliderView()
                     RecommendedRestaurantsView()
-                    //추천맛집뷰
                 }
-                .scrollIndicators(.hidden)
-
-                if userViewModel.user.foodCart?.cart.count ?? 0 > 0 {
+                if userViewModel.user.foodCart != nil {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }
             }
+            .padding(.top, 1)
         }
-        .padding(.top,1)
-        .refreshable {
+        .onAppear{
             userViewModel.fetchUser {
+                print("온어피어적용됨~")
             }
         }
-        .task {
-            userViewModel.fetchUser {
-            }
-            //isOpenMapSheet = false
-        }
-        .fullScreenCover(isPresented: $isOpenMapSheet, content: {
+        .fullScreenCover(isPresented: $isOpenMapSheet) {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
-        })
+        }
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

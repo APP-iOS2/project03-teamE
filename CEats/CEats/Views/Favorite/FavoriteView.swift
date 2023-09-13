@@ -159,7 +159,7 @@ struct FavoriteView: View {
                 }
             }
         }
-        .task{
+        .onAppear{
             userViewModel.fetchUser {
             }
         }

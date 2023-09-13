@@ -27,3 +27,10 @@ struct RecommendedRestaurantsView: View {
         .padding(.bottom, 20)
     }
 }
+
+struct RecommendedRestaurantsView_Preview: PreviewProvider {
+    static var previews: some View {
+        RecommendedRestaurantsView()
+            .environmentObject(RestaurantViewModel())
+    }
+}
