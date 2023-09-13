@@ -33,7 +33,7 @@ struct ReviewDetail: View {
                     Divider()
                     
                     ForEach(restaurant.reviews) { review in
-                        ReviewInfo(review: review)
+                        ReviewInfo(review: review, restaurant: restaurant)
                     }
                 }
                 .navigationTitle("\(restaurant.name)")

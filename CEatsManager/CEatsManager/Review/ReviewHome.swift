@@ -23,6 +23,12 @@ struct ReviewHome: View {
                     .padding([.top, .bottom], 7)
             }
         }
+        .onAppear{
+            restaurantViewModel.fetchAllRestaurant()
+        }
+        .refreshable {
+            restaurantViewModel.fetchAllRestaurant()
+        }
         .navigationTitle("전체 가게")
     }
 }
