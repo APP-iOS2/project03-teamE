@@ -32,7 +32,6 @@ struct FavoriteView: View {
                     
                     Spacer()
                 }
-                .padding(.bottom)
                 if isFavoriteEmpty {
                     VStack(spacing: 50) {
                         VStack {
@@ -73,6 +72,11 @@ struct FavoriteView: View {
                 } else {
                     ScrollView {
                         VStack {
+                            Spacer()
+                            .frame(maxWidth: .infinity, maxHeight: 10)
+                            .background(Color.veryLightGray)
+                            .opacity(0.6)
+                            .padding(.bottom)
                             ForEach(userViewModel.user.favoriteRestaurant) { store in
                                 NavigationLink {
                                     RTRView(restaurant: store)
