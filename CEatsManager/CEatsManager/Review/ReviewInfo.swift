@@ -14,50 +14,81 @@ struct ReviewInfo: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                VStack(alignment: .leading) {
-                    Text("작성자 : \(review.writer)")
-                        .font(.system(size: 25, weight: .semibold))
-                        .bold()
-                    
-                    review.score.doubleToStarView
-                        .font(.system(size: 25, weight: .semibold))
-                        .padding(.bottom)
-                    
-                }
-                Spacer()
-                
-                Button {
-                    
-                } label: {
-                    Text("삭제")
-                        .font(.system(size: 25, weight: .semibold))
-                        .foregroundColor(.red)
-                        .padding(.trailing, 30)
-                }
-                
-            }
-            .padding(.bottom, -40)
-            
-            HStack {
                 // Image("\(review.image)") 이미지 없는게 많아서 일단 Asset에 추가한 이미지 올렸습니다.
-                Image("review")
-                    .resizable()
-                    .frame(width: 400, height: 400)
-                    .padding(.trailing, 30)
-                
-                VStack(alignment: .leading) {
-                    Divider()
-                    Text("구매 날짜 : \(review.createdDate)")
-                    Text("리뷰 올린 날짜 : \(review.createdDate)")
-                    Divider()
-                    
-                    Text("리뷰 내용 : \n\(review.contents)")
-                    
+                //만약 이미지가 없으면 대체 이미지로 나타나게.
+                if (review.image != nil) {
+                    Image("review")
+                        .resizable()
+                        .frame(width: 400, height: 400)
+                        .padding([.leading, .trailing], 20)
+                } else {
+                    Image(systemName: "x.square")
+                        .resizable()
+                        .frame(width: 400, height: 400)
+                        .padding([.leading, .trailing], 20)
                 }
-                .frame(height: 550)
+                VStack(alignment: .leading) {
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        Spacer()
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("작성자 : \(review.writer)")
+                                    .font(.system(size: 25, weight: .semibold))
+                                    .bold()
+                                
+                                review.score.doubleToStarView
+                                    .font(.system(size: 25, weight: .semibold))
+                                    .padding(.horizontal, -6)
+                            }
+                            .padding(.top, 50)
+                            Spacer()
+                            Button {
+                                
+                            } label: {
+                                Text("삭제")
+                                    .font(.system(size: 25, weight: .semibold))
+                                    .foregroundColor(.red)
+                                    .padding(.trailing, 40)
+                            }
+                            .padding(.top, 50)
+                        }
+//                        Spacer()
+                            .padding(.bottom, 10)
+                        VStack(alignment: .leading) {
+                            Text("구매 날짜 :         \(review.createdDate)")
+                                .font(.system(size: 20, weight: .semibold))
+                            
+                            Text("리뷰 올린 날짜 : \(review.createdDate)")
+                                .font(.system(size: 20, weight: .semibold))
+                        }
+                        .padding(.bottom)
+                        Divider()
+                        Spacer()
+                        VStack(alignment: .leading) {
+                            Text("리뷰 내용 : ")
+                                .font(.system(size: 20, weight: .semibold))
+                            Spacer()
+                            Text("\(review.contents)")
+                                .font(.system(size: 20, weight: .semibold))
+                                .padding(.bottom, 100)
+                            Spacer()
+                        }
+                    }
+                    Spacer()
+                }
+                .frame(height: 450)
                 .font(.system(size: 25, weight: .regular))
+                .padding(.bottom, 80)
             }
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 1)
+                    .frame(height: 450)
+                    .padding(.top, 10)
+            )
         }
+        .padding(.bottom, -50)
     }
 }
 
