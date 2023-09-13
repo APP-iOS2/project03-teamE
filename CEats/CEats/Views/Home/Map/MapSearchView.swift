@@ -62,7 +62,7 @@ struct MapSearchView: View {
         } label: {
             Image(systemName: "arrow.left")
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(Color.black)
+                .foregroundColor(.primary)
         }
     }
     

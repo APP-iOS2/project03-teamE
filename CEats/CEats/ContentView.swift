@@ -7,48 +7,76 @@
 
 import SwiftUI
 
+enum TabKind: Int, CaseIterable, Identifiable {
+    case home, search, favorite, ordered, my
+    
+    @ViewBuilder
+    var view: some View {
+        switch self {
+        case .home:
+            HomeView()
+        case .search:
+            SearchView()
+        case .favorite:
+            FavoriteView()
+        case .ordered:
+            OrderedListView()
+        case .my:
+            MyView()
+        }
+    }
+    
+    var imgName: String {
+        switch self {
+        case .home:
+            return "house.fill"
+        case .search:
+            return "magnifyingglass"
+        case .favorite:
+            return "heart.fill"
+        case .ordered:
+            return "doc.plaintext"
+        case .my:
+            return "person"
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .home:
+            return "홈"
+        case .search:
+            return "검색"
+        case .favorite:
+            return "즐겨찾기"
+        case .ordered:
+            return "주문내역"
+        case .my:
+            return "마이페이지"
+        }
+    }
+    
+    var id: Self { self }
+}
+
 class TabViewModel: ObservableObject {
     @Published var tabIndex = 0
 }
 
 struct ContentView: View {
     @StateObject private var tabViewModel = TabViewModel()
-    @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
-    @EnvironmentObject private var userViewModel: UserViewModel
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         TabView(selection: $tabViewModel.tabIndex) {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("홈")
-                }
-                .tag(0)
-            SearchView()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("검색")
-                }
-                .tag(1)
-            FavoriteView(tabIndex: $tabViewModel.tabIndex)
-                .tabItem {
-                    Image(systemName: "heart.fill")
-                    Text("즐겨찾기")
-                }
-                .tag(2)
-            OrderedListView()
-                .tabItem {
-                    Image(systemName: "doc.plaintext")
-                    Text("주문내역")
-                }
-                .tag(3)
-            MyView(tabIndex: $tabViewModel.tabIndex)
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("마이페이지")
-                }
-                .tag(4)
+            ForEach(TabKind.allCases) { kind in
+                kind.view
+                    .tabItem {
+                        Image(systemName: kind.imgName)
+                        Text(kind.title)
+                    }
+                    .tag(kind.rawValue)
+            }
         }
         .environmentObject(tabViewModel)
         .navigationBarBackButtonHidden()        
