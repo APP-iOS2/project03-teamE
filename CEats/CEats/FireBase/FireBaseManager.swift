@@ -273,6 +273,25 @@ final class CEatsFBManager {
         }
     }
     
+    func uploadDummyArray<T: CEatsIdentifiable>(datas: [T]) where T: Encodable {
+            datas.forEach { data in
+                let collectionRef = db.collection("\(type(of: data))")
+                
+                DispatchQueue.global().async {
+                    do {
+                        try collectionRef.document(data.id).setData(from: data) { error in
+                            guard error == nil else {
+                                self.printError(error: error!)
+                                return
+                            }
+                        }
+                    } catch {
+                        print(#function + ": fail to .setData(from:)")
+                    }
+                }
+            }
+        }
+    
     func create<T: CEatsIdentifiable>(data: T, completion: @escaping () -> ()) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
