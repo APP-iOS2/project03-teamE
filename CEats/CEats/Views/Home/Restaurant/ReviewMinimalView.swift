@@ -18,6 +18,7 @@ struct ReviewMinimalView: View {
                 .padding(.trailing, 10)
             VStack(alignment: .leading) {
                 Text("\(review.contents)")
+                    .frame(maxWidth: .screenWidth * 0.3)
                     .font(.system(size:15))
                 Spacer()
                 review.score.doubleToStarView
