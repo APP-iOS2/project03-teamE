@@ -92,10 +92,10 @@ struct CartView: View {
             .fullScreenCover(isPresented: $isOpenOrderedSheet) {
                 RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet, completion: { dismiss() })
             }
-        }
-        .onChange(of: tabViewModel.tabIndex) { _ in
-            print("tab Change")
-            dismiss()
+            .onChange(of: tabViewModel.tabIndex) { _ in
+                print("tab Change")
+                dismiss()
+            }
         }
     }
 }
