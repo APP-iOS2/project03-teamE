@@ -9,7 +9,7 @@ import Foundation
 
 final class RestaurantViewModel: ObservableObject {
     let fireManager = CEatsFBManager.shared
-    @Published var restaurants: [Restaurant] = Restaurant.sampleArray
+    @Published var restaurants: [Restaurant] = Restaurant.sampleDummys
     
     @Published var selectedFoodType: FoodType? = nil
     
@@ -23,6 +23,12 @@ final class RestaurantViewModel: ObservableObject {
     func updateFee(restaurant: Restaurant, to: Int) {
         fireManager.update(data: restaurant, value: \.deliveryFee, to: to) { result in
             
+        }
+    }
+    
+    func updateRestaurant(data: Restaurant){
+        for i in 0..<restaurants.count {
+            fireManager.create(data: restaurants[i])
         }
     }
     
