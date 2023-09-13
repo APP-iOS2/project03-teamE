@@ -6,86 +6,52 @@
 //
 
 import SwiftUI
+import CoreLocation
+import MapKit
+
 
 struct ReviewDetail: View {
-    var restaurant: Restaurant = Restaurant.sampleData
+    // MARK: - Properties
+    @EnvironmentObject var restaurantViewModel: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
+    var restaurant: Restaurant
     
+    // MARK: - Views
     var body: some View {
-        NavigationStack {
-            HStack {
-                Text("가게 전화번호 : 02-111-1111")
-                Text("가게 위치 : ")
-                Spacer()
-            }
-            .font(.system(size: 30))
-            .padding(.horizontal)
-            
+        ScrollView {
             VStack(alignment: .leading) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("작성자 : 아이유")
-                            .font(.title)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("가게 위치 : ")
                             .bold()
-                        
-                        Text("⭐️⭐️⭐️⭐️⭐️")
-                            .font(.system(size: 35, weight: .semibold))
-                            .padding(.bottom)
+                        // 위도 경도 받아와서 가게 주소
                     }
-                    Spacer()
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("삭제")
-                            .font(.system(size: 25, weight: .semibold))
-                            .foregroundColor(.red)
-                            .padding(.trailing, 30)
-                    }
-                    
+                    Text("가게 전화번호 : \(restaurant.restaurantInfo.phoneNumberString)")
+                        .bold()
                 }
-                .padding(.bottom, -40)
+                .font(.system(size: 30))
+                .padding(.bottom, 50)
                 
-                HStack {
-                    AsyncImage(url: URL(string:  "https://www.thechooeok.com/common/img/default_profile.png")) { image in
-                        image
-                            .resizable()
-                    }placeholder: {
-                        Circle()
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(width: 400, height: 400)
-                    .padding(.trailing, 30)
-                    
-                    VStack(alignment: .leading) {
-                        Divider()
-                        
-                        Text("구매 날짜 : 2023.09.01")
-                        Text("리뷰 올린 날짜 : 2023.09.01")
-                        Divider()
-                        
-                        Text("리뷰 내용 : \n저 이래서 이랬고 맛있었어요. 아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ아아아아아아아아아")
-                        
-                    }
-                    .frame(height: 550)
-                    .font(.system(size: 30, weight: .regular))
+                ForEach(restaurant.reviews) { review in
+                    ReviewInfo(review: review)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.black, lineWidth: 1)
+                        )
+                        .padding(.bottom, 30)
                 }
-                
-                
             }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.black, lineWidth: 1)
-            )
-            .padding()
-            .navigationTitle("멋쟁이 김치찌개")
+            .padding(20)
+            .navigationTitle("\(restaurant.name)")
         }
     }
 }
 
-
 struct ReviewDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewDetail()
+        ReviewDetail(restaurant: Restaurant.sampleArray[0])
+            .environmentObject(RestaurantViewModel())
+            .environmentObject(UserViewModel())
     }
 }
