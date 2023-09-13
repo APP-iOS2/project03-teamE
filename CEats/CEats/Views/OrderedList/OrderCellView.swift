@@ -45,11 +45,7 @@ struct OrderCellView: View {
                     Text(food.name)
                         .font(.system(size:13))
                 }
-//                Text(food.description)
-//                    .font(.system(size:14))
-//                    .padding(.bottom,2)
             }
-            
             .foregroundColor(.gray)
             HStack{
                 Text("합계:")
@@ -58,7 +54,9 @@ struct OrderCellView: View {
             }
             .padding(.top,10)
             .padding(.bottom,10)
+            
             Spacer()
+            
             HStack{
                 Spacer()
                 Button {
@@ -68,12 +66,6 @@ struct OrderCellView: View {
                         Spacer()
                         Image(systemName: "list.clipboard")
                         Text("영수증 보기")
-                            
-                        //                        .foregroundColor(.white)
-                        //                        .background(RoundedRectangle(cornerRadius: 10)
-                        //                            .foregroundColor(.gray)
-                        //                            .frame(width: .screenWidth * 0.82))
-                        //                        .padding([.leading,.trailing],20)
                     }
                 }
                 .font(.system(size: 11))
@@ -94,7 +86,7 @@ struct OrderCellView: View {
         )
         .sheet(isPresented: $isShowingSheet, content: {
             NavigationStack{
-                ReciptView()
+                ReciptView(order: order)
                     .padding(20)
             }
         })

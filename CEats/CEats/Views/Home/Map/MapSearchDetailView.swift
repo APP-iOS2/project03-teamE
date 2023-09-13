@@ -10,7 +10,7 @@ import SwiftUI
 struct MapSearchDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
     
     /// SearchView에서 MapDetailView로 이동했을 때,
@@ -23,12 +23,15 @@ struct MapSearchDetailView: View {
     @State var selectedPlace: String
     @State var selectedPlaceLat: Double
     @State var selectedPlaceLong: Double
-    
     @State private var detailAddress = ""
     @State private var moreInformation = ""
     
     @State private var isOKSheet: Bool = false
     
+    var fullAddress: String {
+        return "\(selectedPlace) \(detailAddress)"
+    }
+
     var body: some View {
         VStack {
             HStack {
@@ -76,10 +79,13 @@ struct MapSearchDetailView: View {
             Spacer()
             
             Button {
-                if detailAddress != "" {
-                    isOpenMapSheet = false
-                } else {
-                    isOKSheet = true
+                Task{
+                    await userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: fullAddress)
+                    if detailAddress != "" {
+                        isOpenMapSheet = false
+                    } else {
+                        isOKSheet = true
+                    }
                 }
             } label: {
                 Text("완료")
@@ -131,8 +137,11 @@ struct MapSearchDetailView: View {
                 }
                 
                 Button {
-                    isOKSheet = false
-                    isOpenMapSheet = false
+                    Task{
+                        await userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: selectedPlace)
+                        isOKSheet = false
+                        isOpenMapSheet = false
+                    }
                 } label: {
                     Text("무시하기")
                         .bold()
@@ -162,6 +171,8 @@ struct MapSearchDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             MapSearchDetailView(isOpenMapSheet: .constant(true), selectedPlace: "5호선 광화문역", selectedPlaceLat: 0.0, selectedPlaceLong: 0.0)
+                .environmentObject(UserViewModel())
+
         }
     }
 }

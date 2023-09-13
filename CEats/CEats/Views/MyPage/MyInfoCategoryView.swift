@@ -39,7 +39,9 @@ struct MyInfoCategoryView: View {
                     }
                 }
             }
+            
             Divider()
+                
         }
     }
 }

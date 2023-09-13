@@ -24,6 +24,8 @@
 		1283211E2AA70BAE00EAB4BD /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1283211D2AA70BAE00EAB4BD /* RestaurantInfo.swift */; };
 		1293DA9D2AA81EDB00368C3E /* AfterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1293DA9C2AA81EDB00368C3E /* AfterSearchView.swift */; };
 		12B363F92AAAF6280020F16D /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B363F82AAAF6280020F16D /* OrderListView.swift */; };
+		12BA09152AB0441E001D6BA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12BA09142AB0441E001D6BA2 /* GoogleService-Info.plist */; };
+		12BA09172AB0449A001D6BA2 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA09162AB0449A001D6BA2 /* SplashView.swift */; };
 		12E62C5B2AAF7BF80094D0EC /* OrderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E62C5A2AAF7BF80094D0EC /* OrderCellView.swift */; };
 		3C918EDE2AA6B6710043111A /* AddCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EDD2AA6B6710043111A /* AddCartView.swift */; };
 		3C918EE02AA6BD230043111A /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C918EDF2AA6BD230043111A /* Color+.swift */; };
@@ -124,6 +126,7 @@
 		1293DA9C2AA81EDB00368C3E /* AfterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterSearchView.swift; sourceTree = "<group>"; };
 		12B363F82AAAF6280020F16D /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		12BA09142AB0441E001D6BA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		12BA09162AB0449A001D6BA2 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		12E62C5A2AAF7BF80094D0EC /* OrderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCellView.swift; sourceTree = "<group>"; };
 		3C918EDD2AA6B6710043111A /* AddCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartView.swift; sourceTree = "<group>"; };
 		3C918EDF2AA6BD230043111A /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
@@ -286,6 +289,7 @@
 			children = (
 				C9F7A73C2AB0B4C600E3F1DC /* GoogleService-Info.plist */,
 				D18E9B212AA5A14C009231E4 /* CEatsApp.swift */,
+				12BA09162AB0449A001D6BA2 /* SplashView.swift */,
 				D18E9B232AA5A14C009231E4 /* ContentView.swift */,
 				D1D3E28C2AA9CE7900A60B65 /* FireBase */,
 				D18E9B312AA5A353009231E4 /* Views */,
@@ -601,6 +605,7 @@
 				D1DB3B542AA6B17300212573 /* AdvertisementView.swift in Sources */,
 				D166C8A32AA9BF9400BEE09B /* CartPaymentView.swift in Sources */,
 				D17985292AACC562000ABA97 /* HomeSearchBarView.swift in Sources */,
+				12BA09172AB0449A001D6BA2 /* SplashView.swift in Sources */,
 				D18E9B392AA5A44A009231E4 /* SearchView.swift in Sources */,
 				D1DB3B402AA6B07E00212573 /* FoodStoreListDetailView.swift in Sources */,
 				121D947E2AA74008005177E0 /* Extension+View.swift in Sources */,

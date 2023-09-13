@@ -66,8 +66,6 @@ struct DetailToMapView: View {
                 print("=======맵뷰 닫음======")
                 
                 
-                userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: isSelectedPlace)
-                dismiss()
             } label: {
                 Text("설정하기")
                     .foregroundColor(.white)
