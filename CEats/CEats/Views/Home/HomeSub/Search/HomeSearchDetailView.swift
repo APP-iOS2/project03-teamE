@@ -11,6 +11,7 @@ struct HomeSearchDetailView: View {
     
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var restaurantViewModel: RestaurantViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @FocusState private var isFocused: Bool
     @State var searchText: String = ""
     @State var isSubmit: Bool = false
@@ -29,7 +30,7 @@ struct HomeSearchDetailView: View {
                     ZStack{
                         HStack{
                             Image(systemName: "magnifyingglass")
-                            TextField("ooo님, 서브웨이 어때요?", text: $searchText)
+                            TextField("\(userViewModel.user.username)님, 서브웨이 어때요?", text: $searchText)
                             //TextField 수정자
                                 .focused($isFocused)
                                 .onSubmit{
@@ -84,5 +85,6 @@ struct HomeSearchDetailView_Previews: PreviewProvider {
     static var previews: some View {
         HomeSearchDetailView()
             .environmentObject(RestaurantViewModel())
+            .environmentObject(UserViewModel())
     }
 }
