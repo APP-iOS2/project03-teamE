@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CartView: View {
     // MARK: - Properties
-    @EnvironmentObject private var userViewModel: UserViewModel
     @Binding var isOpenMapSheet: Bool
-    
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @State private var showingAlert: Bool = false
+    @State private var isOpenOrderedSheet: Bool = false
     // MARK: - View
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -25,7 +27,24 @@ struct CartView: View {
             // [CartMenuView] user.foodCart.restaurant을 통해서 뷰를 호출해야함
             // 값이 변경될 요소들 뷰모델 사용하기 !!!! (완)
             // 결제 금액 > CEats 머니 : 버튼 막기 (완)
-            CartPayButtonView()
+            CartPayButtonView(showingAlert: $showingAlert)
+        }
+        .alert("결제가 됩니다.", isPresented: $showingAlert) {
+            Button("뒤로가기") {
+                showingAlert = false
+            }
+            Button {
+                userViewModel.newOrder { result in
+                    isOpenOrderedSheet = true
+                }
+            } label: {
+                Text("결제하기")
+            }
+        } message: {
+            Text("주문이 성공적으로 완료되었습니다.")
+        }
+        .fullScreenCover(isPresented: $isOpenOrderedSheet) {
+            RealTimeOrderInfoView(isOpenOrderedSheet: $isOpenOrderedSheet, completion: { dismiss() })
         }
     }
 }

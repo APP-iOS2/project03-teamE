@@ -25,12 +25,18 @@ struct FoodTypeGridView: View {
                         Spacer()
                         Text(content.rawValue)
                             .font(.footnote)
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .padding(.bottom, 10)
                     }
                 }
             }
         }
         .padding([.trailing, .leading], 20)
+    }
+}
+
+struct FoodTypeGridView_Previews: PreviewProvider {
+    static var previews: some View {
+        FoodTypeGridView()
     }
 }

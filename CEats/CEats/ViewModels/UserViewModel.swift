@@ -9,22 +9,23 @@ import SwiftUI
 import Firebase
 
 final class UserViewModel: ObservableObject {
-    enum OrderState: String, CaseIterable {
-        case 과거주문내역
-        case 준비중
-    }
-    @AppStorage("userID") var userID = "1234"
+    @AppStorage("userID") private var userID = "1234"
     @Published var user: User = User.sampleData
     @Published var selectedButton: OrderState = .과거주문내역
     @Published var deliveryOpt: DeliveryKind = .onlyOne
     let fireManager = CEatsFBManager.shared
-    var orderListener: ListenerRegistration?
+    private var orderListener: ListenerRegistration?
     let currentDate = Date()
-    
+    @Published var newOrderID: String = ""
+    var statusMessage: String {
+        guard let index = user.orderHistory.firstIndex(where: { $0.id == newOrderID }) else { return "Error" }
+        return user.orderHistory[index].orderStatus.message
+    }
     var cartFee: Int {
         guard let foodCart = user.foodCart else { return 0 }
         return foodCart.cart.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 }
     }
+    
     var filteredOrderList: [Order] {
         if selectedButton == .과거주문내역 {
             return user.orderHistory.filter { $0.orderStatus != .waiting }
@@ -63,20 +64,17 @@ final class UserViewModel: ObservableObject {
         }
     }
     
-    func createUser() {
-        fireManager.create(data: user) {
-        }
-    }
-    
     func addCount(food: Restaurant.Food){
-        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
-            self.user.foodCart?.cart[index].foodCount += 1
+        if let index = user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            user.foodCart?.cart[index].foodCount += 1
+            fireManager.create(data: user)
         }
     }
     
     func subtractCount(food: Restaurant.Food){
-        if let index = self.user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
-            self.user.foodCart?.cart[index].foodCount -= 1
+        if let index = user.foodCart?.cart.firstIndex(where: { $0.name == food.name }) {
+            user.foodCart?.cart[index].foodCount -= 1
+            fireManager.create(data: user)
         }
     }
     
@@ -111,8 +109,9 @@ final class UserViewModel: ObservableObject {
             self.fireManager.appendValue(data: seller, value: \.orders, to: newOrder) {
                 self.fireManager.appendValueResult(data: self.user, value: \.orderHistory, to: newOrder) { success in
                     self.user.orderHistory.append(success)
-                    self.fireManager.updateValue(data: self.user, value: \.foodCart, to: nil) { user in
-                        self.user = user
+                    self.user.cEatsMoney -= self.cartFee + self.deliveryOpt.fee
+                    self.user.foodCart = nil
+                    self.fireManager.create(data: self.user) {
                         self.fireManager.addSnapshot(data: seller, value: \.orders) { orders in
                             let sellersWaitings = self.user.orderHistory.filter { $0.orderStatus == .waiting }
                             guard !sellersWaitings.isEmpty else { return }
@@ -132,6 +131,7 @@ final class UserViewModel: ObservableObject {
                             }
                             completion(myWaiting)
                             self.user.orderHistory[index] = myWaitingOrder
+                            self.newOrderID = myWaitingOrder.id
                         } completion: { listener in
                             self.orderListener = listener
                         }
@@ -180,12 +180,6 @@ final class UserViewModel: ObservableObject {
         fireManager.create(data: user)
     }
     
-    func updateUserOrder(user: User, order: [Order]){
-        fireManager.update(data: user, value: \.orderHistory, to: order) { result in
-            self.user = result
-        }
-    }
-    
     func getLikeImageName(restaurant: Restaurant) -> String {
         return user.favoriteRestaurant.contains(where: { $0.id == restaurant.id }) ? "heart.fill" : "heart"
     }
@@ -202,6 +196,11 @@ final class UserViewModel: ObservableObject {
 }
 
 extension UserViewModel {
+    enum OrderState: String, CaseIterable {
+        case 과거주문내역
+        case 준비중
+    }
+    
     enum DeliveryKind: CaseIterable {
         case onlyOne, save
         

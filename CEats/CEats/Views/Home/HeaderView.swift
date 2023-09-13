@@ -18,7 +18,7 @@ struct HeaderView: View {
             }) {
                 HStack {
                     Label("\(userViewModel.user.userAddress)", systemImage: "location.circle")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                     Image(systemName: "chevron.down")
                 }
             }

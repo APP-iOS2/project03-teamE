@@ -29,3 +29,9 @@ struct HomeSearchBarView: View {
         .padding(.bottom,4)
     }
 }
+
+struct HomeSearchBarView_Preview: PreviewProvider {
+    static var previews: some View {
+        HomeSearchBarView(searchText: .constant(""))
+    }
+}

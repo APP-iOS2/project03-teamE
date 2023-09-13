@@ -13,4 +13,9 @@ struct RestaurantInfo: Codable {
     var name: String = "멋쟁이 xxxx"
     var timeTable: String = "12:00 ~ 23:00"
     var introduce: String = "대한민국 최고의 xxx 집입니다"
+    
+    var phoneNumberString: String {
+        let result = "+82 " + String(phoneNumber)
+        return result
+    }
 }

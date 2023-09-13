@@ -49,7 +49,7 @@ struct CartDeliveryView: View {
                         VStack(alignment: .leading) {
                             HStack {
                                 Image(systemName: userViewModel.deliveryOpt == kind ? "o.circle.fill" : "o.circle")
-                                    .foregroundColor(userViewModel.deliveryOpt == kind ? .accentColor : .black)
+                                    .foregroundColor(userViewModel.deliveryOpt == kind ? .accentColor : .primary)
                                 VStack(alignment: .leading) {
                                     Text(kind.toString)
                                         .font(.system(size: 18, weight: userViewModel.deliveryOpt == kind ? .bold : .regular))
@@ -66,7 +66,7 @@ struct CartDeliveryView: View {
                                             Rectangle()
                                                 .frame(width: 60, height: 2)
                                                 .padding(.init(top: 4, leading: 50, bottom: 0, trailing: 0))
-                                            Text("배달비 \(kind.fee)원")
+                                            Text("배달비 \(kind.fee + 1000)원")
                                         }
                                         Text("\(kind.fee)원")
                                             .bold()
@@ -76,11 +76,11 @@ struct CartDeliveryView: View {
                                 }
                             }
                         }
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 7)
-                                .stroke(userViewModel.deliveryOpt == kind ?  Color.accentColor : Color.black, lineWidth: 1.6)
+                                .stroke(userViewModel.deliveryOpt == kind ?  Color.accentColor : Color.primary, lineWidth: 1.6)
                                 .shadow(color: .gray, radius: 1.3)
                         )
                     }
