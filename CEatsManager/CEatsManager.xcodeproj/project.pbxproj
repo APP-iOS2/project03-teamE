@@ -30,7 +30,7 @@
 		D13CF9992AB0455300965F5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9982AB0455300965F5E /* User.swift */; };
 		D13CF99B2AB0455B00965F5E /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF99A2AB0455B00965F5E /* Coupon.swift */; };
 		D13CF99E2AB045AD00965F5E /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF99D2AB045AD00965F5E /* FireBaseManager.swift */; };
-		D18807F32AB1891A006DBD2E /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = D18807F22AB1891A006DBD2E /* GoogleService-Info-3.plist */; };
+		D18807F32AB1891A006DBD2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D18807F22AB1891A006DBD2E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 		D13CF9982AB0455300965F5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D13CF99A2AB0455B00965F5E /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
 		D13CF99D2AB045AD00965F5E /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
-		D18807F22AB1891A006DBD2E /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
+		D18807F22AB1891A006DBD2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 		D13CF9702AB032C900965F5E /* CEatsManager */ = {
 			isa = PBXGroup;
 			children = (
-				D18807F22AB1891A006DBD2E /* GoogleService-Info-3.plist */,
+				D18807F22AB1891A006DBD2E /* GoogleService-Info.plist */,
 				D13CF9712AB032C900965F5E /* CEatsManagerApp.swift */,
 				D13CF9732AB032C900965F5E /* ContentView.swift */,
 				C9F7A7402AB0BD8900E3F1DC /* ViewModel */,
@@ -223,7 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D13CF9792AB032CB00965F5E /* Preview Assets.xcassets in Resources */,
-				D18807F32AB1891A006DBD2E /* GoogleService-Info-3.plist in Resources */,
+				D18807F32AB1891A006DBD2E /* GoogleService-Info.plist in Resources */,
 				D13CF9762AB032CB00965F5E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
