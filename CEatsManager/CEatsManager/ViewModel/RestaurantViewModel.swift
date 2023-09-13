@@ -6,25 +6,57 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 final class RestaurantViewModel: ObservableObject {
     @Published var restaurants: [Restaurant] = Restaurant.sampleArray
-    
+    private let db = Firestore.firestore()
     let fireManager = CEatsFBManager.shared
     
     func fetchAllRestaurant() {
         restaurants = []
-        fireManager.readAllDocument(type: Restaurant.self) { result in
-            self.restaurants.append(result)
+        fireManager.addCollectionSnapshotForRest(type: Restaurant.self) { success in
+            self.restaurants = success
         }
     }
     
-    func setRestaurant(data: Restaurant){
-        for i in 0..<restaurants.count {
-            fireManager.create(data: restaurants[i])
+    func readRestaurant(completion: @escaping () -> ()) {
+        fireManager.read(type: Restaurant.self, id: "ceoID") { result in
+            self.restaurants.append(result)
+            completion()
+        }
+        for index in 2..<restaurants.count{
+            fireManager.read(type: Restaurant.self, id: "ceoID\(index)") { result in
+                self.restaurants.append(result)
+                completion()
+            }
         }
     }
-    //update시키는 것 보다 얘가 낫다.
+    
+    
+    func updateRestaurant(restaurant: Restaurant) {
+        fireManager.create(data: restaurant)
+    }
+    
+    func setRestaurant(){
+        fireManager.uploadDummyArray(datas: restaurants)
+    }
+    
+    func deleteReview(restaurant: inout Restaurant, review: Review) {
+        var index: Int = 0
+
+        for temp in restaurant.reviews {
+            if temp.writer == review.writer {
+                restaurant.reviews.remove(at: index)
+                break
+            }
+            
+            index += 1
+        }
+        updateRestaurant(restaurant: restaurant)
+    }
     
     func findRestaurant(restaurant: Restaurant) -> Restaurant {
         guard let index = restaurants.firstIndex(where: { $0.id == restaurant.id }) else {

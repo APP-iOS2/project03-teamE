@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Review: Identifiable, Codable {
+struct Review: Identifiable, Codable, CEatsIdentifiable {
     var id = UUID().uuidString
     var writer: String //여기에 유저 정보가 들어가야함. 유저 이메일이나 유저 네임
     var score: Double //평점
@@ -39,7 +39,7 @@ extension Review {
 
 #if DEBUG
 extension [Review] {
-    static let sampleData: Self = [
+    static var sampleData: Self = [
         Review(writer: "김멋사", score: 4.0, image: "review", contents: "맛있긴 함"),
         Review(writer: "아이유", score: 5.0, contents: "최고의 맛이었어요 ㅠㅠ")
     ]

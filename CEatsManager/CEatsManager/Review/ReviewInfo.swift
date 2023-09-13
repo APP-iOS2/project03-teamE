@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ReviewInfo: View {
     @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
     @State var review : Review
-    
+    @State var restaurant: Restaurant
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -44,7 +45,8 @@ struct ReviewInfo: View {
                             .padding(.top, 50)
                             Spacer()
                             Button {
-                                
+                                restaurantViewModel.deleteReview(restaurant: &restaurant, review: review)
+                                print(restaurant.reviews)
                             } label: {
                                 Text("삭제")
                                     .font(.system(size: 25, weight: .semibold))
@@ -89,6 +91,8 @@ struct ReviewInfo: View {
             )
         }
         .padding(.bottom, -50)
+        .refreshable {
+        }
     }
 }
 
@@ -96,7 +100,7 @@ struct ReviewInfo: View {
 struct ReviewInfo_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ReviewInfo(review: Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "이 집 김치찌개는 정말 인정합니다. 계란말이가 더 맛있긴 하지만요~"))
+            ReviewInfo(review: Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "이 집 김치찌개는 정말 인정합니다. 계란말이가 더 맛있긴 하지만요~"), restaurant: Restaurant.sampleData)
                 .environmentObject(UserViewModel())
         }
     }
