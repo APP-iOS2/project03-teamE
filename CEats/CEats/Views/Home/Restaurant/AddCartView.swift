@@ -10,7 +10,7 @@ import SwiftUI
 struct AddCartView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @Environment(\.dismiss) private var dismiss
-    
+    @Environment(\.colorScheme) private var colorScheme
     @State private var numberOfFoods: Int = 1
     @State private var showAlert: Bool = false
     
@@ -67,12 +67,24 @@ struct AddCartView: View {
                             }
                         } label: {
                             Circle()
-                                .stroke(numberOfFoods <= 1 ? Color.lightgray : Color.gray)
+                                .stroke(
+                                    colorScheme == .light ?
+                                    numberOfFoods <= 1 ?
+                                        Color.lightgray : .gray :
+                                        numberOfFoods <= 1 ?
+                                            .gray : .lightgray
+                                )
                                 .foregroundColor(.clear)
                                 .frame(width: 40, height: 40)
                                 .overlay(
                                     Text("-")
-                                        .foregroundColor(numberOfFoods <= 1 ? .lightgray : .gray)
+                                        .foregroundColor(
+                                            colorScheme == .light ?
+                                            numberOfFoods <= 1 ?
+                                                .lightgray : .gray :
+                                                numberOfFoods <= 1 ?
+                                                    .gray : .lightgray
+                                        )
                                 )
                         }
                         .disabled(numberOfFoods <= 1)
@@ -84,12 +96,18 @@ struct AddCartView: View {
                             numberOfFoods += 1
                         } label: {
                             Circle()
-                                .stroke(Color.gray)
+                                .stroke(
+                                    colorScheme == .light ?
+                                        .gray : .lightgray
+                                )
                                 .foregroundColor(.clear)
                                 .frame(width: 40, height: 40)
                                 .overlay(
                                     Text("+")
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(
+                                            colorScheme == .light ?
+                                                .gray : .lightgray
+                                        )
                                 )
                         }
                     }
@@ -136,12 +154,24 @@ struct AddCartView: View {
                             }
                         } label: {
                             Circle()
-                                .stroke(numberOfFoods <= 1 ? Color.lightgray : Color.gray)
+                                .stroke(
+                                    colorScheme == .light ?
+                                    numberOfFoods <= 1 ?
+                                        Color.lightgray : .gray :
+                                        numberOfFoods <= 1 ?
+                                            .gray : .lightgray
+                                )
                                 .foregroundColor(.clear)
                                 .frame(width: 40, height: 40)
                                 .overlay(
                                     Text("-")
-                                        .foregroundColor(numberOfFoods <= 1 ? .lightgray : .gray)
+                                        .foregroundColor(
+                                            colorScheme == .light ?
+                                            numberOfFoods <= 1 ?
+                                                .lightgray : .gray :
+                                                numberOfFoods <= 1 ?
+                                                    .gray : .lightgray
+                                        )
                                 )
                         }
                         .disabled(numberOfFoods <= 1)
@@ -153,12 +183,18 @@ struct AddCartView: View {
                             numberOfFoods += 1
                         } label: {
                             Circle()
-                                .stroke(Color.gray)
+                                .stroke(
+                                    colorScheme == .light ?
+                                        .gray : .lightgray
+                                )
                                 .foregroundColor(.clear)
                                 .frame(width: 40, height: 40)
                                 .overlay(
                                     Text("+")
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(
+                                            colorScheme == .light ?
+                                                .gray : .lightgray
+                                        )
                                 )
                         }
                     }
@@ -197,7 +233,7 @@ struct AddCartView: View {
                         .background(Color.blue)
                 }
             } else {
-                Text("지금은 준비 중이예요")
+                Text("지금은 준비 중이에요")
                     .font(.title3)
                     .bold()
                     .foregroundColor(.white)
@@ -206,6 +242,14 @@ struct AddCartView: View {
                     .background(Color.gray)
             }
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                navigationBackButton
+            }
+        }
+        .foregroundColor(.primary)
+        .bold()
         .alert(isPresented: $showAlert) {
             Alert(title: Text("같은 가게의 메뉴만 담을 수 있습니다"),
                   message: Text("주문할 가게를 변경하실 경우 이전에 담은 메뉴가 삭제됩니다.."),
@@ -221,7 +265,14 @@ struct AddCartView: View {
             )
             
         }
-        
+    }
+    
+    var navigationBackButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
+        }
     }
 }
 

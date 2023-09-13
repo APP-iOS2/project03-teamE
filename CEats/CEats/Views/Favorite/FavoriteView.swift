@@ -149,8 +149,8 @@ struct FavoriteView: View {
                                 isEdited.toggle()
                             } label: {
                                 Text(isEdited ? "취소" : "수정")
+                                    .foregroundColor(Color.cEatsBlue)
                             }
-                            
                         }
                     }
                 }

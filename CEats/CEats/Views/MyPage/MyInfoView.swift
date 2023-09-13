@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyInfoView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
-    @State private var selected: MyInfoCategory = .favorite
+    @State private var selected: MyInfoCategory = .review
     
     var body: some View {
         ScrollView {
@@ -53,5 +53,13 @@ struct MyInfoView: View {
             }
             
         }
+    }
+}
+
+struct MyInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyInfoView()
+            .environmentObject(UserViewModel())
+            .environmentObject(RestaurantViewModel())
     }
 }

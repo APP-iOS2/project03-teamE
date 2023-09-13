@@ -12,17 +12,10 @@ class TabViewModel: ObservableObject {
 }
 
 struct ContentView: View {
-    @State private var tabIndex: Int = 0
-    @StateObject var restaurantViewModel = RestaurantViewModel()
-    @StateObject var tabViewModel = TabViewModel()
-    @StateObject var userViewModel = UserViewModel()
+    @StateObject private var tabViewModel = TabViewModel()
+    @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @Environment(\.colorScheme) private var colorScheme
-    
-    init() {
-        UITabBar.appearance().backgroundColor = .systemBackground
-        UITabBar.appearance().tintColor = .systemGroupedBackground
-        UITabBar.appearance().backgroundImage = UIImage()
-    }
     
     var body: some View {
         TabView(selection: $tabViewModel.tabIndex) {
@@ -38,7 +31,7 @@ struct ContentView: View {
                     Text("검색")
                 }
                 .tag(1)
-            FavoriteView(tabIndex: $tabIndex)
+            FavoriteView(tabIndex: $tabViewModel.tabIndex)
                 .tabItem {
                     Image(systemName: "heart.fill")
                     Text("즐겨찾기")
@@ -50,30 +43,22 @@ struct ContentView: View {
                     Text("주문내역")
                 }
                 .tag(3)
-            MyView(tabIndex: $tabIndex)
+            MyView(tabIndex: $tabViewModel.tabIndex)
                 .tabItem {
                     Image(systemName: "person")
                     Text("마이페이지")
                 }
                 .tag(4)
         }
-        .environmentObject(restaurantViewModel)
-        .environmentObject(userViewModel)
         .environmentObject(tabViewModel)
-        .navigationBarBackButtonHidden()
-        .onAppear {
-            userViewModel.login()
-            restaurantViewModel.fetchAllRestaurant()
-        }
-        .onChange(of: colorScheme) { newValue in
-            UITabBar.appearance().backgroundColor = colorScheme == .dark ? .black : .white
-            UITabBar.appearance().tintColor = colorScheme == .dark ? .white : .black
-        }
+        .navigationBarBackButtonHidden()        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(UserViewModel())
+            .environmentObject(RestaurantViewModel())
     }
 }

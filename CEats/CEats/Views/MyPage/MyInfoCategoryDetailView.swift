@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MyInfoCategoryDetailView: View {
-    @EnvironmentObject var userViewModel: UserViewModel
-    @EnvironmentObject var restaurantViewModel: RestaurantViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
     
     @Binding var selected: MyInfoCategory
     private let grids: [GridItem] = [
@@ -35,14 +35,12 @@ struct MyInfoCategoryDetailView: View {
         case .order:
             LazyVGrid(columns: grids) {
                 ForEach(userViewModel.user.orderHistory) { order in
-                    ForEach(order.orderedMenu, id: \.name) { menu in
-                        NavigationLink {
-                            RTRView(restaurant: restaurantViewModel.findRestaurant(restaurant: order.restaurant))
-                        } label: {
-                            Image(menu.image ?? "photo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        }
+                    NavigationLink {
+                        RTRView(restaurant: restaurantViewModel.findRestaurant(restaurant: order.restaurant))
+                    } label: {
+                        Image(order.orderedMenu[0].image ?? "soju")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
                     }
                 }
             }

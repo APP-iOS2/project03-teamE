@@ -11,6 +11,7 @@ import MapKit
 struct RTRDetailInfoView: View {
     let restaurant: Restaurant
     
+    @Environment(\.dismiss) private var dismiss
     @State private var place: String = ""
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5718, longitude: 126.9769), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     
@@ -56,9 +57,25 @@ struct RTRDetailInfoView: View {
             }
             .padding(30)
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                navigationBackButton
+            }
+        }
+        .foregroundColor(.primary)
+        .bold()
         .navigationTitle("매장정보")
         .onAppear {
             convertLocationToAddress(location: CLLocation(latitude: region.center.latitude, longitude: region.center.longitude))
+        }
+    }
+    
+    var navigationBackButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
         }
     }
     
