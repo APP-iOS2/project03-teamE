@@ -39,17 +39,29 @@ struct CartMenuView: View {
                                     .fill(Color(colorSet))
                                     .frame(width: 100, height: 30)
                                 HStack {
-                                    Button {
-                                        userViewModel.subtractCount(food: food)
-                                    } label: {
-                                        Image(systemName: "minus.circle.fill")
-                                    }.disabled(food.foodCount == 0)
+                                    
+                                    if food.foodCount == 1 {
+                                        Button {
+                                            userViewModel.removeFood(food: food)
+                                        } label: {
+                                            Image(systemName: "trash.fill")
+                                        }
+                                    } else {
+                                        Button {
+                                            userViewModel.subtractCount(food: food)
+                                        } label: {
+                                            Image(systemName: "minus.circle.fill")
+                                        }.disabled(food.foodCount == 0)
+                                    }
+                                    
                                     Text("\(food.foodCount)")
+                                    
                                     Button {
                                         userViewModel.addCount(food: food)
                                     } label: {
                                         Image(systemName: "plus.circle.fill")
                                     }
+                                    
                                 }
                                 .padding()
                             }
