@@ -18,15 +18,15 @@ struct AddCartView: View {
     let food: Restaurant.Food
     
     var body: some View {
-
-            VStack {
-                ScrollView {
+        
+        VStack {
+            ScrollView {
                 if let foodImage = food.image {
                     Image(foodImage)
                         .resizable()
                         .scaledToFill()
                         .frame(width: .screenWidth * 1 , height: .screenHeight * 0.33)
-
+                    
                     HStack {
                         VStack(alignment: .leading) {
                             Text("\(food.name)")
@@ -167,33 +167,43 @@ struct AddCartView: View {
                 
                 Spacer()
             }
-            Button {
-                print(userViewModel.user.foodCart?.restaurant.name)
-                print(restaurant.name)
-                print("------------")
-                if let userCart = userViewModel.user.foodCart {
-                    if userCart.restaurant.name != restaurant.name {
-                        showAlert = true
+            if restaurant.isOpen {
+                Button {
+                    print(userViewModel.user.foodCart?.restaurant.name)
+                    print(restaurant.name)
+                    print("------------")
+                    if let userCart = userViewModel.user.foodCart {
+                        if userCart.restaurant.name != restaurant.name {
+                            showAlert = true
+                        }
+                        else {
+                            userViewModel.updateUserCart(restaurant: restaurant, food: food)
+                            dismiss()
+                        }
                     }
-                    else {
+                    else{
+                        userViewModel.user.foodCart = User.Cart(restaurant: restaurant, cart: [])
                         userViewModel.updateUserCart(restaurant: restaurant, food: food)
+                        print(userViewModel.user.foodCart)
                         dismiss()
                     }
+                } label: {
+                    Text("배달 카트에 담기")
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 60)
+                        .background(Color.blue)
                 }
-                else{
-                    userViewModel.user.foodCart = User.Cart(restaurant: restaurant, cart: [])
-                    userViewModel.updateUserCart(restaurant: restaurant, food: food)
-                    print(userViewModel.user.foodCart)
-                    dismiss()
-                }
-            } label: {
-                Text("배달 카트에 담기")
+            } else {
+                Text("오늘 오후 12:00 오픈")
                     .font(.title3)
                     .bold()
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 60)
-                    .background(Color.blue)
+                    .background(Color.gray)
             }
         }
         .alert(isPresented: $showAlert) {

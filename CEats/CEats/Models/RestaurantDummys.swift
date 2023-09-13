@@ -28,6 +28,7 @@ Restaurant(
 
 let restaurant2 =
  Restaurant(id: "ceoId2",
+            isOpen: false,
             password: "1234",
             restaurantInfo: .init(),
             name: "엽기떡볶이",
