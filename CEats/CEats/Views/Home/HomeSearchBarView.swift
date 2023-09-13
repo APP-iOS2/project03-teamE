@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeSearchBarView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
     @Binding var searchText: String
     
     var body: some View {
@@ -20,8 +21,9 @@ struct HomeSearchBarView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.black)
-                TextField("ooo님, 서브웨이 어때요?", text: $searchText)
+                TextField("\(userViewModel.user.username)님, 서브웨이 어때요?", text: $searchText)
                     .frame(width: .screenWidth * 0.43)
+                    .font(.system(size: 15))
                 Spacer()
             }
             .padding(.leading,40)
@@ -33,5 +35,6 @@ struct HomeSearchBarView: View {
 struct HomeSearchBarView_Preview: PreviewProvider {
     static var previews: some View {
         HomeSearchBarView(searchText: .constant(""))
+            .environmentObject(UserViewModel())
     }
 }
