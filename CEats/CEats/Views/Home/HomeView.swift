@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var searchText: String = ""
     @State private var isOpenCartSheet: Bool = false
     @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
     
     var body: some View {
         NavigationStack {
@@ -42,9 +43,9 @@ struct HomeView: View {
         }
         .onAppear{
             userViewModel.fetchUser {
-                print("온어피어적용됨~")
             }
-//            userViewModel.updateFavoriteRTR(user: userViewModel.user)
+           CEatsFBManager.shared.uploadDummyArray(datas: Seller.dummyArray)
+            CEatsFBManager.shared.uploadDummyArray(datas: Restaurant.sampleDummys)
         }
         .fullScreenCover(isPresented: $isOpenMapSheet) {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)

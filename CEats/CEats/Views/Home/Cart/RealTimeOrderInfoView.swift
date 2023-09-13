@@ -26,18 +26,29 @@ struct RealTimeOrderInfoView: View {
     
     var body: some View {
         VStack {
-            Button {
-                isOpenOrderedSheet = false
-                completion()
-            } label: {
-                Text("확인")
+            HStack {
+                Spacer()
+                Button {
+                    isOpenOrderedSheet = false
+                    completion()
+                } label: {
+                    Text("확인")
+                        .padding()
+                }
             }
             Map(coordinateRegion: $region, userTrackingMode: .constant(.follow), annotationItems: markers) { location in
                 MapAnnotation(coordinate: location.coordinate) {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.black)
+                    if (location.coordinate.latitude == markers[0].coordinate.latitude && location.coordinate.longitude == markers[0].coordinate.longitude) {
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.black)
+                    } else {
+                        Image(systemName: "fork.knife.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.black)
+                    }
                 }
             }
             .frame(height: 450)
@@ -73,7 +84,7 @@ struct RealTimeOrderInfoView: View {
                         .font(.title2)
                         .bold()
                         .padding(.bottom, 10)
-                    Text("서울특별시 광화문로 99-91")
+                    Text("\(userViewModel.user.userAddress)")
                 }
                 Spacer()
             }

@@ -110,6 +110,25 @@ final class CEatsFBManager {
         }
     }
     
+    func uploadDummyArray<T: CEatsIdentifiable>(datas: [T]) where T: Encodable {
+        datas.forEach { data in
+            let collectionRef = db.collection("\(type(of: data))")
+            
+            DispatchQueue.global().async {
+                do {
+                    try collectionRef.document(data.id).setData(from: data) { error in
+                        guard error == nil else {
+                            self.printError(error: error!)
+                            return
+                        }
+                    }
+                } catch {
+                    print(#function + ": fail to .setData(from:)")
+                }
+            }
+        }
+    }
+    
     ///동작하지 않음
     func updateAndaddSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, U>, to: U, completion: @escaping (U) -> ()) {
         let collectionRef = db.collection("\(type(of: data))")
@@ -143,6 +162,24 @@ final class CEatsFBManager {
         }
     }
     
+    func addCollectionSnapshotForRest<T: CEatsIdentifiable>(type: T.Type, completion: @escaping ([T]) -> ()) where T: Decodable {
+        let collectionRef = db.collection("\(type)")
+        
+        collectionRef.addSnapshotListener { snapshot, error in
+            guard error == nil else {
+                self.printError(error: error!)
+                return
+            }
+            guard let returnArray = snapshot?.documents.map({
+                do {
+                    return try $0.data(as: T.self)
+                } catch {
+                    fatalError()
+                }
+            }) else { return }
+            completion(returnArray)
+        }
+    }
     func addCollectionSnapshot<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: KeyPath<T, U>, completion: @escaping (U) -> ()) where T: Decodable {
         let collectionRef = db.collection("\(type(of: data))")
         var listener: ListenerRegistration?

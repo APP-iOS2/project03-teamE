@@ -18,7 +18,7 @@ Restaurant(
 ],
     deliveryFee: 3000,
     minimumPrice: 14000,
-    menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchijjigae"),
+    menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "식사", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchijjigae"),
             Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼",image: "soju"),
             Restaurant.Food(name: "계란말이", price: 8000, isRecommend: false, foodCategory: "사이드", description: "완전 인기메뉴",image: "egg")],
     mainImage: ["kimchijjigae"],
@@ -28,6 +28,7 @@ Restaurant(
 
 let restaurant2 =
  Restaurant(id: "ceoId2",
+            isOpen: false,
             password: "1234",
             restaurantInfo: .init(),
             name: "엽기떡볶이",
@@ -49,7 +50,7 @@ Restaurant(id: "ceoId3",
             [Review(writer: "함지수",score: 5.0,image: "korean", contents: "맛있어요"), Review(writer: "봉주헌", score: 3.0, contents: "존맛탱"), Review(writer: "장여훈", score: 5.0, contents: "굿")],
            deliveryFee: 2400,
            minimumPrice: 13000,
-           menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "김치찌개", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼", image: "soju")],
+           menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "식사", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchiSoup"),Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼", image: "soju")],
            mainImage: ["kimchi2"],
            foodType: [.korean], foodCategory: ["식사","사이드","주류"], latitude: 44.32, longitude: 22.222)
 

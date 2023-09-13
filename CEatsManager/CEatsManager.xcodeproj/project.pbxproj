@@ -11,7 +11,6 @@
 		121FA75D2AB148F100216D22 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 121FA75C2AB148F100216D22 /* FirebaseDatabaseSwift */; };
 		121FA75F2AB148F100216D22 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 121FA75E2AB148F100216D22 /* FirebaseFirestore */; };
 		121FA7612AB148F100216D22 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 121FA7602AB148F100216D22 /* FirebaseFirestoreSwift */; };
-		121FA7632AB1490700216D22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 121FA7622AB1490700216D22 /* GoogleService-Info.plist */; };
 		C983DE6F2AB0BE17006C8AF1 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C983DE6E2AB0BE17006C8AF1 /* UserViewModel.swift */; };
 		C983DE712AB0BE2A006C8AF1 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C983DE702AB0BE2A006C8AF1 /* RestaurantViewModel.swift */; };
 		C9F7A73F2AB0BBF900E3F1DC /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A73E2AB0BBF900E3F1DC /* Extension.swift */; };
@@ -31,10 +30,10 @@
 		D13CF9992AB0455300965F5E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF9982AB0455300965F5E /* User.swift */; };
 		D13CF99B2AB0455B00965F5E /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF99A2AB0455B00965F5E /* Coupon.swift */; };
 		D13CF99E2AB045AD00965F5E /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CF99D2AB045AD00965F5E /* FireBaseManager.swift */; };
+		D18807F32AB1891A006DBD2E /* GoogleService-Info-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = D18807F22AB1891A006DBD2E /* GoogleService-Info-3.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		121FA7622AB1490700216D22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C983DE6E2AB0BE17006C8AF1 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		C983DE702AB0BE2A006C8AF1 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		C9F7A73E2AB0BBF900E3F1DC /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		D13CF9982AB0455300965F5E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D13CF99A2AB0455B00965F5E /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
 		D13CF99D2AB045AD00965F5E /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		D18807F22AB1891A006DBD2E /* GoogleService-Info-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-3.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 		D13CF9702AB032C900965F5E /* CEatsManager */ = {
 			isa = PBXGroup;
 			children = (
-				121FA7622AB1490700216D22 /* GoogleService-Info.plist */,
+				D18807F22AB1891A006DBD2E /* GoogleService-Info-3.plist */,
 				D13CF9712AB032C900965F5E /* CEatsManagerApp.swift */,
 				D13CF9732AB032C900965F5E /* ContentView.swift */,
 				C9F7A7402AB0BD8900E3F1DC /* ViewModel */,
@@ -223,8 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D13CF9792AB032CB00965F5E /* Preview Assets.xcassets in Resources */,
+				D18807F32AB1891A006DBD2E /* GoogleService-Info-3.plist in Resources */,
 				D13CF9762AB032CB00965F5E /* Assets.xcassets in Resources */,
-				121FA7632AB1490700216D22 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

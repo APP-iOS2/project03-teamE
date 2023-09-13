@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var sellerviewModel: SellerViewModel
-    @State var tabIndex: Int = 0
+    @State var tabIndex: Int = 1
     
     var body: some View {
         TabView(selection: $tabIndex) {
@@ -24,21 +24,14 @@ struct ContentView: View {
             
             WorkingView()
                 .tabItem {
-                    Image(systemName: "frying.pan")
-                    Text("진행중")
-                }
-                .tag(2)
-            
-            OrderedHistoryView()
-                .tabItem {
                     Image(systemName: "list.bullet.rectangle.portrait")
                     Text("주문내역")
                 }
-                .tag(3)
+                .tag(2)
         }
         .onAppear {
-//            sellerviewModel.login()
-            sellerviewModel.fireManager.create(data: sellerviewModel.seller)
+            sellerviewModel.login()
+//            sellerviewModel.fireManager.create(data: sellerviewModel.seller)
         }
         .sheet(isPresented: $sellerviewModel.hasNewOrder) {
             NewOrderView()

@@ -9,20 +9,26 @@ import Foundation
 
 final class RestaurantViewModel: ObservableObject {
     let fireManager = CEatsFBManager.shared
-    @Published var restaurants: [Restaurant] = Restaurant.sampleArray
+    @Published var restaurants: [Restaurant] = Restaurant.sampleDummys
     
     @Published var selectedFoodType: FoodType? = nil
     
     func fetchAllRestaurant() {
         restaurants = []
-        fireManager.readAllDocument(type: Restaurant.self) { result in
-            self.restaurants.append(result)
+        fireManager.addCollectionSnapshotForRest(type: Restaurant.self) { success in
+            self.restaurants = success
         }
     }
     
     func updateFee(restaurant: Restaurant, to: Int) {
         fireManager.update(data: restaurant, value: \.deliveryFee, to: to) { result in
             
+        }
+    }
+    
+    func updateRestaurant(data: Restaurant){
+        for i in 0..<restaurants.count {
+            fireManager.create(data: restaurants[i])
         }
     }
     
