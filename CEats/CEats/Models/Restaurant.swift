@@ -9,7 +9,7 @@ import Foundation
 
 struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
     var id: String
-    var isOpen: Bool = true
+    var isOpen: Bool = false
     var password: String
     var restaurantInfo: RestaurantInfo
     var name: String //음식점 이름

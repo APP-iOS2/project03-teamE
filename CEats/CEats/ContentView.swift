@@ -54,8 +54,8 @@ struct ContentView: View {
         .environmentObject(userViewModel)
         .navigationBarBackButtonHidden()
         .onAppear {
-//            userViewModel.login()
-//            userViewModel.fireManager.create(data: userViewModel.user)
+            userViewModel.login()
+            restaurantViewModel.fetchAllRestaurant()
         }
     }
 }

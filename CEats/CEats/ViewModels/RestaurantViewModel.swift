@@ -15,8 +15,8 @@ final class RestaurantViewModel: ObservableObject {
     
     func fetchAllRestaurant() {
         restaurants = []
-        fireManager.readAllDocument(type: Restaurant.self) { result in
-            self.restaurants.append(result)
+        fireManager.addCollectionSnapshotForRest(type: Restaurant.self) { success in
+            self.restaurants = success
         }
     }
     
