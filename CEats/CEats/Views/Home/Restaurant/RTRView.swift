@@ -27,16 +27,6 @@ struct RTRView: View {
     @State private var selected = ""
 
     let restaurant: Restaurant
-
-    var navigationBackButton: some View {
-        Button {
-            userViewModel.fetchUser {
-                dismiss()
-            }
-        } label: {
-            Image(systemName: "arrow.left")
-        }
-    }
     
     var body: some View {
         VStack{
@@ -53,7 +43,9 @@ struct RTRView: View {
                         }
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                navigationBackButton
+                                CEatsNavigationBackButton {
+                                    dismiss()
+                                }
                                     .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {

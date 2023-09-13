@@ -245,7 +245,9 @@ struct AddCartView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                navigationBackButton
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
             }
         }
         .foregroundColor(.primary)
@@ -264,14 +266,6 @@ struct AddCartView: View {
             }
             )
             
-        }
-    }
-    
-    var navigationBackButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "arrow.left")
         }
     }
 }

@@ -104,7 +104,7 @@ struct MyView: View {
                             .frame(height: 60)
                         if userViewModel.user.coupons.count > 0 {
                             Image(systemName: "\(userViewModel.user.coupons.count).circle.fill")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.cEatsBlue)
                         }
                         Spacer()
                     }

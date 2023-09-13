@@ -60,7 +60,9 @@ struct RTRDetailInfoView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                navigationBackButton
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
             }
         }
         .foregroundColor(.primary)
@@ -68,14 +70,6 @@ struct RTRDetailInfoView: View {
         .navigationTitle("매장정보")
         .onAppear {
             convertLocationToAddress(location: CLLocation(latitude: region.center.latitude, longitude: region.center.longitude))
-        }
-    }
-    
-    var navigationBackButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "arrow.left")
         }
     }
     

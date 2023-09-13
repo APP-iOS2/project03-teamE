@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyInfoView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userViewModel: UserViewModel
     @State private var selected: MyInfoCategory = .review
     
@@ -51,7 +52,14 @@ struct MyInfoView: View {
                 MyInfoCategoryView(selected: $selected)
                 MyInfoCategoryDetailView(selected: $selected)
             }
-            
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
+            }
         }
     }
 }

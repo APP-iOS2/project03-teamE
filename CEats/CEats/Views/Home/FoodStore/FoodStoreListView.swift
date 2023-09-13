@@ -30,7 +30,9 @@ struct FoodStoreListView: View {
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                navigationBackButton
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
@@ -42,14 +44,6 @@ struct FoodStoreListView: View {
         }
         .foregroundColor(.primary)
         .bold()
-    }
-    
-    var navigationBackButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "arrow.left")
-        }
     }
 }
 

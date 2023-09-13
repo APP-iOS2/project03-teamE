@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyReviewView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userViewModel: UserViewModel
     let review: Review
     
@@ -47,6 +48,14 @@ struct MyReviewView: View {
             .offset(x:5)
         }
         .padding(30)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
+            }
+        }
     }
 }
 

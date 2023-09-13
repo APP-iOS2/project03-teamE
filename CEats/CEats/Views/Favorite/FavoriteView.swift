@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FavoriteView: View {
     // MARK: - Properties
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var tabViewModel: TabViewModel
     @EnvironmentObject private var favoriteStore: RestaurantViewModel
     @EnvironmentObject private var userViewModel: UserViewModel
@@ -158,6 +159,14 @@ struct FavoriteView: View {
                             }
                         }
                     }
+                }
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
                 }
             }
         }
