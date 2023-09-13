@@ -7,7 +7,7 @@
 
 import Foundation
 // 파베 연결 , CEatsIdentifiable
-struct Restaurant: Identifiable, Codable {
+struct Restaurant: Identifiable, Codable, CEatsIdentifiable {
     var id: String
     var isOpen: Bool = true
     var password: String
