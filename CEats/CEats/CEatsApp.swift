@@ -44,9 +44,15 @@ struct CEatsApp: App {
                 }
             }
             .onAppear {
+//                resetFirebaseData()
                 userViewModel.login()
                 restaurantViewModel.fetchAllRestaurant()
             }
         }
+    }
+    func resetFirebaseData() {
+        CEatsFBManager.shared.create(data: userViewModel.user)
+        CEatsFBManager.shared.uploadDummyArray(datas: Seller.dummyArray)
+        CEatsFBManager.shared.uploadDummyArray(datas: Restaurant.sampleDummys)
     }
 }

@@ -49,16 +49,8 @@ struct CartPayButtonView: View {
         .background(
             userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
             restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant) ? .blue : .gray)
-//        .background(
-//            restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant) ? .gray : .blue
-//        )
         .disabled(!(userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
                   restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant)))
-//        .disabled(!restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant))
-        .onAppear {
-            print(userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
-                  restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant))
-        }
     }
 }
 
@@ -66,5 +58,6 @@ struct CartPayButtonView_Previews: PreviewProvider {
     static var previews: some View {
         CartPayButtonView(showingAlert: .constant(false))
             .environmentObject(UserViewModel())
+            .environmentObject(RestaurantViewModel())
     }
 }

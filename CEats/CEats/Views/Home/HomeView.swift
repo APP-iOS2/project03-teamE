@@ -44,8 +44,6 @@ struct HomeView: View {
         .onAppear{
             userViewModel.fetchUser {
             }
-//           CEatsFBManager.shared.uploadDummyArray(datas: Seller.dummyArray)
-//            CEatsFBManager.shared.uploadDummyArray(datas: Restaurant.sampleDummys)
         }
         .fullScreenCover(isPresented: $isOpenMapSheet) {
             MapHomeView(isOpenMapSheet: $isOpenMapSheet)
