@@ -49,10 +49,10 @@ struct CartMenuView: View {
                                             Image(systemName: "trash.fill")
                                         }
                                         .alert("선택하신 메뉴를 삭제하시겠습니까?", isPresented: $showingAlert) {
-                                            Button("뒤로가기") {
+                                            Button("뒤로가기", role: .cancel) {
                                                 showingAlert = false
                                             }
-                                            Button {
+                                            Button(role: .destructive) {
                                                 userViewModel.removeFood(food: food)
                                             } label: {
                                                 Text("삭제")

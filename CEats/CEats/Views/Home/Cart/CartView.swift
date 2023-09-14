@@ -35,31 +35,6 @@ struct CartView: View {
                         Text("장바구니가 비어있습니다.")
                             .foregroundColor(.lightgray)
                         
-                        Button {
-                            do { withAnimation(.easeOut(duration: 0.1)) {
-                                self.isAnimating.toggle()
-                                self.progress = self.isAnimating ? 1 : 0
-                            }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    tabIndex = 0
-                                    self.isAnimating.toggle()
-                                    self.progress = 0
-                                }
-                            }
-                        } label: {
-                            ZStack(alignment: .leading) {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray, lineWidth: 2)
-                                    .frame(width: 180, height: 50)
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.gray)
-                                    .frame(width: 180 * progress, height: 50)
-                                    .animation(.linear(duration: 0.3), value: isAnimating)
-                                Text("쿠팡이츠 맛집 구경가기")
-                                    .foregroundColor(.black)
-                                    .frame(width: 180, height: 50)
-                            }
-                        }
                     }
                 }
                 .navigationBarBackButtonHidden()
