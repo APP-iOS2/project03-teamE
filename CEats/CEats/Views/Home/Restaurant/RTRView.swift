@@ -23,10 +23,15 @@ struct RTRView: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var userViewModel: UserViewModel
     
+    @State private var selectedIndex = 0
     @State private var isOpenCartSheet: Bool = false
     @State private var selected = ""
 
     let restaurant: Restaurant
+    
+    private var totalCount: Int {
+        return restaurant.mainImage.count
+    }
     
     var body: some View {
         VStack{
@@ -37,7 +42,7 @@ struct RTRView: View {
                         let btnColor = geo.frame(in: .global).origin.y > 0 ? 1 : (95 + geo.frame(in: .global).minY) / 100
                         let colorY = colorScheme == .dark ? -btnColor : btnColor
                         NavigationLink(destination: FullScreenImageView(imageName: restaurant.mainImage)) {
-                            RTRTitleImageView(imageNamss: restaurant.mainImage)
+                            RTRTitleImageView(imageNamss: restaurant.mainImage, selectedIndex: $selectedIndex)
                                 .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
                                 .offset(y: offset > 0 ? -offset : 0)
                         }
@@ -73,7 +78,23 @@ struct RTRView: View {
                         .bold()
                     }
                     .frame(width: .screenWidth, height: .screenHeight / 4)
-                    RTRTitleInfoView(restaurant: restaurant)
+                    
+                    HStack {
+                        Text("\(selectedIndex + 1) / \(totalCount)")
+                            .padding(.vertical, 5)
+                            .padding(.horizontal)
+                            .font(.caption)
+                            .foregroundColor(.white)
+                            .background(Color.secondary)
+                            .cornerRadius(.greatestFiniteMagnitude)
+
+                        Spacer()
+                    }
+                    .clipped()
+                    .frame(width: .screenWidth * 0.85)
+                    .padding(.top, -.screenHeight / 9)
+                    
+                    RTRTitleInfoView(restaurant: restaurant, selectedIndex: $selectedIndex)
                         .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
                         .background(.background)
                         .cornerRadius(3)
