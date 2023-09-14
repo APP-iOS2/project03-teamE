@@ -11,11 +11,11 @@ struct AddCartView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
-    @State private var numberOfFoods: Int = 1
+    //@State private var numberOfFoods: Int = 1
     @State private var showAlert: Bool = false
     
     let restaurant: Restaurant
-    let food: Restaurant.Food
+    @State var food: Restaurant.Food
     
     var body: some View {
         
@@ -49,7 +49,7 @@ struct AddCartView: View {
                         
                         Spacer()
                         
-                        Text("\(food.price * numberOfFoods)")
+                        Text("\(food.price * food.foodCount)")
                     }
                     .padding(.horizontal, 30)
                     .padding(.bottom, 20)
@@ -62,16 +62,16 @@ struct AddCartView: View {
                         Spacer()
                         
                         Button {
-                            if numberOfFoods > 1 {
-                                numberOfFoods -= 1
+                            if food.foodCount > 1 {
+                                food.foodCount -= 1
                             }
                         } label: {
                             Circle()
                                 .stroke(
                                     colorScheme == .light ?
-                                    numberOfFoods <= 1 ?
+                                    food.foodCount <= 1 ?
                                         Color.lightgray : .gray :
-                                        numberOfFoods <= 1 ?
+                                        food.foodCount <= 1 ?
                                             .gray : .lightgray
                                 )
                                 .foregroundColor(.clear)
@@ -80,20 +80,20 @@ struct AddCartView: View {
                                     Text("-")
                                         .foregroundColor(
                                             colorScheme == .light ?
-                                            numberOfFoods <= 1 ?
+                                            food.foodCount <= 1 ?
                                                 .lightgray : .gray :
-                                                numberOfFoods <= 1 ?
+                                                food.foodCount <= 1 ?
                                                     .gray : .lightgray
                                         )
                                 )
                         }
-                        .disabled(numberOfFoods <= 1)
+                        .disabled(food.foodCount <= 1)
                         
-                        Text("\(numberOfFoods)")
+                        Text("\(food.foodCount)")
                             .padding(.horizontal, 5)
                         
                         Button {
-                            numberOfFoods += 1
+                            food.foodCount += 1
                         } label: {
                             Circle()
                                 .stroke(
@@ -136,7 +136,7 @@ struct AddCartView: View {
                         
                         Spacer()
                         
-                        Text("\(food.price * numberOfFoods)")
+                        Text("\(food.price * food.foodCount)")
                     }
                     .padding(.horizontal, 30)
                     .padding(.bottom, 20)
@@ -149,16 +149,16 @@ struct AddCartView: View {
                         Spacer()
                         
                         Button {
-                            if numberOfFoods > 1 {
-                                numberOfFoods -= 1
+                            if food.foodCount > 1 {
+                                food.foodCount -= 1
                             }
                         } label: {
                             Circle()
                                 .stroke(
                                     colorScheme == .light ?
-                                    numberOfFoods <= 1 ?
+                                    food.foodCount <= 1 ?
                                         Color.lightgray : .gray :
-                                        numberOfFoods <= 1 ?
+                                        food.foodCount <= 1 ?
                                             .gray : .lightgray
                                 )
                                 .foregroundColor(.clear)
@@ -167,20 +167,20 @@ struct AddCartView: View {
                                     Text("-")
                                         .foregroundColor(
                                             colorScheme == .light ?
-                                            numberOfFoods <= 1 ?
+                                            food.foodCount <= 1 ?
                                                 .lightgray : .gray :
-                                                numberOfFoods <= 1 ?
+                                                food.foodCount <= 1 ?
                                                     .gray : .lightgray
                                         )
                                 )
                         }
-                        .disabled(numberOfFoods <= 1)
+                        .disabled(food.foodCount <= 1)
                         
-                        Text("\(numberOfFoods)")
+                        Text("\(food.foodCount)")
                             .padding(.horizontal, 5)
                         
                         Button {
-                            numberOfFoods += 1
+                            food.foodCount += 1
                         } label: {
                             Circle()
                                 .stroke(
@@ -268,6 +268,8 @@ struct AddCartView: View {
             
         }
     }
+    
+    
 }
 
 
