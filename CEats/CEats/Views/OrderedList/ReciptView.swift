@@ -33,9 +33,10 @@ struct ReciptView: View {
                 ForEach(order.orderedMenu, id: \.name) { food in
                     HStack{
                         Text(food.name)
+                        Text("x \(food.foodCount)")
                             .font(.system(size:16))
                         Spacer()
-                        Text(food.priceToString)
+                        Text("\(food.price * food.foodCount)")
                     }
                 }
                 Divider()

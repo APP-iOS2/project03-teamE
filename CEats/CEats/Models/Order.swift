@@ -19,7 +19,7 @@ struct Order: Identifiable, CEatsIdentifiable, Codable {
         return restaurant.deliveryTime
     }
     var totalFee: Int {
-        let totalFoodFee = orderedMenu.map({ $0.price }).reduce(0) { $0 + $1 }
+        let totalFoodFee = orderedMenu.map({ $0.price * $0.foodCount }).reduce(0) { $0 + $1 }
         return totalFoodFee + restaurant.deliveryFee
     }
     var orderedAt: Double = Date().timeIntervalSince1970

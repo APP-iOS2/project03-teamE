@@ -38,7 +38,7 @@ struct HomeView: View {
         }
         .refreshable {
             userViewModel.fetchUser {
-                print("리프레셔블 적용됨~")
+
             }
         }
         .onAppear{
