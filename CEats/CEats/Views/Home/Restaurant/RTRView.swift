@@ -94,7 +94,7 @@ struct RTRView: View {
                     .frame(width: .screenWidth * 0.85)
                     .padding(.top, -.screenHeight / 9)
                     
-                    RTRTitleInfoView(restaurant: restaurant, selectedIndex: $selectedIndex)
+                    RTRTitleInfoView(restaurant: restaurant)
                         .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
                         .background(.background)
                         .cornerRadius(3)
