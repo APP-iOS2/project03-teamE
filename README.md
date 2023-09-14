@@ -3,9 +3,21 @@
 쿠팡이츠 클론코딩을 통해 소비자의 주문 기능과 판매자의 기능을 구현하고, 관리자 앱은 사용자로부터의 피드백과 시스템 관리를 용이하게 함
 
 ---
-###  페르소나
-1. 수정부탁드립니다 ~
----
+## 📚 실행 가이드 및 설치 방법(How to build)
+
+### 설치/실행 방법
+* ❗️❗️아래 1가지 파일은 필수 파일임으로 실행이 필요할 시 arpa99@naver.com을 통해 파일을 요청해주세요.
+```
+- GoogleService-Info.plist
+```
+
+```
+- CEats 번들 ID: com.time5607.CEats
+- CEats Seller 번들 ID: com.time5607.CEatSeller
+- CEats Manager 번들 ID: com.time5607.CEatsManager
+
+```
+
 
 ## 활용기술
 
@@ -120,4 +132,5 @@
 ```
 ## Libraries
 - [Firebase](https://github.com/firebase/firebase-ios-sdk/blob/master/LICENSE)
-- 여훈님 하셨던거 찾아서 넣기
+- [ScalingHeaderScrollView](https://github.com/exyte/ScalingHeaderScrollView)
+
