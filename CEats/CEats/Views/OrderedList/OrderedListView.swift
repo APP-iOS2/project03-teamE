@@ -11,6 +11,7 @@ struct OrderedListView: View {
     //StateObject , observedObject 는 뷰를 바라보고 있어서 변하면 초기화 돼서 다시 그려줌
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userViewModel: UserViewModel
+    @State var isRoot = true
     
     var body: some View {
         NavigationStack {
@@ -23,10 +24,10 @@ struct OrderedListView: View {
                             VStack{
                                 Text(state.rawValue)
                                     .fontWeight(userViewModel.selectedButton == state ? .medium : .regular )
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.primary)
                                 Rectangle()
                                     .frame(height: 1)
-                                    .foregroundColor(userViewModel.selectedButton == state ? .black : .clear)
+                                    .foregroundColor(userViewModel.selectedButton == state ? .primary : .clear)
                             }
                         }
                     }
@@ -38,9 +39,11 @@ struct OrderedListView: View {
             }
             .navigationBarBackButtonHidden()
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    CEatsNavigationBackButton {
-                        dismiss()
+                if !isRoot {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        CEatsNavigationBackButton {
+                            dismiss()
+                        }
                     }
                 }
             }

@@ -34,6 +34,7 @@ struct CartDeliveryView: View {
                 } label: {
                     Text("수정")
                 }
+                .foregroundColor(Color.cEatsBlue)
             }
             .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 10))
             VStack(alignment: .leading) {
@@ -49,7 +50,7 @@ struct CartDeliveryView: View {
                         VStack(alignment: .leading) {
                             HStack {
                                 Image(systemName: userViewModel.deliveryOpt == kind ? "o.circle.fill" : "o.circle")
-                                    .foregroundColor(userViewModel.deliveryOpt == kind ? .accentColor : .primary)
+                                    .foregroundColor(userViewModel.deliveryOpt == kind ? .cEatsBlue : .primary)
                                 VStack(alignment: .leading) {
                                     Text(kind.toString)
                                         .font(.system(size: 18, weight: userViewModel.deliveryOpt == kind ? .bold : .regular))
@@ -80,7 +81,7 @@ struct CartDeliveryView: View {
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 7)
-                                .stroke(userViewModel.deliveryOpt == kind ?  Color.accentColor : Color.primary, lineWidth: 1.6)
+                                .stroke(userViewModel.deliveryOpt == kind ?  Color.cEatsBlue : Color.primary, lineWidth: 1.6)
                                 .shadow(color: .gray, radius: 1.3)
                         )
                     }
@@ -130,7 +131,7 @@ struct DeliveryTypeButton: View, Identifiable {
         VStack(alignment: .leading) {
             HStack {
                 Image(systemName: isSelected ? "o.circle.fill" : "o.circle")
-                    .foregroundColor(isSelected ? .accentColor : .black)
+                    .foregroundColor(isSelected ? .cEatsBlue : .black)
                 VStack(alignment: .leading) {
                     Text("\(titleLabel)")
                         .font(.system(size: 18, weight: isSelected ? .bold : .regular))
@@ -163,7 +164,7 @@ struct DeliveryTypeButton: View, Identifiable {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 7)
-                .stroke(isSelected ?  Color.accentColor : Color.black, lineWidth: 1.6)
+                .stroke(isSelected ?  Color.cEatsBlue : Color.black, lineWidth: 1.6)
                 .shadow(color: .gray, radius: 1.3)
         )
     }

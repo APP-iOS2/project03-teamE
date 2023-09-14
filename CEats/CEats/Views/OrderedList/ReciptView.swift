@@ -83,6 +83,8 @@ struct ReciptView: View {
                     dismiss()
                 } label: {
                     Image(systemName: "xmark")
+                        .foregroundColor(.primary)
+                        .bold()
                 }
             }
         }

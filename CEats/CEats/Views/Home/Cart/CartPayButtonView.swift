@@ -48,7 +48,7 @@ struct CartPayButtonView: View {
         .padding()
         .background(
             userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
-            restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant) ? .blue : .gray)
+            restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant) ? Color.cEatsBlue : .gray)
         .disabled(!(userViewModel.user.cEatsMoney > userViewModel.cartFee + userViewModel.deliveryOpt.fee &&
                   restaurantViewModel.isOpen(restaurant: userViewModel.user.foodCart?.restaurant)))
     }
