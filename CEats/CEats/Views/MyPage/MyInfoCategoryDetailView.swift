@@ -14,8 +14,7 @@ struct MyInfoCategoryDetailView: View {
     @Binding var selected: MyInfoCategory
     private let grids: [GridItem] = [
         .init(),
-        .init(),
-        .init(),
+        .init()
     ]
     
     var body: some View {
