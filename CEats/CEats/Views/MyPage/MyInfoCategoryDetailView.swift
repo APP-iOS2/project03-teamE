@@ -35,7 +35,7 @@ struct MyInfoCategoryDetailView: View {
             LazyVGrid(columns: grids) {
                 ForEach(userViewModel.user.orderHistory) { order in
                     NavigationLink {
-                        OrderListView()
+                        OrderedListView()
                     } label: {
                         Image(order.orderedMenu[0].image ?? "soju")
                             .resizable()
