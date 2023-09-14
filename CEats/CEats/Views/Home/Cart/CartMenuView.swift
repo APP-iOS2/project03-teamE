@@ -93,9 +93,10 @@ struct CartMenuView: View {
             Text("+ 메뉴 추가")
         }
         .font(.caption)
+        .foregroundColor(.cEatsBlue)
     }
         .padding()
-}
+  }
 }
 
 struct CartMenuView_Previews: PreviewProvider {

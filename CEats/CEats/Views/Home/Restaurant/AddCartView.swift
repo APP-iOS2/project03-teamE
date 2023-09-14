@@ -24,9 +24,9 @@ struct AddCartView: View {
                 if let foodImage = food.image {
                     Image(foodImage)
                         .resizable()
-                        .scaledToFill()
+                        .scaledToFit()
                         .frame(width: .screenWidth * 1 , height: .screenHeight * 0.33)
-                    
+                    Spacer()
                     HStack {
                         VStack(alignment: .leading) {
                             Text("\(food.name)")
@@ -109,7 +109,9 @@ struct AddCartView: View {
                                                 .gray : .lightgray
                                         )
                                 )
+                            
                         }
+                        
                     }
                     .padding(.horizontal, 30)
                     
@@ -205,9 +207,6 @@ struct AddCartView: View {
             }
             if restaurant.isOpen {
                 Button {
-                    print(userViewModel.user.foodCart?.restaurant.name)
-                    print(restaurant.name)
-                    print("------------")
                     if let userCart = userViewModel.user.foodCart {
                         if userCart.restaurant.name != restaurant.name {
                             showAlert = true
@@ -220,7 +219,6 @@ struct AddCartView: View {
                     else{
                         userViewModel.user.foodCart = User.Cart(restaurant: restaurant, cart: [])
                         userViewModel.updateUserCart(restaurant: restaurant, food: food)
-                        print(userViewModel.user.foodCart)
                         dismiss()
                     }
                 } label: {
@@ -230,7 +228,7 @@ struct AddCartView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 60)
-                        .background(Color.blue)
+                        .background(Color.cEatsBlue)
                 }
             } else {
                 Text("지금은 준비 중이에요")
@@ -250,7 +248,7 @@ struct AddCartView: View {
                 }
             }
         }
-        .foregroundColor(.primary)
+        .foregroundColor(colorScheme == .light ? .white : .lightgray)
         .bold()
         .alert(isPresented: $showAlert) {
             Alert(title: Text("같은 가게의 메뉴만 담을 수 있습니다"),

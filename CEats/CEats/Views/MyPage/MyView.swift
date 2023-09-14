@@ -53,16 +53,17 @@ struct MyView: View {
                 MyInfoView()
             } label: {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 5)
                         .frame(width: 320, height: 50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.blue, lineWidth: 1)
+                                .stroke(Color.cEatsBlue, lineWidth: 1)
                         )
                         .foregroundColor(.white)
                         .padding(2)
                     Text("자세히 보기")
                         .bold()
+                        .foregroundColor(.cEatsBlue)
                 }
             }
             Image("advertisement")

@@ -23,10 +23,15 @@ struct RTRView: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject private var userViewModel: UserViewModel
     
+    @State private var selectedIndex = 0
     @State private var isOpenCartSheet: Bool = false
     @State private var selected = ""
 
     let restaurant: Restaurant
+    
+    private var totalCount: Int {
+        return restaurant.mainImage.count
+    }
     
     var body: some View {
         VStack{
@@ -37,16 +42,15 @@ struct RTRView: View {
                         let btnColor = geo.frame(in: .global).origin.y > 0 ? 1 : (95 + geo.frame(in: .global).minY) / 100
                         let colorY = colorScheme == .dark ? -btnColor : btnColor
                         NavigationLink(destination: FullScreenImageView(imageName: restaurant.mainImage)) {
-                            RTRTitleImageView(imageNamss: restaurant.mainImage)
+                            RTRTitleImageView(imageNamss: restaurant.mainImage, selectedIndex: $selectedIndex)
                                 .frame(width: .screenWidth, height: (.screenHeight / 4) + (offset > 0 ? offset : 0))
                                 .offset(y: offset > 0 ? -offset : 0)
                         }
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                CEatsNavigationBackButton {
-                                    dismiss()
-                                }
-                                    .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
+                                navigationBackBtn
+                                .foregroundColor(Color(red: colorY, green: colorY, blue: colorY))
+                                .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 HStack {
@@ -73,6 +77,22 @@ struct RTRView: View {
                         .bold()
                     }
                     .frame(width: .screenWidth, height: .screenHeight / 4)
+                    
+                    HStack {
+                        Text("\(selectedIndex + 1) / \(totalCount)")
+                            .padding(.vertical, 5)
+                            .padding(.horizontal)
+                            .font(.caption)
+                            .foregroundColor(.white)
+                            .background(Color.secondary)
+                            .cornerRadius(.greatestFiniteMagnitude)
+
+                        Spacer()
+                    }
+                    .clipped()
+                    .frame(width: .screenWidth * 0.85)
+                    .padding(.top, -.screenHeight / 9)
+                    
                     RTRTitleInfoView(restaurant: restaurant)
                         .frame(width: .screenWidth * 0.85, height: .screenHeight / 9)
                         .background(.background)
@@ -117,12 +137,21 @@ struct RTRView: View {
                 }
             }
 
-            if userViewModel.user.foodCart != nil {
+            if userViewModel.user.foodCart?.cart.count ?? 0 > 0 {
                 HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                     .padding(.top, -10)
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+    
+    var navigationBackBtn: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
+                .bold()
+        }
     }
 }
 

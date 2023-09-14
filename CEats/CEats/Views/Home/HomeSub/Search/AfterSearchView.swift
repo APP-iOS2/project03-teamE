@@ -32,7 +32,9 @@ struct AfterSearchView: View {
                     } label: {
                         VStack {
                             ZStack {
-                                AsyncImage(url: URL(string: "https://www.jungle.co.kr/image/90e4ffc149968a50c80cac37"))
+                                Image(store.mainImage.first ?? "restaurant3")
+                                    .resizable()
+                                    .scaledToFill()
                                     .frame(width: .screenWidth * 0.92, height: .screenHeight * 0.23)
                                     .cornerRadius(10)
                                 

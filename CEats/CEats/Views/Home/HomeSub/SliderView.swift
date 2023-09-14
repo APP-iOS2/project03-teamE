@@ -18,7 +18,6 @@ struct SliderView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .onReceive(timer, perform:  { _ in
-                print(selected)
                 withAnimation {
                     selection = selection < 2 ? selection + 1 : 0
                     selected = images[selection]

@@ -14,7 +14,7 @@ struct RTRSubInfoView: View {
         VStack {
             HStack {
                 Image(systemName: "clock")
-                Text("19~39분")
+                Text("도착까지 약 19~39분")
                     .font(.system(size: 15, weight: .bold))
                 Spacer()
                 NavigationLink {
@@ -28,30 +28,27 @@ struct RTRSubInfoView: View {
             }
             .padding(.bottom,20)
             HStack {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("배달비")
-                        .padding(.vertical, 5)
                     Text("최소주문")
                 }
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text("\(restaurant.deliveryFee)")
-                            .font(.footnote)
 //                        Button("자세히") {
 //
 //                        }
 //                        .foregroundColor(.primary)
-                        .padding(.vertical, 5)
 //                        .padding(.horizontal, 10)
 //                        .background(.quaternary)
 //                        .cornerRadius(.greatestFiniteMagnitude)
                     }
                     Text("\(restaurant.minimumPrice)")
                 }
-                .padding(.leading,10)
+                .padding(.leading, 10)
                 Spacer()
             }
-            .font(.footnote)
+            .font(.headline)
         }
     }
 }

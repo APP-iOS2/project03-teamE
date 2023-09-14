@@ -55,7 +55,6 @@ struct CartAppealView: View {
                     Text(req.toString)
                 }
             }
-            .pickerStyle(.automatic)
         }
     }
 }

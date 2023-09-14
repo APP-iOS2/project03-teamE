@@ -12,6 +12,7 @@ struct RTRDetailInfoView: View {
     let restaurant: Restaurant
     
     @Environment(\.dismiss) private var dismiss
+    @State private var pasteboard = UIPasteboard.general
     @State private var place: String = ""
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5718, longitude: 126.9769), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     
@@ -33,7 +34,7 @@ struct RTRDetailInfoView: View {
                     }
                     Spacer()
                     Button("주소복사") {
-                        
+                        pasteboard.string = place
                     }
                     .font(.system(size: 15, weight: .bold))
                 }
@@ -42,6 +43,7 @@ struct RTRDetailInfoView: View {
                     Text("전화번호:")
                         .font(.system(size: 18, weight: .bold))
                     RTRDetailInfoMenuView(phoneNumber: restaurant.restaurantInfo.phoneNumber)
+                        .foregroundColor(.cEatsBlue)
                 }
                 Text("상호명: \(restaurant.restaurantInfo.name)")
                     .padding(.bottom)
