@@ -128,7 +128,7 @@ struct NewOrderView: View {
                         Spacer()
                         VStack(alignment: .trailing, spacing: 20) {
                             ForEach(sellerviewModel.newOrder?.orderedMenu ?? []) { food in
-                                Text(food.priceToString)
+                                Text("\(food.price * food.foodCount)")
                             }
 //                            Text("28,000원")
 //                            Text("3,000원")

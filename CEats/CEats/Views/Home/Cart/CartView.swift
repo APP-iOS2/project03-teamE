@@ -22,7 +22,7 @@ struct CartView: View {
     
     // MARK: - View
     var body: some View {
-        if userViewModel.user.foodCart?.cart.isEmpty ?? true {
+        if userViewModel.user.foodCart?.cart.isEmpty ?? false {
             VStack(spacing: 50) {
                 VStack {
                     Image(systemName: "cart")
