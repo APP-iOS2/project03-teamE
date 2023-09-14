@@ -122,7 +122,7 @@ struct MapDetailView: View {
                 }
                 
                 Button {
-                    
+
                     isOKSheet = false
                 } label: {
                     Text("상세 주소 입력")
