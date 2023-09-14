@@ -13,12 +13,17 @@ Restaurant(
     restaurantInfo: RestaurantInfo(phoneNumber: 01065483210, name: "멋쟁이 김치찌개", timeTable: "12:00~ 23:00", introduce: "대한민국 최고의 멋쟁이 김치찌개 집입니다."),
     name: "멋쟁이 김치찌개",
     reviews: [
-    Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "이 집 김치찌개는 정말 인정합니다.\n 계란말이가 더 맛있긴 하지만요~"),
-    Review(writer: "김민지", score: 5.0, image: "soju", contents: "지친 인생에서,,,\n 최고의 맛이었어요 ㅠㅠ")
+    Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "이 집 김치찌개는 정말 인정합니다. 계란말이가 더 맛있긴 하지만요~"),
+    Review(writer: "김민지", score: 5.0, image: "soju", contents: "지친 인생에서 최고의 맛이었어요 ㅠㅠ")
 ],
     deliveryFee: 3000,
     minimumPrice: 14000,
     menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "식사", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchijjigae"),
+            Restaurant.Food(name: "비빔밥", price: 7000, isRecommend: false, foodCategory: "식사", description: "신선한 나물을 사용한 멋쟁이 비빔밥 특식", image: "korean"),
+            Restaurant.Food(name: "고등어구이", price: 13000, isRecommend: true, foodCategory: "식사", description: "", image: "fish"),
+            Restaurant.Food(name: "청국장", price: 8000, isRecommend: true, foodCategory: "식사", description: "손님들이 인정한 청국장 맛집", image: "cheong"),
+            Restaurant.Food(name: "공깃밥", price: 1500, isRecommend: false, foodCategory: "사이드", description: "식사 주문시 기본으로 제공됩니다. ", image: "rice"),
+            Restaurant.Food(name: "펩시 콜라", price: 3000, isRecommend: true, foodCategory: "주류", description: "펩시콜라", image: "coke"),
             Restaurant.Food(name: "소주", price: 4000, isRecommend: false, foodCategory: "주류", description: "처음처럼",image: "soju"),
             Restaurant.Food(name: "계란말이", price: 8000, isRecommend: false, foodCategory: "사이드", description: "완전 인기메뉴",image: "egg")],
     mainImage: ["kimchijjigae"],

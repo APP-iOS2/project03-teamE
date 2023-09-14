@@ -40,7 +40,7 @@ struct CEatsApp: App {
                                     showMainView = true
                                 }
                             }
-                        }
+                    }
                 }
             }
             .onAppear {
