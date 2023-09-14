@@ -14,7 +14,8 @@ Restaurant(
     name: "멋쟁이 김치찌개",
     reviews: [
     Review(writer: "김민지", score: 4.0, image: "kimchi2", contents: "이 집 김치찌개는 정말 인정합니다. 계란말이가 더 맛있긴 하지만요~"),
-    Review(writer: "김민지", score: 5.0, image: "soju", contents: "지친 인생에서 최고의 맛이었어요 ㅠㅠ")
+    Review(writer: "김민지", score: 5.0, image: "soju", contents: "지친 인생에서 최고의 맛이었어요 ㅠㅠ"),
+    Review(writer: "박범수",score: 1.5, contents: "4인분 같은 2인분 달라고 했는데 진짜 2인분을 주시네요? 여기는 망했음"),
 ],
     deliveryFee: 3000,
     minimumPrice: 14000,

@@ -44,7 +44,7 @@ struct CEatsApp: App {
                 }
             }
             .onAppear {
-//                resetFirebaseData()
+            // resetFirebaseData()
                 userViewModel.login()
                 restaurantViewModel.fetchAllRestaurant()
             }

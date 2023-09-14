@@ -17,6 +17,7 @@ struct Coupon: Identifiable, Codable {
 
 #if DEBUG
 extension Coupon {
-    static let sampleData: Self = .init(restaurant: Restaurant.sampleData, discount: 1000, priceCondition: 30000, endDate: Date().addingTimeInterval(86400 * 7))
+    static let sampleData: Self = .init(restaurant: restaurant1, discount: 1000, priceCondition: 30000, endDate: Date().addingTimeInterval(86400 * 7))
+    static let sampleData2: Self = .init(restaurant: restaurant2, discount: 50000, priceCondition: 30000, endDate: Date().addingTimeInterval(86400 * 7))
 }
 #endif

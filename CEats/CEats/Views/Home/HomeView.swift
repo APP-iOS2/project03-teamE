@@ -16,7 +16,7 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 0) {
                 ScrollView(showsIndicators: false) {
                     HeaderView(isOpenMapSheet: $isOpenMapSheet)
                     NavigationLink {
@@ -26,8 +26,15 @@ struct HomeView: View {
                     }
                     FoodTypeGridView()
                     SliderView()
+                    HStack{
+                        Text("이츠 추천 맛집")
+                            .bold()
+                        Spacer()
+                    }
+                    .offset(y:-13)
+                    .padding(.leading,20)
+                    .font(.system(size:20))
                     RecommendedRestaurantsView()
-//                        .offset(y: -40)
                 }
                 if userViewModel.user.foodCart != nil {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)

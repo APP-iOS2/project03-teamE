@@ -19,6 +19,7 @@
 		121FCCCF2AA6C84000A59B7D /* NowMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCCE2AA6C84000A59B7D /* NowMapView.swift */; };
 		121FCCD12AA6DBA700A59B7D /* MapGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCD02AA6DBA700A59B7D /* MapGuide.swift */; };
 		121FCCD32AA6E4C800A59B7D /* AdvertisementContentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FCCD22AA6E4C800A59B7D /* AdvertisementContentsView.swift */; };
+		1250A9952AB2C75200C634FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1250A9942AB2C75200C634FD /* GoogleService-Info.plist */; };
 		1283211A2AA6F34000EAB4BD /* RTRFoodCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128321172AA6F34000EAB4BD /* RTRFoodCellView.swift */; };
 		1283211B2AA6F34000EAB4BD /* RTRFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128321182AA6F34000EAB4BD /* RTRFoodListView.swift */; };
 		1283211C2AA6F34000EAB4BD /* RTRFoodCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128321192AA6F34000EAB4BD /* RTRFoodCategoryView.swift */; };
@@ -121,6 +122,7 @@
 		121FCCCE2AA6C84000A59B7D /* NowMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowMapView.swift; sourceTree = "<group>"; };
 		121FCCD02AA6DBA700A59B7D /* MapGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGuide.swift; sourceTree = "<group>"; };
 		121FCCD22AA6E4C800A59B7D /* AdvertisementContentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementContentsView.swift; sourceTree = "<group>"; };
+		1250A9942AB2C75200C634FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		128321172AA6F34000EAB4BD /* RTRFoodCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTRFoodCellView.swift; sourceTree = "<group>"; };
 		128321182AA6F34000EAB4BD /* RTRFoodListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTRFoodListView.swift; sourceTree = "<group>"; };
 		128321192AA6F34000EAB4BD /* RTRFoodCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTRFoodCategoryView.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		D18E9B202AA5A14C009231E4 /* CEats */ = {
 			isa = PBXGroup;
 			children = (
+				1250A9942AB2C75200C634FD /* GoogleService-Info.plist */,
 				D18E9B212AA5A14C009231E4 /* CEatsApp.swift */,
 				12BA09162AB0449A001D6BA2 /* SplashView.swift */,
 				D18E9B232AA5A14C009231E4 /* ContentView.swift */,
@@ -556,6 +559,7 @@
 			files = (
 				D18E9B2A2AA5A14E009231E4 /* Preview Assets.xcassets in Resources */,
 				D18E9B262AA5A14E009231E4 /* Assets.xcassets in Resources */,
+				1250A9952AB2C75200C634FD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
