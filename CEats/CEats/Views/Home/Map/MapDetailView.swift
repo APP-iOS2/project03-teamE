@@ -75,9 +75,9 @@ struct MapDetailView: View {
             
             Button {
                 Task{
-                    await userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: fullAddress)
                     if detailAddress != "" {
                         isOpenMapSheet = false
+                        await userViewModel.updateUserLocation(user: userViewModel.user, lat: selectedPlaceLat, long: selectedPlaceLong, adress: fullAddress)
                     } else {
                         isOKSheet = true
                     }
@@ -122,7 +122,6 @@ struct MapDetailView: View {
                 }
                 
                 Button {
-
                     isOKSheet = false
                 } label: {
                     Text("상세 주소 입력")

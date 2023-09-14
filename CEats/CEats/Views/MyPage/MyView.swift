@@ -69,8 +69,8 @@ struct MyView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             VStack {
-                NavigationLink {
-                    MapHomeView(isOpenMapSheet: $isOpenMapSheet)
+                Button {
+                    isOpenMapSheet = true
                 } label: {
                     HStack {
                         Image(systemName: "list.bullet.rectangle.portrait")
@@ -130,6 +130,10 @@ struct MyView: View {
                 print("잘가져와짐")
                 print(userViewModel.user.favoriteRestaurant.count)
             }
+        }
+        
+        .sheet(isPresented: $isOpenMapSheet) {
+            MapHomeView(isOpenMapSheet: $isOpenMapSheet)
         }
     }
 }
