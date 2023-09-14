@@ -22,8 +22,7 @@ struct ReviewDetail: View {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("가게 위치 : \(place)")
-                            .bold()
+//                        Text("가게 위치 : \(place)").bold()
                         // 위도 경도 받아와서 가게 주소
                         Text("가게 전화번호 : \(restaurant.restaurantInfo.phoneNumberString)")
                             .font(.system(size: 20))
@@ -37,9 +36,9 @@ struct ReviewDetail: View {
                     }
                 }
                 .navigationTitle("\(restaurant.name)")
-                .onAppear {
-                    convertLocationToAddress(location: CLLocation(latitude: restaurant.latitude, longitude: restaurant.longitude))
-                }
+//                .onAppear {
+//                    convertLocationToAddress(location: CLLocation(latitude: restaurant.latitude, longitude: restaurant.longitude))
+//                }
             }
         }
     }
