@@ -24,9 +24,9 @@ struct AddCartView: View {
                 if let foodImage = food.image {
                     Image(foodImage)
                         .resizable()
-                        .scaledToFill()
+                        .scaledToFit()
                         .frame(width: .screenWidth * 1 , height: .screenHeight * 0.33)
-                    
+                    Spacer()
                     HStack {
                         VStack(alignment: .leading) {
                             Text("\(food.name)")
@@ -109,7 +109,9 @@ struct AddCartView: View {
                                                 .gray : .lightgray
                                         )
                                 )
+                            
                         }
+                        
                     }
                     .padding(.horizontal, 30)
                     
