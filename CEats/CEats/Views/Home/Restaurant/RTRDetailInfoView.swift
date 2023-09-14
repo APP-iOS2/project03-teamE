@@ -43,6 +43,7 @@ struct RTRDetailInfoView: View {
                     Text("전화번호:")
                         .font(.system(size: 18, weight: .bold))
                     RTRDetailInfoMenuView(phoneNumber: restaurant.restaurantInfo.phoneNumber)
+                        .foregroundColor(.cEatsBlue)
                 }
                 Text("상호명: \(restaurant.restaurantInfo.name)")
                     .padding(.bottom)
