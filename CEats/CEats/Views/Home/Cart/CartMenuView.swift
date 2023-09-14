@@ -59,44 +59,44 @@ struct CartMenuView: View {
                                             }
                                         }
                                     } else {
+                                        Button {
+                                            userViewModel.subtractCount(food: food)
+                                        } label: {
+                                            Image(systemName: "minus.circle.fill")
+                                        }.disabled(food.foodCount == 0)
+                                    }
+                                    
+                                    Text("\(food.foodCount)")
+                                    
                                     Button {
-                                        userViewModel.subtractCount(food: food)
+                                        userViewModel.addCount(food: food)
                                     } label: {
-                                        Image(systemName: "minus.circle.fill")
-                                    }.disabled(food.foodCount == 0)
+                                        Image(systemName: "plus.circle.fill")
+                                    }
+                                    
                                 }
-                                
-                                Text("\(food.foodCount)")
-                                
-                                Button {
-                                    userViewModel.addCount(food: food)
-                                } label: {
-                                    Image(systemName: "plus.circle.fill")
-                                }
-                                
+                                .padding()
                             }
-                            .padding()
+                            .foregroundColor(.white)
                         }
-                        .foregroundColor(.white)
                     }
                 }
             }
-        }
-        Divider()
-        NavigationLink {
-            // userViewModel.user.foodCart.restaurant을 통해서 뷰를 호출해야함.
-            // if let으로 ! -> 아닐 경우 넘어가지 않게 !
-            if let restaurant = userViewModel.user.foodCart?.restaurant {
-                RTRView(restaurant: restaurant)
+            Divider()
+            NavigationLink {
+                // userViewModel.user.foodCart.restaurant을 통해서 뷰를 호출해야함.
+                // if let으로 ! -> 아닐 경우 넘어가지 않게 !
+                if let restaurant = userViewModel.user.foodCart?.restaurant {
+                    RTRView(restaurant: restaurant)
+                }
+            } label: {
+                Text("+ 메뉴 추가")
             }
-        } label: {
-            Text("+ 메뉴 추가")
+            .font(.caption)
+            .foregroundColor(.cEatsBlue)
         }
-        .font(.caption)
-        .foregroundColor(.cEatsBlue)
-    }
         .padding()
-  }
+    }
 }
 
 struct CartMenuView_Previews: PreviewProvider {
