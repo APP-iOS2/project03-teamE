@@ -43,10 +43,9 @@ struct RTRView: View {
                         }
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                CEatsNavigationBackButton {
-                                    dismiss()
-                                }
-                                    .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
+                                navigationBackBtn
+                                .foregroundColor(Color(red: colorY, green: colorY, blue: colorY))
+                                .shadow(color: colorScheme == .dark ? .gray : .clear, radius: 1)
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 HStack {
@@ -123,6 +122,15 @@ struct RTRView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+    
+    var navigationBackBtn: some View {
+        Button {
+            dismiss()
+        } label: {
+            Image(systemName: "arrow.left")
+                .bold()
+        }
     }
 }
 

@@ -27,6 +27,7 @@ struct SearchView: View {
                     SearchViewImage()
                 }
             }
+            .padding(.top)
         }
     }
 }

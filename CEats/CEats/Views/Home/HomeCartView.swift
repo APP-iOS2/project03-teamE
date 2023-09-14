@@ -22,7 +22,8 @@ struct HomeCartView: View {
                             Circle()
                                 .frame(width: 30)
                             Text("\(userViewModel.user.foodCart?.cart.count ?? 0)")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.cEatsBlue)
+                                .bold()
                         }
                         Text("카트보기")
                         Spacer()
@@ -41,7 +42,7 @@ struct HomeCartView: View {
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(.blue)
+                .background(Color.cEatsBlue)
             }
         }
     }
