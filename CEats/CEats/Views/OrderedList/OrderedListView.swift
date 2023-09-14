@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OrderedListView: View {
     //StateObject , observedObject 는 뷰를 바라보고 있어서 변하면 초기화 돼서 다시 그려줌
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
@@ -34,6 +35,14 @@ struct OrderedListView: View {
                 
                 OrderListView()
                     .padding(16)
+            }
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    CEatsNavigationBackButton {
+                        dismiss()
+                    }
+                }
             }
         }
     }
