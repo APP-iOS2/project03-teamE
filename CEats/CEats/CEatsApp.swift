@@ -11,6 +11,8 @@ import FirebaseCore
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        UITabBar.appearance().backgroundColor = .systemBackground
+        UITabBar.appearance().backgroundImage = UIImage()
         FirebaseApp.configure()
         return true
     }
@@ -20,12 +22,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct CEatsApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var restaurantViewModel = RestaurantViewModel()
+    @StateObject var userViewModel = UserViewModel()
     @State private var showMainView = false
     var body: some Scene {
         WindowGroup {
             ZStack {
                 if showMainView {
                     ContentView()
+                        .environmentObject(restaurantViewModel)
+                        .environmentObject(userViewModel)
                 } else {
                     SplashView()
                         .onAppear{
@@ -36,6 +42,10 @@ struct CEatsApp: App {
                             }
                         }
                 }
+            }
+            .onAppear {
+                userViewModel.login()
+                restaurantViewModel.fetchAllRestaurant()
             }
         }
     }

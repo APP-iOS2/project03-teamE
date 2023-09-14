@@ -34,7 +34,8 @@ struct CouponView: View {
 
 struct CouponView_Previews: PreviewProvider {
     static var previews: some View {
-        MyView(tabIndex: .constant(0))
+        MyView()
             .environmentObject(UserViewModel())
+            .environmentObject(TabViewModel())
     }
 }

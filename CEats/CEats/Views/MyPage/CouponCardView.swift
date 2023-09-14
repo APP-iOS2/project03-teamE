@@ -7,9 +7,25 @@
 
 import SwiftUI
 
+struct CEatsNavigationBackButton: View {
+    let action: () -> ()
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            Image(systemName: "arrow.left")
+        }
+        .foregroundColor(.primary)
+        .bold()
+        
+    }
+}
+
 struct CouponCardView: View {
     let coupon: Coupon
     
+    @Environment(\.dismiss) private var dismiss
     var dateStr: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY/MM/dd"
@@ -21,7 +37,7 @@ struct CouponCardView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("\(coupon.discount)원 할인")
                     .font(.system(size: 30, weight: .bold))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(.cEatsBlue)
                 Text("배달")
                     .padding(.vertical, 3)
                     .padding(.horizontal, 10)
@@ -52,11 +68,18 @@ struct CouponCardView: View {
             .background(.background)
             .cornerRadius(10)
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
+            }
+        }
         .clipped()
         .shadow(color: .lightgray, radius: 3)
     }
 }
-
 
 struct CouponCardView_Previews: PreviewProvider {
     static var previews: some View {

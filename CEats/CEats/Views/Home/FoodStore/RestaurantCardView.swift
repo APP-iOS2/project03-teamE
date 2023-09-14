@@ -50,6 +50,7 @@ struct RestaurantCardView: View {
                                 }
                                 .onTapGesture {
                                     userViewModel.likeButtonTapped(restaurant: store)
+                                    userViewModel.updateFavoriteRTR(user: userViewModel.user)
                                 }
                                 .buttonStyle(.plain)
                             }
@@ -114,6 +115,7 @@ struct RestaurantCardView: View {
                                     }
                                     .onTapGesture {
                                         userViewModel.likeButtonTapped(restaurant: store)
+                                        userViewModel.updateFavoriteRTR(user: userViewModel.user)
                                     }
                                     .buttonStyle(.plain)
                                 }

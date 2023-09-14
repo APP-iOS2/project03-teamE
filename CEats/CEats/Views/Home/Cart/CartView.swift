@@ -61,6 +61,14 @@ struct CartView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    CEatsNavigationBackButton {
+                        dismiss()
+                    }
+                }
+            }
         } else {
             ScrollView(showsIndicators: false) {
                 CartDeliveryView(isOpenMapSheet: $isOpenMapSheet)

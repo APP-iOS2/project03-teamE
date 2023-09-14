@@ -10,31 +10,40 @@ import ScalingHeaderScrollView
 
 struct FoodStoreListView: View {
     // MARK: - properties
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var restaurantsStore: RestaurantViewModel
     @EnvironmentObject var userViewModel: UserViewModel
     @State var selectedFoodType: FoodType?
     
     //MARK: - View
     var body: some View {
-        NavigationStack {
+        VStack {
             ScalingHeaderScrollView {
                 FoodStoreListDetailView(selectedFoodType: $selectedFoodType)
             } content: {
                 RestaurantCardView(selectedFoodType: $selectedFoodType)
             }
             .height(min: 47, max: 150)
-            .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem {
-                    NavigationLink {
-                        SearchView()
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                    }
+        }
+        .navigationTitle("\(selectedFoodType?.rawValue ?? "한식")")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    SearchView()
+                } label: {
+                    Image(systemName: "magnifyingglass")
                 }
             }
         }
+        .foregroundColor(.primary)
+        .bold()
     }
 }
 

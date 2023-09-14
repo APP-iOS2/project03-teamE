@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct MyView: View {
-    @Binding var tabIndex: Int
+    @EnvironmentObject private var tabViewModel: TabViewModel
     @EnvironmentObject private var userViewModel: UserViewModel
     @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
     
@@ -82,7 +82,7 @@ struct MyView: View {
                     }
                 }
                 NavigationLink {
-                    FavoriteView(tabIndex: $tabIndex)
+                    FavoriteView()
                 } label: {
                     HStack {
                         Image(systemName: "heart")
@@ -104,7 +104,7 @@ struct MyView: View {
                             .frame(height: 60)
                         if userViewModel.user.coupons.count > 0 {
                             Image(systemName: "\(userViewModel.user.coupons.count).circle.fill")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.cEatsBlue)
                         }
                         Spacer()
                     }
@@ -138,8 +138,9 @@ struct MyView: View {
 struct MyView_Previews: PreviewProvider {
     @State private static var tabIndex: Int = 4
     static var previews: some View {
-        MyView(tabIndex: $tabIndex)
+        MyView()
             .environmentObject(UserViewModel())
             .environmentObject(RestaurantViewModel())
+            .environmentObject(TabViewModel())
     }
 }

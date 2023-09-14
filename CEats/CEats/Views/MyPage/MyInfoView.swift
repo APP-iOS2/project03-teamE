@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MyInfoView: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userViewModel: UserViewModel
-    @State private var selected: MyInfoCategory = .favorite
+    @State private var selected: MyInfoCategory = .review
     
     var body: some View {
         ScrollView {
@@ -51,7 +52,22 @@ struct MyInfoView: View {
                 MyInfoCategoryView(selected: $selected)
                 MyInfoCategoryDetailView(selected: $selected)
             }
-            
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
+            }
+        }
+    }
+}
+
+struct MyInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyInfoView()
+            .environmentObject(UserViewModel())
+            .environmentObject(RestaurantViewModel())
     }
 }

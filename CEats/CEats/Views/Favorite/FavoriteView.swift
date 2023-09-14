@@ -9,9 +9,10 @@ import SwiftUI
 
 struct FavoriteView: View {
     // MARK: - Properties
-    @Binding var tabIndex: Int
-    @EnvironmentObject var favoriteStore: RestaurantViewModel
-    @EnvironmentObject var userViewModel: UserViewModel
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var tabViewModel: TabViewModel
+    @EnvironmentObject private var favoriteStore: RestaurantViewModel
+    @EnvironmentObject private var userViewModel: UserViewModel
     @State private var isEdited: Bool = false
     @State private var progress: CGFloat = 0.0
     @State private var isAnimating = false
@@ -32,7 +33,6 @@ struct FavoriteView: View {
                     
                     Spacer()
                 }
-                .padding(.bottom)
                 if isFavoriteEmpty {
                     VStack(spacing: 50) {
                         VStack {
@@ -50,7 +50,7 @@ struct FavoriteView: View {
                                 self.progress = self.isAnimating ? 1 : 0
                             }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    tabIndex = 0
+                                    tabViewModel.tabIndex = 0
                                     self.isAnimating.toggle()
                                     self.progress = 0
                                 }
@@ -73,6 +73,11 @@ struct FavoriteView: View {
                 } else {
                     ScrollView {
                         VStack {
+                            Spacer()
+                            .frame(maxWidth: .infinity, maxHeight: 10)
+                            .background(Color.veryLightGray)
+                            .opacity(0.6)
+                            .padding(.bottom)
                             ForEach(userViewModel.user.favoriteRestaurant) { store in
                                 NavigationLink {
                                     RTRView(restaurant: store)
@@ -100,6 +105,7 @@ struct FavoriteView: View {
                                                     if isEdited {
                                                         Button {
                                                             userViewModel.likeButtonTapped(restaurant: store)
+                                                            userViewModel.updateFavoriteRTR(user: userViewModel.user)
                                                         } label: {
                                                             Text("삭제")
                                                                 .font(.system(size: 12))
@@ -149,10 +155,18 @@ struct FavoriteView: View {
                                 isEdited.toggle()
                             } label: {
                                 Text(isEdited ? "취소" : "수정")
+                                    .foregroundColor(Color.cEatsBlue)
                             }
-                            
                         }
                     }
+                }
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
                 }
             }
         }
@@ -161,13 +175,17 @@ struct FavoriteView: View {
             userViewModel.fetchUser {
             }
         }
+        .onChange(of: tabViewModel.tabIndex) { newValue in
+            isEdited = false
+        }
     }
 }
 
 struct FavoriteView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteView(tabIndex: .constant(2))
+        FavoriteView()
             .environmentObject(RestaurantViewModel())
             .environmentObject(UserViewModel())
+            .environmentObject(TabViewModel())
     }
 }

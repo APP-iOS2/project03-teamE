@@ -20,6 +20,7 @@ struct HeaderView: View {
                     Label("\(userViewModel.user.userAddress)", systemImage: "location.circle")
                         .foregroundColor(.primary)
                     Image(systemName: "chevron.down")
+                        .foregroundColor(.cEatsBlue)
                 }
             }
             Spacer()
