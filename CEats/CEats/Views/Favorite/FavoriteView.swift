@@ -91,7 +91,7 @@ struct FavoriteView: View {
                                                 .frame(width: .screenWidth * 0.44, height: .screenHeight * 0.17)
                                             
                                                 .frame(width: .screenWidth * 0.35, height: .screenHeight * 0.13)
-                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .clipShape(RoundedRectangle(cornerRadius: 0))
                                                 .padding(.bottom, 20)
                                             
                                             VStack(alignment: .leading, spacing: 10) {
