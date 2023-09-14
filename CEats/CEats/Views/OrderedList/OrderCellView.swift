@@ -67,6 +67,7 @@ struct OrderCellView: View {
                         Image(systemName: "list.clipboard")
                         Text("영수증 보기")
                     }
+                    .foregroundColor(.cEatsBlue)
                 }
                 .font(.system(size: 11))
                 .padding(.bottom,10)

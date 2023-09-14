@@ -10,7 +10,7 @@ import SwiftUI
 struct RTRTitleImageView: View {
     let imageNamss: [String]
     
-    @State private var selectedIndex = 0
+    @Binding var selectedIndex: Int
     private var totalCount: Int {
         return imageNamss.count
     }
@@ -24,15 +24,6 @@ struct RTRTitleImageView: View {
                         .aspectRatio(contentMode: .fill)
                 }
             }
-            Text("\(selectedIndex + 1) / \(totalCount)")
-                .padding(.vertical, 5)
-                .padding(.horizontal)
-                .font(.caption)
-                .foregroundColor(.white)
-                .background(Color.secondary)
-                .cornerRadius(.greatestFiniteMagnitude)
-                .offset(x: -.screenWidth / 3, y: .screenHeight / 35) // 사진이 하나라 굳이 없어도 되는 부분 같아요 (1/1이거 표현하는게)
-            
         }
         .tabViewStyle(PageTabViewStyle())
     }
@@ -44,6 +35,6 @@ struct RTRTitleImageView_Previews: PreviewProvider {
             "photo",
             "photo",
             "photo",
-        ])
+        ], selectedIndex: .constant(0))
     }
 }

@@ -36,7 +36,7 @@ struct HomeView: View {
                     .font(.system(size:20))
                     RecommendedRestaurantsView()
                 }
-                if userViewModel.user.foodCart != nil {
+                if userViewModel.user.foodCart?.cart.count ?? 0 > 0 {
                     HomeCartView(isOpenMapSheet: $isOpenCartSheet)
                         .padding(.top, -10)
                 }

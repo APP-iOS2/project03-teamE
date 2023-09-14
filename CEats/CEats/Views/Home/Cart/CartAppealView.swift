@@ -34,7 +34,7 @@ struct CartAppealView: View {
                         .foregroundColor(userViewModel.isCheckmark ? .primary : .gray)
                         .padding([.leading, .trailing])
                     VStack(alignment: .leading) {
-                        Text("일화용 수저/포크받기")
+                        Text("일회용 수저/포크받기")
                             .font(.system(size: 15))
                             .foregroundColor(userViewModel.isCheckmark ? .primary : .gray)
                         Text("일회용품 사용을 줄이기 위해, 선택 시에만 제공됩니다.")
@@ -55,7 +55,6 @@ struct CartAppealView: View {
                     Text(req.toString)
                 }
             }
-            .pickerStyle(.automatic)
         }
     }
 }

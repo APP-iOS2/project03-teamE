@@ -29,7 +29,7 @@ struct PopularSearchView: View {
                 ForEach(popularSearches.indices, id: \.self) { index in
                     HStack{
                         Text("\(index+1)")
-                            .foregroundColor(index < 3 ? .blue : .black)
+                            .foregroundColor(index < 3 ? .cEatsBlue : .black)
                         Text(popularSearches[index])
                             .padding(20)
                         Spacer()

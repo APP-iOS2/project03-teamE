@@ -17,7 +17,7 @@ struct CartMenuView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text(userViewModel.user.foodCart?.restaurantName ?? "몰라")
+                Text(userViewModel.user.foodCart?.restaurantName ?? "담긴 상품이 없습니다")
                     .font(.title3)
                     .bold()
                 ForEach(userViewModel.user.foodCart?.cart ?? []) { food in
@@ -49,10 +49,10 @@ struct CartMenuView: View {
                                             Image(systemName: "trash.fill")
                                         }
                                         .alert("선택하신 메뉴를 삭제하시겠습니까?", isPresented: $showingAlert) {
-                                            Button("뒤로가기") {
+                                            Button("뒤로가기", role: .cancel) {
                                                 showingAlert = false
                                             }
-                                            Button {
+                                            Button(role: .destructive) {
                                                 userViewModel.removeFood(food: food)
                                             } label: {
                                                 Text("삭제")
@@ -93,6 +93,7 @@ struct CartMenuView: View {
                 Text("+ 메뉴 추가")
             }
             .font(.caption)
+            .foregroundColor(.cEatsBlue)
         }
         .padding()
     }

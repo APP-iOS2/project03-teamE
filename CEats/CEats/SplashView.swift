@@ -15,7 +15,7 @@ struct SplashView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.2)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.cEatsBlue)
                     .offset(y:geometry.size.height * 0.38)
             }
         }

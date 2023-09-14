@@ -232,7 +232,7 @@ struct AddCartView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 60)
-                        .background(Color.blue)
+                        .background(Color.cEatsBlue)
                 }
             } else {
                 Text("지금은 준비 중이에요")
@@ -281,6 +281,10 @@ struct AddCartView_Previews: PreviewProvider {
             .environmentObject(RestaurantViewModel())
     }
 }
+
+
+
+
 
 
 

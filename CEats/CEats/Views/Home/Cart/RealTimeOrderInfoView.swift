@@ -55,7 +55,7 @@ struct RealTimeOrderInfoView: View {
             .frame(height: 450)
             HStack {
                 Text(userViewModel.statusMessage)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.cEatsBlue)
                     .padding(.top, 20)
                     .padding(.leading, 30)
                 Spacer()

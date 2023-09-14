@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FavoriteView: View {
     // MARK: - Properties
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var tabViewModel: TabViewModel
     @EnvironmentObject private var favoriteStore: RestaurantViewModel
@@ -75,7 +76,7 @@ struct FavoriteView: View {
                         VStack {
                             Spacer()
                             .frame(maxWidth: .infinity, maxHeight: 10)
-                            .background(Color.veryLightGray)
+                            .background(colorScheme == .light ? Color.veryLightGray : .gray)
                             .opacity(0.6)
                             .padding(.bottom)
                             ForEach(userViewModel.user.favoriteRestaurant) { store in
