@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CouponView: View {
     let coupons: [Coupon]
+    
+    @Environment(\.dismiss) private var dismiss
     @State private var couponTFString: String = ""
     var body: some View {
         ScrollView {
@@ -29,6 +31,14 @@ struct CouponView: View {
             .padding()
         }
         .navigationTitle("할인쿠폰")
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                CEatsNavigationBackButton {
+                    dismiss()
+                }
+            }
+        }
     }
 }
 

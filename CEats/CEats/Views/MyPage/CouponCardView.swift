@@ -25,7 +25,6 @@ struct CEatsNavigationBackButton: View {
 struct CouponCardView: View {
     let coupon: Coupon
     
-    @Environment(\.dismiss) private var dismiss
     var dateStr: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY/MM/dd"
@@ -67,14 +66,6 @@ struct CouponCardView: View {
             .frame(maxHeight: .infinity)
             .background(.background)
             .cornerRadius(10)
-        }
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                CEatsNavigationBackButton {
-                    dismiss()
-                }
-            }
         }
         .clipped()
         .shadow(color: .lightgray, radius: 3)
