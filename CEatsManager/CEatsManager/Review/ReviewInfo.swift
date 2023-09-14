@@ -12,6 +12,7 @@ struct ReviewInfo: View {
     @EnvironmentObject private var restaurantViewModel: RestaurantViewModel
     @State var review : Review
     @State var restaurant: Restaurant
+    @State private var showingAlert: Bool = false
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -46,7 +47,7 @@ struct ReviewInfo: View {
                             .padding(.top, 50)
                             Spacer()
                             Button {
-                                restaurantViewModel.deleteReview(restaurant: &restaurant, review: review)
+                                showingAlert = true
                                 print(restaurant.reviews)
                             } label: {
                                 Text("삭제")
@@ -55,6 +56,16 @@ struct ReviewInfo: View {
                                     .padding(.trailing, 40)
                             }
                             .padding(.top, 50)
+                            .alert("선택하신 리뷰를 삭제하시겠습니까?", isPresented: $showingAlert) {
+                                Button("뒤로가기", role: .cancel) {
+                                    showingAlert = false
+                                }
+                                Button(role: .destructive) {
+                                    restaurantViewModel.deleteReview(restaurant: &restaurant, review: review)
+                                } label: {
+                                    Text("삭제")
+                                }
+                            }
                         }
 //                        Spacer()
                             .padding(.bottom, 10)
