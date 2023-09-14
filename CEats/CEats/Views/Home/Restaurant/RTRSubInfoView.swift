@@ -14,7 +14,7 @@ struct RTRSubInfoView: View {
         VStack {
             HStack {
                 Image(systemName: "clock")
-                Text("19~29분")
+                Text("19~39분")
                     .font(.system(size: 15, weight: .bold))
                 Spacer()
                 NavigationLink {
@@ -35,7 +35,7 @@ struct RTRSubInfoView: View {
                 }
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("0~1,900원")
+                        Text("\(restaurant.deliveryFee)")
                             .font(.footnote)
 //                        Button("자세히") {
 //
@@ -46,7 +46,7 @@ struct RTRSubInfoView: View {
 //                        .background(.quaternary)
 //                        .cornerRadius(.greatestFiniteMagnitude)
                     }
-                    Text("5,000원")
+                    Text("\(restaurant.minimumPrice)")
                 }
                 .padding(.leading,10)
                 Spacer()
