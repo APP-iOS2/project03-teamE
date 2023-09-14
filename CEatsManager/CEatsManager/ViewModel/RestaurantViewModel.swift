@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class RestaurantViewModel: ObservableObject {
-    @Published var restaurants: [Restaurant] = Restaurant.sampleArray
+    @Published var restaurants: [Restaurant] = []
     private let db = Firestore.firestore()
     let fireManager = CEatsFBManager.shared
     
