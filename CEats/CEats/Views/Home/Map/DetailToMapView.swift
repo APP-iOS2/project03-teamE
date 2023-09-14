@@ -65,6 +65,8 @@ struct DetailToMapView: View {
                 print("\(selectedPlaceLong)")
                 print("=======맵뷰 닫음======")
                 
+                dismiss()
+                
                 
             } label: {
                 Text("설정하기")
