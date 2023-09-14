@@ -17,7 +17,7 @@ struct CartMenuView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text(userViewModel.user.foodCart?.restaurantName ?? "몰라")
+                Text(userViewModel.user.foodCart?.restaurantName ?? "담긴 상품이 없습니다")
                     .font(.title3)
                     .bold()
                 ForEach(userViewModel.user.foodCart?.cart ?? []) { food in
@@ -49,53 +49,53 @@ struct CartMenuView: View {
                                             Image(systemName: "trash.fill")
                                         }
                                         .alert("선택하신 메뉴를 삭제하시겠습니까?", isPresented: $showingAlert) {
-                                            Button("뒤로가기") {
+                                            Button("뒤로가기", role: .cancel) {
                                                 showingAlert = false
                                             }
-                                            Button {
+                                            Button(role: .destructive) {
                                                 userViewModel.removeFood(food: food)
                                             } label: {
                                                 Text("삭제")
                                             }
                                         }
                                     } else {
-                                        Button {
-                                            userViewModel.subtractCount(food: food)
-                                        } label: {
-                                            Image(systemName: "minus.circle.fill")
-                                        }.disabled(food.foodCount == 0)
-                                    }
-                                    
-                                    Text("\(food.foodCount)")
-                                    
                                     Button {
-                                        userViewModel.addCount(food: food)
+                                        userViewModel.subtractCount(food: food)
                                     } label: {
-                                        Image(systemName: "plus.circle.fill")
-                                    }
-                                    
+                                        Image(systemName: "minus.circle.fill")
+                                    }.disabled(food.foodCount == 0)
                                 }
-                                .padding()
+                                
+                                Text("\(food.foodCount)")
+                                
+                                Button {
+                                    userViewModel.addCount(food: food)
+                                } label: {
+                                    Image(systemName: "plus.circle.fill")
+                                }
+                                
                             }
-                            .foregroundColor(.white)
+                            .padding()
                         }
+                        .foregroundColor(.white)
                     }
                 }
             }
-            Divider()
-            NavigationLink {
-                // userViewModel.user.foodCart.restaurant을 통해서 뷰를 호출해야함.
-                // if let으로 ! -> 아닐 경우 넘어가지 않게 !
-                if let restaurant = userViewModel.user.foodCart?.restaurant {
-                    RTRView(restaurant: restaurant)
-                }
-            } label: {
-                Text("+ 메뉴 추가")
-            }
-            .font(.caption)
         }
-        .padding()
+        Divider()
+        NavigationLink {
+            // userViewModel.user.foodCart.restaurant을 통해서 뷰를 호출해야함.
+            // if let으로 ! -> 아닐 경우 넘어가지 않게 !
+            if let restaurant = userViewModel.user.foodCart?.restaurant {
+                RTRView(restaurant: restaurant)
+            }
+        } label: {
+            Text("+ 메뉴 추가")
+        }
+        .font(.caption)
     }
+        .padding()
+}
 }
 
 struct CartMenuView_Previews: PreviewProvider {
