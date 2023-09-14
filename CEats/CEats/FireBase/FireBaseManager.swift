@@ -434,7 +434,7 @@ final class CEatsFBManager {
         }
     }
     
-    func appendValue<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping () -> Void) where T: Encodable {
+    func insertValue<T: CEatsIdentifiable, U: Decodable>(data: T, insertAt: Int, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping () -> Void) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
         data.getPropertyName(keyPath) { propertyName in
@@ -445,7 +445,7 @@ final class CEatsFBManager {
                         return
                     }
                     var newData = data
-                    newData[keyPath: keyPath].append(to)
+                    newData[keyPath: keyPath].insert(to, at: insertAt)
                     do {
                         try collectionRef.document(data.id).setData(from: newData) { error in
                             guard error == nil else {
@@ -527,7 +527,7 @@ final class CEatsFBManager {
         }
     }
     
-    func appendValueResult<T: CEatsIdentifiable, U: Decodable>(data: T, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (_ success : U) -> Void) where T: Encodable {
+    func insertValueResult<T: CEatsIdentifiable, U: Decodable>(data: T, insertAt: Int, value keyPath: WritableKeyPath<T, [U]>, to: U, completion: @escaping (_ success : U) -> Void) where T: Encodable {
         let collectionRef: CollectionReference = db.collection("\(type(of: data))")
         
         data.getPropertyName(keyPath) { propertyName in
@@ -538,7 +538,7 @@ final class CEatsFBManager {
                         return
                     }
                     var newData = data
-                    newData[keyPath: keyPath].append(to)
+                    newData[keyPath: keyPath].insert(to, at: insertAt)
                     do {
                         try collectionRef.document(data.id).setData(from: newData) { error in
                             guard error == nil else {

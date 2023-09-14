@@ -137,8 +137,8 @@ final class UserViewModel: ObservableObject {
         
         let newOrder = Order(id: "\(user.username).\(user.orderHistory.count)", orderer: user.username, restaurant: restaurant, orderedMenu: menus, rtrRequest: rtrReqMsg, deliveryRequest: deliReq.toString)
         fireManager.read(type: Seller.self, id: restaurant.id) { seller in
-            self.fireManager.appendValue(data: seller, value: \.orders, to: newOrder) {
-                self.fireManager.appendValueResult(data: self.user, value: \.orderHistory, to: newOrder) { success in
+            self.fireManager.insertValue(data: seller, insertAt: 0, value: \.orders, to: newOrder) {
+                self.fireManager.insertValueResult(data: self.user, insertAt: 0, value: \.orderHistory, to: newOrder) { success in
                     self.user.orderHistory.insert(success, at: 0)
                     self.user.cEatsMoney -= self.cartFee + self.deliveryOpt.fee
                     self.user.foodCart = nil
