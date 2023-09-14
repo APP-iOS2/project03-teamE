@@ -25,7 +25,7 @@ struct RealTimeOrderInfoView: View {
     ]
     
     var body: some View {
-        VStack {
+        ScrollView {
             HStack {
                 Spacer()
                 Button {
@@ -33,8 +33,9 @@ struct RealTimeOrderInfoView: View {
                     completion()
                 } label: {
                     Text("확인")
-                        .padding()
                 }
+                .padding()
+                .padding(.trailing, 10)
             }
             Map(coordinateRegion: $region, userTrackingMode: .constant(.follow), annotationItems: markers) { location in
                 MapAnnotation(coordinate: location.coordinate) {
@@ -52,7 +53,6 @@ struct RealTimeOrderInfoView: View {
                 }
             }
             .frame(height: 450)
-            
             HStack {
                 Text(userViewModel.statusMessage)
                     .foregroundColor(.blue)
@@ -60,7 +60,6 @@ struct RealTimeOrderInfoView: View {
                     .padding(.leading, 30)
                 Spacer()
             }
-            
             Button {
                 print("주문 취소")
             } label: {
@@ -71,13 +70,10 @@ struct RealTimeOrderInfoView: View {
                     .padding(.horizontal, 10)
             }
             .padding(.top, 20)
-            
             Text("매장이 조리를 시작하면 취소할 수 없습니다.")
                 .padding(.top, 10)
                 .padding(.bottom, 20)
-            
             Divider()
-            
             HStack {
                 VStack(alignment: .leading) {
                     Text("배달 주소")
@@ -89,21 +85,9 @@ struct RealTimeOrderInfoView: View {
                 Spacer()
             }
             .padding(.leading, 30)
-            
-            
-            Spacer()
         }
         .navigationTitle("주문 확인중")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem {
-                NavigationLink {
-                    ContentView()
-                } label: {
-                    Text("확인")
-                }
-            }
-        }
         .onAppear{
             print(" \(userViewModel.user.cEatsMoney - (userViewModel.cartFee))")
         }

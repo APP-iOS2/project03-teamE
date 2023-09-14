@@ -179,7 +179,6 @@
 		D13CF9872AB03BA300965F5E /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				8EF013632AB28A6A00BFE6EF /* GoogleService-Info.plist */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -204,7 +203,6 @@
 		D16DDBDA2AA862890009C29F /* CEatSeller */ = {
 			isa = PBXGroup;
 			children = (
-				121FA7762AB287E000216D22 /* GoogleService-Info.plist */,
 				D16DDBDB2AA862890009C29F /* CEatSellerApp.swift */,
 				D16DDBDD2AA862890009C29F /* ContentView.swift */,
 				D13CF9522AAFF91900965F5E /* FireBaseManager.swift */,
