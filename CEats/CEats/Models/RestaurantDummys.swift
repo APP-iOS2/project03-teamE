@@ -19,7 +19,7 @@ Restaurant(
     deliveryFee: 3000,
     minimumPrice: 14000,
     menus: [Restaurant.Food(name: "김치찌개", price: 8000, isRecommend: true, foodCategory: "식사", description: "멋쟁이 김치찌개 인기메뉴", image: "kimchijjigae"),
-            Restaurant.Food(name: "비빔밥", price: 7000, isRecommend: false, foodCategory: "식사", description: "신선한 나물을 사용한 멋쟁이 비빔밥 특식", image: "korean"),
+            Restaurant.Food(name: "비빔밥", price: 7000, isRecommend: false, foodCategory: "식사", description: "신선한 나물이 있는 비빔밥", image: "korean"),
             Restaurant.Food(name: "고등어구이", price: 13000, isRecommend: true, foodCategory: "식사", description: "", image: "fish"),
             Restaurant.Food(name: "청국장", price: 8000, isRecommend: true, foodCategory: "식사", description: "손님들이 인정한 청국장 맛집", image: "cheong"),
             Restaurant.Food(name: "공깃밥", price: 1500, isRecommend: false, foodCategory: "사이드", description: "식사 주문시 기본으로 제공됩니다. ", image: "rice"),
