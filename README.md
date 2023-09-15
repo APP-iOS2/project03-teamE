@@ -22,11 +22,11 @@
 ## 🔎Detail
 | 주소 설정<br>(소비자앱) | 주문하기<br>(소비자앱) | 주문확인<br>(소비자앱) |
 |:--:|:--:|:--:|
-|![CEats_SettingAddress](https://media.discordapp.net/attachments/1124001520443211899/1152042641551270079/CEats_SettingAddress.gif?width=316&height=686)|![CEats_Ordering](https://media.discordapp.net/attachments/1124001520443211899/1152042742071951420/CEats_Ordering.gif?width=316&height=686)|![CEats_DeliveringAccept](https://media.discordapp.net/attachments/1124001520443211899/1152042879196352523/CEats_DeliveringAccept.gif?width=316&height=686)|
+|![CEats_SettingAddress](https://github.com/isakatty/TIL/assets/133845468/459505fa-ed83-409e-a9a6-3678add84586)|![CEats_Ordering](https://github.com/isakatty/TIL/assets/133845468/d555db8f-246b-444c-9a12-bb41f4b5dde4)|![CEats_DeliveringAccept](https://github.com/isakatty/TIL/assets/133845468/7e3be8ac-2e02-499f-b456-3732410c7ecb)|
 
 | 주문수락<br>(판매자앱) | 리뷰삭제<br>(관리자앱)|
 |:--:|:--:|
-|![CEats_Seller_Accepting](https://media.discordapp.net/attachments/1124001520443211899/1152046771200077875/CEats_Seller_Accepting.gif?width=317&height=686)|![CEats_Manager](https://media.discordapp.net/attachments/1124001520443211899/1152058105467781253/ceats.gif?width=686&height=686)|
+|![CEats_Seller_Accepting](https://github.com/isakatty/TIL/assets/133845468/d22583a0-bf03-4250-ab46-05228a9c0517)|![CEats_Manager](https://github.com/isakatty/TIL/assets/133845468/eb13829d-a340-44b8-a1f8-3242a4aa54b0)|
 ## 활용기술
 
 #### Platforms
