@@ -13,14 +13,20 @@
 ```
 
 ```
+파이어베이스 콘솔 세팅
 - CEats 번들 ID: com.time5607.CEats
 - CEats Seller 번들 ID: com.time5607.CEatSeller
 - CEats Manager 번들 ID: com.time5607.CEatsManager
-
 ```
 
+## 🔎Detail
+| 주소 설정<br>(소비자앱) | 주문하기<br>(소비자앱) | 주문확인<br>(소비자앱) |
+|:--:|:--:|:--:|
+|![CEats_SettingAddress](https://media.discordapp.net/attachments/1124001520443211899/1152042641551270079/CEats_SettingAddress.gif?width=316&height=686)|![CEats_Ordering](https://media.discordapp.net/attachments/1124001520443211899/1152042742071951420/CEats_Ordering.gif?width=316&height=686)|![CEats_DeliveringAccept](https://media.discordapp.net/attachments/1124001520443211899/1152042879196352523/CEats_DeliveringAccept.gif?width=316&height=686)|
 
-
+| 주문수락<br>(판매자앱) | 리뷰삭제<br>(관리자앱)|
+|:--:|:--:|
+|![CEats_Seller_Accepting](https://media.discordapp.net/attachments/1124001520443211899/1152046771200077875/CEats_Seller_Accepting.gif?width=317&height=686)|![CEats_Manager](https://media.discordapp.net/attachments/1124001520443211899/1152058105467781253/ceats.gif?width=686&height=686)|
 ## 활용기술
 
 #### Platforms
